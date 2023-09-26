@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-class InfoPage extends StatelessWidget {
+class SchedulePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Center(
           child: Container(
-            child: Text("インフォメーション"),
+            child: Text("予定"),
           ),
         ),
       ),
     );
   }
 }
+
