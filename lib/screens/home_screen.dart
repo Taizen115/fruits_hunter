@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/screens/page/question_page.dart';
-import 'package:fruits_hunter/screens/page/my_page.dart';
-import 'package:fruits_hunter/screens/page/photo_page.dart';
+import 'package:fruits_hunter/screens/page/share_page.dart';
+import 'package:fruits_hunter/screens/page/list_page.dart';
 import 'package:fruits_hunter/screens/page/schedule_page.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  final _pages = [PhotoPage(), QuestionPage(), SchedulePage(), MyPage()];
+  final _pages = [ListPage(), QuestionPage(), SchedulePage(), SharePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -33,21 +33,21 @@ class _HomeScreenState extends State<HomeScreen> {
           currentIndex: _currentIndex,
           items: const [
             BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.image),
-                label: "photo",
-                tooltip: "果物の写真",),
+                icon: FaIcon(FontAwesomeIcons.listUl),
+                label: "list",
+                tooltip: "果物一覧",),
             BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.circleQuestion),
+                icon: FaIcon(FontAwesomeIcons.quora),
                 label: "quiz",
-                tooltip: "果物に関するクイズ",),
+                tooltip: "果物クイズ",),
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.calendarDays),
                 label: "schedule",
                 tooltip: "果物狩りの予定",),
             BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.user),
-                label: "my page",
-                tooltip: "自分の記録",)
+                icon: FaIcon(FontAwesomeIcons.shareNodes),
+                label: "share",
+                tooltip: "共有",)
           ],
           onTap: (index) {
             setState(() {
