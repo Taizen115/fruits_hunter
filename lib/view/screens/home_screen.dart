@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fruits_hunter/view/screens/page/experience_page.dart';
+import 'package:fruits_hunter/view/screens/page/question_page.dart';
 import 'package:fruits_hunter/view/screens/page/share_page.dart';
 import 'package:fruits_hunter/view/screens/page/list_page.dart';
 import 'package:fruits_hunter/view/screens/page/place_page.dart';
@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  final _pages = [ListPage(), ExperiencePage(), PlacePage(), SharePage()];
+  final _pages = [ListPage(), QuestionPage(), PlacePage(), SharePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: "list",
                 tooltip: "果物一覧",),
             BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.utensils),
-                label: "experience",
-                tooltip: "体験",),
+                icon: FaIcon(FontAwesomeIcons.quora),
+                label: "question",
+                tooltip: "質問",),
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.locationDot),
                 label: "map",
