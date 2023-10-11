@@ -4,22 +4,10 @@ import 'package:fruits_hunter/style/style.dart';
 
 import '../../../db/database.dart';
 
-class DetailPage extends StatefulWidget {
+class DetailPage extends StatelessWidget {
+  final Fruit selectedFruit;
 
-  @override
-  State<DetailPage> createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
-
-  List<Fruit> fruits = [];
-
-  @override
-  void initState() {
-    _getAllFruits();
-    super.initState();
-  }
-
+  DetailPage({required this.selectedFruit});
 
   @override
   Widget build(BuildContext context) {
@@ -29,24 +17,14 @@ class _DetailPageState extends State<DetailPage> {
         title: Text("果物の詳細", style: TextStyle(fontFamily: MainFont, fontSize: 20.0),),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        //TODO ListViewの中身
-        itemCount: fruits.length,
-        itemBuilder: (_, position) => ListTile(
-          title: Text(fruits[position].id.toString()),
-          subtitle: Text(fruits[position].toString()),
+      body: Container(
+        child: Center(
+          child: Text(selectedFruit.name),
         ),
-
       ),
     );
   }
 
-  void _getAllFruits() async {
-    fruits = await database.Fruits;
-    setState(() {
 
-    });
-
-  }
 }
 

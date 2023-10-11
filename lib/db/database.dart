@@ -21,6 +21,8 @@ class Fruits extends Table {
 
   TextColumn get nutrients => text()();
 
+  TextColumn get image_file_name => text()();
+
 }
 
 @DriftDatabase(tables: [Fruits])
@@ -32,7 +34,7 @@ class MyDatabase extends _$MyDatabase {
   @override
   int get schemaVersion => 1;
 
-  Future<List<Fruit>> get Fruits => select(fruits).get();
+  Future<List<Fruit>> get fruitsList => select(fruits).get();
 
 }
 
