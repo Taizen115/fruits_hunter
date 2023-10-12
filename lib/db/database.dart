@@ -11,15 +11,17 @@ class Fruits extends Table {
 
   TextColumn get name => text()();
 
-  TextColumn get famous_area => text()();
+  TextColumn get famousArea => text()();
 
   TextColumn get season => text()();
 
-  TextColumn get famous_breed => text()();
+  TextColumn get famousBreed => text()();
 
-  TextColumn get price_range => text()();
+  TextColumn get priceRange => text()();
 
   TextColumn get nutrients => text()();
+
+  TextColumn get imageFileName => text()();
 
 }
 
@@ -32,7 +34,7 @@ class MyDatabase extends _$MyDatabase {
   @override
   int get schemaVersion => 1;
 
-  Future<List<Fruit>> get Fruits => select(fruits).get();
+  Future<List<Fruit>> get fruitsList => select(fruits).get();
 
 }
 

@@ -37,8 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: "list",
                 tooltip: "果物一覧",),
             BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.quora),
-                label: "question",
+                icon: FaIcon(FontAwesomeIcons.comments),
+                label: "chat",
                 tooltip: "質問",),
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.locationDot),
