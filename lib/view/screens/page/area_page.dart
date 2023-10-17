@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class QuestionPage extends StatelessWidget {
+class AreaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Center(
           child: Container(
-            child: Text("Q＆A"),
+            child: Text("産地一覧"),
           ),
         ),
       ),

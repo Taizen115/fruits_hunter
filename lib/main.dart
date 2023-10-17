@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fruits_hunter/db/database.dart';
@@ -15,8 +17,12 @@ void main() async {
   var dbPath = await getDbPath();
   database = MyDatabase(dbPath: dbPath);
 
-  runApp(MyApp());
-
+  runApp(
+    DevicePreview(
+      builder: (context) => MyApp(),
+      enabled: !kReleaseMode,
+    ),
+  );
 }
 
 Future<String> getDbPath() async {
@@ -25,23 +31,23 @@ Future<String> getDbPath() async {
 
   if (FileSystemEntity.typeSync(dbPath) == FileSystemEntityType.notFound) {
     ByteData byteData = await rootBundle.load("assets/fruits.db");
-    List<int> bytes = byteData.buffer.asUint8List(byteData.offsetInBytes, byteData.lengthInBytes);
+    List<int> bytes = byteData.buffer
+        .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes);
     await File(dbPath).writeAsBytes(bytes);
   }
   return dbPath;
-
 }
-
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
+      debugShowCheckedModeBanner: false,
       title: "FruitsHunter",
-      theme: ThemeData(
-        brightness: Brightness.light,
-        fontFamily: MainFont
-      ),
+      theme: ThemeData(brightness: Brightness.light, fontFamily: MainFont),
       home: HomeScreen(),
     );
   }
