@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hunter/style/style.dart';
+import 'package:fruits_hunter/view/screens/page/reference_page.dart';
 
 import '../../../db/database.dart';
 
@@ -68,12 +69,15 @@ class DetailPage extends StatelessWidget {
                       Image.asset("assets/images/answerer.jpg"),
                       Positioned(
                           top: 30.0,
+                          bottom: 30.0,
                           right: 8.0,
                           left: 130.0,
-                          child: Text(
-                            "${selectedFruit.season}です.",
-                            style:
-                                TextStyle(fontFamily: MainFont, fontSize: 12.0),
+                          child: Center(
+                            child: Text(
+                              "${selectedFruit.season}です.",
+                              style:
+                                  TextStyle(fontFamily: MainFont, fontSize: 12.0),
+                            ),
                           )),
                     ]),
                     SizedBox(
@@ -164,6 +168,6 @@ class DetailPage extends StatelessWidget {
   }
 
   _goReferencePage(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => _goReferencePage(context),)
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ReferencePage(),)
     );}
 }

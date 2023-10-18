@@ -18,8 +18,9 @@ class ReferencePage extends StatelessWidget {
   }
   void _launchURL() async {
     const url = 'https://iko-yo.net/topics/fruit';
-    if (await launchUrl(url as Uri)) {
-      await launchUrl(url as Uri);
+    final uri = Uri.parse(url);
+    if (await launchUrl(uri)) {
+      await launchUrl(uri);
     } else {
       throw 'Could not launch $url';
     }
