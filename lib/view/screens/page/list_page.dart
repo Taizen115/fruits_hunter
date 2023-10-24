@@ -20,6 +20,12 @@ class _ListPageState extends State<ListPage> {
   }
 
   @override
+  void dispose() {
+    _getFruitsData();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Padding(
@@ -28,6 +34,7 @@ class _ListPageState extends State<ListPage> {
               body: (fruitsList.isEmpty)
                   ? Container()
                   : Card(
+                color: Colors.white70,
                 child: GridView.count(
                 crossAxisCount: 2,
                 children:

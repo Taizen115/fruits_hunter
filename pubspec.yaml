@@ -43,6 +43,7 @@ dependencies:
   path: ^1.8.3
 
   url_launcher: ^6.1.14
+  bubble: ^1.2.1
 
 
 
@@ -78,6 +79,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/character/
     - assets/fruits.db
     #   - images/a_dot_ham.jpeg
 

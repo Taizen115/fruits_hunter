@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/view/screens/page/travel_page.dart';
 import 'package:fruits_hunter/view/screens/page/share_page.dart';
 import 'package:fruits_hunter/view/screens/page/list_page.dart';
-import 'package:fruits_hunter/view/screens/page/place_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  final _pages = [ListPage(), TravelPage(), PlacePage(), SharePage()];
+  final _pages = [ListPage(), TravelPage(), SharePage()];
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
       //TODO
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          showSelectedLabels: false,
+          showSelectedLabels: true,
           showUnselectedLabels: false,
           unselectedItemColor: Colors.white,
           backgroundColor: Colors.lightGreen,
@@ -34,20 +33,13 @@ class _HomeScreenState extends State<HomeScreen> {
           items: const [
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.listUl),
-                label: "list",
-                tooltip: "果物一覧",),
+                label: "果物一覧",),
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.suitcaseRolling),
-                label: "travel",
-                tooltip: "日本の産地",),
-            BottomNavigationBarItem(
-                icon: FaIcon(FontAwesomeIcons.locationDot),
-                label: "map",
-                tooltip: "地図",),
+                label: "日本の産地",),
             BottomNavigationBarItem(
                 icon: FaIcon(FontAwesomeIcons.shareNodes),
-                label: "share",
-                tooltip: "共有",)
+                label: "共有",),
           ],
           onTap: (index) {
             setState(() {
