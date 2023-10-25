@@ -15,7 +15,7 @@ class DetailPage extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.lightGreen,
             title: Text(
-              "${selectedFruit.name}さんのQ＆A",
+              "${selectedFruit.name}のQ＆A",
               style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
             ),
             centerTitle: true,
@@ -34,7 +34,7 @@ class DetailPage extends StatelessWidget {
                           nip: BubbleNip.rightCenter,
                           color: Colors.lightGreen,
                           child: Text(
-                            "フルーツハンター1号です.${selectedFruit.name}さんの主要な住所はどこなの？",
+                            "フルーツハンター1号です.${selectedFruit.name}さんの主要な産地はどこなの？",
                             style: TextStyle(
                               fontFamily: MainFont,
                               fontSize: 20.0,
@@ -151,7 +151,7 @@ class DetailPage extends StatelessWidget {
                           nip: BubbleNip.rightCenter,
                           color: Colors.lightGreen,
                           child:
-                          Text("${selectedFruit.name}さんの有名な品種はなんでござろう？",
+                          Text("${selectedFruit.name}さんの有名な品種は何でございますか？",
                               style: TextStyle(
                                 fontFamily: MainFont,
                                 fontSize: 20.0,
@@ -299,7 +299,7 @@ class DetailPage extends StatelessWidget {
                           margin: BubbleEdges.only(top: 10),
                           nip: BubbleNip.leftCenter,
                           child: Text(
-                              "場所と時期によるけど、大体${selectedFruit
+                              "場所と時期によるけど, 大体${selectedFruit
                                   .priceRange}だよー.",
                               style: TextStyle(
                                 fontFamily: SubFont,
