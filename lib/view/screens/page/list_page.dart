@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hunter/main.dart';
-import 'package:fruits_hunter/view/screens/page/detail_page.dart';
 import 'package:fruits_hunter/style/style.dart';
+import 'package:fruits_hunter/view/screens/page/detail_page.dart';
 
 import '../../../db/database.dart';
 
@@ -31,6 +31,11 @@ class _ListPageState extends State<ListPage> {
         child: Padding(
             padding: const EdgeInsets.all(2.0),
             child: Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.black87,
+                foregroundColor: Colors.white70,
+                title: Text("果物について", style: TextStyle(fontFamily: MainFont, fontSize: 20.0),),
+              ),
               body: (fruitsList.isEmpty)
                   ? Container()
                   : Card(
@@ -60,6 +65,8 @@ class _ListPageState extends State<ListPage> {
             )));
   }
 
+  //DetailPageにデータを持って移行させる
+
   _goDetailPage(Fruit selectedFruit) {
     Navigator.push(
       context,
@@ -70,6 +77,8 @@ class _ListPageState extends State<ListPage> {
       ),
     );
   }
+
+  //データベースを表示させる
 
   void _getFruitsData() async {
     fruitsList = await database.fruitsList;

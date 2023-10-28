@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../style/style.dart';
 
-class TravelPage extends StatelessWidget {
+class CharmPage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -10,9 +11,10 @@ class TravelPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.black87,
           foregroundColor: Colors.white70,
-          title: Text("産地一覧", style: TextStyle(fontFamily: MainFont),),
+          title: Text("魅力", style: TextStyle(fontFamily: MainFont),),
         ),
       ),
     );
   }
 }
+
