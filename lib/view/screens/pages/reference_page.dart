@@ -9,6 +9,7 @@ class ReferencePage extends StatelessWidget {
         home: SafeArea(
             child: Scaffold(
       appBar: AppBar(
+
         title: Text(
           "リンク先",
           style: TextStyle(
@@ -16,8 +17,8 @@ class ReferencePage extends StatelessWidget {
             fontFamily: MainFont,
           ),
         ),
-        foregroundColor: Colors.black87,
-        backgroundColor: Colors.white70,
+        backgroundColor: Colors.black87,
+        foregroundColor: Colors.white70,
         centerTitle: true,
         leadingWidth: 90,
         leading: TextButton(

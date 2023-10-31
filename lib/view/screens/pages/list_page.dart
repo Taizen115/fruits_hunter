@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hunter/main.dart';
 import 'package:fruits_hunter/style/style.dart';
-import 'package:fruits_hunter/view/screens/page/detail_page.dart';
+import 'package:fruits_hunter/view/screens/pages/detail_page.dart';
 
 import '../../../db/database.dart';
 
@@ -48,10 +48,15 @@ class _ListPageState extends State<ListPage> {
                   return InkWell(
                     onTap: () => _goDetailPage(fruit),
                     child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20.0),),),
                       elevation: 20.0,
                       child: GridTile(
-                        child: Image.asset(
-                            "assets/images/${fruit.imageFileName}"),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Image.asset(
+                              "assets/images/${fruit.imageFileName}"),
+                        ),
                         footer: Center(
                             child: Text(
                               fruit.name,

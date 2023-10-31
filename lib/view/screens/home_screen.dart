@@ -1,10 +1,11 @@
+import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_hunter/style/style.dart';
-import 'package:fruits_hunter/view/screens/page/caution_page.dart';
-import 'package:fruits_hunter/view/screens/page/charm_page.dart';
-import 'package:fruits_hunter/view/screens/page/list_page.dart';
-import 'package:fruits_hunter/view/screens/page/reference_page.dart';
-import 'package:fruits_hunter/view/screens/page/travel_page.dart';
+import 'package:fruits_hunter/view/screens/pages/caution_page.dart';
+import 'package:fruits_hunter/view/screens/pages/charm_page.dart';
+import 'package:fruits_hunter/view/screens/pages/quiz_page.dart';
+import 'package:fruits_hunter/view/screens/pages/list_page.dart';
+import 'package:fruits_hunter/view/screens/pages/reference_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,6 +13,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final int _numberOfQuestions = 23;
+
+  var numberOfCorrect;
+  var correctRate;
+
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -24,25 +32,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Stack(children: [
                   InkWell(
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                        child: Image.asset("assets/character/concierge.png",)),
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.asset(
+                          "assets/character/concierge.png",
+                        )),
                     onTap: () => _goReferencePage(context),
-                  ), Container(
+                  ),
+                  Container(
                     child: Align(
                       alignment: Alignment.center,
                       child: Column(
                         children: [
                           Text(
-                              "Dear",
-                              style: TextStyle(fontFamily: MainFont, fontSize: 50.0),
-                            ),
+                            "Dear",
+                            style:
+                                TextStyle(fontFamily: MainFont, fontSize: 50.0),
+                          ),
                           Text(
                             "Fruit",
-                            style: TextStyle(fontFamily: MainFont, fontSize: 50.0),
+                            style:
+                                TextStyle(fontFamily: MainFont, fontSize: 50.0),
                           ),
                           Text(
                             "Picker",
-                            style: TextStyle(fontFamily: MainFont, fontSize: 50.0),
+                            style:
+                                TextStyle(fontFamily: MainFont, fontSize: 50.0),
                           )
                         ],
                       ),
@@ -53,7 +67,20 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 20.0,
               ),
-              Center(child: Text("どんな情報が必要でしょうか？", style: TextStyle(fontFamily: MainFont, fontSize: 25.0),)),
+
+              Bubble(
+                alignment: Alignment.center,
+                color: Colors.white,
+                child: Text(
+                  "どういった情報をお求めでしょうか？",
+                  // textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 20.0,
+                    fontFamily: MainFont,
+                  ),
+                ),
+              ),
 
               SizedBox(
                 height: 20.0,
@@ -90,10 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0)),
                   )),
-              onPressed: () => _goTravelPage(),
-              child: Text("産地")),
+              onPressed: () => _goquizPage(context),
+              child: Text("雑学")),
         ]),
-
         TableRow(children: [
           ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -126,9 +152,9 @@ class _HomeScreenState extends State<HomeScreen> {
         context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 
-  _goTravelPage() {
+  _goquizPage(numberOfQuestions) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => TravelPage()));
+        context, MaterialPageRoute(builder: (context) => QuizPage(numberOfQuestions: _numberOfQuestions)));
   }
 
   _goReferencePage(BuildContext context) {
@@ -138,12 +164,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _goCharmPage() {
     Navigator.push(
-      context, MaterialPageRoute(builder: (context) => CharmPage()));
+        context, MaterialPageRoute(builder: (context) => CharmPage()));
   }
 
   _goCautionPage() {
     Navigator.push(
-      context, MaterialPageRoute(builder: (context) => CautionPage()));
+        context, MaterialPageRoute(builder: (context) => CautionPage()));
   }
 }
 

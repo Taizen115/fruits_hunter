@@ -24,8 +24,9 @@ class DetailPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-
-            SizedBox(height: 30.0,),
+            SizedBox(
+              height: 30.0,
+            ),
 
             //導入
             Row(
@@ -41,7 +42,8 @@ class DetailPage extends StatelessWidget {
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.leftCenter,
                       color: Colors.blue[200],
-                      child: Text("美味しい果物を食べるためには、鮮度と産地と品種名が重要とされております.どうかご参考ください.",
+                      child: Text(
+                          "美味しい果物を食べるためには、鮮度と産地と品種名が重要とされております.どうかご参考ください.",
                           style: TextStyle(
                             fontFamily: SubFont,
                             fontSize: 20.0,
@@ -156,12 +158,13 @@ class DetailPage extends StatelessWidget {
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.leftCenter,
                       color: Colors.blue[200],
-                      child: Text("大体${selectedFruit.season}の時期に, 果樹園が営業しております.",
-                          style: TextStyle(
-                            fontFamily: SubFont,
-                            fontSize: 20.0,
-                          ),
-                          textAlign: TextAlign.center),
+                      child:
+                          Text("大体${selectedFruit.season}の時期に, 果樹園が営業しております.",
+                              style: TextStyle(
+                                fontFamily: SubFont,
+                                fontSize: 20.0,
+                              ),
+                              textAlign: TextAlign.center),
                     ),
                   ),
                 ),
@@ -241,13 +244,12 @@ class DetailPage extends StatelessWidget {
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.rightCenter,
                       color: Colors.white30,
-                      child:
-                          Text("${selectedFruit.name}には, どんな栄養素が詰まっているんすか？",
-                              style: TextStyle(
-                                fontFamily: MainFont,
-                                fontSize: 20.0,
-                              ),
-                              textAlign: TextAlign.center),
+                      child: Text("${selectedFruit.name}には, どんな栄養素が詰まっているんすか？",
+                          style: TextStyle(
+                            fontFamily: MainFont,
+                            fontSize: 20.0,
+                          ),
+                          textAlign: TextAlign.center),
                     ),
                   ),
                 ),
@@ -299,13 +301,13 @@ class DetailPage extends StatelessWidget {
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.rightCenter,
                       color: Colors.white30,
-                      child: Text(
-                          "${selectedFruit.name}の収穫体験は, 大体どのぐらいかかるでござるか？",
-                          style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 20.0,
-                          ),
-                          textAlign: TextAlign.center),
+                      child:
+                          Text("${selectedFruit.name}の収穫体験は, 大体どのぐらいかかるでござるか？",
+                              style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 20.0,
+                              ),
+                              textAlign: TextAlign.center),
                     ),
                   ),
                 ),
@@ -330,160 +332,21 @@ class DetailPage extends StatelessWidget {
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.leftCenter,
                       color: Colors.blue[200],
-                      child:
-                          Text("場所と時期によりますが, 大体${selectedFruit.priceRange}の費用がかかります.",
-                              style: TextStyle(
-                                fontFamily: SubFont,
-                                fontSize: 20.0,
-                              ),
-                              textAlign: TextAlign.center),
+                      child: Text(
+                          "場所と時期によりますが, 大体${selectedFruit.priceRange}の費用がかかります.",
+                          style: TextStyle(
+                            fontFamily: SubFont,
+                            fontSize: 20.0,
+                          ),
+                          textAlign: TextAlign.center),
                     ),
                   ),
                 ),
               ],
             ),
-
-            //   Stack(children: [
-            //     Image.asset("assets/images/questioner.jpg"),
-            //     Positioned(
-            //         top: 35.0,
-            //         right: 8.0,
-            //         left: 20.0,
-            //         child: Text(
-            //           "${selectedFruit.name}の主要な産地は？",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
-            //   Stack(children: [
-            //     Image.asset("assets/images/answerer.jpg"),
-            //     Positioned(
-            //         top: 30.0,
-            //         right: 8.0,
-            //         left: 130.0,
-            //         child: Text(
-            //           "${selectedFruit.famousArea}です.",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
-            //   SizedBox(
-            //     height: 10.0,
-            //   ),
-            //   Stack(children: [
-            //     Image.asset("assets/images/questioner.jpg"),
-            //     Positioned(
-            //         top: 35.0,
-            //         right: 8.0,
-            //         left: 20.0,
-            //         child: Text(
-            //           "${selectedFruit.name}の旬の時期は？",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
-            //   Stack(children: [
-            //     Image.asset("assets/images/answerer.jpg"),
-            //     Positioned(
-            //         top: 30.0,
-            //         right: 8.0,
-            //         left: 130.0,
-            //         child: Text(
-            //           "${selectedFruit.season}です.",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
-            //   SizedBox(
-            //     height: 10.0,
-            //   ),
-            //   Stack(children: [
-            //     Image.asset("assets/images/questioner.jpg"),
-            //     Positioned(
-            //         top: 35.0,
-            //         right: 8.0,
-            //         left: 20.0,
-            //         child: Text(
-            //           "${selectedFruit.name}の有名な品種は？",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
-            //   Stack(children: [
-            //     Image.asset("assets/images/answerer.jpg"),
-            //     Positioned(
-            //         top: 22.0,
-            //         right: 8.0,
-            //         left: 130.0,
-            //         child: Text(
-            //           "${selectedFruit.famousBreed}です.",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
-            //   SizedBox(
-            //     height: 10.0,
-            //   ),
-            //   Stack(children: [
-            //     Image.asset("assets/images/questioner.jpg"),
-            //     Positioned(
-            //         top: 35.0,
-            //         right: 8.0,
-            //         left: 20.0,
-            //         child: Text(
-            //           "${selectedFruit.name}の主要な栄養素は？",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
-            //   Stack(children: [
-            //     Image.asset("assets/images/answerer.jpg"),
-            //     Positioned(
-            //         top: 22.0,
-            //         right: 8.0,
-            //         left: 130.0,
-            //         child: Text(
-            //           "${selectedFruit.nutrients}です.",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
-            //   SizedBox(
-            //     height: 10.0,
-            //   ),
-            //   Stack(children: [
-            //     Image.asset("assets/images/questioner.jpg"),
-            //     Positioned(
-            //         top: 35.0,
-            //         right: 8.0,
-            //         left: 20.0,
-            //         child: Text(
-            //           "${selectedFruit.name}狩りの価格帯は？",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
-            //   Stack(children: [
-            //     Image.asset("assets/images/answerer.jpg"),
-            //     Positioned(
-            //         top: 30.0,
-            //         right: 8.0,
-            //         left: 130.0,
-            //         child: Text(
-            //           "${selectedFruit.priceRange}です.",
-            //           style:
-            //               TextStyle(fontFamily: MainFont, fontSize: 12.0),
-            //         )),
-            //   ]),
           ],
         ),
       ),
     ));
   }
 }
-// _goReferencePage(BuildContext context) {
-//   Navigator.push(
-//       context,
-//       MaterialPageRoute(
-//         builder: (context) => ReferencePage(),
-//       ));
