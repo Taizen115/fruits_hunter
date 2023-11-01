@@ -27,16 +27,21 @@ class Fruits extends Table {
 
 }
 
-@DriftDatabase(tables: [Fruits])
-class MyDatabase extends _$MyDatabase {
-  final String dbPath;
+class Questions extends Table {
 
-  MyDatabase({required this.dbPath}) : super(_openConnection(dbPath));
+  IntColumn get id => integer()();
 
-  @override
-  int get schemaVersion => 1;
+  TextColumn get question => text()();
 
-  Future<List<Fruit>> get fruitsList => select(fruits).get();
+  TextColumn get answer => text()();
+
+  TextColumn get choice1 => text()();
+
+  TextColumn get choice2 => text()();
+
+  TextColumn get choice3 => text()();
+
+  BoolColumn get isCorrect => boolean().withDefault(Constant(false))();
 
 }
 
@@ -47,4 +52,19 @@ LazyDatabase _openConnection(String dbPath) {
     final file = File(dbPath);
     return NativeDatabase(file);
   });
+}
+
+@DriftDatabase(tables: [Fruits, Questions])
+class MyDatabase extends _$MyDatabase {
+  final String dbPath;
+
+
+  MyDatabase({required this.dbPath}) : super(_openConnection(dbPath));
+
+  @override
+  int get schemaVersion => 1;
+
+  Future<List<Fruit>> get fruitsList => select(fruits).get();
+
+  Future<List<Question>> get quizList => select(questions).get();
 }
