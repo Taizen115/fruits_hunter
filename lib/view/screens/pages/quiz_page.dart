@@ -39,19 +39,19 @@ class _QuizPageState extends State<QuizPage> {
   bool isCorrect = false;
   bool isNextQuestioned = false;
 
-  @override
-  void initState() {
-    super.initState();
-
-    numberOfCorrect = 0;
-    correctRate = 0;
-    numberOfRemaining = widget.numberOfQuestions;
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //
+  //   numberOfCorrect = 0;
+  //   correctRate = 0;
+  //   numberOfRemaining = widget.numberOfQuestions;
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  // }
 
 
   @override

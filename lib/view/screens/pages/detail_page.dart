@@ -344,6 +344,71 @@ class DetailPage extends StatelessWidget {
                 ),
               ],
             ),
+
+            SizedBox(
+              height: 20.0,
+            ),
+
+            //質問6
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: Container(
+                    child: Bubble(
+                      margin: BubbleEdges.only(top: 10),
+                      nip: BubbleNip.rightCenter,
+                      color: Colors.white30,
+                      child: Text(
+                        "美味しい${selectedFruit.name}の見分け方は？",
+                        style: TextStyle(
+                          fontFamily: MainFont,
+                          fontSize: 20.0,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ),
+                Image.asset(
+                  "assets/images/lady.jpg",
+                  width: 50.0,
+                  height: 50.0,
+                )
+              ],
+            ),
+
+            Row(
+              children: [
+                Image.asset(
+                  "assets/images/${selectedFruit.imageFileName}",
+                  width: 50.0,
+                  height: 50.0,
+                ),
+                Expanded(
+                  child: Container(
+                    child: Bubble(
+                      margin: BubbleEdges.only(top: 10),
+                      nip: BubbleNip.leftCenter,
+                      color: Colors.blue[200],
+                      child:
+                      Text("${selectedFruit.distinguish}",
+                          style: TextStyle(
+                            fontFamily: SubFont,
+                            fontSize: 20.0,
+                          ),
+                          textAlign: TextAlign.center),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(
+              height: 20.0,
+            ),
+
           ],
         ),
       ),

@@ -23,6 +23,8 @@ class Fruits extends Table {
 
   TextColumn get imageFileName => text()();
 
+  TextColumn get distinguish => text()();
+
 }
 
 @DriftDatabase(tables: [Fruits])
