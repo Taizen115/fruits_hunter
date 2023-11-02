@@ -1,11 +1,10 @@
-import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:fruits_hunter/view/screens/pages/caution_page.dart';
 import 'package:fruits_hunter/view/screens/pages/charm_page.dart';
-import 'package:fruits_hunter/view/screens/pages/quiz_page.dart';
 import 'package:fruits_hunter/view/screens/pages/list_page.dart';
-import 'package:fruits_hunter/view/screens/pages/reference_page.dart';
+import 'package:fruits_hunter/view/screens/pages/quiz_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,137 +12,169 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   final int _numberOfQuestions = 23;
 
   var numberOfCorrect;
   var correctRate;
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Stack(children: [
-                  InkWell(
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(50),
-                        child: Image.asset(
-                          "assets/character/concierge.png",
-                        )),
-                    onTap: () => _goReferencePage(context),
-                  ),
-                  Container(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          Text(
-                            "Dear",
-                            style:
-                                TextStyle(fontFamily: MainFont, fontSize: 50.0),
-                          ),
-                          Text(
-                            "Fruit",
-                            style:
-                                TextStyle(fontFamily: MainFont, fontSize: 50.0),
-                          ),
-                          Text(
-                            "Picker",
-                            style:
-                                TextStyle(fontFamily: MainFont, fontSize: 50.0),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ]),
+        child: Scaffold(
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Stack(children: [
+            DecoratedBox(
+              position: DecorationPosition.foreground,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [Colors.black87, Colors.black12]),
               ),
-              SizedBox(
-                height: 20.0,
-              ),
-
-              Bubble(
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.asset(
+                    "assets/character/concierge.png",
+                  )),
+            ),
+            Container(
+              child: Align(
                 alignment: Alignment.center,
-                color: Colors.white,
+                child: Column(
+                  children: [
+                    Text(
+                      "Dear",
+                      style: TextStyle(fontFamily: MainFont, fontSize: 80.0, color: Colors.black87),
+                    ),
+                    Text(
+                      "Fruit",
+                      style: TextStyle(fontFamily: MainFont, fontSize: 65.0, color: Colors.black87),
+                    ),
+                    Text(
+                      "Picker",
+                      style: TextStyle(fontFamily: MainFont, fontSize: 50.0, color: Colors.black87),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ]),
+
+          SizedBox(
+            height: 20.0,
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Center(
+              child: Animate(
+                effects: [FadeEffect(),
+                  ScaleEffect()],
                 child: Text(
-                  "どういった情報をお求めでしょうか？",
-                  // textAlign: TextAlign.center,
+                  "お求めの情報は何でしょうか？",
+
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black87,
                     fontSize: 20.0,
                     fontFamily: MainFont,
                   ),
-                ),
+                ).animate().fade(delay: 2000.ms).scale().then(delay: 2500.ms),
               ),
-
-              SizedBox(
-                height: 20.0,
-              ),
-              //選択肢部分
-              _choicePart(),
-            ],
+            ),
           ),
-        ),
+          SizedBox(
+            height: 10.0,
+          ),
+          //選択肢部分
+          _choicePart(),
+        ]),
       ),
-    );
+    ));
   }
 
   Widget _choicePart() {
-    return Table(
-      children: [
-        TableRow(children: [
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white70,
-                  backgroundColor: Colors.black87,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+    return Animate(
+      effects: [FadeEffect(),
+        ScaleEffect()],
+      child: Table(
+        children: [
+          TableRow(children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white70,
+                      backgroundColor: Colors.black54,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      )),
+                  onPressed: () => _goListPage(),
+                  child: Text(
+                    "果物",
+                    style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                   )),
-              onPressed: () => _goListPage(),
-              child: Text("果物")),
-          SizedBox(
-            width: 20.0,
-          ),
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black87,
-                  backgroundColor: Colors.white70,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            ),
+            SizedBox(
+              width: 20.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black54,
+                      backgroundColor: Colors.white70,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      )),
+                  onPressed: () => _goQuizPage(context),
+                  child: Text(
+                    "雑学",
+                    style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                   )),
-              onPressed: () => _goquizPage(context),
-              child: Text("雑学")),
-        ]),
-        TableRow(children: [
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black87,
-                  backgroundColor: Colors.white70,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            ),
+          ]),
+          TableRow(children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black54,
+                      backgroundColor: Colors.white70,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      )),
+                  onPressed: () => _goCharmPage(),
+                  child: Text(
+                    "魅力",
+                    style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                   )),
-              onPressed: () => _goCharmPage(),
-              child: Text("魅力")),
-          SizedBox(
-            width: 20.0,
-          ),
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white70,
-                  backgroundColor: Colors.black87,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            ),
+            SizedBox(
+              width: 20.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white70,
+                      backgroundColor: Colors.black54,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      )),
+                  onPressed: () => _goCautionPage(),
+                  child: Text(
+                    "注意点",
+                    style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
                   )),
-              onPressed: () => _goCautionPage(),
-              child: Text("注意点")),
-        ])
-      ],
+            ),
+          ])
+        ],
+      ).animate().fade(delay: 3000.ms).scale(),
     );
   }
 
@@ -152,14 +183,12 @@ class _HomeScreenState extends State<HomeScreen> {
         context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 
-  _goquizPage(numberOfQuestions) {
+  _goQuizPage(numberOfQuestions) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => QuizPage(numberOfQuestions: _numberOfQuestions)));
-  }
-
-  _goReferencePage(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ReferencePage()));
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                QuizPage(numberOfQuestions: _numberOfQuestions)));
   }
 
   _goCharmPage() {
