@@ -3,9 +3,9 @@ import '../../../style/style.dart';
 
 class QuizPage extends StatefulWidget {
 
-  final numberOfQuestions;
-
-  QuizPage({required this. numberOfQuestions});
+  // final numberOfQuestions;
+  //
+  // QuizPage({required this. numberOfQuestions});
 
 
   @override

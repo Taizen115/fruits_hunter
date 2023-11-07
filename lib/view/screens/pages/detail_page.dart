@@ -1,6 +1,8 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_hunter/style/style.dart';
+import 'package:gap/gap.dart';
 import '../../../db/database.dart';
 
 class DetailPage extends StatelessWidget {
@@ -12,9 +14,10 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+          backgroundColor: Colors.black54,
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        foregroundColor: Colors.white70,
+        foregroundColor: Colors.white,
         title: Text(
           "${selectedFruit.name}の詳細",
           style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
@@ -24,9 +27,8 @@ class DetailPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 30.0,
-            ),
+
+           Gap(10),
 
             //導入
             Row(
@@ -55,9 +57,7 @@ class DetailPage extends StatelessWidget {
               ],
             ),
 
-            SizedBox(
-              height: 50.0,
-            ),
+            Gap(20),
 
             //質問１
             Row(
@@ -68,7 +68,7 @@ class DetailPage extends StatelessWidget {
                     child: Bubble(
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.rightCenter,
-                      color: Colors.white30,
+                      color: Colors.green[200],
                       child: Text(
                         "${selectedFruit.name}の主要な産地はどこなの？",
                         style: TextStyle(
@@ -88,35 +88,38 @@ class DetailPage extends StatelessWidget {
               ],
             ),
 
-            Row(
-              children: [
-                Image.asset(
-                  "assets/images/${selectedFruit.imageFileName}",
-                  width: 50.0,
-                  height: 50.0,
-                ),
-                Expanded(
-                  child: Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.leftCenter,
-                      color: Colors.blue[200],
-                      child:
-                          Text("${selectedFruit.famousArea}が, 主要な産地とされております.",
-                              style: TextStyle(
-                                fontFamily: SubFont,
-                                fontSize: 20.0,
-                              ),
-                              textAlign: TextAlign.center),
+            Animate(
+              effects: [FadeEffect(),
+                ScaleEffect()],
+              child: Row(
+                children: [
+                  Image.asset(
+                    "assets/images/${selectedFruit.imageFileName}",
+                    width: 50.0,
+                    height: 50.0,
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        nip: BubbleNip.leftCenter,
+                        color: Colors.blue[200],
+                        child:
+                            Text("${selectedFruit.famousArea}が, 主要な産地とされております.",
+                                style: TextStyle(
+                                  fontFamily: SubFont,
+                                  fontSize: 20.0,
+                                ),
+                                textAlign: TextAlign.center),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ).animate().fade(duration:1000.ms).scale().then(delay: 3000.ms),
             ),
 
-            SizedBox(
-              height: 20.0,
-            ),
+
+            Gap(10),
 
             //質問2
             Row(
@@ -127,7 +130,7 @@ class DetailPage extends StatelessWidget {
                     child: Bubble(
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.rightCenter,
-                      color: Colors.white30,
+                      color: Colors.green[200],
                       child: Text("${selectedFruit.name}の旬の時期はいつにゃん？",
                           style: TextStyle(
                             fontFamily: MainFont,
@@ -145,35 +148,37 @@ class DetailPage extends StatelessWidget {
               ],
             ),
 
-            Row(
-              children: [
-                Image.asset(
-                  "assets/images/${selectedFruit.imageFileName}",
-                  width: 50.0,
-                  height: 50.0,
-                ),
-                Expanded(
-                  child: Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.leftCenter,
-                      color: Colors.blue[200],
-                      child:
-                          Text("大体${selectedFruit.season}の時期に, 果樹園が営業しております.",
-                              style: TextStyle(
-                                fontFamily: SubFont,
-                                fontSize: 20.0,
-                              ),
-                              textAlign: TextAlign.center),
+            Animate(
+              effects: [FadeEffect(),
+                ScaleEffect()],
+              child: Row(
+                children: [
+                  Image.asset(
+                    "assets/images/${selectedFruit.imageFileName}",
+                    width: 50.0,
+                    height: 50.0,
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        nip: BubbleNip.leftCenter,
+                        color: Colors.blue[200],
+                        child:
+                            Text("大体${selectedFruit.season}の時期に, 果樹園が営業しております.",
+                                style: TextStyle(
+                                  fontFamily: SubFont,
+                                  fontSize: 20.0,
+                                ),
+                                textAlign: TextAlign.center),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ).animate().fade(duration:1000.ms).scale().then(delay: 3000.ms)
             ),
 
-            SizedBox(
-              height: 20.0,
-            ),
+            Gap(10),
 
             //質問3
 
@@ -185,7 +190,7 @@ class DetailPage extends StatelessWidget {
                     child: Bubble(
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.rightCenter,
-                      color: Colors.white30,
+                      color: Colors.green[200],
                       child: Text("${selectedFruit.name}の有名な品種は何でございますか？",
                           style: TextStyle(
                             fontFamily: MainFont,
@@ -227,11 +232,9 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
+            ).animate().fade(duration: 2500.ms).scale().then(delay: 5000.ms),
 
-            SizedBox(
-              height: 20.0,
-            ),
+            Gap(10),
 
             //質問4
 
@@ -243,7 +246,7 @@ class DetailPage extends StatelessWidget {
                     child: Bubble(
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.rightCenter,
-                      color: Colors.white30,
+                      color: Colors.green[200],
                       child: Text("${selectedFruit.name}には, どんな栄養素が詰まっているんすか？",
                           style: TextStyle(
                             fontFamily: MainFont,
@@ -284,11 +287,9 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
+            ).animate().fade(duration: 2500.ms).scale().then(delay: 5000.ms),
 
-            SizedBox(
-              height: 20.0,
-            ),
+            Gap(10),
 
             //質問5
 
@@ -300,7 +301,7 @@ class DetailPage extends StatelessWidget {
                     child: Bubble(
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.rightCenter,
-                      color: Colors.white30,
+                      color: Colors.green[200],
                       child:
                           Text("${selectedFruit.name}の収穫体験は, 大体どのぐらいかかるでござるか？",
                               style: TextStyle(
@@ -343,11 +344,9 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
+            ).animate().fade(duration: 3500.ms).scale().then(delay: 7000.ms),
 
-            SizedBox(
-              height: 20.0,
-            ),
+            Gap(10),
 
             //質問6
 
@@ -359,7 +358,7 @@ class DetailPage extends StatelessWidget {
                     child: Bubble(
                       margin: BubbleEdges.only(top: 10),
                       nip: BubbleNip.rightCenter,
-                      color: Colors.white30,
+                      color: Colors.green[200],
                       child: Text(
                         "美味しい${selectedFruit.name}の見分け方は？",
                         style: TextStyle(
@@ -403,11 +402,9 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
+            ).animate().fade(duration: 3500.ms).scale().then(delay: 7000.ms),
 
-            SizedBox(
-              height: 20.0,
-            ),
+            Gap(10),
 
           ],
         ),

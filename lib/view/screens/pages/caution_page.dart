@@ -1,11 +1,15 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_hunter/style/style.dart';
+import 'package:fruits_hunter/view/components/caution_point.dart';
+import 'package:gap/gap.dart';
 
 class CautionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
+
+      //グラデーション
       DecoratedBox(
         position: DecorationPosition.foreground,
         decoration: BoxDecoration(
@@ -15,11 +19,14 @@ class CautionPage extends StatelessWidget {
               colors: [Colors.black87, Colors.black12]),
         ),
       ),
-      Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage("assets/character/caution_s.png"),
-              fit: BoxFit.fitWidth),
+      ClipRRect(
+        borderRadius: BorderRadius.circular(50),
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/character/caution_s.png"),
+                fit: BoxFit.fitWidth),
+          ),
         ),
       ),
       SafeArea(
@@ -27,7 +34,7 @@ class CautionPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.black87,
-          foregroundColor: Colors.white70,
+          foregroundColor: Colors.white,
           centerTitle: true,
           title: Text(
             "注意点",
@@ -48,8 +55,8 @@ class CautionPage extends StatelessWidget {
                 children: [
                   Image.asset(
                     "assets/character/hotelman.png",
-                    width: 50.0,
-                    height: 50.0,
+                    width: 75.0,
+                    height: 75.0,
                   ),
                   Expanded(
                     child: Container(
@@ -58,7 +65,7 @@ class CautionPage extends StatelessWidget {
                         nip: BubbleNip.leftCenter,
                         color: Colors.white70,
                         child: Text(
-                            "雨が降ったら, 電話で農園に連絡してください. また, 全天候型の農園もあるので, そういった農園を選ぶのもポイントです.",
+                            attentions["注意点1"]!,
                             style: TextStyle(
                               fontFamily: SubFont,
                               fontSize: 25.0,
@@ -70,15 +77,14 @@ class CautionPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 30.0,
-              ),
+              Gap(15),
+
               Row(
                 children: [
                   Image.asset(
                     "assets/character/hotelman.png",
-                    width: 50.0,
-                    height: 50.0,
+                    width: 75.0,
+                    height: 75.0,
                   ),
                   Expanded(
                     child: Container(
@@ -87,7 +93,7 @@ class CautionPage extends StatelessWidget {
                         nip: BubbleNip.leftCenter,
                         color: Colors.white70,
                         child: Text(
-                            "予約は不要な所もございますが, 農園に事前に電話かメールをして予約なさったほうが確実かと思われます.",
+                        attentions["注意点2"]!,
                             style: TextStyle(
                               fontFamily: SubFont,
                               fontSize: 25.0,

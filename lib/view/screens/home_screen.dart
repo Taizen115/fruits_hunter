@@ -5,6 +5,7 @@ import 'package:fruits_hunter/view/screens/pages/caution_page.dart';
 import 'package:fruits_hunter/view/screens/pages/charm_page.dart';
 import 'package:fruits_hunter/view/screens/pages/list_page.dart';
 import 'package:fruits_hunter/view/screens/pages/quiz_page.dart';
+import 'package:gap/gap.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,10 +13,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final int _numberOfQuestions = 23;
-
-  var numberOfCorrect;
-  var correctRate;
+  // final int _numberOfQuestions = 23;
+  //
+  // var numberOfCorrect;
+  // var correctRate;
 
   @override
   Widget build(BuildContext context) {
@@ -64,32 +65,23 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ]),
 
-          SizedBox(
-            height: 20.0,
-          ),
+          Gap(10),
 
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: Center(
-              child: Animate(
-                effects: [FadeEffect(),
-                  ScaleEffect()],
-                child: Text(
-                  "お求めの情報は何でしょうか？",
-
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 20.0,
-                    fontFamily: MainFont,
-                  ),
-                ).animate().fade(delay: 2000.ms).scale().then(delay: 2500.ms),
-              ),
+              child: Text(
+                "お求めの情報は何でしょうか？",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontSize: 20.0,
+                  fontFamily: MainFont,
+                ),
+              ).animate().fade(delay: 2500.ms).scale().then(),
             ),
           ),
-          SizedBox(
-            height: 10.0,
-          ),
+          Gap(10),
           //選択肢部分
           _choicePart(),
         ]),
@@ -98,84 +90,80 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _choicePart() {
-    return Animate(
-      effects: [FadeEffect(),
-        ScaleEffect()],
-      child: Table(
-        children: [
-          TableRow(children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white70,
-                      backgroundColor: Colors.black54,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      )),
-                  onPressed: () => _goListPage(),
-                  child: Text(
-                    "果物",
-                    style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
-                  )),
-            ),
-            SizedBox(
-              width: 20.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black54,
-                      backgroundColor: Colors.white70,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      )),
-                  onPressed: () => _goQuizPage(context),
-                  child: Text(
-                    "雑学",
-                    style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
-                  )),
-            ),
-          ]),
-          TableRow(children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black54,
-                      backgroundColor: Colors.white70,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      )),
-                  onPressed: () => _goCharmPage(),
-                  child: Text(
-                    "魅力",
-                    style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
-                  )),
-            ),
-            SizedBox(
-              width: 20.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white70,
-                      backgroundColor: Colors.black54,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                      )),
-                  onPressed: () => _goCautionPage(),
-                  child: Text(
-                    "注意点",
-                    style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
-                  )),
-            ),
-          ])
-        ],
-      ).animate().fade(delay: 3000.ms).scale(),
-    );
+    return Table(
+      children: [
+        TableRow(children: [
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white70,
+                    backgroundColor: Colors.black54,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    )),
+                onPressed: () => _goListPage(),
+                child: Text(
+                  "果物",
+                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                )),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black54,
+                    backgroundColor: Colors.white70,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    )),
+                onPressed: () => _goQuizPage(),
+                child: Text(
+                  "雑学",
+                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                )),
+          ),
+        ]),
+
+        TableRow(children: [
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black54,
+                    backgroundColor: Colors.white70,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    )),
+                onPressed: () => _goCharmPage(),
+                child: Text(
+                  "魅力",
+                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                )),
+          ),
+
+          // Gap(15),
+
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white70,
+                    backgroundColor: Colors.black54,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    )),
+                onPressed: () => _goCautionPage(),
+                child: Text(
+                  "注意点",
+                  style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
+                )),
+          ),
+        ]
+        ),
+      ],
+    ).animate().fade(delay: 3500.ms).scale().then(delay: 3000.ms);
   }
 
   _goListPage() {
@@ -183,12 +171,12 @@ class _HomeScreenState extends State<HomeScreen> {
         context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 
-  _goQuizPage(numberOfQuestions) {
+  _goQuizPage() {
     Navigator.push(
         context,
         MaterialPageRoute(
             builder: (context) =>
-                QuizPage(numberOfQuestions: _numberOfQuestions)));
+                QuizPage()));
   }
 
   _goCharmPage() {
