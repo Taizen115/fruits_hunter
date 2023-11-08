@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_hunter/main.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:fruits_hunter/view/screens/pages/detail_page.dart';
 
 import '../../../db/database.dart';
+
 
 class ListPage extends StatefulWidget {
   @override
@@ -21,7 +23,7 @@ class _ListPageState extends State<ListPage> {
 
   @override
   void dispose() {
-    _getFruitsData();
+    //_getFruitsData();
     super.dispose();
   }
 
@@ -72,7 +74,7 @@ class _ListPageState extends State<ListPage> {
                         ),
                       );
                     }
-                    ),
+                    ).animate(interval: 100.ms).scale(duration: 300.ms),
                   ),
                 ),
         ),
