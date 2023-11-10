@@ -18,7 +18,7 @@ class ReferencePage extends StatelessWidget {
           ),
         ),
         backgroundColor: Colors.black87,
-        foregroundColor: Colors.white70,
+        foregroundColor: Colors.white,
         centerTitle: true,
         leadingWidth: 90,
         leading: TextButton(

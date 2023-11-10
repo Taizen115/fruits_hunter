@@ -21,7 +21,7 @@ class _QuizPageState extends State<QuizPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black87,
-        foregroundColor: Colors.white70,
+        foregroundColor: Colors.white,
         centerTitle: true,
         title: Text(
           "雑学クイズ",

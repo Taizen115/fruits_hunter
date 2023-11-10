@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_hunter/main.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:fruits_hunter/view/screens/pages/detail_page.dart';
@@ -21,7 +22,6 @@ class _ListPageState extends State<ListPage> {
 
   @override
   void dispose() {
-    _getFruitsData();
     super.dispose();
   }
 
@@ -31,9 +31,11 @@ class _ListPageState extends State<ListPage> {
       child: Padding(
         padding: const EdgeInsets.all(2.0),
         child: Scaffold(
+          backgroundColor: Colors.white70,
           appBar: AppBar(
             backgroundColor: Colors.black87,
             foregroundColor: Colors.white,
+            centerTitle: true,
             title: Text(
               "果物について",
               style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
@@ -52,10 +54,10 @@ class _ListPageState extends State<ListPage> {
                         child: Card(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(
-                              Radius.circular(20.0),
+                              Radius.circular(50.0),
                             ),
                           ),
-                          elevation: 20.0,
+                          elevation: 30.0,
                           child: GridTile(
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(50),
@@ -72,7 +74,7 @@ class _ListPageState extends State<ListPage> {
                         ),
                       );
                     }
-                    ),
+                    ).animate(interval: 100.ms).scale(duration: 300.ms),
                   ),
                 ),
         ),

@@ -22,71 +22,85 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: SingleChildScrollView(
-        child: Column(children: [
-          Stack(children: [
-            DecoratedBox(
-              position: DecorationPosition.foreground,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    colors: [Colors.black87, Colors.black12]),
+          body: Column(children: [
+            Expanded(
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: DecoratedBox(
+                        position: DecorationPosition.foreground,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Colors.black54, Colors.black12]),
+                        ),
+                        child: Image.asset(
+                          "assets/background/concierge.png",
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Column(
+                        children: [
+                          Text(
+                            "Dear",
+                            style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 80.0,
+                                color: Colors.white70),
+                          ),
+                          Text(
+                            "Fruit",
+                            style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 65.0,
+                                color: Colors.white),
+                          ),
+                          Text(
+                            "Picker",
+                            style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 50.0,
+                                color: Colors.white70),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
+
+            Gap(10),
+
             Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Image.asset(
-                    "assets/character/concierge.png",
-                  )),
-            ),
-            Container(
-              child: Align(
-                alignment: Alignment.center,
-                child: Column(
-                  children: [
-                    Text(
-                      "Dear",
-                      style: TextStyle(fontFamily: MainFont, fontSize: 80.0, color: Colors.black87),
-                    ),
-                    Text(
-                      "Fruit",
-                      style: TextStyle(fontFamily: MainFont, fontSize: 65.0, color: Colors.black87),
-                    ),
-                    Text(
-                      "Picker",
-                      style: TextStyle(fontFamily: MainFont, fontSize: 50.0, color: Colors.black87),
-                    )
-                  ],
-                ),
+              padding: const EdgeInsets.all(10.0),
+              child: Center(
+                child: Text(
+                  "お求めの情報は何でしょうか？",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 20.0,
+                    fontFamily: MainFont,
+                  ),
+                ).animate().fade(delay: 2500.ms).scale().then(),
               ),
             ),
+            Gap(10),
+            //選択肢部分
+            _choicePart(),
           ]),
-
-          Gap(10),
-
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Center(
-              child: Text(
-                "お求めの情報は何でしょうか？",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 20.0,
-                  fontFamily: MainFont,
-                ),
-              ).animate().fade(delay: 2500.ms).scale().then(),
-            ),
-          ),
-          Gap(10),
-          //選択肢部分
-          _choicePart(),
-        ]),
-      ),
-    ));
+        ));
   }
 
   Widget _choicePart() {
@@ -108,7 +122,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                 )),
           ),
-
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: ElevatedButton(
@@ -125,7 +138,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
           ),
         ]),
-
         TableRow(children: [
           Padding(
             padding: const EdgeInsets.all(15.0),
@@ -160,8 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
                 )),
           ),
-        ]
-        ),
+        ]),
       ],
     ).animate().fade(delay: 3500.ms).scale().then(delay: 3000.ms);
   }
@@ -173,10 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _goQuizPage() {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) =>
-                QuizPage()));
+        context, MaterialPageRoute(builder: (context) => QuizPage()));
   }
 
   _goCharmPage() {

@@ -23,6 +23,8 @@ class Fruits extends Table {
 
   TextColumn get imageFileName => text()();
 
+  TextColumn get backgroundImage => text()();
+
   TextColumn get distinguish => text()();
 
 }
@@ -41,7 +43,9 @@ class Questions extends Table {
 
   TextColumn get choice3 => text()();
 
-  BoolColumn get isCorrect => boolean().withDefault(Constant(false))();
+  TextColumn get explanation => text()();
+
+  // BoolColumn get isCorrect => boolean().withDefault(Constant(false))();
 
 }
 
