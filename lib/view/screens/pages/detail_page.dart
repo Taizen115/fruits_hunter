@@ -46,7 +46,7 @@ class DetailPage extends StatelessWidget {
                   child: Text("美味しい果物を食べるためには、鮮度と産地と品種名が重要とされております.どうかご参考ください.",
                       style: TextStyle(
                         fontFamily: MainFont,
-                        fontSize: 20.0,
+                        fontSize: 25.0,
                       ),
                       textAlign: TextAlign.center),
                 ),

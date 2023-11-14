@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:fruits_hunter/db/database.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:fruits_hunter/view/screens/pages/caution_page.dart';
 import 'package:fruits_hunter/view/screens/pages/charm_page.dart';
@@ -13,10 +14,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // final int _numberOfQuestions = 23;
-  //
-  // var numberOfCorrect;
-  // var correctRate;
+
+  List<Question> quizList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goQuizPage(),
+                onPressed: () => _goQuizPage(context),
                 child: Text(
                   "雑学",
                   style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
@@ -182,9 +181,10 @@ class _HomeScreenState extends State<HomeScreen> {
         context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 
-  _goQuizPage() {
+  _goQuizPage(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => QuizPage()));
+        context, MaterialPageRoute(
+        builder: (context) => QuizPage(numberOfQuestions: null,)));
   }
 
   _goCharmPage() {
@@ -196,7 +196,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => CautionPage()));
   }
-}
+  }
+
 
 // import 'package:flutter/material.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';

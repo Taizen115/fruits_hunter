@@ -49,6 +49,7 @@ class Questions extends Table {
 
 }
 
+
 LazyDatabase _openConnection(String dbPath) {
   return LazyDatabase(() async {
     // put the database file, called db.sqlite here, into the documents folder
@@ -71,4 +72,5 @@ class MyDatabase extends _$MyDatabase {
   Future<List<Fruit>> get fruitsList => select(fruits).get();
 
   Future<List<Question>> get quizList => select(questions).get();
+
 }

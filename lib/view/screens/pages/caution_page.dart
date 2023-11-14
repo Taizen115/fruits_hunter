@@ -9,18 +9,14 @@ class CautionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        //グラデーション
         DecoratedBox(
-          position: DecorationPosition.foreground,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-                colors: [Colors.black87, Colors.black12]),
-          ),
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(50),
+    position: DecorationPosition.foreground,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.black54, Colors.white12]),
+      ),
           child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -59,7 +55,7 @@ class CautionPage extends StatelessWidget {
                           color: Colors.white70,
                           child: Text(attentions["0"]!,
                               style: TextStyle(
-                                fontFamily: SubFont,
+                                fontFamily: MainFont,
                                 fontSize: 25.0,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -74,7 +70,7 @@ class CautionPage extends StatelessWidget {
                           color: Colors.white70,
                           child: Text(attentions["1"]!,
                               style: TextStyle(
-                                fontFamily: SubFont,
+                                fontFamily: MainFont,
                                 fontSize: 25.0,
                                 fontWeight: FontWeight.bold,
                               ),

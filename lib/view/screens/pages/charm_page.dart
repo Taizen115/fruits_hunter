@@ -12,16 +12,13 @@ class CharmPage extends StatelessWidget {
     return Stack(
       children: [
         DecoratedBox(
-          position: DecorationPosition.foreground,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.black87, Colors.black12]),
-          ),
-        ),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(50),
+            position: DecorationPosition.foreground,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.black54, Colors.white12]),
+            ),
           child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -60,11 +57,10 @@ class CharmPage extends StatelessWidget {
                           Container(
                         child: Bubble(
                           margin: BubbleEdges.only(top: 10),
-                          nip: BubbleNip.leftCenter,
                           color: Colors.white70,
                           child: Text(appeals["0"]!,
                               style: TextStyle(
-                                fontFamily: SubFont,
+                                fontFamily: MainFont,
                                 fontSize: 25.0,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -79,11 +75,10 @@ class CharmPage extends StatelessWidget {
                     Container(
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
-                        nip: BubbleNip.leftCenter,
                         color: Colors.white70,
                         child: Text(appeals["1"]!,
                             style: TextStyle(
-                              fontFamily: SubFont,
+                              fontFamily: MainFont,
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
                             ),
