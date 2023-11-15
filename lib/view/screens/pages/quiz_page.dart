@@ -34,19 +34,17 @@ class _QuizPageState extends State<QuizPage> {
   bool isExplained = false;
   bool isNextQuestioned = false;
 
-
   List<Question> questions = [];
   List<String> choices = ["", "", "", ""];
   List<Question> quizList = [];
 
-
   int _index = 0;
-  late Question? _currentWord;
+  late Question? _currentQuestion;
 
   @override
   void initState() {
     super.initState();
-    _getQuestion();
+    _getQuestions();
   }
 
   @override
@@ -56,9 +54,13 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQueryData = MediaQuery.of(context);
+    final statusBarHeight = mediaQueryData.viewPadding.top;
+
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
         centerTitle: true,
         title: Text(
@@ -67,10 +69,15 @@ class _QuizPageState extends State<QuizPage> {
         ),
       ),
       body: Stack(
+        fit: StackFit.expand,
         children: [
+          Image.asset(
+            "assets/images/test_background.jpg",
+            fit: BoxFit.cover,
+          ),
           Column(
             children: [
-              Gap(20),
+              Gap(kToolbarHeight + statusBarHeight + 20),
               //TODO データ表示部分
               _dataPart(),
 
@@ -224,22 +231,25 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 
-  void _getQuestion() async {
+  void _getQuestions() async {
     questions = await database.quizList;
-    setState(() {});
+    setFruits();
   }
 
   //TODO 解説を出す
   _checkAnswer() {}
 
-
   //TODO 正解不正解ボタン
   Widget _correctIncorrectImage() {
     if (isCorrectIncorrectImageEnabled) {
       if (isCorrect) {
-        return Center(child: Image.asset("assets/images/correct.png"),);
+        return Center(
+          child: Image.asset("assets/images/correct.png"),
+        );
       }
-      return Center(child: Image.asset("assets/images/incorrect"),);
+      return Center(
+        child: Image.asset("assets/images/incorrect"),
+      );
     } else {
       return Container();
     }
@@ -255,18 +265,17 @@ class _QuizPageState extends State<QuizPage> {
           child: Text(explanation),
         ),
         Gap(20),
-
         Center(
           child: ElevatedButton(
             child: Text("Next Fruits!"),
-              onPressed: (){
-                // getRate = (numberOfHunt /
-                //     (widget.numberOfQuestions - numberOfRemaining) *
-                //     100)
-                //     .toInt();
-                setFruits();
-              },
-             ),
+            onPressed: () {
+              // getRate = (numberOfHunt /
+              //     (widget.numberOfQuestions - numberOfRemaining) *
+              //     100)
+              //     .toInt();
+              setFruits();
+            },
+          ),
         )
       ],
     );
@@ -274,17 +283,17 @@ class _QuizPageState extends State<QuizPage> {
 
   //TODO 問題を出す
   void setFruits() {
-    _currentWord = questions[_index];
+    _currentQuestion = questions[_index];
     setState(() {
       isCorrectIncorrectImageEnabled = false;
       isExplained = false;
       isNextQuestioned = false;
-      question = _currentWord!.question;
-      answer = _currentWord!.answer;
-      choice1 = _currentWord!.choice1;
-      choice2 = _currentWord!.choice2;
-      choice3 = _currentWord!.choice3;
-      explanation = _currentWord!.explanation;
+      question = _currentQuestion!.question;
+      answer = _currentQuestion!.answer;
+      choice1 = _currentQuestion!.choice1;
+      choice2 = _currentQuestion!.choice2;
+      choice3 = _currentQuestion!.choice3;
+      explanation = _currentQuestion!.explanation;
 
       choices[0] = answer;
       choices[1] = choice1;
@@ -297,7 +306,5 @@ class _QuizPageState extends State<QuizPage> {
     numberOfRemaining--;
 
     _index += 1;
-
   }
 }
-
