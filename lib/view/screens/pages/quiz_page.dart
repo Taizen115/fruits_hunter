@@ -5,7 +5,6 @@ import 'package:fruits_hunter/main.dart';
 import 'package:gap/gap.dart';
 
 import '../../../style/style.dart';
-import '../../components/choice_button.dart';
 
 class QuizPage extends StatefulWidget {
   final numberOfQuestions;
@@ -30,12 +29,19 @@ class _QuizPageState extends State<QuizPage> {
   String choice3 = "";
   String explanation = "";
 
-  // List<Question> questions = [];
-  List<String> choices = ["", "", "", ""];
+  bool isCorrectIncorrectImageEnabled = false;
+  bool isCorrect = false;
+  bool isExplained = false;
+  bool isNextQuestioned = false;
 
+
+  List<Question> questions = [];
+  List<String> choices = ["", "", "", ""];
   List<Question> quizList = [];
 
-  int index = 0;
+
+  int _index = 0;
+  late Question? _currentWord;
 
   @override
   void initState() {
@@ -81,10 +87,10 @@ class _QuizPageState extends State<QuizPage> {
           ),
 
           //TODO 正解不正解ボタン
-          // _correctIncorrectImage(),
+          _correctIncorrectImage(),
           //
-          // //TODO 解説
-          // _showExplanation(),
+          //TODO 解説
+          _showExplanation(),
         ],
       ),
     );
@@ -147,10 +153,10 @@ class _QuizPageState extends State<QuizPage> {
 
   //TODO 問題表示部分
   Widget _showQuestion() {
-    return Text(
-      question,
-      style:
-          TextStyle(fontSize: 20.0, fontFamily: MainFont, color: Colors.black),
+    return Bubble(
+      margin: BubbleEdges.only(top: 10),
+      color: Colors.white70,
+      child: Text(question),
     );
   }
 
@@ -162,19 +168,27 @@ class _QuizPageState extends State<QuizPage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Bubble(
-                margin: BubbleEdges.only(top: 10),
-                nip: BubbleNip.leftCenter,
-                color: Colors.blue[200],
-                child: Text(
-                  choices[0]),
-
+              child: InkWell(
+                onTap: () => _checkAnswer(),
+                child: Bubble(
+                  margin: BubbleEdges.only(top: 10),
+                  nip: BubbleNip.leftCenter,
+                  color: Colors.brown[300],
+                  child: Text(choices[0]),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: ChoiceButton(
-                  onPressed: () => checkAnswer(choices[1]),
-                  label: choices[1],
-                  color: Colors.brown),
+              child: InkWell(
+                onTap: () => _checkAnswer(),
+                child: Bubble(
+                  margin: BubbleEdges.only(top: 10),
+                  nip: BubbleNip.rightCenter,
+                  color: Colors.brown[300],
+                  child: Text(choices[1]),
+                ),
+              ),
             ),
           ],
         ),
@@ -182,32 +196,108 @@ class _QuizPageState extends State<QuizPage> {
           children: [
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: ChoiceButton(
-                  onPressed: () => checkAnswer(choices[2]),
-                  label: choices[2],
-                  color: Colors.brown),
+              child: InkWell(
+                onTap: () => _checkAnswer(),
+                child: Bubble(
+                  margin: BubbleEdges.only(top: 10),
+                  nip: BubbleNip.leftCenter,
+                  color: Colors.brown[300],
+                  child: Text(choices[2]),
+                ),
+              ),
             ),
-
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: ChoiceButton(
-                  onPressed: () => checkAnswer(choices[3]),
-                  label: choices[3],
-                  color: Colors.brown),
+              child: InkWell(
+                onTap: () => _checkAnswer(),
+                child: Bubble(
+                  margin: BubbleEdges.only(top: 10),
+                  nip: BubbleNip.rightCenter,
+                  color: Colors.brown[300],
+                  child: Text(choices[3]),
+                ),
+              ),
             ),
           ],
         ),
       ],
     );
   }
-  
-  
-  
 
   void _getQuestion() async {
-    quizList = await database.quizList;
+    questions = await database.quizList;
     setState(() {});
   }
 
-  checkAnswer(String choic) {}
+  //TODO 解説を出す
+  _checkAnswer() {}
+
+
+  //TODO 正解不正解ボタン
+  Widget _correctIncorrectImage() {
+    if (isCorrectIncorrectImageEnabled) {
+      if (isCorrect) {
+        return Center(child: Image.asset("assets/images/correct.png"),);
+      }
+      return Center(child: Image.asset("assets/images/incorrect"),);
+    } else {
+      return Container();
+    }
+  }
+
+  //TODO 解説
+  Widget _showExplanation() {
+    return Column(
+      children: [
+        Bubble(
+          margin: BubbleEdges.only(top: 10),
+          color: Colors.white70,
+          child: Text(explanation),
+        ),
+        Gap(20),
+
+        Center(
+          child: ElevatedButton(
+            child: Text("Next Fruits!"),
+              onPressed: (){
+                // getRate = (numberOfHunt /
+                //     (widget.numberOfQuestions - numberOfRemaining) *
+                //     100)
+                //     .toInt();
+                setFruits();
+              },
+             ),
+        )
+      ],
+    );
+  }
+
+  //TODO 問題を出す
+  void setFruits() {
+    _currentWord = questions[_index];
+    setState(() {
+      isCorrectIncorrectImageEnabled = false;
+      isExplained = false;
+      isNextQuestioned = false;
+      question = _currentWord!.question;
+      answer = _currentWord!.answer;
+      choice1 = _currentWord!.choice1;
+      choice2 = _currentWord!.choice2;
+      choice3 = _currentWord!.choice3;
+      explanation = _currentWord!.explanation;
+
+      choices[0] = answer;
+      choices[1] = choice1;
+      choices[2] = choice2;
+      choices[3] = choice3;
+
+      choices.shuffle();
+    });
+
+    numberOfRemaining--;
+
+    _index += 1;
+
+  }
 }
+
