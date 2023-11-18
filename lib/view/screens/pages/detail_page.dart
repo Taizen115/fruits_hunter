@@ -23,7 +23,7 @@ class DetailPage extends StatelessWidget {
           child: Scaffold(
             backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
           centerTitle:true,
           title: Text(
@@ -197,7 +197,7 @@ class DetailPage extends StatelessWidget {
                   margin: BubbleEdges.only(top: 10),
                   nip: BubbleNip.rightCenter,
                   color: Colors.blue[200],
-                  child: Text("${selectedFruit.name}の収穫体験は, 大体どのぐらいかかるでござるか？",
+                  child: Text("${selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
                       style: TextStyle(
                         fontFamily: MainFont,
                         fontSize: 20.0,

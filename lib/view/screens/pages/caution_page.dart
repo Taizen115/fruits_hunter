@@ -29,7 +29,7 @@ class CautionPage extends StatelessWidget {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
-              backgroundColor: Colors.black87,
+              backgroundColor: Colors.transparent,
               foregroundColor: Colors.white,
               centerTitle: true,
               title: Text(

@@ -184,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
   _goQuizPage(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(
-        builder: (context) => QuizPage(numberOfQuestions: null,)));
+        builder: (context) => QuizPage(numberOfQuestions: 30,)));
   }
 
   _goCharmPage() {

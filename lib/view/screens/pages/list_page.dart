@@ -33,7 +33,7 @@ class _ListPageState extends State<ListPage> {
         child: Scaffold(
           backgroundColor: Colors.white70,
           appBar: AppBar(
-            backgroundColor: Colors.black87,
+            backgroundColor: Colors.transparent,
             foregroundColor: Colors.white,
             centerTitle: true,
             title: Text(
