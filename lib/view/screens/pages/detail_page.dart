@@ -61,7 +61,7 @@ class DetailPage extends StatelessWidget {
                   nip: BubbleNip.rightCenter,
                   color: Colors.blue[200],
                   child: Text(
-                    "${selectedFruit.name}の主要な産地はどこでしょうか？",
+                    "1. ${selectedFruit.name}の主要な産地はどこでしょうか？",
                     style: TextStyle(
                       fontFamily: SubFont,
                       fontSize: 20.0,
@@ -96,7 +96,7 @@ class DetailPage extends StatelessWidget {
                   margin: BubbleEdges.only(top: 10),
                   nip: BubbleNip.rightCenter,
                   color: Colors.blue[200],
-                  child: Text("${selectedFruit.name}の旬の時期はいつですか？",
+                  child: Text("2. ${selectedFruit.name}の旬の時期はいつですか？",
                       style: TextStyle(
                         fontFamily: SubFont,
                         fontSize: 20.0,
@@ -119,7 +119,7 @@ class DetailPage extends StatelessWidget {
                         ),
                         textAlign: TextAlign.center),
                   ),
-                ).animate().fade(duration: 1000.ms).scale().then(delay: 3000.ms),
+                ).animate().fade(duration: 2000.ms).scale().then(delay: 5000.ms),
 
               Gap(20),
 
@@ -130,7 +130,7 @@ class DetailPage extends StatelessWidget {
                   margin: BubbleEdges.only(top: 10),
                   nip: BubbleNip.rightCenter,
                   color: Colors.blue[200],
-                  child: Text("${selectedFruit.name}の有名な品種は何でしょうか？",
+                  child: Text("3. ${selectedFruit.name}の有名な品種は何でしょうか？",
                       style: TextStyle(
                         fontFamily: SubFont,
                         fontSize: 20.0,
@@ -153,7 +153,7 @@ class DetailPage extends StatelessWidget {
                         ),
                         textAlign: TextAlign.center),
                   ),
-              ).animate().fade(duration: 2500.ms).scale().then(delay: 5000.ms),
+              ).animate().fade(duration: 3000.ms).scale().then(delay: 7000.ms),
 
               Gap(20),
 
@@ -163,7 +163,7 @@ class DetailPage extends StatelessWidget {
                   margin: BubbleEdges.only(top: 10),
                   nip: BubbleNip.rightCenter,
                   color: Colors.blue[200],
-                  child: Text("${selectedFruit.name}には, どんな栄養素が詰まっているんですか？",
+                  child: Text("4. ${selectedFruit.name}には, どんな栄養素が詰まっているんですか？",
                       style: TextStyle(
                         fontFamily: SubFont,
                         fontSize: 20.0,
@@ -186,7 +186,7 @@ class DetailPage extends StatelessWidget {
                         ),
                         textAlign: TextAlign.center),
                   ),
-              ).animate().fade(duration: 2500.ms).scale().then(delay: 5000.ms),
+              ).animate().fade(duration: 4000.ms).scale().then(delay: 9000.ms),
 
               Gap(20),
 
@@ -197,7 +197,7 @@ class DetailPage extends StatelessWidget {
                   margin: BubbleEdges.only(top: 10),
                   nip: BubbleNip.rightCenter,
                   color: Colors.blue[200],
-                  child: Text("${selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
+                  child: Text("5. ${selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
                       style: TextStyle(
                         fontFamily: MainFont,
                         fontSize: 20.0,
@@ -221,7 +221,7 @@ class DetailPage extends StatelessWidget {
                             ),
                             textAlign: TextAlign.center),
                   ),
-              ).animate().fade(duration: 3500.ms).scale().then(delay: 7000.ms),
+              ).animate().fade(duration: 5000.ms).scale().then(delay: 11000.ms),
 
               Gap(20),
 
@@ -232,7 +232,7 @@ class DetailPage extends StatelessWidget {
                   nip: BubbleNip.rightCenter,
                   color: Colors.blue[200],
                   child: Text(
-                    "美味しい${selectedFruit.name}の見分け方は？",
+                    "6. 美味しい${selectedFruit.name}の見分け方は？",
                     style: TextStyle(
                       fontFamily: MainFont,
                       fontSize: 20.0,
@@ -256,7 +256,7 @@ class DetailPage extends StatelessWidget {
                         ),
                         textAlign: TextAlign.center),
                   ),
-              ).animate().fade(duration: 3500.ms).scale().then(delay: 7000.ms),
+              ).animate().fade(duration: 7000.ms).scale().then(delay: 13000.ms),
             ]
             ),
           ),

@@ -6,6 +6,8 @@ import 'package:fruits_hunter/main.dart';
 import 'package:gap/gap.dart';
 
 import '../../../style/style.dart';
+import '../home_screen.dart';
+import '../king_screen.dart';
 
 class QuizPage extends StatefulWidget {
   final numberOfQuestions;
@@ -69,7 +71,7 @@ class _QuizPageState extends State<QuizPage> {
           child: Text(
             "戻る",
             style: TextStyle(
-                fontFamily: SubFont, fontSize: 10.0, color: Colors.black),
+                fontFamily: SubFont, fontSize: 15.0, color: Colors.black),
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
@@ -90,7 +92,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15.0),
             child: Column(
               children: [
-                Gap(120),
+                Gap(100),
                 //TODO データ表示部分
                 _dataPart(),
 
@@ -271,8 +273,8 @@ class _QuizPageState extends State<QuizPage> {
   //TODO データベースから問題を出す
   void _getQuestion() async {
     questions = await database.quizList;
-    setFruits();
     questions.shuffle();
+    setFruits();
 
     isCorrectIncorrectImageEnabled = false;
     isCorrect = false;
@@ -309,13 +311,18 @@ class _QuizPageState extends State<QuizPage> {
       isCorrectIncorrectImageEnabled = true;
       isExplained = true;
       isNextQuestioned = false;
-
+      numberOfHunt += 1;
     } else {
       isCorrect = false;
       isCorrectIncorrectImageEnabled = true;
       isExplained = true;
       isNextQuestioned = false;
     }
+
+    getRate =
+        (numberOfHunt / (widget.numberOfQuestions - numberOfRemaining) * 100)
+            .toInt();
+
     setState(() {});
   }
 
@@ -325,7 +332,7 @@ class _QuizPageState extends State<QuizPage> {
       return Container(
         child: Column(
           children: [
-            Gap(120),
+            Gap(170),
             Bubble(
               margin: BubbleEdges.only(top: 10),
               color: Colors.teal,
@@ -334,14 +341,20 @@ class _QuizPageState extends State<QuizPage> {
                 style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
               ),
             ),
-            Gap(20),
-            Bubble(
-              margin: BubbleEdges.only(top: 10),
-              color: Colors.white70,
+            Gap(25),
+            ElevatedButton(
               child: Text(
-                "答え: ${answer}",
-                style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
+                "答え : ${answer}",
+                style: TextStyle(
+                    fontFamily: SubFont, fontSize: 20.0, color: Colors.teal),
               ),
+              style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.teal,
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  )),
+              onPressed: null,
             ),
             Gap(20),
             Padding(
@@ -351,29 +364,45 @@ class _QuizPageState extends State<QuizPage> {
                 color: Colors.teal,
                 child: Text(
                   explanation,
-                  style: TextStyle(fontFamily: MainFont, fontSize: 30.0),
+                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                 ),
               ),
             ),
             Gap(20),
             Center(
               child: ElevatedButton(
-                child: Text(
-                  "Next Fruits!",
-                  style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
-                ),
-                style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white70,
-                    backgroundColor: Colors.teal),
-                onPressed: () {
-                  getRate = (numberOfHunt /
-                          (widget.numberOfQuestions - numberOfRemaining) *
-                          100)
-                      .toInt();
-                  setFruits();
-                },
-              ),
-            )
+                  child: Text(
+                    "Next Fruits!",
+                    style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.teal,
+                    backgroundColor: Colors.white70,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    ),
+                  ),
+                  onPressed: () {
+                    setFruits();
+                    if (numberOfRemaining == 0) {
+                      if (numberOfHunt == 30) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => KingScreen(),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ),
+                        );
+                      }
+                    }
+                  }),
+            ),
           ],
         ).animate().fade(duration: 1000.ms).scale().then(delay: 1000.ms),
       );
@@ -401,7 +430,7 @@ class _QuizPageState extends State<QuizPage> {
       choices[2] = choice2;
       choices[3] = choice3;
 
-      questions.shuffle();
+      // questions.shuffle();
       choices.shuffle();
     });
 

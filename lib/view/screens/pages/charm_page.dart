@@ -1,5 +1,6 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_hunter/view/components/charm_point.dart';
 import 'package:fruits_hunter/view/screens/pages/list_page.dart';
 import 'package:gap/gap.dart';
@@ -17,7 +18,7 @@ class CharmPage extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.black54, Colors.white12]),
+                  colors: [Colors.white70, Colors.white12]),
             ),
           child: Container(
             decoration: const BoxDecoration(
@@ -66,7 +67,7 @@ class CharmPage extends StatelessWidget {
                               ),
                               textAlign: TextAlign.center),
                         ),
-                      ),
+                      ).animate().fade(duration: 1000.ms).scale().then(delay: 3000.ms),
                     ),
 
                     Gap(20),
@@ -84,7 +85,92 @@ class CharmPage extends StatelessWidget {
                             ),
                             textAlign: TextAlign.center),
                       ),
-                    ),
+                    ).animate().fade(duration: 2000.ms).scale().then(delay: 5000.ms),
+
+                Gap(20),
+
+                //魅力3
+                Container(
+                  child: Bubble(
+                    margin: BubbleEdges.only(top: 10),
+                    color: Colors.white70,
+                    child: Text(appeals["2"]!,
+                        style: TextStyle(
+                          fontFamily: MainFont,
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center),
+                  ),
+                ).animate().fade(duration: 3000.ms).scale().then(delay: 7000.ms),
+
+                    Gap(20),
+
+                    //魅力4
+                    Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        color: Colors.white70,
+                        child: Text(appeals["3"]!,
+                            style: TextStyle(
+                              fontFamily: MainFont,
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center),
+                      ),
+                    ).animate().fade(duration: 4000.ms).scale().then(delay: 9000.ms),
+                    Gap(20),
+
+                    //魅力5
+                    Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        color: Colors.white70,
+                        child: Text(appeals["4"]!,
+                            style: TextStyle(
+                              fontFamily: MainFont,
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center),
+                      ),
+                    ).animate().fade(duration: 5000.ms).scale().then(delay: 11000.ms),
+
+                    Gap(20),
+
+                    //魅力6
+                    Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        color: Colors.white70,
+                        child: Text(appeals["5"]!,
+                            style: TextStyle(
+                              fontFamily: MainFont,
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center),
+                      ),
+                    ).animate().fade(duration: 6000.ms).scale().then(delay: 13000.ms),
+
+                    Gap(20),
+
+                    //魅力7
+                    Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        color: Colors.white70,
+                        child: Text(appeals["6"]!,
+                            style: TextStyle(
+                              fontFamily: MainFont,
+                              fontSize: 25.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center),
+                      ),
+                    ).animate().fade(duration: 7000.ms).scale().then(delay: 15000.ms),
+
                   ],
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:fruits_hunter/view/components/caution_point.dart';
 import 'package:gap/gap.dart';
@@ -15,7 +16,7 @@ class CautionPage extends StatelessWidget {
         gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Colors.black54, Colors.white12]),
+            colors: [Colors.white70, Colors.white12]),
       ),
           child: Container(
             decoration: const BoxDecoration(
@@ -51,7 +52,6 @@ class CautionPage extends StatelessWidget {
                       Container(
                         child: Bubble(
                           margin: BubbleEdges.only(top: 10),
-                          nip: BubbleNip.leftCenter,
                           color: Colors.white70,
                           child: Text(attentions["0"]!,
                               style: TextStyle(
@@ -61,12 +61,15 @@ class CautionPage extends StatelessWidget {
                               ),
                               textAlign: TextAlign.center),
                         ),
-                      ),
+                      ).animate().fade(duration: 1000.ms).scale().then(delay: 3000.ms),
+
+
                       Gap(20),
+
+                      //注意点2
                       Container(
                         child: Bubble(
                           margin: BubbleEdges.only(top: 10),
-                          nip: BubbleNip.leftCenter,
                           color: Colors.white70,
                           child: Text(attentions["1"]!,
                               style: TextStyle(
@@ -76,7 +79,58 @@ class CautionPage extends StatelessWidget {
                               ),
                               textAlign: TextAlign.center),
                         ),
-                      ),
+                      ).animate().fade(duration: 2000.ms).scale().then(delay: 5000.ms),
+
+                      Gap(20),
+
+                      //注意点3
+                      Container(
+                        child: Bubble(
+                          margin: BubbleEdges.only(top: 10),
+                          color: Colors.white70,
+                          child: Text(attentions["2"]!,
+                              style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ).animate().fade(duration: 3000.ms).scale().then(delay: 7000.ms),
+
+                      Gap(20),
+
+                      //注意点4
+                      Container(
+                        child: Bubble(
+                          margin: BubbleEdges.only(top: 10),
+                          color: Colors.white70,
+                          child: Text(attentions["3"]!,
+                              style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ).animate().fade(duration: 4000.ms).scale().then(delay: 9000.ms),
+
+                      Gap(20),
+
+                      //注意点5
+                      Container(
+                        child: Bubble(
+                          margin: BubbleEdges.only(top: 10),
+                          color: Colors.white70,
+                          child: Text(attentions["4"]!,
+                              style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 25.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ).animate().fade(duration: 5000.ms).scale().then(delay: 10000.ms),
                     ],
                   ),
                 ),
