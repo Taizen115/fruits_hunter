@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/main.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:fruits_hunter/view/screens/pages/detail_page.dart';
@@ -36,9 +37,13 @@ class _ListPageState extends State<ListPage> {
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.white,
             centerTitle: true,
+            leading: TextButton(
+              child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white70,),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
             title: Text(
               "果物について",
-              style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
+              style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
             ),
           ),
           body: (fruitsList.isEmpty)

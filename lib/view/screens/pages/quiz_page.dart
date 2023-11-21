@@ -1,6 +1,7 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/db/database.dart';
 import 'package:fruits_hunter/main.dart';
 import 'package:gap/gap.dart';
@@ -68,16 +69,12 @@ class _QuizPageState extends State<QuizPage> {
         foregroundColor: Colors.white,
         centerTitle: true,
         leading: TextButton(
-          child: Text(
-            "戻る",
-            style: TextStyle(
-                fontFamily: SubFont, fontSize: 15.0, color: Colors.black),
-          ),
+          child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white70,),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
           "雑学クイズ",
-          style: TextStyle(fontFamily: MainFont),
+          style: TextStyle(fontFamily: MainFont, fontSize: 25.0,),
         ),
       ),
       body: Stack(
@@ -323,6 +320,24 @@ class _QuizPageState extends State<QuizPage> {
         (numberOfHunt / (widget.numberOfQuestions - numberOfRemaining) * 100)
             .toInt();
 
+    if (numberOfRemaining == 0) {
+      if (numberOfHunt == 30) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => KingScreen(),
+          ),
+        );
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ),
+        );
+      }
+    }
+
     setState(() {});
   }
 
@@ -342,19 +357,14 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
             Gap(25),
-            ElevatedButton(
+            Bubble(
+              margin: BubbleEdges.only(top: 10),
+              color: Colors.white70,
               child: Text(
                 "答え : ${answer}",
                 style: TextStyle(
-                    fontFamily: SubFont, fontSize: 20.0, color: Colors.teal),
+                    fontFamily: SubFont, fontSize: 20.0),
               ),
-              style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.teal,
-                  backgroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                  )),
-              onPressed: null,
             ),
             Gap(20),
             Padding(
@@ -384,23 +394,6 @@ class _QuizPageState extends State<QuizPage> {
                   ),
                   onPressed: () {
                     setFruits();
-                    if (numberOfRemaining == 0) {
-                      if (numberOfHunt == 30) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => KingScreen(),
-                          ),
-                        );
-                      } else {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
-                          ),
-                        );
-                      }
-                    }
                   }),
             ),
           ],

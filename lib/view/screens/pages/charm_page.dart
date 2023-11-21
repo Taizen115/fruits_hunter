@@ -1,6 +1,7 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/view/components/charm_point.dart';
 import 'package:fruits_hunter/view/screens/pages/list_page.dart';
 import 'package:gap/gap.dart';
@@ -35,6 +36,10 @@ class CharmPage extends StatelessWidget {
               backgroundColor: Colors.transparent,
               foregroundColor: Colors.white,
               centerTitle: true,
+              leading: TextButton(
+                child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white70,),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
               title: Text(
                 "魅力",
                 style: TextStyle(

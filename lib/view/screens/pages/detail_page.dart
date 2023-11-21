@@ -1,6 +1,7 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import '../../../db/database.dart';
@@ -26,6 +27,10 @@ class DetailPage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
           centerTitle:true,
+        leading: TextButton(
+          child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white70,),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
           title: Text(
             "${selectedFruit.name}の詳細",
             style: TextStyle(fontFamily: MainFont, fontSize: 20.0),

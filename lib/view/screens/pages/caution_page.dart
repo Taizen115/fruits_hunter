@@ -1,6 +1,7 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:fruits_hunter/view/components/caution_point.dart';
 import 'package:gap/gap.dart';
@@ -33,6 +34,10 @@ class CautionPage extends StatelessWidget {
               backgroundColor: Colors.transparent,
               foregroundColor: Colors.white,
               centerTitle: true,
+              leading: TextButton(
+                child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white70,),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
               title: Text(
                 "注意点",
                 style: TextStyle(

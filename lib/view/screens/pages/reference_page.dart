@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,10 +23,7 @@ class ReferencePage extends StatelessWidget {
         centerTitle: true,
         leadingWidth: 90,
         leading: TextButton(
-          child: Text(
-            "キャンセル",
-            style: TextStyle(fontFamily: SubFont),
-          ),
+          child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white70,),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
