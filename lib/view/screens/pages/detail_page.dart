@@ -108,6 +108,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
+                              fontWeight: FontWeight.bold
                           ),
                           textAlign: TextAlign.center),
                     ),
@@ -146,6 +147,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
+                              fontWeight: FontWeight.bold
                           ),
                           textAlign: TextAlign.center),
                     ),
@@ -186,6 +188,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
+                              fontWeight: FontWeight.bold
                           ),
                           textAlign: TextAlign.center),
                     ),
@@ -225,6 +228,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
+                              fontWeight: FontWeight.bold
                           ),
                           textAlign: TextAlign.center),
                     ),
@@ -265,6 +269,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
+                              fontWeight: FontWeight.bold
                           ),
                           textAlign: TextAlign.center),
                     ),
@@ -304,6 +309,7 @@ class _DetailPageState extends State<DetailPage> {
                           style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
+                              fontWeight: FontWeight.bold
                           ),
                           textAlign: TextAlign.center),
                     ),
@@ -330,6 +336,7 @@ class _DetailPageState extends State<DetailPage> {
                             style: TextStyle(
                               fontFamily: MainFont,
                               fontSize: 20.0,
+                                fontWeight: FontWeight.bold
                             ),
                             textAlign: TextAlign.center),
                       ),
