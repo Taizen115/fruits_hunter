@@ -14,92 +14,91 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   List<Question> quizList = [];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          body: Column(children: [
-            Expanded(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: DecoratedBox(
-                        position: DecorationPosition.foreground,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Colors.black54, Colors.black12]),
-                        ),
-                        child: Image.asset(
-                          "assets/background/concierge.png",
-                          fit: BoxFit.fill,
-                        ),
-                      ),
+      body: Column(children: [
+        Expanded(
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: DecoratedBox(
+                    position: DecorationPosition.foreground,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.black54, Colors.black12]),
+                    ),
+                    child: Image.asset(
+                      "assets/background/concierge.png",
+                      fit: BoxFit.fill,
                     ),
                   ),
-                  Container(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Column(
-                        children: [
-                          Text(
-                            "Dear",
-                            style: TextStyle(
-                                fontFamily: MainFont,
-                                fontSize: 80.0,
-                                color: Colors.white70),
-                          ),
-                          Text(
-                            "Fruit",
-                            style: TextStyle(
-                                fontFamily: MainFont,
-                                fontSize: 65.0,
-                                color: Colors.white),
-                          ),
-                          Text(
-                            "Picker",
-                            style: TextStyle(
-                                fontFamily: MainFont,
-                                fontSize: 50.0,
-                                color: Colors.white70),
-                          )
-                        ],
+                ),
+              ),
+              Container(
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Column(
+                    children: [
+                      Text(
+                        "Dear",
+                        style: TextStyle(
+                            fontFamily: MainFont,
+                            fontSize: 80.0,
+                            color: Colors.white70),
                       ),
-                    ),
+                      Text(
+                        "Fruit",
+                        style: TextStyle(
+                            fontFamily: MainFont,
+                            fontSize: 65.0,
+                            color: Colors.white),
+                      ),
+                      Text(
+                        "Picker",
+                        style: TextStyle(
+                            fontFamily: MainFont,
+                            fontSize: 50.0,
+                            color: Colors.white70),
+                      )
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
+          ),
+        ),
 
-            Gap(10),
+        Gap(10),
 
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Center(
-                child: Text(
-                  "お求めの情報は何でしょうか？",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black87,
-                    fontSize: 20.0,
-                    fontFamily: MainFont,
-                  ),
-                ).animate().fade(delay: 2500.ms).scale().then(),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: Text(
+              "お求めの情報は何でしょうか？",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 20.0,
+                fontFamily: MainFont,
               ),
-            ),
-            Gap(10),
-            //選択肢部分
-            _choicePart(),
-          ]),
-        ));
+            ).animate().fade(delay: 2500.ms).scale().then(),
+          ),
+        ),
+        Gap(10),
+        //選択肢部分
+        _choicePart(),
+      ]),
+    ));
   }
 
   Widget _choicePart() {
@@ -183,8 +182,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _goQuizPage(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(
-        builder: (context) => QuizPage(numberOfQuestions: 30,)));
+        context,
+        MaterialPageRoute(
+            builder: (context) => QuizPage(
+                  numberOfQuestions: 30,
+                )));
   }
 
   _goCharmPage() {
@@ -196,8 +198,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => CautionPage()));
   }
-  }
-
+}
 
 // import 'package:flutter/material.dart';
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';

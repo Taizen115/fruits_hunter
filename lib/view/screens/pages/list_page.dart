@@ -32,7 +32,7 @@ class _ListPageState extends State<ListPage> {
       child: Padding(
         padding: const EdgeInsets.all(2.0),
         child: Scaffold(
-          backgroundColor: Colors.white70,
+          extendBodyBehindAppBar: true,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             foregroundColor: Colors.white,

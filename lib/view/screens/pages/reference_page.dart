@@ -31,7 +31,7 @@ class ReferencePage extends StatelessWidget {
         child: TextButton(
           onPressed: _launchURL,
           child: Text(
-            "フルーツリンク(2023年10月時点)",
+            "Google map",
             style: TextStyle(
                 fontSize: 30.0, fontFamily: SubFont, color: Colors.black87),
           ),
@@ -41,7 +41,7 @@ class ReferencePage extends StatelessWidget {
   }
 
   void _launchURL() async {
-    const url = 'https://iko-yo.net/topics/fruit';
+    const url = 'https://www.google.co.jp/maps/';
     final uri = Uri.parse(url);
     if (await launchUrl(uri)) {
       await launchUrl(uri);
