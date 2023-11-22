@@ -320,23 +320,24 @@ class _QuizPageState extends State<QuizPage> {
         (numberOfHunt / (widget.numberOfQuestions - numberOfRemaining) * 100)
             .toInt();
 
-    if (numberOfRemaining == 0) {
-      if (numberOfHunt == 30) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => KingScreen(),
-          ),
-        );
-      } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomeScreen(),
-          ),
-        );
-      }
-    }
+    // //終了判定
+    // if (numberOfRemaining == 0) {
+    //   if (numberOfHunt == 30) {
+    //     Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => KingScreen(),
+    //       ),
+    //     );
+    //   } else {
+    //     Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => HomeScreen(),
+    //       ),
+    //     );
+    //   }
+    // }
 
     setState(() {});
   }
@@ -393,7 +394,28 @@ class _QuizPageState extends State<QuizPage> {
                     ),
                   ),
                   onPressed: () {
-                    setFruits();
+                    //終了判定
+                    if (numberOfRemaining == 0) {
+                      if (numberOfHunt == 30) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => KingScreen(),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ),
+                        );
+                      }
+                    } else {
+                      setFruits();
+                    }
+
+
                   }),
             ),
           ],
