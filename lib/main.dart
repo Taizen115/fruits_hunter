@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: "FruitsHunter",
-      theme: ThemeData(brightness: Brightness.light, fontFamily: MainFont),
+      theme: ThemeData(brightness: Brightness.light, fontFamily: MainFont, useMaterial3: false),
       home: HomeScreen(),
     );
   }

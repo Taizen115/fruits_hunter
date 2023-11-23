@@ -12,7 +12,7 @@ class ReferencePage extends StatelessWidget {
       appBar: AppBar(
 
         title: Text(
-          "リンク先",
+          "マップ",
           style: TextStyle(
             fontSize: 30.0,
             fontFamily: MainFont,

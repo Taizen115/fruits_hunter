@@ -3,7 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_hunter/db/database.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:fruits_hunter/view/screens/pages/caution_page.dart';
-import 'package:fruits_hunter/view/screens/pages/charm_page.dart';
+import 'package:fruits_hunter/view/screens/pages/link_page.dart';
 import 'package:fruits_hunter/view/screens/pages/list_page.dart';
 import 'package:fruits_hunter/view/screens/pages/quiz_page.dart';
 import 'package:gap/gap.dart';
@@ -84,11 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Center(
             child: Text(
-              "お求めの情報は何でしょうか？",
+              "どの果物狩り情報が, ご必要ですか？ ",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black87,
-                fontSize: 20.0,
+                fontSize: 30.0,
                 fontFamily: MainFont,
               ),
             ).animate().fade(delay: 2500.ms).scale().then(),
@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goQuizPage(context),
                 child: Text(
-                  "雑学",
+                  "雑学クイズ",
                   style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                 )),
           ),
@@ -146,9 +146,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goCharmPage(),
+                onPressed: () => _goLinkPage(),
                 child: Text(
-                  "魅力",
+                  "リンク集",
                   style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                 )),
           ),
@@ -189,9 +189,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 )));
   }
 
-  _goCharmPage() {
+  _goLinkPage() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => CharmPage()));
+        context, MaterialPageRoute(builder: (context) => LinkPage()));
   }
 
   _goCautionPage() {

@@ -79,7 +79,7 @@ class _ListPageState extends State<ListPage> {
                         ),
                       );
                     }
-                    ).animate(interval: 200.ms).scale(duration: 300.ms),
+                    ).animate(interval: 100.ms).scale(duration: 300.ms),
                   ),
                 ),
         ),

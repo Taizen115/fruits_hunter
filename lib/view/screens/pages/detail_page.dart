@@ -332,10 +332,10 @@ class _DetailPageState extends State<DetailPage> {
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
                         color: Colors.teal,
-                        child: Text("果物狩りへ行きましょう！",
+                        child: Text("Google map",
                             style: TextStyle(
                               fontFamily: MainFont,
-                              fontSize: 20.0,
+                              fontSize: 30.0,
                                 fontWeight: FontWeight.bold
                             ),
                             textAlign: TextAlign.center),

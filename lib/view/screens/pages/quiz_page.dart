@@ -69,12 +69,18 @@ class _QuizPageState extends State<QuizPage> {
         foregroundColor: Colors.white,
         centerTitle: true,
         leading: TextButton(
-          child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white70,),
+          child: Icon(
+            FontAwesomeIcons.arrowLeft,
+            color: Colors.white70,
+          ),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
           "雑学クイズ",
-          style: TextStyle(fontFamily: MainFont, fontSize: 25.0,),
+          style: TextStyle(
+            fontFamily: MainFont,
+            fontSize: 25.0,
+          ),
         ),
       ),
       body: Stack(
@@ -320,23 +326,23 @@ class _QuizPageState extends State<QuizPage> {
         (numberOfHunt / (widget.numberOfQuestions - numberOfRemaining) * 100)
             .toInt();
 
-    if (numberOfRemaining == 0) {
-      if (numberOfHunt == 30) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => KingScreen(),
-          ),
-        );
-      } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomeScreen(),
-          ),
-        );
-      }
-    }
+    // if (numberOfRemaining == 0) {
+    //   if (numberOfHunt == 30) {
+    //     Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => KingScreen(),
+    //       ),
+    //     );
+    //   } else {
+    //     Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => HomeScreen(),
+    //       ),
+    //     );
+    //   }
+    // }
 
     setState(() {});
   }
@@ -362,8 +368,7 @@ class _QuizPageState extends State<QuizPage> {
               color: Colors.white70,
               child: Text(
                 "答え : ${answer}",
-                style: TextStyle(
-                    fontFamily: SubFont, fontSize: 20.0),
+                style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
               ),
             ),
             Gap(20),
@@ -393,7 +398,25 @@ class _QuizPageState extends State<QuizPage> {
                     ),
                   ),
                   onPressed: () {
-                    setFruits();
+                    if (numberOfRemaining == 0) {
+                      if (numberOfHunt == 30) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => KingScreen(),
+                          ),
+                        );
+                      } else {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ),
+                        );
+                      }
+                    } else {
+                      setFruits();
+                    }
                   }),
             ),
           ],
