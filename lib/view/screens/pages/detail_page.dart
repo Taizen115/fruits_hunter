@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
-import 'package:fruits_hunter/view/screens/pages/reference_page.dart';
 import 'package:gap/gap.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../db/database.dart';
 
 class DetailPage extends StatefulWidget {
@@ -322,12 +322,7 @@ class _DetailPageState extends State<DetailPage> {
                   Gap(50),
 
                   InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ReferencePage()));
-                    },
+                    onTap: _launchURL,
                     child: Container(
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
@@ -349,5 +344,15 @@ class _DetailPageState extends State<DetailPage> {
         ),
       ),
     );
+  }
+
+  void _launchURL() async {
+    const url = 'https://www.google.co.jp/maps/';
+    final uri = Uri.parse(url);
+    if (await launchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

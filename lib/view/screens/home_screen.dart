@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Center(
             child: Text(
-              "どの果物狩り情報が, ご必要ですか？ ",
+              "どのような果物狩り情報が, ご必要ですか？ ",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black87,

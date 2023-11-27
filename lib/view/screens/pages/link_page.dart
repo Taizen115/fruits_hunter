@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fruits_hunter/view/screens/pages/list_page.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -226,11 +225,6 @@ class LinkPage extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  _goListPage(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 
   void _launchURL1() async {
