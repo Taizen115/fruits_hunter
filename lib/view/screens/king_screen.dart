@@ -43,19 +43,27 @@ class KingScreen extends StatelessWidget {
         body: Column(
           children: [
             Expanded(
-            child: Image.asset(
-              "assets/images/all_fruits.jpg",
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-            Text(
-              "満点おめでとうございます",
-              style: TextStyle(
-                  fontFamily: SubFont, fontSize: 30.0, color: Colors.white, fontWeight: FontWeight.bold),
+              child: Image.asset(
+                "assets/images/all_fruits.jpg",
+                fit: BoxFit.fitWidth,
+              ),
+            ).animate().fade(duration: 3000.ms).scale(),
+
+            Align(
+              alignment :Alignment.topCenter,
+              child: Text(
+                "満点おめでとうございます",
+                style: TextStyle(
+                    fontFamily: SubFont,
+                    fontSize: 30.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold
+                ),
+              ),
             ),
           ]
         ),
-      ).animate().fade(duration: 1000.ms).scale(),
+      ),
     );
   }
 }
