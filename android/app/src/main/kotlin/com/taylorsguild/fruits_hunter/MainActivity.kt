@@ -1,4 +1,4 @@
-package com.example.fruits_hunter
+package com.taylorsguild.fruits_hunter
 
 import io.flutter.embedding.android.FlutterActivity
 

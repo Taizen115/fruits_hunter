@@ -44,7 +44,7 @@ class KingScreen extends StatelessWidget {
           children: [
             Expanded(
               child: Image.asset(
-                "assets/images/all_fruits.jpg",
+                "assets/images/all_fruits.png",
                 fit: BoxFit.fitWidth,
               ),
             ).animate().fade(duration: 3000.ms).scale(),
