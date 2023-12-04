@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../../db/database.dart';
 
 class DetailPage extends StatefulWidget {
@@ -17,6 +18,13 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  bool _isExpanded1 = false;
+  bool _isExpanded2 = false;
+  bool _isExpanded3 = false;
+  bool _isExpanded4 = false;
+  bool _isExpanded5 = false;
+  bool _isExpanded6 = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,287 +65,337 @@ class _DetailPageState extends State<DetailPage> {
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Column(children: [
+                child: Column(
+                  children: [
+                    Gap(30),
 
-                  Gap(30),
-
-                  //導入
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      color: Colors.white,
-                      child: Text(
-                          "美味しい果物を食べるためには、鮮度と産地と品種名が重要とされております.どうかご参考ください.",
-                          style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 25.0,
-                            fontWeight: FontWeight.bold
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  ),
-
-                  Gap(20),
-
-                  //質問１
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.rightCenter,
-                      color: Colors.blue[200],
-                      child: Text(
-                        "1. ${widget.selectedFruit.name}の主要な産地はどこでしょうか？",
-                        style: TextStyle(
-                          fontFamily: SubFont,
-                          fontSize: 20.0,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-
-                  Gap(20),
-
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.leftCenter,
-                      color: Colors.white,
-                      child: Text(
-                          "${widget.selectedFruit.famousArea}が, 主要な産地とされております.",
-                          style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 20.0,
-                              fontWeight: FontWeight.bold
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  )
-                      .animate()
-                      .fade(duration: 1000.ms)
-                      .scale()
-                      .then(delay: 3000.ms),
-
-                  Gap(20),
-
-                  //質問2
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.rightCenter,
-                      color: Colors.blue[200],
-                      child: Text("2. ${widget.selectedFruit.name}の旬の時期はいつですか？",
-                          style: TextStyle(
-                            fontFamily: SubFont,
-                            fontSize: 20.0,
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  ),
-
-                  Gap(20),
-
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.leftCenter,
-                      color: Colors.white,
-                      child: Text(
-                          "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
-                          style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 20.0,
-                              fontWeight: FontWeight.bold
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  )
-                      .animate()
-                      .fade(duration: 2000.ms)
-                      .scale()
-                      .then(delay: 5000.ms),
-
-                  Gap(20),
-
-                  //質問3
-
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.rightCenter,
-                      color: Colors.blue[200],
-                      child:
-                          Text("3. ${widget.selectedFruit.name}の有名な品種は何でしょうか？",
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        color: Colors.indigo,
+                        child: TextButton(
+                          onPressed: _launchURL,
+                          child: Text("Google map",
                               style: TextStyle(
-                                fontFamily: SubFont,
-                                fontSize: 20.0,
-                              ),
+                                  fontFamily: MainFont,
+                                  fontSize: 30.0,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.bold),
                               textAlign: TextAlign.center),
-                    ),
-                  ),
-
-                  Gap(20),
-
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.leftCenter,
-                      color: Colors.white,
-                      child: Text(
-                          " ${widget.selectedFruit.famousBreed}が, 有名な品種とされております.",
-                          style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 20.0,
-                              fontWeight: FontWeight.bold
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  )
-                      .animate()
-                      .fade(duration: 3000.ms)
-                      .scale()
-                      .then(delay: 7000.ms),
-
-                  Gap(20),
-
-                  //質問4
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.rightCenter,
-                      color: Colors.blue[200],
-                      child: Text(
-                          "4. ${widget.selectedFruit.name}には, どんな栄養素が詰まっているんですか？",
-                          style: TextStyle(
-                            fontFamily: SubFont,
-                            fontSize: 20.0,
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  ),
-
-                  Gap(20),
-
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.leftCenter,
-                      color: Colors.white,
-                      child: Text(
-                          "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
-                          style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 20.0,
-                              fontWeight: FontWeight.bold
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  )
-                      .animate()
-                      .fade(duration: 4000.ms)
-                      .scale()
-                      .then(delay: 9000.ms),
-
-                  Gap(20),
-
-                  //質問5
-
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.rightCenter,
-                      color: Colors.blue[200],
-                      child: Text(
-                          "5. ${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
-                          style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 20.0,
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  ),
-
-                  Gap(20),
-
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.leftCenter,
-                      color: Colors.white,
-                      child: Text(
-                          "場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
-                          style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 20.0,
-                              fontWeight: FontWeight.bold
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  )
-                      .animate()
-                      .fade(duration: 5000.ms)
-                      .scale()
-                      .then(delay: 11000.ms),
-
-                  Gap(20),
-
-                  //質問6
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.rightCenter,
-                      color: Colors.blue[200],
-                      child: Text(
-                        "6. 美味しい${widget.selectedFruit.name}の見分け方は？",
-                        style: TextStyle(
-                          fontFamily: MainFont,
-                          fontSize: 20.0,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
 
-                  Gap(20),
+                    // Gap(20),
+                    //
+                    // //導入
+                    // Container(
+                    //   child: Bubble(
+                    //     margin: BubbleEdges.only(top: 10),
+                    //     color: Colors.white,
+                    //     child: Text(
+                    //         "美味しい果物を食べるためには\n鮮度と産地と品種名が重要とされております.\nどうかご参考ください.",                        style: TextStyle(
+                    //             fontFamily: MainFont,
+                    //             fontSize: 30.0,
+                    //             fontWeight: FontWeight.bold,
+                    //         letterSpacing: 1.0),
+                    //         textAlign: TextAlign.center),
+                    //   ),
+                    // ),
 
-                  Container(
-                    child: Bubble(
-                      margin: BubbleEdges.only(top: 10),
-                      nip: BubbleNip.leftCenter,
-                      color: Colors.white,
-                      child: Text("${widget.selectedFruit.distinguish}",
-                          style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 20.0,
-                              fontWeight: FontWeight.bold
-                          ),
-                          textAlign: TextAlign.center),
-                    ),
-                  )
-                      .animate()
-                      .fade(duration: 7000.ms)
-                      .scale()
-                      .then(delay: 13000.ms),
+                    Gap(20),
 
-                  Gap(50),
+                    Container(
+                      child: Bubble(
+                        elevation: 20.0,
+                        margin: BubbleEdges.only(top: 10),
+                        color: Colors.white,
+                        child: Text(
+                            "項目\n1.果物の主要な産地は？\n2.果物の旬の時期は？\n3.果物の主要な品種は？\n4.果物の含まれている主要な栄養素は？\n5.果物狩りの費用は？\n6.美味しい果物の見分け方は？",
+                            style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1.0),
+                            textAlign: TextAlign.center),
+                      ),
+                    ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
 
-                  InkWell(
-                    onTap: _launchURL,
-                    child: Container(
+                    Gap(20),
+
+                    //質問１
+                    Container(
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
-                        color: Colors.teal,
-                        child: Text("Google map",
+                        nip: BubbleNip.rightCenter,
+                        color: Colors.blue[200],
+                        child: Text(
+                          "${widget.selectedFruit.name}の主要な産地はどこでしょうか？",
+                          style: TextStyle(
+                            fontFamily: SubFont,
+                            fontSize: 25.0,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        color: Colors.white70,
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _isExpanded1 = !_isExpanded1;
+                            });
+                          },
+                          child: Text(
+                              "1.${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
+                              overflow: _isExpanded1
+                                  ? TextOverflow.visible
+                                  : TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    //質問2
+                    Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        nip: BubbleNip.rightCenter,
+                        color: Colors.blue[200],
+                        child: Text("${widget.selectedFruit.name}の旬の時期はいつですか？",
                             style: TextStyle(
-                              fontFamily: MainFont,
-                              fontSize: 30.0,
-                                fontWeight: FontWeight.bold
+                              fontFamily: SubFont,
+                              fontSize: 25.0,
                             ),
                             textAlign: TextAlign.center),
                       ),
                     ),
-                  ),
-                ]),
+
+                    Gap(20),
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        color: Colors.white70,
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _isExpanded2 = !_isExpanded2;
+                            });
+                          },
+                          child: Text(
+                              "2.大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
+                              overflow: _isExpanded2
+                                  ? TextOverflow.visible
+                                  : TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    //質問3
+
+                    Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        nip: BubbleNip.rightCenter,
+                        color: Colors.blue[200],
+                        child:
+                            Text("${widget.selectedFruit.name}の有名な品種は何でしょうか？",
+                                style: TextStyle(
+                                  fontFamily: SubFont,
+                                  fontSize: 25.0,
+                                ),
+                                textAlign: TextAlign.center),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        color: Colors.white70,
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _isExpanded3 = !_isExpanded3;
+                            });
+                          },
+                          child: Text(
+                              "3.${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
+                              overflow: _isExpanded3
+                                  ? TextOverflow.visible
+                                  : TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    //質問4
+                    Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        nip: BubbleNip.rightCenter,
+                        color: Colors.blue[200],
+                        child: Text(
+                            "${widget.selectedFruit.name}には, どんな栄養素が詰まっているんですか？",
+                            style: TextStyle(
+                              fontFamily: SubFont,
+                              fontSize: 25.0,
+                            ),
+                            textAlign: TextAlign.center),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        color: Colors.white70,
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _isExpanded4 = !_isExpanded4;
+                            });
+                          },
+                          child: Text(
+                              "4.栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
+                              overflow: _isExpanded4
+                                  ? TextOverflow.visible
+                                  : TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    //質問5
+
+                    Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        nip: BubbleNip.rightCenter,
+                        color: Colors.blue[200],
+                        child: Text(
+                            " ${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
+                            style: TextStyle(
+                              fontFamily: MainFont,
+                              fontSize: 25.0,
+                            ),
+                            textAlign: TextAlign.center),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        color: Colors.white70,
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _isExpanded5 = !_isExpanded5;
+                            });
+                          },
+                          child: Text(
+                              "5.場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
+                              overflow: _isExpanded5
+                                  ? TextOverflow.visible
+                                  : TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    //質問6
+                    Container(
+                      child: Bubble(
+                        margin: BubbleEdges.only(top: 10),
+                        nip: BubbleNip.rightCenter,
+                        color: Colors.blue[200],
+                        child: Text(
+                          "美味しい${widget.selectedFruit.name}の見分け方は？",
+                          style: TextStyle(
+                            fontFamily: MainFont,
+                            fontSize: 25.0,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+
+                    Gap(20),
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        color: Colors.white70,
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              _isExpanded6 = !_isExpanded6;
+                            });
+                          },
+                          child: Text("6.${widget.selectedFruit.distinguish}",
+                              overflow: _isExpanded6
+                                  ? TextOverflow.visible
+                                  : TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 25.0,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                    ),
+
+                    Gap(50),
+                  ],
+                ),
               ),
             ),
           ),
@@ -349,10 +407,9 @@ class _DetailPageState extends State<DetailPage> {
   void _launchURL() async {
     const url = 'https://www.google.co.jp/maps/';
     final uri = Uri.parse(url);
-    if (await launchUrl(uri)) {
-      await launchUrl(uri);
-    } else {
+    if (!(await launchUrl(uri))) {
       throw 'Could not launch $url';
     }
   }
+
 }

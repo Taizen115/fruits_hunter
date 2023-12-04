@@ -49,25 +49,30 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.center,
                   child: Column(
                     children: [
+
+                      Gap(50),
+
                       Text(
                         "Dear",
                         style: TextStyle(
                             fontFamily: MainFont,
-                            fontSize: 80.0,
+                            fontSize: 50.0,
                             color: Colors.white70),
                       ),
+
                       Text(
                         "Fruit",
                         style: TextStyle(
                             fontFamily: MainFont,
-                            fontSize: 65.0,
+                            fontSize: 70.0,
                             color: Colors.white),
                       ),
+
                       Text(
                         "Picker",
                         style: TextStyle(
                             fontFamily: MainFont,
-                            fontSize: 50.0,
+                            fontSize: 45.0,
                             color: Colors.white70),
                       )
                     ],
@@ -84,11 +89,11 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Center(
             child: Text(
-              "どのような果物狩り情報が, ご必要ですか？ ",
+              "どのような果物狩りの情報が\n必要でしょうか？ ",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black87,
-                fontSize: 30.0,
+                fontSize: 25.0,
                 fontFamily: MainFont,
               ),
             ).animate().fade(delay: 2500.ms).scale().then(),
@@ -131,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goQuizPage(context),
                 child: Text(
-                  "雑学クイズ",
+                  "クイズ",
                   style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                 )),
           ),
@@ -153,8 +158,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
           ),
 
-          // Gap(15),
-
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: ElevatedButton(
@@ -166,8 +169,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goCautionPage(),
                 child: Text(
-                  "注意点",
-                  style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
+                  "マナー",
+                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                 )),
           ),
         ]),

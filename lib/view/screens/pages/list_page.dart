@@ -42,7 +42,7 @@ class _ListPageState extends State<ListPage> {
               onPressed: () => Navigator.of(context).pop(),
             ),
             title: Text(
-              "果物について",
+              "果物一覧",
               style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
             ),
           ),

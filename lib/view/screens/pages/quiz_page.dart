@@ -76,7 +76,7 @@ class _QuizPageState extends State<QuizPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          "雑学クイズ",
+          "クイズ",
           style: TextStyle(
             fontFamily: MainFont,
             fontSize: 25.0,
@@ -104,7 +104,7 @@ class _QuizPageState extends State<QuizPage> {
                 //TODO 問題表示部分
                 _showQuestion(),
 
-                Gap(20),
+                Gap(50),
 
                 //TODO 選択肢表示部分
                 _showChoices(),
@@ -136,39 +136,39 @@ class _QuizPageState extends State<QuizPage> {
             Center(
               child: Text(
                 "残りの果物",
-                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+                style: TextStyle(fontSize: 20.0, color: Colors.black54),
               ),
             ),
             Center(
               child: Text(
                 "獲得果物数",
-                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+                style: TextStyle(fontSize: 20.0, color: Colors.black54),
               ),
             ),
             Center(
               child: Text(
                 "獲得率",
-                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+                style: TextStyle(fontSize: 20.0, color: Colors.black54),
               ),
             ),
           ]),
           TableRow(children: [
             Center(
               child: Text(
-                numberOfRemaining.toString(),
-                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+                "${numberOfRemaining.toString()} 個",
+                style: TextStyle(fontSize: 20.0, color: Colors.black54),
               ),
             ),
             Center(
               child: Text(
-                numberOfHunt.toString(),
-                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+                "${numberOfHunt.toString()} 個",
+                style: TextStyle(fontSize: 20.0, color: Colors.black54),
               ),
             ),
             Center(
               child: Text(
-                getRate.toString(),
-                style: TextStyle(fontSize: 15.0, color: Colors.black54),
+                "${getRate.toString()} ％",
+                style: TextStyle(fontSize: 20.0, color: Colors.black54),
               ),
             )
           ])
@@ -185,7 +185,7 @@ class _QuizPageState extends State<QuizPage> {
         color: Colors.white70,
         child: Text(
           question,
-          style: TextStyle(fontFamily: MainFont, fontSize: 30.0),
+          style: TextStyle(fontFamily: MainFont, fontSize: 35.0),
         ),
       );
     else {
@@ -202,30 +202,32 @@ class _QuizPageState extends State<QuizPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: InkWell(
-                  onTap: () => _checkAnswer(choices[0]),
-                  child: Bubble(
-                    margin: BubbleEdges.only(top: 10),
-                    nip: BubbleNip.leftCenter,
-                    color: Colors.blue[300],
-                    child: Text(
-                      choices[0],
-                      style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    color: Colors.blue[200],
+                    child: TextButton(
+                      onPressed: () => _checkAnswer(choices[0]),
+                      child: Text(
+                        choices[0],
+                        style: TextStyle(fontFamily: MainFont, fontSize: 20.0, color:Colors.white),
+                      ),
                     ),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: InkWell(
-                  onTap: () => _checkAnswer(choices[1]),
-                  child: Bubble(
-                    margin: BubbleEdges.only(top: 10),
-                    nip: BubbleNip.rightCenter,
-                    color: Colors.blue[300],
-                    child: Text(
-                      choices[1],
-                      style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    color: Colors.green[200],
+                    child: TextButton(
+                      onPressed: () => _checkAnswer(choices[1]),
+                      child: Text(
+                        choices[1],
+                        style: TextStyle(fontFamily: MainFont, fontSize: 20.0, color:Colors.white),
+                      ),
                     ),
                   ),
                 ),
@@ -236,30 +238,32 @@ class _QuizPageState extends State<QuizPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: InkWell(
-                  onTap: () => _checkAnswer(choices[2]),
-                  child: Bubble(
-                    margin: BubbleEdges.only(top: 10),
-                    nip: BubbleNip.leftCenter,
-                    color: Colors.blue[300],
-                    child: Text(
-                      choices[2],
-                      style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    color: Colors.red[200],
+                    child: TextButton(
+                      onPressed: () => _checkAnswer(choices[2]),
+                      child: Text(
+                        choices[2],
+                        style: TextStyle(fontFamily: MainFont, fontSize: 20.0, color:Colors.white),
+                      ),
                     ),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: InkWell(
-                  onTap: () => _checkAnswer(choices[3]),
-                  child: Bubble(
-                    margin: BubbleEdges.only(top: 10),
-                    nip: BubbleNip.rightCenter,
-                    color: Colors.blue[300],
-                    child: Text(
-                      choices[3],
-                      style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: Container(
+                    color: Colors.purple[200],
+                    child: TextButton(
+                      onPressed: () => _checkAnswer(choices[3]),
+                      child: Text(
+                        choices[3],
+                        style: TextStyle(fontFamily: MainFont, fontSize: 20.0, color:Colors.white),
+                      ),
                     ),
                   ),
                 ),
@@ -326,23 +330,8 @@ class _QuizPageState extends State<QuizPage> {
         (numberOfHunt / (widget.numberOfQuestions - numberOfRemaining) * 100)
             .toInt();
 
-    // if (numberOfRemaining == 0) {
-    //   if (numberOfHunt == 30) {
-    //     Navigator.push(
-    //       context,
-    //       MaterialPageRoute(
-    //         builder: (context) => KingScreen(),
-    //       ),
-    //     );
-    //   } else {
-    //     Navigator.push(
-    //       context,
-    //       MaterialPageRoute(
-    //         builder: (context) => HomeScreen(),
-    //       ),
-    //     );
-    //   }
-    // }
+
+
 
     setState(() {});
   }
@@ -353,33 +342,30 @@ class _QuizPageState extends State<QuizPage> {
       return Container(
         child: Column(
           children: [
-            Gap(170),
-            Bubble(
-              margin: BubbleEdges.only(top: 10),
-              color: Colors.teal,
-              child: Text(
-                "解説",
-                style: TextStyle(fontFamily: MainFont, fontSize: 20.0),
-              ),
-            ),
-            Gap(25),
+            Gap(220),
+
             Bubble(
               margin: BubbleEdges.only(top: 10),
               color: Colors.white70,
               child: Text(
                 "答え : ${answer}",
-                style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
+                style: TextStyle(fontFamily: SubFont, fontSize: 20.0, color: Colors.teal),
               ),
             ),
+
             Gap(20),
+
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Bubble(
                 margin: BubbleEdges.only(top: 10),
                 color: Colors.teal,
                 child: Text(
-                  explanation,
-                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                  "解説 : \n${explanation}",
+                  style: TextStyle(
+                      fontFamily: MainFont,
+                      fontSize: 25.0,
+                  color: Colors.white70),
                 ),
               ),
             ),
@@ -420,7 +406,7 @@ class _QuizPageState extends State<QuizPage> {
                   }),
             ),
           ],
-        ).animate().fade(duration: 1000.ms).scale().then(delay: 1000.ms),
+        ).animate().fade(duration: 500.ms).scale().then(delay: 500.ms),
       );
     } else {
       return Container();
