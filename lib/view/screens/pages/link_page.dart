@@ -31,36 +31,36 @@ class LinkPage extends StatelessWidget {
             backgroundColor: Colors.transparent,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
-              foregroundColor: Colors.white,
+              foregroundColor: Colors.lightBlue,
               centerTitle: true,
               leading: TextButton(
                 child: Icon(
                   FontAwesomeIcons.arrowLeft,
-                  color: Colors.white70,
+                  color: Colors.lightBlue,
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               ),
               title: Text(
                 "リンク集",
                 style: TextStyle(
-                  fontFamily: MainFont,
-                  fontSize: 25.0,
+                  fontFamily: ThirdFont,
+                  fontSize: 30.0,
                 ),
               ),
             ),
             body: Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Gap(20),
+                  Gap(10),
                   TextButton(
                     child: Text(
-                      "全国の果物狩りについて",
+                      "全国の果物狩り \n ( じゃらんnet ) ",
                       style: TextStyle(
                         fontSize: 25.0,
                         fontFamily: SubFont,
-                        color: Colors.teal,
+                        color: Colors.indigo,
                       ),
                     ),
                     onPressed: _launchURL1,
@@ -68,55 +68,55 @@ class LinkPage extends StatelessWidget {
                   Gap(20),
                   TextButton(
                     child: Text(
-                      "果物狩り体験談について",
+                      "果物狩り体験談 \n ( VELTRA ) ",
                       style: TextStyle(
                           fontSize: 25.0,
                           fontFamily: SubFont,
-                          color: Colors.indigo),
+                          color: Colors.indigoAccent),
                     ),
                     onPressed: _launchURL2,
                   ),
                   Gap(20),
                   TextButton(
                     child: Text(
-                      "春の果物について",
+                      "春の果物 ( 旅色 ) ",
                       style: TextStyle(
                           fontSize: 25.0,
                           fontFamily: SubFont,
-                          color: Colors.pink[200]),
+                          color: Colors.blue),
                     ),
                     onPressed: _launchURL3,
                   ),
                   Gap(20),
                   TextButton(
                     child: Text(
-                      "夏の果物について",
+                      "夏の果物 ( まっぷる ) ",
                       style: TextStyle(
                           fontSize: 25.0,
                           fontFamily: SubFont,
-                          color: Colors.green),
+                          color: Colors.blue[400]),
                     ),
                     onPressed: _launchURL4,
                   ),
                   Gap(20),
                   TextButton(
                     child: Text(
-                      "秋の果物について",
+                      "秋の果物 ( るるぶ ) ",
                       style: TextStyle(
                           fontSize: 25.0,
                           fontFamily: SubFont,
-                          color: Colors.brown),
+                          color: Colors.blue[300]),
                     ),
                     onPressed: _launchURL5,
                   ),
                   Gap(20),
                   TextButton(
                       child: Text(
-                        "冬の果物について",
+                        "冬の果物 ( HORTI ) ",
                         style: TextStyle(
                             fontSize: 25.0,
                             fontFamily: SubFont,
-                            color: Colors.orangeAccent),
+                            color: Colors.blue[200]),
                       ),
                       onPressed: _launchURL6),
                 ],

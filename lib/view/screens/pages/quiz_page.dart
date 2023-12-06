@@ -62,62 +62,64 @@ class _QuizPageState extends State<QuizPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        foregroundColor: Colors.white,
-        centerTitle: true,
-        leading: TextButton(
-          child: Icon(
-            FontAwesomeIcons.arrowLeft,
-            color: Colors.white70,
+    return SafeArea(
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.lightBlue,
+          centerTitle: true,
+          leading: TextButton(
+            child: Icon(
+              FontAwesomeIcons.arrowLeft,
+              color: Colors.lightBlue,
+            ),
+            onPressed: () => _finishQuiz(),
           ),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          "クイズ",
-          style: TextStyle(
-            fontFamily: MainFont,
-            fontSize: 25.0,
-          ),
-        ),
-      ),
-      body: Stack(
-        fit: StackFit.expand,
-        children: [
-          Image.asset(
-            "assets/background/mikan_tree.png",
-            fit: BoxFit.cover,
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              children: [
-                Gap(100),
-                //TODO データ表示部分
-                _dataPart(),
-
-                Gap(50),
-
-                //TODO 問題表示部分
-                _showQuestion(),
-
-                Gap(50),
-
-                //TODO 選択肢表示部分
-                _showChoices(),
-              ],
+          title: Text(
+            "クイズ",
+            style: TextStyle(
+              fontFamily: MainFont,
+              fontSize: 30.0,
             ),
           ),
+        ),
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.asset(
+              "assets/background/mikan_tree.png",
+              fit: BoxFit.cover,
+            ),
 
-          //TODO 正解不正解ボタン
-          _correctIncorrectImage(),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                children: [
+                  Gap(50),
+                  //TODO データ表示部分
+                  _dataPart(),
 
-          //TODO 解説
-          _showExplanation(),
-        ],
+                  Gap(50),
+
+                  //TODO 問題表示部分
+                  _showQuestion(),
+
+                  Gap(50),
+
+                  //TODO 選択肢表示部分
+                  _showChoices(),
+                ],
+              ),
+            ),
+
+            //TODO 正解不正解ボタン
+            _correctIncorrectImage(),
+
+            //TODO 解説
+            _showExplanation(),
+          ],
+        ),
       ),
     );
   }
@@ -136,19 +138,19 @@ class _QuizPageState extends State<QuizPage> {
             Center(
               child: Text(
                 "残りの果物",
-                style: TextStyle(fontSize: 20.0, color: Colors.black54),
+                style: TextStyle(fontSize: 18.0, color: Colors.black54),
               ),
             ),
             Center(
               child: Text(
                 "獲得果物数",
-                style: TextStyle(fontSize: 20.0, color: Colors.black54),
+                style: TextStyle(fontSize: 18.0, color: Colors.black54),
               ),
             ),
             Center(
               child: Text(
                 "獲得率",
-                style: TextStyle(fontSize: 20.0, color: Colors.black54),
+                style: TextStyle(fontSize: 18.0, color: Colors.black54),
               ),
             ),
           ]),
@@ -185,7 +187,7 @@ class _QuizPageState extends State<QuizPage> {
         color: Colors.white70,
         child: Text(
           question,
-          style: TextStyle(fontFamily: MainFont, fontSize: 35.0),
+          style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
         ),
       );
     else {
@@ -210,7 +212,10 @@ class _QuizPageState extends State<QuizPage> {
                       onPressed: () => _checkAnswer(choices[0]),
                       child: Text(
                         choices[0],
-                        style: TextStyle(fontFamily: MainFont, fontSize: 20.0, color:Colors.white),
+                        style: TextStyle(
+                            fontFamily: MainFont,
+                            fontSize: 20.0,
+                            color: Colors.white),
                       ),
                     ),
                   ),
@@ -226,7 +231,10 @@ class _QuizPageState extends State<QuizPage> {
                       onPressed: () => _checkAnswer(choices[1]),
                       child: Text(
                         choices[1],
-                        style: TextStyle(fontFamily: MainFont, fontSize: 20.0, color:Colors.white),
+                        style: TextStyle(
+                            fontFamily: MainFont,
+                            fontSize: 20.0,
+                            color: Colors.white),
                       ),
                     ),
                   ),
@@ -246,7 +254,10 @@ class _QuizPageState extends State<QuizPage> {
                       onPressed: () => _checkAnswer(choices[2]),
                       child: Text(
                         choices[2],
-                        style: TextStyle(fontFamily: MainFont, fontSize: 20.0, color:Colors.white),
+                        style: TextStyle(
+                            fontFamily: MainFont,
+                            fontSize: 20.0,
+                            color: Colors.white),
                       ),
                     ),
                   ),
@@ -262,7 +273,10 @@ class _QuizPageState extends State<QuizPage> {
                       onPressed: () => _checkAnswer(choices[3]),
                       child: Text(
                         choices[3],
-                        style: TextStyle(fontFamily: MainFont, fontSize: 20.0, color:Colors.white),
+                        style: TextStyle(
+                            fontFamily: MainFont,
+                            fontSize: 20.0,
+                            color: Colors.white),
                       ),
                     ),
                   ),
@@ -330,9 +344,6 @@ class _QuizPageState extends State<QuizPage> {
         (numberOfHunt / (widget.numberOfQuestions - numberOfRemaining) * 100)
             .toInt();
 
-
-
-
     setState(() {});
   }
 
@@ -342,30 +353,28 @@ class _QuizPageState extends State<QuizPage> {
       return Container(
         child: Column(
           children: [
-            Gap(220),
-
+            Gap(150),
             Bubble(
               margin: BubbleEdges.only(top: 10),
               color: Colors.white70,
               child: Text(
                 "答え : ${answer}",
-                style: TextStyle(fontFamily: SubFont, fontSize: 20.0, color: Colors.teal),
+                style: TextStyle(
+                    fontFamily: SubFont, fontSize: 25.0, color: Colors.lightBlue),
               ),
             ),
-
             Gap(20),
-
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Bubble(
                 margin: BubbleEdges.only(top: 10),
-                color: Colors.teal,
+                color: Colors.blue,
                 child: Text(
                   "解説 : \n${explanation}",
                   style: TextStyle(
                       fontFamily: MainFont,
                       fontSize: 25.0,
-                  color: Colors.white70),
+                      color: Colors.white70),
                 ),
               ),
             ),
@@ -374,10 +383,10 @@ class _QuizPageState extends State<QuizPage> {
               child: ElevatedButton(
                   child: Text(
                     "Next Fruits!",
-                    style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
+                    style: TextStyle(fontFamily: SubFont, fontSize: 30.0),
                   ),
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.teal,
+                    foregroundColor: Colors.blueAccent,
                     backgroundColor: Colors.white70,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -439,5 +448,38 @@ class _QuizPageState extends State<QuizPage> {
     numberOfRemaining--;
 
     _index += 1;
+  }
+
+  _finishQuiz() {
+    return showDialog(
+      barrierDismissible: false,
+        context: context,
+        builder: (_) => AlertDialog(
+              title: Text(
+                "クイズの終了",
+                style: TextStyle(fontFamily: ThirdFont, fontSize: 25.0),
+              ),
+              content: Text(
+                "クイズを終了してもよろしいでしょうか？",
+                style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0),
+              ),
+              actions: [
+                TextButton(
+                  child: Text("キャンセル",
+                    style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0, color: Colors.blueAccent),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                ),
+                TextButton(
+                  child: Text("OK",
+                    style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0, color: Colors.blueAccent),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
+            ));
   }
 }

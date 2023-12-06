@@ -108,6 +108,10 @@ flutter:
       fonts:
         - asset: assets/fonts/NotoSansJP-Light.ttf
 
+    - family: Third
+      fonts:
+        - asset: assets/fonts/SawarabiGothic-Regular.ttf
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

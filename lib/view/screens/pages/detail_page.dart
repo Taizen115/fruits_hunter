@@ -47,7 +47,7 @@ class _DetailPageState extends State<DetailPage> {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
-              backgroundColor: Colors.transparent,
+              backgroundColor: Colors.lightBlue,
               foregroundColor: Colors.white,
               centerTitle: true,
               leading: TextButton(
@@ -59,7 +59,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
               title: Text(
                 "${widget.selectedFruit.name}の詳細",
-                style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                style: TextStyle(fontFamily: MainFont, fontSize: 30.0),
               ),
             ),
             body: SingleChildScrollView(
@@ -72,7 +72,7 @@ class _DetailPageState extends State<DetailPage> {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Container(
-                        color: Colors.indigo,
+                        color: Colors.blue,
                         child: TextButton(
                           onPressed: _launchURL,
                           child: Text("Google map",
@@ -128,12 +128,13 @@ class _DetailPageState extends State<DetailPage> {
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
                         nip: BubbleNip.rightCenter,
-                        color: Colors.blue[200],
+                        color: Colors.blue[300],
                         child: Text(
                           "${widget.selectedFruit.name}の主要な産地はどこでしょうか？",
                           style: TextStyle(
-                            fontFamily: SubFont,
+                            fontFamily: ThirdFont,
                             fontSize: 25.0,
+                            color: Colors.white
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -174,11 +175,12 @@ class _DetailPageState extends State<DetailPage> {
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
                         nip: BubbleNip.rightCenter,
-                        color: Colors.blue[200],
+                        color: Colors.blue[300],
                         child: Text("${widget.selectedFruit.name}の旬の時期はいつですか？",
                             style: TextStyle(
-                              fontFamily: SubFont,
+                              fontFamily: ThirdFont,
                               fontSize: 25.0,
+                              color: Colors.white,
                             ),
                             textAlign: TextAlign.center),
                       ),
@@ -219,12 +221,13 @@ class _DetailPageState extends State<DetailPage> {
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
                         nip: BubbleNip.rightCenter,
-                        color: Colors.blue[200],
+                        color: Colors.blue[300],
                         child:
                             Text("${widget.selectedFruit.name}の有名な品種は何でしょうか？",
                                 style: TextStyle(
-                                  fontFamily: SubFont,
+                                  fontFamily: ThirdFont,
                                   fontSize: 25.0,
+                                  color: Colors.white,
                                 ),
                                 textAlign: TextAlign.center),
                       ),
@@ -264,12 +267,13 @@ class _DetailPageState extends State<DetailPage> {
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
                         nip: BubbleNip.rightCenter,
-                        color: Colors.blue[200],
+                        color: Colors.blue[300],
                         child: Text(
                             "${widget.selectedFruit.name}には, どんな栄養素が詰まっているんですか？",
                             style: TextStyle(
-                              fontFamily: SubFont,
+                              fontFamily: ThirdFont,
                               fontSize: 25.0,
+                              color: Colors.white,
                             ),
                             textAlign: TextAlign.center),
                       ),
@@ -310,12 +314,13 @@ class _DetailPageState extends State<DetailPage> {
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
                         nip: BubbleNip.rightCenter,
-                        color: Colors.blue[200],
+                        color: Colors.blue[300],
                         child: Text(
                             " ${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
                             style: TextStyle(
-                              fontFamily: MainFont,
+                              fontFamily: ThirdFont,
                               fontSize: 25.0,
+                              color: Colors.white,
                             ),
                             textAlign: TextAlign.center),
                       ),
@@ -355,12 +360,13 @@ class _DetailPageState extends State<DetailPage> {
                       child: Bubble(
                         margin: BubbleEdges.only(top: 10),
                         nip: BubbleNip.rightCenter,
-                        color: Colors.blue[200],
+                        color: Colors.blue[300],
                         child: Text(
                           "美味しい${widget.selectedFruit.name}の見分け方は？",
                           style: TextStyle(
-                            fontFamily: MainFont,
+                            fontFamily: ThirdFont,
                             fontSize: 25.0,
+                            color: Colors.white,
                           ),
                           textAlign: TextAlign.center,
                         ),
