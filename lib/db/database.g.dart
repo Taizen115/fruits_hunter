@@ -35,6 +35,12 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
   late final GeneratedColumn<String> famousBreed = GeneratedColumn<String>(
       'famous_breed', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _seedlessVarietiesMeta =
+      const VerificationMeta('seedlessVarieties');
+  @override
+  late final GeneratedColumn<String> seedlessVarieties =
+      GeneratedColumn<String>('seedless_varieties', aliasedName, false,
+          type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _priceRangeMeta =
       const VerificationMeta('priceRange');
   @override
@@ -46,6 +52,12 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
   @override
   late final GeneratedColumn<String> nutrients = GeneratedColumn<String>(
       'nutrients', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _nutrientEfficacyMeta =
+      const VerificationMeta('nutrientEfficacy');
+  @override
+  late final GeneratedColumn<String> nutrientEfficacy = GeneratedColumn<String>(
+      'nutrient_efficacy', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _imageFileNameMeta =
       const VerificationMeta('imageFileName');
@@ -72,8 +84,10 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
         famousArea,
         season,
         famousBreed,
+        seedlessVarieties,
         priceRange,
         nutrients,
+        nutrientEfficacy,
         imageFileName,
         backgroundImage,
         distinguish
@@ -121,6 +135,14 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
     } else if (isInserting) {
       context.missing(_famousBreedMeta);
     }
+    if (data.containsKey('seedless_varieties')) {
+      context.handle(
+          _seedlessVarietiesMeta,
+          seedlessVarieties.isAcceptableOrUnknown(
+              data['seedless_varieties']!, _seedlessVarietiesMeta));
+    } else if (isInserting) {
+      context.missing(_seedlessVarietiesMeta);
+    }
     if (data.containsKey('price_range')) {
       context.handle(
           _priceRangeMeta,
@@ -134,6 +156,14 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
           nutrients.isAcceptableOrUnknown(data['nutrients']!, _nutrientsMeta));
     } else if (isInserting) {
       context.missing(_nutrientsMeta);
+    }
+    if (data.containsKey('nutrient_efficacy')) {
+      context.handle(
+          _nutrientEfficacyMeta,
+          nutrientEfficacy.isAcceptableOrUnknown(
+              data['nutrient_efficacy']!, _nutrientEfficacyMeta));
+    } else if (isInserting) {
+      context.missing(_nutrientEfficacyMeta);
     }
     if (data.containsKey('image_file_name')) {
       context.handle(
@@ -178,10 +208,14 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
           .read(DriftSqlType.string, data['${effectivePrefix}season'])!,
       famousBreed: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}famous_breed'])!,
+      seedlessVarieties: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}seedless_varieties'])!,
       priceRange: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}price_range'])!,
       nutrients: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}nutrients'])!,
+      nutrientEfficacy: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}nutrient_efficacy'])!,
       imageFileName: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}image_file_name'])!,
       backgroundImage: attachedDatabase.typeMapping.read(
@@ -203,8 +237,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
   final String famousArea;
   final String season;
   final String famousBreed;
+  final String seedlessVarieties;
   final String priceRange;
   final String nutrients;
+  final String nutrientEfficacy;
   final String imageFileName;
   final String backgroundImage;
   final String distinguish;
@@ -214,8 +250,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       required this.famousArea,
       required this.season,
       required this.famousBreed,
+      required this.seedlessVarieties,
       required this.priceRange,
       required this.nutrients,
+      required this.nutrientEfficacy,
       required this.imageFileName,
       required this.backgroundImage,
       required this.distinguish});
@@ -227,8 +265,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
     map['famous_area'] = Variable<String>(famousArea);
     map['season'] = Variable<String>(season);
     map['famous_breed'] = Variable<String>(famousBreed);
+    map['seedless_varieties'] = Variable<String>(seedlessVarieties);
     map['price_range'] = Variable<String>(priceRange);
     map['nutrients'] = Variable<String>(nutrients);
+    map['nutrient_efficacy'] = Variable<String>(nutrientEfficacy);
     map['image_file_name'] = Variable<String>(imageFileName);
     map['background_image'] = Variable<String>(backgroundImage);
     map['distinguish'] = Variable<String>(distinguish);
@@ -242,8 +282,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       famousArea: Value(famousArea),
       season: Value(season),
       famousBreed: Value(famousBreed),
+      seedlessVarieties: Value(seedlessVarieties),
       priceRange: Value(priceRange),
       nutrients: Value(nutrients),
+      nutrientEfficacy: Value(nutrientEfficacy),
       imageFileName: Value(imageFileName),
       backgroundImage: Value(backgroundImage),
       distinguish: Value(distinguish),
@@ -259,8 +301,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       famousArea: serializer.fromJson<String>(json['famousArea']),
       season: serializer.fromJson<String>(json['season']),
       famousBreed: serializer.fromJson<String>(json['famousBreed']),
+      seedlessVarieties: serializer.fromJson<String>(json['seedlessVarieties']),
       priceRange: serializer.fromJson<String>(json['priceRange']),
       nutrients: serializer.fromJson<String>(json['nutrients']),
+      nutrientEfficacy: serializer.fromJson<String>(json['nutrientEfficacy']),
       imageFileName: serializer.fromJson<String>(json['imageFileName']),
       backgroundImage: serializer.fromJson<String>(json['backgroundImage']),
       distinguish: serializer.fromJson<String>(json['distinguish']),
@@ -275,8 +319,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       'famousArea': serializer.toJson<String>(famousArea),
       'season': serializer.toJson<String>(season),
       'famousBreed': serializer.toJson<String>(famousBreed),
+      'seedlessVarieties': serializer.toJson<String>(seedlessVarieties),
       'priceRange': serializer.toJson<String>(priceRange),
       'nutrients': serializer.toJson<String>(nutrients),
+      'nutrientEfficacy': serializer.toJson<String>(nutrientEfficacy),
       'imageFileName': serializer.toJson<String>(imageFileName),
       'backgroundImage': serializer.toJson<String>(backgroundImage),
       'distinguish': serializer.toJson<String>(distinguish),
@@ -289,8 +335,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
           String? famousArea,
           String? season,
           String? famousBreed,
+          String? seedlessVarieties,
           String? priceRange,
           String? nutrients,
+          String? nutrientEfficacy,
           String? imageFileName,
           String? backgroundImage,
           String? distinguish}) =>
@@ -300,8 +348,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
         famousArea: famousArea ?? this.famousArea,
         season: season ?? this.season,
         famousBreed: famousBreed ?? this.famousBreed,
+        seedlessVarieties: seedlessVarieties ?? this.seedlessVarieties,
         priceRange: priceRange ?? this.priceRange,
         nutrients: nutrients ?? this.nutrients,
+        nutrientEfficacy: nutrientEfficacy ?? this.nutrientEfficacy,
         imageFileName: imageFileName ?? this.imageFileName,
         backgroundImage: backgroundImage ?? this.backgroundImage,
         distinguish: distinguish ?? this.distinguish,
@@ -314,8 +364,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
           ..write('famousArea: $famousArea, ')
           ..write('season: $season, ')
           ..write('famousBreed: $famousBreed, ')
+          ..write('seedlessVarieties: $seedlessVarieties, ')
           ..write('priceRange: $priceRange, ')
           ..write('nutrients: $nutrients, ')
+          ..write('nutrientEfficacy: $nutrientEfficacy, ')
           ..write('imageFileName: $imageFileName, ')
           ..write('backgroundImage: $backgroundImage, ')
           ..write('distinguish: $distinguish')
@@ -324,8 +376,19 @@ class Fruit extends DataClass implements Insertable<Fruit> {
   }
 
   @override
-  int get hashCode => Object.hash(id, name, famousArea, season, famousBreed,
-      priceRange, nutrients, imageFileName, backgroundImage, distinguish);
+  int get hashCode => Object.hash(
+      id,
+      name,
+      famousArea,
+      season,
+      famousBreed,
+      seedlessVarieties,
+      priceRange,
+      nutrients,
+      nutrientEfficacy,
+      imageFileName,
+      backgroundImage,
+      distinguish);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -335,8 +398,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
           other.famousArea == this.famousArea &&
           other.season == this.season &&
           other.famousBreed == this.famousBreed &&
+          other.seedlessVarieties == this.seedlessVarieties &&
           other.priceRange == this.priceRange &&
           other.nutrients == this.nutrients &&
+          other.nutrientEfficacy == this.nutrientEfficacy &&
           other.imageFileName == this.imageFileName &&
           other.backgroundImage == this.backgroundImage &&
           other.distinguish == this.distinguish);
@@ -348,8 +413,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
   final Value<String> famousArea;
   final Value<String> season;
   final Value<String> famousBreed;
+  final Value<String> seedlessVarieties;
   final Value<String> priceRange;
   final Value<String> nutrients;
+  final Value<String> nutrientEfficacy;
   final Value<String> imageFileName;
   final Value<String> backgroundImage;
   final Value<String> distinguish;
@@ -360,8 +427,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     this.famousArea = const Value.absent(),
     this.season = const Value.absent(),
     this.famousBreed = const Value.absent(),
+    this.seedlessVarieties = const Value.absent(),
     this.priceRange = const Value.absent(),
     this.nutrients = const Value.absent(),
+    this.nutrientEfficacy = const Value.absent(),
     this.imageFileName = const Value.absent(),
     this.backgroundImage = const Value.absent(),
     this.distinguish = const Value.absent(),
@@ -373,8 +442,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     required String famousArea,
     required String season,
     required String famousBreed,
+    required String seedlessVarieties,
     required String priceRange,
     required String nutrients,
+    required String nutrientEfficacy,
     required String imageFileName,
     required String backgroundImage,
     required String distinguish,
@@ -384,8 +455,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
         famousArea = Value(famousArea),
         season = Value(season),
         famousBreed = Value(famousBreed),
+        seedlessVarieties = Value(seedlessVarieties),
         priceRange = Value(priceRange),
         nutrients = Value(nutrients),
+        nutrientEfficacy = Value(nutrientEfficacy),
         imageFileName = Value(imageFileName),
         backgroundImage = Value(backgroundImage),
         distinguish = Value(distinguish);
@@ -395,8 +468,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     Expression<String>? famousArea,
     Expression<String>? season,
     Expression<String>? famousBreed,
+    Expression<String>? seedlessVarieties,
     Expression<String>? priceRange,
     Expression<String>? nutrients,
+    Expression<String>? nutrientEfficacy,
     Expression<String>? imageFileName,
     Expression<String>? backgroundImage,
     Expression<String>? distinguish,
@@ -408,8 +483,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
       if (famousArea != null) 'famous_area': famousArea,
       if (season != null) 'season': season,
       if (famousBreed != null) 'famous_breed': famousBreed,
+      if (seedlessVarieties != null) 'seedless_varieties': seedlessVarieties,
       if (priceRange != null) 'price_range': priceRange,
       if (nutrients != null) 'nutrients': nutrients,
+      if (nutrientEfficacy != null) 'nutrient_efficacy': nutrientEfficacy,
       if (imageFileName != null) 'image_file_name': imageFileName,
       if (backgroundImage != null) 'background_image': backgroundImage,
       if (distinguish != null) 'distinguish': distinguish,
@@ -423,8 +500,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
       Value<String>? famousArea,
       Value<String>? season,
       Value<String>? famousBreed,
+      Value<String>? seedlessVarieties,
       Value<String>? priceRange,
       Value<String>? nutrients,
+      Value<String>? nutrientEfficacy,
       Value<String>? imageFileName,
       Value<String>? backgroundImage,
       Value<String>? distinguish,
@@ -435,8 +514,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
       famousArea: famousArea ?? this.famousArea,
       season: season ?? this.season,
       famousBreed: famousBreed ?? this.famousBreed,
+      seedlessVarieties: seedlessVarieties ?? this.seedlessVarieties,
       priceRange: priceRange ?? this.priceRange,
       nutrients: nutrients ?? this.nutrients,
+      nutrientEfficacy: nutrientEfficacy ?? this.nutrientEfficacy,
       imageFileName: imageFileName ?? this.imageFileName,
       backgroundImage: backgroundImage ?? this.backgroundImage,
       distinguish: distinguish ?? this.distinguish,
@@ -462,11 +543,17 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     if (famousBreed.present) {
       map['famous_breed'] = Variable<String>(famousBreed.value);
     }
+    if (seedlessVarieties.present) {
+      map['seedless_varieties'] = Variable<String>(seedlessVarieties.value);
+    }
     if (priceRange.present) {
       map['price_range'] = Variable<String>(priceRange.value);
     }
     if (nutrients.present) {
       map['nutrients'] = Variable<String>(nutrients.value);
+    }
+    if (nutrientEfficacy.present) {
+      map['nutrient_efficacy'] = Variable<String>(nutrientEfficacy.value);
     }
     if (imageFileName.present) {
       map['image_file_name'] = Variable<String>(imageFileName.value);
@@ -491,8 +578,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
           ..write('famousArea: $famousArea, ')
           ..write('season: $season, ')
           ..write('famousBreed: $famousBreed, ')
+          ..write('seedlessVarieties: $seedlessVarieties, ')
           ..write('priceRange: $priceRange, ')
           ..write('nutrients: $nutrients, ')
+          ..write('nutrientEfficacy: $nutrientEfficacy, ')
           ..write('imageFileName: $imageFileName, ')
           ..write('backgroundImage: $backgroundImage, ')
           ..write('distinguish: $distinguish, ')

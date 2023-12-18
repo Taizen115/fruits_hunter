@@ -356,11 +356,11 @@ class _QuizPageState extends State<QuizPage> {
             Gap(150),
             Bubble(
               margin: BubbleEdges.only(top: 10),
-              color: Colors.white70,
+              color: Colors.blue,
               child: Text(
                 "答え : ${answer}",
                 style: TextStyle(
-                    fontFamily: SubFont, fontSize: 25.0, color: Colors.lightBlue),
+                    fontFamily: SubFont, fontSize: 25.0, color: Colors.white70),
               ),
             ),
             Gap(20),

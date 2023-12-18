@@ -61,7 +61,7 @@ class _MannersPageState extends State<MannersPage> {
                 onPressed: () => Navigator.of(context).pop(),
               ),
               title: Text(
-                "マナー",
+                "果物狩りの注意点",
                 style: TextStyle(
                   fontFamily: ThirdFont,
                   fontSize: 30.0,

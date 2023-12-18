@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruits_hunter/db/database.dart';
 import 'package:fruits_hunter/style/style.dart';
-import 'package:fruits_hunter/view/screens/pages/manners_page.dart';
-import 'package:fruits_hunter/view/screens/pages/link_page.dart';
+import 'package:fruits_hunter/view/screens/pages/belongings_page.dart';
 import 'package:fruits_hunter/view/screens/pages/list_page.dart';
+import 'package:fruits_hunter/view/screens/pages/manners_page.dart';
 import 'package:fruits_hunter/view/screens/pages/quiz_page.dart';
 import 'package:gap/gap.dart';
 
@@ -49,9 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.center,
                   child: Column(
                     children: [
-
                       Gap(50),
-
                       Text(
                         "Dear",
                         style: TextStyle(
@@ -59,7 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 50.0,
                             color: Colors.white70),
                       ),
-
                       Text(
                         "Fruit",
                         style: TextStyle(
@@ -67,7 +64,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 70.0,
                             color: Colors.white),
                       ),
-
                       Text(
                         "Picker",
                         style: TextStyle(
@@ -89,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Center(
             child: Text(
-              "どのような果物狩りの情報が\n必要でしょうか？ ",
+              "どのような果物狩りの手伝いが\n必要でしょうか？ ",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black87,
@@ -121,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goListPage(),
                 child: Text(
-                  "果物",
+                  "果物一覧",
                   style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                 )),
           ),
@@ -151,13 +147,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goLinkPage(),
+                onPressed: () => _goBelogingsPage(),
                 child: Text(
-                  "リンク集",
+                  "持ち物",
                   style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                 )),
           ),
-
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: ElevatedButton(
@@ -167,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goCautionPage(),
+                onPressed: () => _goMannersPage(),
                 child: Text(
                   "マナー",
                   style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
@@ -192,12 +187,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 )));
   }
 
-  _goLinkPage() {
+  _goBelogingsPage() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LinkPage()));
+        context, MaterialPageRoute(builder: (context) => BelongingsPage()));
   }
 
-  _goCautionPage() {
+  _goMannersPage() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => MannersPage()));
   }
