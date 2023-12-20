@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../db/database.dart';
@@ -21,7 +22,7 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScrollController ctr = ScrollController();
+    ItemScrollController ctr = ItemScrollController();
 
     final Map<String, String> detailItems = {
       "0": "1.他のアウトドアにはない果物狩りの魅力は?",
@@ -144,32 +145,33 @@ class _DetailPageState extends State<DetailPage> {
                       borderRadius: BorderRadius.circular(30),
                       child: Container(
                         color: Colors.white70,
-                        child: SizedBox(
-                          height: 500,
-                          child: ListView.builder(
-                            itemCount: detailItems.length,
-                            itemBuilder: (context, index) {
-                              return TextButton(
-                                //TODO detailAnswersに画面内で遷移
-                                onPressed: () {
-                                  ctr.animateTo(10 * 100,
-                                      duration: const Duration(milliseconds: 1000),
-                                      curve: Curves.bounceIn);
-                                },
-                                child: ListTile(
-                                  title: Text(
-                                      detailItems[index.toString()]!,
-                                      style: TextStyle(
-                                        fontSize: 20.0,
-                                        color: Colors.black87,
-                                      ),
-                                      textAlign: TextAlign.left,
+                        child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: detailItems.length,
+                          itemBuilder: (context, index) {
+                            return TextButton(
+                              //TODO detailAnswersに画面内で遷移
+                              onPressed: () {
+                                //ctr.jumpTo(index: index);
+                                ctr.scrollTo(
+                                  index: index,
+                                    duration: const Duration(milliseconds: 1000),
+                                    curve: Curves.bounceIn);
+                              },
+                              child: ListTile(
+                                title: Text(
+                                    detailItems[index.toString()]!,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      color: Colors.black87,
                                     ),
-                                ),
-                              );
-                            },
-                          ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
-                        ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                              ),
+                            );
+                          },
+                        ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
                       ),
                     ),
                     Gap(30),
@@ -179,49 +181,48 @@ class _DetailPageState extends State<DetailPage> {
                         color: Colors.white70,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: SizedBox(
-                            height: 500,
-                            child: ListView.builder(
-                              itemCount: detailItems.length,
-                              controller: ctr,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                  children: [
-                                    ListTile(
+                          child: ScrollablePositionedList.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: detailItems.length,
+                            itemScrollController: ctr,
+                            itemBuilder: (context, index) {
+                              return Column(
+                                crossAxisAlignment:
+                                    CrossAxisAlignment.stretch,
+                                children: [
+                                  ListTile(
+                                    title: Text(
+                                      detailQuestions[index.toString()]!,
+                                      style: TextStyle(
+                                          fontFamily: ThirdFont,
+                                          fontSize: 25.0,
+                                          color: Colors.black54),
+                                    ),
+                                  ),
+                                  Gap(10),
+                                  TextButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _isExpanded = !_isExpanded;
+                                      });
+                                    },
+                                    child: ListTile(
                                       title: Text(
-                                        detailQuestions[index.toString()]!,
+                                        detailAnswers[index.toString()]!,
+                                        overflow: _isExpanded
+                                            ? TextOverflow.visible
+                                            : TextOverflow.ellipsis,
                                         style: TextStyle(
-                                            fontFamily: ThirdFont,
                                             fontSize: 25.0,
-                                            color: Colors.black54),
+                                            color: Colors.black),
                                       ),
                                     ),
-                                    Gap(10),
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          _isExpanded = !_isExpanded;
-                                        });
-                                      },
-                                      child: ListTile(
-                                        title: Text(
-                                          detailAnswers[index.toString()]!,
-                                          overflow: _isExpanded
-                                              ? TextOverflow.visible
-                                              : TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                              fontSize: 25.0,
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                    ),
-                                    Gap(20),
-                                  ],
-                                );
-                              },
-                            ),
+                                  ),
+                                  Gap(20),
+                                ],
+                              );
+                            },
                           ),
                         ),
                       ),
