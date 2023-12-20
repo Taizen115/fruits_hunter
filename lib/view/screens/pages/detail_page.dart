@@ -32,8 +32,7 @@ class _DetailPageState extends State<DetailPage> {
       "5": "6.果物の含まれている主要な栄養素は？",
       "6": "7.その栄養素の効能は？",
       "7": "8.果物狩りの費用は？",
-      "8": "9.果物狩りの安い時期は？",
-      "9": "10.美味しい果物の見分け方は？",
+      "8": "9.美味しい果物の見分け方は？",
     };
 
     final Map<String, String> detailQuestions = {
@@ -45,8 +44,7 @@ class _DetailPageState extends State<DetailPage> {
       "5": "${widget.selectedFruit.name}には, どんな栄養素が含まれてるでしょうか？",
       "6": "${widget.selectedFruit.name}の栄養素には, どんな効能があるのでしょうか？",
       "7": "${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
-      "8": "${widget.selectedFruit.name}狩りの安い時期は, いつ頃でしょうか？",
-      "9": "美味しい${widget.selectedFruit.name}の見分け方は？",
+      "8": "美味しい${widget.selectedFruit.name}の見分け方は？",
     };
 
     final Map<String, String> detailAnswers = {
@@ -57,12 +55,11 @@ class _DetailPageState extends State<DetailPage> {
       "1": "2.${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
       "2": "3.大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
       "3": "4.${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
-      "4": "5.〇〇は, 種のない品種です.",
+      "4": "5.${widget.selectedFruit.seedlessVarieties}",
       "5": "6.栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
-      "6": "7.栄養素の効能は, 〇〇です.",
+      "6": "7.${widget.selectedFruit.nutrientEfficacy}",
       "7": "8.場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
-      "8": "9.${widget.selectedFruit.name}狩りの安い時期は,大体〇〇頃です.",
-      "9": "10.${widget.selectedFruit.distinguish}",
+      "8": "9.${widget.selectedFruit.distinguish}",
     };
 
     return SafeArea(
@@ -148,7 +145,7 @@ class _DetailPageState extends State<DetailPage> {
                       child: Container(
                         color: Colors.white70,
                         child: SizedBox(
-                          height: 700,
+                          height: 500,
                           child: ListView.builder(
                             itemCount: detailItems.length,
                             itemBuilder: (context, index) {
@@ -161,13 +158,13 @@ class _DetailPageState extends State<DetailPage> {
                                 },
                                 child: ListTile(
                                   title: Text(
-                                    detailItems[index.toString()]!,
-                                    style: TextStyle(
-                                      fontSize: 25.0,
-                                      color: Colors.black87,
+                                      detailItems[index.toString()]!,
+                                      style: TextStyle(
+                                        fontSize: 20.0,
+                                        color: Colors.black87,
+                                      ),
+                                      textAlign: TextAlign.left,
                                     ),
-                                    textAlign: TextAlign.left,
-                                  ),
                                 ),
                               );
                             },
@@ -239,85 +236,6 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
-  // Text(
-  //   detailItems["0"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
-  // Gap(10),
-  // Text(
-  //   detailItems["1"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
-  // Gap(10),
-  // Text(
-  //   detailItems["2"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
-  // Gap(10),
-  // Text(
-  //   detailItems["3"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
-  // Gap(10),
-  // Text(
-  //   detailItems["4"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
-  // Gap(10),
-  // Text(
-  //   detailItems["5"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
-  // Gap(10),
-  // Text(
-  //   detailItems["6"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
-  // Gap(10),
-  // Text(
-  //   detailItems["7"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
-  // Gap(10),
-  // Text(
-  //   detailItems["8"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
-  // Gap(10),
-  // Text(
-  //   detailItems["9"]!,
-  //   style: TextStyle(
-  //       fontSize: 25.0,
-  //       fontFamily: MainFont,
-  //       color: Colors.black),
-  // ),
 
   void _launchURL1() async {
     const url = 'https://www.google.co.jp/maps/';
