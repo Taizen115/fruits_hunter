@@ -8,6 +8,7 @@ import 'package:fruits_hunter/view/screens/pages/detail_page.dart';
 import '../../../db/database.dart';
 
 class ListPage extends StatefulWidget {
+
   @override
   State<ListPage> createState() => _ListPageState();
 }

@@ -130,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goQuizPage(context),
+                onPressed: () => _selectNumberOfQuiz(),
                 child: Text(
                   "クイズ",
                   style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
@@ -173,12 +173,78 @@ class _HomeScreenState extends State<HomeScreen> {
     ).animate().fade(delay: 3500.ms).scale().then(delay: 3000.ms);
   }
 
+  _selectNumberOfQuiz() {
+    return showDialog(
+        barrierDismissible: true,
+        context: context,
+        builder: (_) => AlertDialog(
+              title: Text(
+                "問題数",
+                style: TextStyle(fontFamily: ThirdFont, fontSize: 25.0),
+              ),
+              content: Text(
+                "何問解きますか？",
+                style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0),
+              ),
+              actions: [
+                TextButton(
+                  child: Text(
+                    "10問",
+                    style: TextStyle(
+                        fontFamily: ThirdFont,
+                        fontSize: 20.0,
+                        color: Colors.blueAccent),
+                  ),
+                  onPressed: () => _goQuizPage1(context),
+                ),
+                TextButton(
+                  child: Text(
+                    "20問",
+                    style: TextStyle(
+                        fontFamily: ThirdFont,
+                        fontSize: 20.0,
+                        color: Colors.greenAccent),
+                  ),
+                  onPressed: () => _goQuizPage2(context),
+                ),
+                TextButton(
+                  child: Text(
+                    "30問",
+                    style: TextStyle(
+                        fontFamily: ThirdFont,
+                        fontSize: 20.0,
+                        color: Colors.orangeAccent),
+                  ),
+                  onPressed: () => _goQuizPage3(context),
+                ),
+              ],
+            ));
+  }
+
   _goListPage() {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 
-  _goQuizPage(BuildContext context) {
+  _goQuizPage1(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => QuizPage(
+                  numberOfQuestions: 10,
+                )));
+  }
+
+  _goQuizPage2(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => QuizPage(
+                  numberOfQuestions: 20,
+                )));
+  }
+
+  _goQuizPage3(BuildContext context) {
     Navigator.push(
         context,
         MaterialPageRoute(

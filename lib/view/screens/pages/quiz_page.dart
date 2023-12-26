@@ -7,8 +7,7 @@ import 'package:fruits_hunter/main.dart';
 import 'package:gap/gap.dart';
 
 import '../../../style/style.dart';
-import '../home_screen.dart';
-import '../king_screen.dart';
+import '../grades_screen.dart';
 
 class QuizPage extends StatefulWidget {
   final numberOfQuestions;
@@ -394,21 +393,12 @@ class _QuizPageState extends State<QuizPage> {
                   ),
                   onPressed: () {
                     if (numberOfRemaining == 0) {
-                      if (numberOfHunt == 30) {
-                        Navigator.push(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => KingScreen(),
-                          ),
-                        );
-                      } else {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
-                          ),
-                        );
-                      }
+                              builder: (context) => GradesScreen(
+                                  numberOfHunt: numberOfHunt,
+                                  getRate: getRate)));
                     } else {
                       setFruits();
                     }
@@ -452,7 +442,7 @@ class _QuizPageState extends State<QuizPage> {
 
   _finishQuiz() {
     return showDialog(
-      barrierDismissible: false,
+        barrierDismissible: false,
         context: context,
         builder: (_) => AlertDialog(
               title: Text(
@@ -465,14 +455,22 @@ class _QuizPageState extends State<QuizPage> {
               ),
               actions: [
                 TextButton(
-                  child: Text("キャンセル",
-                    style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0, color: Colors.blueAccent),
+                  child: Text(
+                    "キャンセル",
+                    style: TextStyle(
+                        fontFamily: ThirdFont,
+                        fontSize: 20.0,
+                        color: Colors.blueAccent),
                   ),
                   onPressed: () => Navigator.pop(context),
                 ),
                 TextButton(
-                  child: Text("OK",
-                    style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0, color: Colors.blueAccent),
+                  child: Text(
+                    "OK",
+                    style: TextStyle(
+                        fontFamily: ThirdFont,
+                        fontSize: 20.0,
+                        color: Colors.blueAccent),
                   ),
                   onPressed: () {
                     Navigator.pop(context);

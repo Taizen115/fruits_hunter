@@ -49,10 +49,7 @@ class Questions extends Table {
 
   TextColumn get explanation => text()();
 
-  // BoolColumn get isCorrect => boolean().withDefault(Constant(false))();
-
 }
-
 
 LazyDatabase _openConnection(String dbPath) {
   return LazyDatabase(() async {
@@ -76,5 +73,4 @@ class MyDatabase extends _$MyDatabase {
   Future<List<Fruit>> get fruitsList => select(fruits).get();
 
   Future<List<Question>> get quizList => select(questions).get();
-
 }
