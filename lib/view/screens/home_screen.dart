@@ -195,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 20.0,
                         color: Colors.blueAccent),
                   ),
-                  onPressed: () => _goQuizPage1(context),
+                  onPressed: () => _goQuizPage(context, 10),
                 ),
                 TextButton(
                   child: Text(
@@ -205,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 20.0,
                         color: Colors.green),
                   ),
-                  onPressed: () => _goQuizPage2(context),
+                  onPressed: () => _goQuizPage(context, 20),
                 ),
                 TextButton(
                   child: Text(
@@ -215,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontSize: 20.0,
                         color: Colors.redAccent),
                   ),
-                  onPressed: () => _goQuizPage3(context),
+                  onPressed: () => _goQuizPage(context, 30),
                 ),
               ],
             ));
@@ -226,31 +226,16 @@ class _HomeScreenState extends State<HomeScreen> {
         context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 
-  _goQuizPage1(BuildContext context) {
+  _goQuizPage(BuildContext context, int numberOfQuestion) {
+    Navigator.pop(context);
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => QuizPage(
-                  numberOfQuestions: 10,
-                )));
-  }
-
-  _goQuizPage2(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => QuizPage(
-                  numberOfQuestions: 20,
-                )));
-  }
-
-  _goQuizPage3(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => QuizPage(
-                  numberOfQuestions: 30,
-                )));
+      context,
+      MaterialPageRoute(
+        builder: (context) => QuizPage(
+          numberOfQuestions: numberOfQuestion,
+        ),
+      ),
+    );
   }
 
   _goBelogingsPage() {

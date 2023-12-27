@@ -31,6 +31,14 @@ class Fruits extends Table {
 
   TextColumn get distinguish => text()();
 
+  BoolColumn get categorySpring => boolean().withDefault(Constant(false))();
+
+  BoolColumn get categorySummer => boolean().withDefault(Constant(false))();
+
+  BoolColumn get categoryAutumn => boolean().withDefault(Constant(false))();
+
+  BoolColumn get categoryWinter => boolean().withDefault(Constant(false))();
+
 }
 
 class Questions extends Table {
