@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/view/screens/home_screen.dart';
 import 'package:gap/gap.dart';
+
+import '../../style/style.dart';
 
 class GradesScreen extends StatelessWidget {
   final int numberOfHunt;
@@ -25,7 +26,7 @@ class GradesScreen extends StatelessWidget {
           child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/background/trees.png"),
+                  image: AssetImage("assets/background/fruits_table.png"),
                   fit: BoxFit.cover),
             ),
           ),
@@ -56,8 +57,9 @@ class GradesScreen extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
-                      child: Container(
-                        color: Colors.white70,
+                      child: Card(
+                        shadowColor: Colors.blue,
+                        elevation: 20.0,
                         child: Text(
                           "あなたの獲得した果物の数は, ${numberOfHunt}個です."
                           "\nまた, 獲得率は, ${getRate}%です."
@@ -67,18 +69,25 @@ class GradesScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Gap(20),
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Container(
-                          color: Colors.white70,
-                          child: Text(
-                            "果物の知識について, 少しお助け出来たでしょうか？"
-                            "\n今度は, 実際の果物狩りで, たくさん狩ってください。"
-                            "\n良い果物時間を！！！",
-                            style:
-                                TextStyle(fontSize: 30.0, color: Colors.black87),
+                    Gap(50),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Card(
+                        color: Colors.transparent,
+                        shadowColor: Colors.black54,
+                        child: RichText(
+                          text: TextSpan(
+                            text: "果物の知識について, 少しお助けできたでしょうか？",
+                            style: TextStyle(
+                                fontSize: 30.0, fontFamily:ThirdFont, color: Colors.white),
+
+                            children: [
+                              TextSpan(
+                                text: "\n今度は, 実際の果物狩りで, 楽しんでみてください.",
+                                style: TextStyle(
+                                    fontSize: 35.0, fontFamily: MainFont, color: Colors.white),
+                              ),
+                            ],
                           ),
                         ),
                       ),

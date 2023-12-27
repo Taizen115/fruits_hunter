@@ -3,12 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
 
 class BelongingsPage extends StatefulWidget {
-
   @override
   State<BelongingsPage> createState() => _BelongingsPageState();
 }
-
-
 
 class _BelongingsPageState extends State<BelongingsPage> {
   Map<String, bool> belongings = {
@@ -22,7 +19,6 @@ class _BelongingsPageState extends State<BelongingsPage> {
     'クーラーボックス': false,
     'お水': false,
   };
-
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +47,15 @@ class _BelongingsPageState extends State<BelongingsPage> {
                 backgroundColor: Colors.indigoAccent,
 
                 //TODO checkBoxを全て外す
-
-                onPressed: () => null
-                  ),
+                onPressed: () {
+                  belongings.forEach((key, value) {
+                    if (value == true) {
+                      belongings[key] = false;
+                    }
+                    setState(() {
+                    });
+                  });
+                }),
             backgroundColor: Colors.transparent,
             appBar: AppBar(
               backgroundColor: Colors.transparent,

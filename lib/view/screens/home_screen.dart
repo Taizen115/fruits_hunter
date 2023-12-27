@@ -203,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(
                         fontFamily: ThirdFont,
                         fontSize: 20.0,
-                        color: Colors.greenAccent),
+                        color: Colors.green),
                   ),
                   onPressed: () => _goQuizPage2(context),
                 ),
@@ -213,7 +213,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(
                         fontFamily: ThirdFont,
                         fontSize: 20.0,
-                        color: Colors.orangeAccent),
+                        color: Colors.redAccent),
                   ),
                   onPressed: () => _goQuizPage3(context),
                 ),

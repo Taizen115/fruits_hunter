@@ -154,6 +154,7 @@ class _DetailPageState extends State<DetailPage> {
                                 fontFamily: SubFont,
                                 fontSize: 20.0,
                                 color: Colors.black,
+                                fontWeight: FontWeight.bold
                               ),
                               textAlign: TextAlign.left,
                             ),
