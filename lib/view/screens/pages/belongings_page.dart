@@ -76,14 +76,15 @@ class _BelongingsPageState extends State<BelongingsPage> {
             body: ListView(
               children: belongings.keys.map((String key) {
                 return CheckboxListTile(
-                  side: BorderSide(color: Colors.indigoAccent, width: 2),
+                  side: BorderSide(color: Colors.black54, width: 2),
                   contentPadding: EdgeInsets.symmetric(horizontal: 10),
                   title: Text(
                     key,
                     style: TextStyle(
                       fontFamily: SubFont,
                       fontSize: 20.0,
-                      color: Colors.indigo,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.bold,
                       decoration: belongings[key] ?? false
                           ? TextDecoration.lineThrough
                           : TextDecoration.none,

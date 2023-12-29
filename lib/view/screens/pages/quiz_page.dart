@@ -447,18 +447,17 @@ class _QuizPageState extends State<QuizPage> {
         builder: (_) => AlertDialog(
               title: Text(
                 "クイズの終了",
-                style: TextStyle(fontFamily: ThirdFont, fontSize: 25.0),
+                style: TextStyle(fontSize: 25.0),
               ),
               content: Text(
                 "クイズを終了してもよろしいでしょうか？",
-                style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0),
+                style: TextStyle(fontSize: 20.0),
               ),
               actions: [
                 TextButton(
                   child: Text(
                     "キャンセル",
                     style: TextStyle(
-                        fontFamily: ThirdFont,
                         fontSize: 20.0,
                         color: Colors.blueAccent),
                   ),
@@ -468,7 +467,6 @@ class _QuizPageState extends State<QuizPage> {
                   child: Text(
                     "OK",
                     style: TextStyle(
-                        fontFamily: ThirdFont,
                         fontSize: 20.0,
                         color: Colors.blueAccent),
                   ),

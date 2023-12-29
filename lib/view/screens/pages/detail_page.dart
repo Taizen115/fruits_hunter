@@ -35,12 +35,12 @@ class _DetailPageState extends State<DetailPage> {
       "0": "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
       "1": "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
       "2": "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
-      "3": "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
-      "4": "5.${widget.selectedFruit.name}の種のない品種はどれですか？",
-      "5": "6.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
-      "6": "7.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
-      "7": "8.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
-      "8": "9.美味しい${widget.selectedFruit.name}の見分け方は？",
+      "3": "4-1.${widget.selectedFruit.name}の有名な品種は何ですか？",
+      "4": "4-2.${widget.selectedFruit.name}の種のない品種はどれですか？",
+      "5": "5-1.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
+      "6": "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
+      "7": "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
+      "8": "7.美味しい${widget.selectedFruit.name}の見分け方は？",
     };
 
     final Map<String, String> detailAnswers = {
@@ -100,42 +100,21 @@ class _DetailPageState extends State<DetailPage> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Row(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: Container(
-                              color: Colors.blue,
-                              child: TextButton(
-                                onPressed: _launchURL1,
-                                child: Text("・果物狩りへ　\n ( Google map )",
-                                    style: TextStyle(
-                                        fontFamily: MainFont,
-                                        fontSize: 20.0,
-                                        color: Colors.white70,
-                                        fontWeight: FontWeight.bold),
-                                    textAlign: TextAlign.center),
-                              ),
-                            ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Container(
+                          color: Colors.blue,
+                          child: TextButton(
+                            onPressed: _launchURL1,
+                            child: Text("・果物狩りへ　\n ( Google map )",
+                                style: TextStyle(
+                                    fontFamily: MainFont,
+                                    fontSize: 20.0,
+                                    color: Colors.white70,
+                                    fontWeight: FontWeight.bold),
+                                textAlign: TextAlign.center),
                           ),
-                          Gap(10),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: Container(
-                              color: Colors.indigo,
-                              child: TextButton(
-                                onPressed: _launchURL2,
-                                child: Text("・体験談 \n ( VELTRA ) ",
-                                    style: TextStyle(
-                                        fontFamily: MainFont,
-                                        fontSize: 15.0,
-                                        color: Colors.white70,
-                                        fontWeight: FontWeight.bold),
-                                    textAlign: TextAlign.center),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                     Gap(20),
@@ -186,15 +165,6 @@ class _DetailPageState extends State<DetailPage> {
 
   void _launchURL1() async {
     const url = 'https://www.google.co.jp/maps/';
-    final uri = Uri.parse(url);
-    if (!(await launchUrl(uri))) {
-      throw 'Could not launch $url';
-    }
-  }
-
-  void _launchURL2() async {
-    const url =
-        'https://www.veltra.com/jp/japan/ctg/168763:%E3%83%95%E3%83%AB%E3%83%BC%E3%83%84%E7%8B%A9%E3%82%8A/reviews/';
     final uri = Uri.parse(url);
     if (!(await launchUrl(uri))) {
       throw 'Could not launch $url';

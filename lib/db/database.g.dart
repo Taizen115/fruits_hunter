@@ -77,6 +77,46 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
   late final GeneratedColumn<String> distinguish = GeneratedColumn<String>(
       'distinguish', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _typeSpringMeta =
+      const VerificationMeta('typeSpring');
+  @override
+  late final GeneratedColumn<bool> typeSpring = GeneratedColumn<bool>(
+      'type_spring', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("type_spring" IN (0, 1))'),
+      defaultValue: Constant(false));
+  static const VerificationMeta _typeSummerMeta =
+      const VerificationMeta('typeSummer');
+  @override
+  late final GeneratedColumn<bool> typeSummer = GeneratedColumn<bool>(
+      'type_summer', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("type_summer" IN (0, 1))'),
+      defaultValue: Constant(false));
+  static const VerificationMeta _typeAutumnMeta =
+      const VerificationMeta('typeAutumn');
+  @override
+  late final GeneratedColumn<bool> typeAutumn = GeneratedColumn<bool>(
+      'type_autumn', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("type_autumn" IN (0, 1))'),
+      defaultValue: Constant(false));
+  static const VerificationMeta _typeWinterMeta =
+      const VerificationMeta('typeWinter');
+  @override
+  late final GeneratedColumn<bool> typeWinter = GeneratedColumn<bool>(
+      'type_winter', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("type_winter" IN (0, 1))'),
+      defaultValue: Constant(false));
   @override
   List<GeneratedColumn> get $columns => [
         id,
@@ -90,7 +130,11 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
         nutrientEfficacy,
         imageFileName,
         backgroundImage,
-        distinguish
+        distinguish,
+        typeSpring,
+        typeSummer,
+        typeAutumn,
+        typeWinter
       ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -189,6 +233,30 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
     } else if (isInserting) {
       context.missing(_distinguishMeta);
     }
+    if (data.containsKey('type_spring')) {
+      context.handle(
+          _typeSpringMeta,
+          typeSpring.isAcceptableOrUnknown(
+              data['type_spring']!, _typeSpringMeta));
+    }
+    if (data.containsKey('type_summer')) {
+      context.handle(
+          _typeSummerMeta,
+          typeSummer.isAcceptableOrUnknown(
+              data['type_summer']!, _typeSummerMeta));
+    }
+    if (data.containsKey('type_autumn')) {
+      context.handle(
+          _typeAutumnMeta,
+          typeAutumn.isAcceptableOrUnknown(
+              data['type_autumn']!, _typeAutumnMeta));
+    }
+    if (data.containsKey('type_winter')) {
+      context.handle(
+          _typeWinterMeta,
+          typeWinter.isAcceptableOrUnknown(
+              data['type_winter']!, _typeWinterMeta));
+    }
     return context;
   }
 
@@ -222,6 +290,14 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
           DriftSqlType.string, data['${effectivePrefix}background_image'])!,
       distinguish: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}distinguish'])!,
+      typeSpring: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}type_spring'])!,
+      typeSummer: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}type_summer'])!,
+      typeAutumn: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}type_autumn'])!,
+      typeWinter: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}type_winter'])!,
     );
   }
 
@@ -244,6 +320,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
   final String imageFileName;
   final String backgroundImage;
   final String distinguish;
+  final bool typeSpring;
+  final bool typeSummer;
+  final bool typeAutumn;
+  final bool typeWinter;
   const Fruit(
       {required this.id,
       required this.name,
@@ -256,7 +336,11 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       required this.nutrientEfficacy,
       required this.imageFileName,
       required this.backgroundImage,
-      required this.distinguish});
+      required this.distinguish,
+      required this.typeSpring,
+      required this.typeSummer,
+      required this.typeAutumn,
+      required this.typeWinter});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -272,6 +356,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
     map['image_file_name'] = Variable<String>(imageFileName);
     map['background_image'] = Variable<String>(backgroundImage);
     map['distinguish'] = Variable<String>(distinguish);
+    map['type_spring'] = Variable<bool>(typeSpring);
+    map['type_summer'] = Variable<bool>(typeSummer);
+    map['type_autumn'] = Variable<bool>(typeAutumn);
+    map['type_winter'] = Variable<bool>(typeWinter);
     return map;
   }
 
@@ -289,6 +377,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       imageFileName: Value(imageFileName),
       backgroundImage: Value(backgroundImage),
       distinguish: Value(distinguish),
+      typeSpring: Value(typeSpring),
+      typeSummer: Value(typeSummer),
+      typeAutumn: Value(typeAutumn),
+      typeWinter: Value(typeWinter),
     );
   }
 
@@ -308,6 +400,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       imageFileName: serializer.fromJson<String>(json['imageFileName']),
       backgroundImage: serializer.fromJson<String>(json['backgroundImage']),
       distinguish: serializer.fromJson<String>(json['distinguish']),
+      typeSpring: serializer.fromJson<bool>(json['typeSpring']),
+      typeSummer: serializer.fromJson<bool>(json['typeSummer']),
+      typeAutumn: serializer.fromJson<bool>(json['typeAutumn']),
+      typeWinter: serializer.fromJson<bool>(json['typeWinter']),
     );
   }
   @override
@@ -326,6 +422,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       'imageFileName': serializer.toJson<String>(imageFileName),
       'backgroundImage': serializer.toJson<String>(backgroundImage),
       'distinguish': serializer.toJson<String>(distinguish),
+      'typeSpring': serializer.toJson<bool>(typeSpring),
+      'typeSummer': serializer.toJson<bool>(typeSummer),
+      'typeAutumn': serializer.toJson<bool>(typeAutumn),
+      'typeWinter': serializer.toJson<bool>(typeWinter),
     };
   }
 
@@ -341,7 +441,11 @@ class Fruit extends DataClass implements Insertable<Fruit> {
           String? nutrientEfficacy,
           String? imageFileName,
           String? backgroundImage,
-          String? distinguish}) =>
+          String? distinguish,
+          bool? typeSpring,
+          bool? typeSummer,
+          bool? typeAutumn,
+          bool? typeWinter}) =>
       Fruit(
         id: id ?? this.id,
         name: name ?? this.name,
@@ -355,6 +459,10 @@ class Fruit extends DataClass implements Insertable<Fruit> {
         imageFileName: imageFileName ?? this.imageFileName,
         backgroundImage: backgroundImage ?? this.backgroundImage,
         distinguish: distinguish ?? this.distinguish,
+        typeSpring: typeSpring ?? this.typeSpring,
+        typeSummer: typeSummer ?? this.typeSummer,
+        typeAutumn: typeAutumn ?? this.typeAutumn,
+        typeWinter: typeWinter ?? this.typeWinter,
       );
   @override
   String toString() {
@@ -370,7 +478,11 @@ class Fruit extends DataClass implements Insertable<Fruit> {
           ..write('nutrientEfficacy: $nutrientEfficacy, ')
           ..write('imageFileName: $imageFileName, ')
           ..write('backgroundImage: $backgroundImage, ')
-          ..write('distinguish: $distinguish')
+          ..write('distinguish: $distinguish, ')
+          ..write('typeSpring: $typeSpring, ')
+          ..write('typeSummer: $typeSummer, ')
+          ..write('typeAutumn: $typeAutumn, ')
+          ..write('typeWinter: $typeWinter')
           ..write(')'))
         .toString();
   }
@@ -388,7 +500,11 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       nutrientEfficacy,
       imageFileName,
       backgroundImage,
-      distinguish);
+      distinguish,
+      typeSpring,
+      typeSummer,
+      typeAutumn,
+      typeWinter);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -404,7 +520,11 @@ class Fruit extends DataClass implements Insertable<Fruit> {
           other.nutrientEfficacy == this.nutrientEfficacy &&
           other.imageFileName == this.imageFileName &&
           other.backgroundImage == this.backgroundImage &&
-          other.distinguish == this.distinguish);
+          other.distinguish == this.distinguish &&
+          other.typeSpring == this.typeSpring &&
+          other.typeSummer == this.typeSummer &&
+          other.typeAutumn == this.typeAutumn &&
+          other.typeWinter == this.typeWinter);
 }
 
 class FruitsCompanion extends UpdateCompanion<Fruit> {
@@ -420,6 +540,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
   final Value<String> imageFileName;
   final Value<String> backgroundImage;
   final Value<String> distinguish;
+  final Value<bool> typeSpring;
+  final Value<bool> typeSummer;
+  final Value<bool> typeAutumn;
+  final Value<bool> typeWinter;
   final Value<int> rowid;
   const FruitsCompanion({
     this.id = const Value.absent(),
@@ -434,6 +558,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     this.imageFileName = const Value.absent(),
     this.backgroundImage = const Value.absent(),
     this.distinguish = const Value.absent(),
+    this.typeSpring = const Value.absent(),
+    this.typeSummer = const Value.absent(),
+    this.typeAutumn = const Value.absent(),
+    this.typeWinter = const Value.absent(),
     this.rowid = const Value.absent(),
   });
   FruitsCompanion.insert({
@@ -449,6 +577,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     required String imageFileName,
     required String backgroundImage,
     required String distinguish,
+    this.typeSpring = const Value.absent(),
+    this.typeSummer = const Value.absent(),
+    this.typeAutumn = const Value.absent(),
+    this.typeWinter = const Value.absent(),
     this.rowid = const Value.absent(),
   })  : id = Value(id),
         name = Value(name),
@@ -475,6 +607,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     Expression<String>? imageFileName,
     Expression<String>? backgroundImage,
     Expression<String>? distinguish,
+    Expression<bool>? typeSpring,
+    Expression<bool>? typeSummer,
+    Expression<bool>? typeAutumn,
+    Expression<bool>? typeWinter,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
@@ -490,6 +626,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
       if (imageFileName != null) 'image_file_name': imageFileName,
       if (backgroundImage != null) 'background_image': backgroundImage,
       if (distinguish != null) 'distinguish': distinguish,
+      if (typeSpring != null) 'type_spring': typeSpring,
+      if (typeSummer != null) 'type_summer': typeSummer,
+      if (typeAutumn != null) 'type_autumn': typeAutumn,
+      if (typeWinter != null) 'type_winter': typeWinter,
       if (rowid != null) 'rowid': rowid,
     });
   }
@@ -507,6 +647,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
       Value<String>? imageFileName,
       Value<String>? backgroundImage,
       Value<String>? distinguish,
+      Value<bool>? typeSpring,
+      Value<bool>? typeSummer,
+      Value<bool>? typeAutumn,
+      Value<bool>? typeWinter,
       Value<int>? rowid}) {
     return FruitsCompanion(
       id: id ?? this.id,
@@ -521,6 +665,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
       imageFileName: imageFileName ?? this.imageFileName,
       backgroundImage: backgroundImage ?? this.backgroundImage,
       distinguish: distinguish ?? this.distinguish,
+      typeSpring: typeSpring ?? this.typeSpring,
+      typeSummer: typeSummer ?? this.typeSummer,
+      typeAutumn: typeAutumn ?? this.typeAutumn,
+      typeWinter: typeWinter ?? this.typeWinter,
       rowid: rowid ?? this.rowid,
     );
   }
@@ -564,6 +712,18 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     if (distinguish.present) {
       map['distinguish'] = Variable<String>(distinguish.value);
     }
+    if (typeSpring.present) {
+      map['type_spring'] = Variable<bool>(typeSpring.value);
+    }
+    if (typeSummer.present) {
+      map['type_summer'] = Variable<bool>(typeSummer.value);
+    }
+    if (typeAutumn.present) {
+      map['type_autumn'] = Variable<bool>(typeAutumn.value);
+    }
+    if (typeWinter.present) {
+      map['type_winter'] = Variable<bool>(typeWinter.value);
+    }
     if (rowid.present) {
       map['rowid'] = Variable<int>(rowid.value);
     }
@@ -585,6 +745,10 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
           ..write('imageFileName: $imageFileName, ')
           ..write('backgroundImage: $backgroundImage, ')
           ..write('distinguish: $distinguish, ')
+          ..write('typeSpring: $typeSpring, ')
+          ..write('typeSummer: $typeSummer, ')
+          ..write('typeAutumn: $typeAutumn, ')
+          ..write('typeWinter: $typeWinter, ')
           ..write('rowid: $rowid')
           ..write(')'))
         .toString();

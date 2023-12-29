@@ -180,42 +180,39 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (_) => AlertDialog(
               title: Text(
                 "問題数",
-                style: TextStyle(fontFamily: ThirdFont, fontSize: 25.0),
+                style: TextStyle(fontSize: 25.0),
               ),
               content: Text(
                 "何問解きますか？",
-                style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0),
+                style: TextStyle(fontSize: 20.0),
               ),
               actions: [
                 TextButton(
                   child: Text(
                     "10問",
                     style: TextStyle(
-                        fontFamily: ThirdFont,
                         fontSize: 20.0,
                         color: Colors.blueAccent),
                   ),
-                  onPressed: () => _goQuizPage1(context),
+                  onPressed: () => _goQuizPage(context, 10),
                 ),
                 TextButton(
                   child: Text(
                     "20問",
                     style: TextStyle(
-                        fontFamily: ThirdFont,
                         fontSize: 20.0,
                         color: Colors.green),
                   ),
-                  onPressed: () => _goQuizPage2(context),
+                  onPressed: () => _goQuizPage(context, 20),
                 ),
                 TextButton(
                   child: Text(
                     "30問",
                     style: TextStyle(
-                        fontFamily: ThirdFont,
                         fontSize: 20.0,
                         color: Colors.redAccent),
                   ),
-                  onPressed: () => _goQuizPage3(context),
+                  onPressed: () => _goQuizPage(context, 30),
                 ),
               ],
             ));
@@ -226,30 +223,12 @@ class _HomeScreenState extends State<HomeScreen> {
         context, MaterialPageRoute(builder: (context) => ListPage()));
   }
 
-  _goQuizPage1(BuildContext context) {
+  _goQuizPage(BuildContext context, int numberOfQuestion) {
+    Navigator.pop(context);
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => QuizPage(
-                  numberOfQuestions: 10,
-                )));
-  }
-
-  _goQuizPage2(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => QuizPage(
-                  numberOfQuestions: 20,
-                )));
-  }
-
-  _goQuizPage3(BuildContext context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => QuizPage(
-                  numberOfQuestions: 30,
+            builder: (context) => QuizPage(numberOfQuestions: numberOfQuestion,
                 )));
   }
 

@@ -31,6 +31,14 @@ class Fruits extends Table {
 
   TextColumn get distinguish => text()();
 
+  BoolColumn get typeSpring => boolean().withDefault(Constant(false))();
+
+  BoolColumn get typeSummer => boolean().withDefault(Constant(false))();
+
+  BoolColumn get typeAutumn => boolean().withDefault(Constant(false))();
+
+  BoolColumn get typeWinter => boolean().withDefault(Constant(false))();
+
 }
 
 class Questions extends Table {
@@ -71,6 +79,24 @@ class MyDatabase extends _$MyDatabase {
   int get schemaVersion => 1;
 
   Future<List<Fruit>> get fruitsList => select(fruits).get();
+
+  //TODO 春夏秋冬で分類して呼び出す
+  Future<List<Fruit>> get  fruitsSpring =>
+      (select(fruits)
+        ..where((table) => table.typeSpring.equals(true))).get();
+
+  Future<List<Fruit>> get fruitsSummer =>
+      (select(fruits)
+        ..where((table) => table.typeSummer.equals(true))).get();
+
+  Future<List<Fruit>> get fruitsAutumn =>
+      (select(fruits)
+        ..where((table) => table.typeAutumn.equals(true))).get();
+
+  Future<List<Fruit>> get  fruitsWinter =>
+      (select(fruits)
+        ..where((table) => table.typeWinter.equals(true))).get();
+
 
   Future<List<Question>> get quizList => select(questions).get();
 }

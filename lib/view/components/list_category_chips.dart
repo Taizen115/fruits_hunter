@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hunter/data/list_category.dart';
 
 class ListCategoryChips extends StatefulWidget {
-  final ValueChanged onCategorySelected;
+  final ValueChanged<int> onCategorySelected;
 
 
   ListCategoryChips({required this.onCategorySelected});
@@ -19,14 +19,18 @@ class _ListCategoryChipsState extends State<ListCategoryChips> {
     return Wrap(
       spacing: 4.0,
       children: List.generate(categories.length, (int index) {
-        return ChoiceChip(
-          label: Text(categories[index].nameJp),
-          selected: value == index,
-          onSelected: (bool isSelected) {
-            setState(() {
-              value = isSelected ? index:0;
-            });
-          },
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ChoiceChip(
+            backgroundColor: Colors.blue[200],
+            label: Text(categories[index].nameJp, style: TextStyle(fontSize: 15.0, color: Colors.black54),),
+            selected: value == index,
+            onSelected: (bool isSelected) {
+              setState(() {
+                value = isSelected ? index:0;
+              });
+            },
+          ),
         );
       }).toList(),
     );

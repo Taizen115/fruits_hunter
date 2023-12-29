@@ -79,7 +79,7 @@ class GradesScreen extends StatelessWidget {
                           text: TextSpan(
                             text: "果物の知識について, 少しお助けできたでしょうか？",
                             style: TextStyle(
-                                fontSize: 30.0, fontFamily:ThirdFont, color: Colors.white),
+                                fontSize: 30.0, fontFamily:MainFont, color: Colors.white),
 
                             children: [
                               TextSpan(
