@@ -3,8 +3,9 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:map_launcher/map_launcher.dart';
 
+import 'package:geocoding/geocoding.dart' as geocoding;
 import '../../../db/database.dart';
 
 class DetailPage extends StatefulWidget {
@@ -17,6 +18,9 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  Record? record;
+
+
   @override
   Widget build(BuildContext context) {
     // final Map<String, String> detailItems = {
@@ -35,9 +39,9 @@ class _DetailPageState extends State<DetailPage> {
       "0": "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
       "1": "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
       "2": "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
-      "3": "4-1.${widget.selectedFruit.name}の有名な品種は何ですか？",
+      "3": "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
       "4": "4-2.${widget.selectedFruit.name}の種のない品種はどれですか？",
-      "5": "5-1.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
+      "5": "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
       "6": "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
       "7": "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
       "8": "7.美味しい${widget.selectedFruit.name}の見分け方は？",
@@ -81,6 +85,13 @@ class _DetailPageState extends State<DetailPage> {
               backgroundColor: Colors.lightBlue,
               foregroundColor: Colors.white,
               centerTitle: true,
+              // actions: [
+              //
+              //   //TODO instagram で共有
+              //   IconButton(
+              //       onPressed: null,
+              //       icon: FaIcon(FontAwesomeIcons.instagram, color: Colors.black,))
+              // ],
               leading: TextButton(
                 child: Icon(
                   FontAwesomeIcons.arrowLeft,
@@ -105,7 +116,7 @@ class _DetailPageState extends State<DetailPage> {
                         child: Container(
                           color: Colors.blue,
                           child: TextButton(
-                            onPressed: _launchURL1,
+                            onPressed: () => _goMapPage(context),
                             child: Text("・果物狩りへ　\n ( Google map )",
                                 style: TextStyle(
                                     fontFamily: MainFont,
@@ -118,40 +129,43 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ),
                     Gap(20),
-                    Container(
-                      color: Colors.white70,
-                      child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: detailQuestions.length,
-                        itemBuilder: (context, index) {
-                          return ExpansionTile(
-                            backgroundColor: Colors.blue[600],
-                            title: Text(
-                              detailQuestions[index.toString()]!,
-                              style: TextStyle(
-                                fontFamily: SubFont,
-                                fontSize: 20.0,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  detailAnswers[index.toString()]!,
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.left,
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: Container(
+                        color: Colors.white70,
+                        child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: detailQuestions.length,
+                          itemBuilder: (context, index) {
+                            return ExpansionTile(
+                              backgroundColor: Colors.blue[600],
+                              title: Text(
+                                detailQuestions[index.toString()]!,
+                                style: TextStyle(
+                                  fontFamily: SubFont,
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold
                                 ),
+                                textAlign: TextAlign.left,
                               ),
-                            ],
-                          );
-                        },
-                      ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    detailAnswers[index.toString()]!,
+                                    style: TextStyle(
+                                      fontSize: 25.0,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
+                      ),
                     ),
                   ],
                 ),
@@ -163,11 +177,27 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
-  void _launchURL1() async {
-    const url = 'https://www.google.co.jp/maps/';
-    final uri = Uri.parse(url);
-    if (!(await launchUrl(uri))) {
-      throw 'Could not launch $url';
-    }
+  _goMapPage(BuildContext context) async {
+    if (record == null) return;
+    //geocoding: 住所から緯度経度持ってこれるか？
+    final locations = await geocoding.locationFromAddress(
+      record!.address,
+    );
+    if (locations.isEmpty) return;
+    final selectedLocation = locations.first;
+
+    final availableMaps = await MapLauncher.installedMaps;
+    if (availableMaps.isEmpty) return;
+
+
+    //１．マーカーの表示
+    await availableMaps.first.showMarker(
+      coords: Coords(
+        selectedLocation.latitude,
+        selectedLocation.longitude,
+      ),
+      title: record!.restaurantName,
+    );
   }
+
 }
