@@ -59,6 +59,16 @@ class Questions extends Table {
 
 }
 
+class Records extends Table {
+
+  IntColumn get id => integer().autoIncrement()();
+
+  TextColumn get address => text()();
+
+  TextColumn get farmName => text()();
+
+}
+
 LazyDatabase _openConnection(String dbPath) {
   return LazyDatabase(() async {
     // put the database file, called db.sqlite here, into the documents folder
@@ -68,7 +78,7 @@ LazyDatabase _openConnection(String dbPath) {
   });
 }
 
-@DriftDatabase(tables: [Fruits, Questions])
+@DriftDatabase(tables: [Fruits, Questions, Records])
 class MyDatabase extends _$MyDatabase {
   final String dbPath;
 

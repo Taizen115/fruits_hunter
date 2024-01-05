@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
+import 'package:fruits_hunter/view/components/map_list.dart';
 import 'package:gap/gap.dart';
 import 'package:map_launcher/map_launcher.dart';
-
-import 'package:geocoding/geocoding.dart' as geocoding;
 import '../../../db/database.dart';
+import 'package:geocoding/geocoding.dart' as geocoding;
+
+
+
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -82,54 +85,64 @@ class _DetailPageState extends State<DetailPage> {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
-              backgroundColor: Colors.lightBlue,
+              backgroundColor: Colors.indigo,
               foregroundColor: Colors.white,
               centerTitle: true,
-              // actions: [
-              //
-              //   //TODO instagram で共有
-              //   IconButton(
-              //       onPressed: null,
-              //       icon: FaIcon(FontAwesomeIcons.instagram, color: Colors.black,))
-              // ],
               leading: TextButton(
                 child: Icon(
                   FontAwesomeIcons.arrowLeft,
-                  color: Colors.white70,
+                  color: Colors.white,
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              title: Text(
-                "${widget.selectedFruit.name}の詳細",
-                style: TextStyle(fontFamily: MainFont, fontSize: 30.0),
+              title:Row(
+                children:[
+                  ClipOval(child: Image.asset("assets/images/${widget.selectedFruit.imageFileName}", width: 50.0, height: 50.0,)),
+
+                  Gap(30),
+
+                  Text("${widget.selectedFruit.name}の詳細")
+                ]
               ),
             ),
             body: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30),
-                        child: Container(
-                          color: Colors.blue,
-                          child: TextButton(
-                            onPressed: () => _goMapPage(context),
-                            child: Text("・果物狩りへ　\n ( Google map )",
-                                style: TextStyle(
-                                    fontFamily: MainFont,
-                                    fontSize: 20.0,
-                                    color: Colors.white70,
-                                    fontWeight: FontWeight.bold),
-                                textAlign: TextAlign.center),
-                          ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: MapList(
+                        color: Color(0xff4169e1),
+                        farmName: record?.address??"map",
+                        height: 100,
+                          address:"住所"),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        color: Colors.blue,
+                        child: TextButton(
+                          onPressed: () => _goMapPage(context),
+                          child: Text("・果物狩りへ　\n ( Google map )",
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 20.0,
+                                  color: Colors.white70,
+                                  fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center),
                         ),
                       ),
                     ),
-                    Gap(20),
-                    ClipRRect(
+                  ),
+                  Gap(20),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       child: Container(
                         color: Colors.white70,
@@ -167,8 +180,8 @@ class _DetailPageState extends State<DetailPage> {
                         ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -196,7 +209,7 @@ class _DetailPageState extends State<DetailPage> {
         selectedLocation.latitude,
         selectedLocation.longitude,
       ),
-      title: record!.restaurantName,
+      title: record!.farmName,
     );
   }
 

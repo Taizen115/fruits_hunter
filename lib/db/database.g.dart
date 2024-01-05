@@ -1128,13 +1128,222 @@ class QuestionsCompanion extends UpdateCompanion<Question> {
   }
 }
 
+class $RecordsTable extends Records with TableInfo<$RecordsTable, Record> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $RecordsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _addressMeta =
+      const VerificationMeta('address');
+  @override
+  late final GeneratedColumn<String> address = GeneratedColumn<String>(
+      'address', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _farmNameMeta =
+      const VerificationMeta('farmName');
+  @override
+  late final GeneratedColumn<String> farmName = GeneratedColumn<String>(
+      'farm_name', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [id, address, farmName];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'records';
+  @override
+  VerificationContext validateIntegrity(Insertable<Record> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('address')) {
+      context.handle(_addressMeta,
+          address.isAcceptableOrUnknown(data['address']!, _addressMeta));
+    } else if (isInserting) {
+      context.missing(_addressMeta);
+    }
+    if (data.containsKey('farm_name')) {
+      context.handle(_farmNameMeta,
+          farmName.isAcceptableOrUnknown(data['farm_name']!, _farmNameMeta));
+    } else if (isInserting) {
+      context.missing(_farmNameMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  Record map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Record(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      address: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}address'])!,
+      farmName: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}farm_name'])!,
+    );
+  }
+
+  @override
+  $RecordsTable createAlias(String alias) {
+    return $RecordsTable(attachedDatabase, alias);
+  }
+}
+
+class Record extends DataClass implements Insertable<Record> {
+  final int id;
+  final String address;
+  final String farmName;
+  const Record(
+      {required this.id, required this.address, required this.farmName});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['address'] = Variable<String>(address);
+    map['farm_name'] = Variable<String>(farmName);
+    return map;
+  }
+
+  RecordsCompanion toCompanion(bool nullToAbsent) {
+    return RecordsCompanion(
+      id: Value(id),
+      address: Value(address),
+      farmName: Value(farmName),
+    );
+  }
+
+  factory Record.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Record(
+      id: serializer.fromJson<int>(json['id']),
+      address: serializer.fromJson<String>(json['address']),
+      farmName: serializer.fromJson<String>(json['farmName']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'address': serializer.toJson<String>(address),
+      'farmName': serializer.toJson<String>(farmName),
+    };
+  }
+
+  Record copyWith({int? id, String? address, String? farmName}) => Record(
+        id: id ?? this.id,
+        address: address ?? this.address,
+        farmName: farmName ?? this.farmName,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('Record(')
+          ..write('id: $id, ')
+          ..write('address: $address, ')
+          ..write('farmName: $farmName')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, address, farmName);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Record &&
+          other.id == this.id &&
+          other.address == this.address &&
+          other.farmName == this.farmName);
+}
+
+class RecordsCompanion extends UpdateCompanion<Record> {
+  final Value<int> id;
+  final Value<String> address;
+  final Value<String> farmName;
+  const RecordsCompanion({
+    this.id = const Value.absent(),
+    this.address = const Value.absent(),
+    this.farmName = const Value.absent(),
+  });
+  RecordsCompanion.insert({
+    this.id = const Value.absent(),
+    required String address,
+    required String farmName,
+  })  : address = Value(address),
+        farmName = Value(farmName);
+  static Insertable<Record> custom({
+    Expression<int>? id,
+    Expression<String>? address,
+    Expression<String>? farmName,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (address != null) 'address': address,
+      if (farmName != null) 'farm_name': farmName,
+    });
+  }
+
+  RecordsCompanion copyWith(
+      {Value<int>? id, Value<String>? address, Value<String>? farmName}) {
+    return RecordsCompanion(
+      id: id ?? this.id,
+      address: address ?? this.address,
+      farmName: farmName ?? this.farmName,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (address.present) {
+      map['address'] = Variable<String>(address.value);
+    }
+    if (farmName.present) {
+      map['farm_name'] = Variable<String>(farmName.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('RecordsCompanion(')
+          ..write('id: $id, ')
+          ..write('address: $address, ')
+          ..write('farmName: $farmName')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$MyDatabase extends GeneratedDatabase {
   _$MyDatabase(QueryExecutor e) : super(e);
   late final $FruitsTable fruits = $FruitsTable(this);
   late final $QuestionsTable questions = $QuestionsTable(this);
+  late final $RecordsTable records = $RecordsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [fruits, questions];
+  List<DatabaseSchemaEntity> get allSchemaEntities =>
+      [fruits, questions, records];
 }
