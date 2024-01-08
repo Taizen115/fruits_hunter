@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
+import 'package:gap/gap.dart';
 
 class BelongingsPage extends StatefulWidget {
   @override
@@ -68,38 +69,49 @@ class _BelongingsPageState extends State<BelongingsPage> {
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              title: Text(
-                "持ち物リスト",
-                style: TextStyle(fontFamily: ThirdFont, fontSize: 30.0),
+              title: Row(
+                children: [
+                  Image.asset("assets/images/belongings.png", width: 100.0,height: 80.0,),
+
+                  Gap(30),
+
+                  Text(
+                    "リスト",
+                    style: TextStyle(fontFamily: ThirdFont, fontSize: 25.0),
+                  ),
+                ],
               ),
             ),
-            body: ListView(
-              children: belongings.keys.map((String key) {
-                return CheckboxListTile(
-                  side: BorderSide(color: Colors.black54, width: 2),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                  title: Text(
-                    key,
-                    style: TextStyle(
-                      fontFamily: SubFont,
-                      fontSize: 20.0,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.bold,
-                      decoration: belongings[key] ?? false
-                          ? TextDecoration.lineThrough
-                          : TextDecoration.none,
+            body: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: ListView(
+                children: belongings.keys.map((String key) {
+                  return CheckboxListTile(
+                    side: BorderSide(color: Colors.black54, width: 2),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                    title: Text(
+                      key,
+                      style: TextStyle(
+                        fontFamily: SubFont,
+                        fontSize: 20.0,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.bold,
+                        decoration: belongings[key] ?? false
+                            ? TextDecoration.lineThrough
+                            : TextDecoration.none,
+                      ),
                     ),
-                  ),
-                  secondary: FaIcon(FontAwesomeIcons.appleWhole),
-                  controlAffinity: ListTileControlAffinity.platform,
-                  value: belongings[key],
-                  onChanged: (bool? value) {
-                    setState(() {
-                      belongings[key] = value!;
-                    });
-                  },
-                );
-              }).toList(),
+                    secondary: FaIcon(FontAwesomeIcons.appleWhole),
+                    controlAffinity: ListTileControlAffinity.platform,
+                    value: belongings[key],
+                    onChanged: (bool? value) {
+                      setState(() {
+                        belongings[key] = value!;
+                      });
+                    },
+                  );
+                }).toList(),
+              ),
             ),
           ),
         ),

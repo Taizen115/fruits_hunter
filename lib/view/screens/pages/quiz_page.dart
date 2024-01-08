@@ -75,12 +75,20 @@ class _QuizPageState extends State<QuizPage> {
             ),
             onPressed: () => _finishQuiz(),
           ),
-          title: Text(
-            "クイズ",
-            style: TextStyle(
-              fontFamily: MainFont,
-              fontSize: 30.0,
-            ),
+          title: Row(
+            children: [
+              Image.asset("assets/images/four_question.png", width: 100.0, height: 100.0,),
+
+              Gap(30),
+
+              Text(
+                "クイズ",
+                style: TextStyle(
+                  fontFamily: MainFont,
+                  fontSize: 25.0,
+                ),
+              ),
+            ],
           ),
         ),
         body: Stack(
@@ -206,11 +214,11 @@ class _QuizPageState extends State<QuizPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
-                    color: Colors.blue[200],
+                    color: Colors.red[300],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[0]),
                       child: Text(
-                        choices[0],
+                        "A : ${choices[0]}",
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -225,11 +233,11 @@ class _QuizPageState extends State<QuizPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
-                    color: Colors.green[200],
+                    color: Colors.blue[300],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[1]),
                       child: Text(
-                        choices[1],
+                        "B : ${choices[1]}",
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -248,11 +256,11 @@ class _QuizPageState extends State<QuizPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
-                    color: Colors.red[200],
+                    color: Colors.yellow[700],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[2]),
                       child: Text(
-                        choices[2],
+                        "C : ${choices[2]}",
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -267,11 +275,11 @@ class _QuizPageState extends State<QuizPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
-                    color: Colors.purple[200],
+                    color: Colors.green[300],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[3]),
                       child: Text(
-                        choices[3],
+                        "D : ${choices[3]}",
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,

@@ -9,8 +9,6 @@ import '../../../db/database.dart';
 import 'package:geocoding/geocoding.dart' as geocoding;
 
 
-
-
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
 
@@ -26,17 +24,6 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    // final Map<String, String> detailItems = {
-    //   "0": "1.他のアウトドアにはない果物狩りの魅力は?",
-    //   "1": "2.果物の主要な産地は?",
-    //   "2": "3.果物の旬の時期は？",
-    //   "3": "4.果物の主要な品種は？",
-    //   "4": "5.果物の種のない品種は? ",
-    //   "5": "6.果物の含まれている主要な栄養素は？",
-    //   "6": "7.その栄養素の効能は？",
-    //   "7": "8.果物狩りの費用は？",
-    //   "8": "9.美味しい果物の見分け方は？",
-    // };
 
     final Map<String, String> detailQuestions = {
       "0": "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
@@ -85,7 +72,7 @@ class _DetailPageState extends State<DetailPage> {
           child: Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(
-              backgroundColor: Colors.indigo,
+              backgroundColor: Colors.transparent,
               foregroundColor: Colors.white,
               centerTitle: true,
               leading: TextButton(
@@ -95,21 +82,24 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              title:Row(
-                children:[
-                  ClipOval(child: Image.asset("assets/images/${widget.selectedFruit.imageFileName}", width: 50.0, height: 50.0,)),
+              title:Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children:[
+                    ClipOval(child: Image.asset("assets/images/${widget.selectedFruit.imageFileName}", width: 60.0, height: 80.0,)),
 
-                  Gap(30),
+                    Gap(30),
 
-                  Text("${widget.selectedFruit.name}の詳細")
-                ]
+                    Text("${widget.selectedFruit.name}", style: TextStyle(fontSize: 25.0),)
+                  ]
+                ),
               ),
             ),
             body: SingleChildScrollView(
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       child: MapList(
@@ -141,7 +131,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                   Gap(20),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20.0),
                       child: Container(

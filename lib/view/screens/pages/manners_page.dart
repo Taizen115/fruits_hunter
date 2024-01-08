@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
-import 'package:gap/gap.dart';
 
 class MannersPage extends StatefulWidget {
   @override
@@ -34,94 +33,88 @@ class _MannersPageState extends State<MannersPage> {
           "お供のアイテムとして, 夏場は虫除けスプレー, 日焼け止め, タオル, クーラーボックスがあると良いと思われます. あと, 食べる時にウェットティッシュがあると, 尚良いです. ",
       "7": "農園の方に直接尋ねるのが良いと思われます. それぞれのルールを守って, 満足できる果物狩りを楽しんでください. "
     };
-
-    return Stack(
-      children: [
-        DecoratedBox(
-          position: DecorationPosition.foreground,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.white70, Colors.white12]),
+    return Scaffold(
+      backgroundColor: Colors.lightBlue,
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlue,
+        elevation: 0,
+        leading: TextButton(
+          child: Icon(
+            FontAwesomeIcons.arrowLeft,
+            color: Colors.white,
           ),
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/background/fruits_blue.png"),
-                  fit: BoxFit.cover),
-            ),
-          ),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        SafeArea(
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              foregroundColor: Colors.blue,
-              centerTitle: true,
-              leading: TextButton(
-                child: Icon(
-                  FontAwesomeIcons.arrowLeft,
-                  color: Colors.lightBlue,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Stack(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 100.0),
+                  height: 800.0,
+                  decoration: BoxDecoration(
+                    color: Colors.white70,
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
                 ),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-              title: Text(
-                "マナー",
-                style: TextStyle(
-                  fontFamily: ThirdFont,
-                  fontSize: 30.0,
-                ),
-              ),
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: SingleChildScrollView(
-                child: Column(
+                Column(
                   children: [
-                    Gap(20),
-                    Container(
-                      color: Colors.white70,
-                      child: ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: mannersQuestions.length,
-                        itemBuilder: (context, index) {
-                          return ExpansionTile(
-                            backgroundColor: Colors.blue[500],
-                            title: Text(
-                              mannersQuestions[index.toString()]!,
-                              style: TextStyle(
-                                fontFamily: SubFont,
-                                fontSize: 20.0,
-                                color: Colors.black87,
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  mannersAnswers[index.toString()]!,
-                                  style: TextStyle(
-                                    fontSize: 25.0,
-                                    color: Colors.white,
-                                  ),
-                                  textAlign: TextAlign.left,
+                    Text(
+                      "マナー",
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          fontFamily: ThirdFont,
+                          color: Colors.white),
+                    ),
+                    Center(
+                      child: Image.asset("assets/images/enjoy_picking.png"),
+                    ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30.0),
+                      child: Container(
+                        color: Colors.white70,
+                        child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: mannersQuestions.length,
+                          itemBuilder: (context, index) {
+                            return ExpansionTile(
+                              backgroundColor: Colors.blue[500],
+                              title: Text(
+                                mannersQuestions[index.toString()]!,
+                                style: TextStyle(
+                                  fontFamily: SubFont,
+                                  fontSize: 20.0,
+                                  color: Colors.black87,
                                 ),
+                                textAlign: TextAlign.left,
                               ),
-                            ],
-                          );
-                        },
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    mannersAnswers[index.toString()]!,
+                                    style: TextStyle(
+                                      fontSize: 25.0,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ],
-                ),
-              ),
-            ),
-          ),
+                )
+              ],
+            )
+          ],
         ),
-      ],
+      ),
     );
   }
 }
