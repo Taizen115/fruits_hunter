@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/db/database.dart';
 import 'package:fruits_hunter/main.dart';
+import 'package:fruits_hunter/view/screens/quit_screen.dart';
 import 'package:gap/gap.dart';
 
 import '../../../style/style.dart';
@@ -77,10 +78,12 @@ class _QuizPageState extends State<QuizPage> {
           ),
           title: Row(
             children: [
-              Image.asset("assets/images/four_question.png", width: 100.0, height: 100.0,),
-
+              Image.asset(
+                "assets/images/four_question.png",
+                width: 100.0,
+                height: 100.0,
+              ),
               Gap(30),
-
               Text(
                 "クイズ",
                 style: TextStyle(
@@ -116,6 +119,14 @@ class _QuizPageState extends State<QuizPage> {
 
                   //TODO 選択肢表示部分
                   _showChoices(),
+
+                  Gap(30),
+
+                  //TODO 中止ボタン
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Align(child: _quitButton(), alignment: Alignment.bottomRight,),
+                  ),
                 ],
               ),
             ),
@@ -218,7 +229,7 @@ class _QuizPageState extends State<QuizPage> {
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[0]),
                       child: Text(
-                        "A : ${choices[0]}",
+                        "A: ${choices[0]}",
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -237,7 +248,7 @@ class _QuizPageState extends State<QuizPage> {
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[1]),
                       child: Text(
-                        "B : ${choices[1]}",
+                        "B: ${choices[1]}",
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -260,7 +271,7 @@ class _QuizPageState extends State<QuizPage> {
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[2]),
                       child: Text(
-                        "C : ${choices[2]}",
+                        "C: ${choices[2]}",
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -279,7 +290,7 @@ class _QuizPageState extends State<QuizPage> {
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[3]),
                       child: Text(
-                        "D : ${choices[3]}",
+                        "D: ${choices[3]}",
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -292,6 +303,30 @@ class _QuizPageState extends State<QuizPage> {
             ],
           ),
         ],
+      );
+    } else {
+      return Container();
+    }
+  }
+
+  //TODO 中止ボタン
+  Widget _quitButton() {
+    if (isNextQuestioned) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(10.0),
+        child: Container(
+          color: Colors.grey,
+          child: TextButton(
+            child: Text(
+              "中止ボタン",
+              style: TextStyle(
+                fontSize: 15.0,
+                color: Colors.black87,
+              ),
+            ),
+            onPressed: () => _goQuitScreen(),
+          ),
+        ),
       );
     } else {
       return Container();
@@ -465,22 +500,58 @@ class _QuizPageState extends State<QuizPage> {
                 TextButton(
                   child: Text(
                     "キャンセル",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.blueAccent),
+                    style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
                   ),
                   onPressed: () => Navigator.pop(context),
                 ),
                 TextButton(
                   child: Text(
                     "OK",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.blueAccent),
+                    style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
                   ),
                   onPressed: () {
                     Navigator.pop(context);
                     Navigator.pop(context);
+                  },
+                ),
+              ],
+            ));
+  }
+
+  _goQuitScreen() {
+    return showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (_) => AlertDialog(
+              title: Text(
+                "クイズの中止",
+                style: TextStyle(fontSize: 25.0),
+              ),
+              content: Text(
+                "クイズを中止してもよろしいでしょうか？",
+                style: TextStyle(fontSize: 20.0),
+              ),
+              actions: [
+                TextButton(
+                  child: Text(
+                    "キャンセル",
+                    style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                ),
+                TextButton(
+                  child: Text(
+                    "OK",
+                    style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QuitScreen(
+                            numberOfHunt: numberOfHunt, getRate: getRate),
+                      ),
+                    );
                   },
                 ),
               ],

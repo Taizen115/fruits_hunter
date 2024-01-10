@@ -45,7 +45,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
           child: Scaffold(
             floatingActionButton: FloatingActionButton(
                 child: FaIcon(FontAwesomeIcons.eraser),
-                backgroundColor: Colors.indigoAccent,
+                backgroundColor: Colors.lightBlue,
 
                 //TODO checkBoxを全て外す
                 onPressed: () {
@@ -53,8 +53,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                     if (value == true) {
                       belongings[key] = false;
                     }
-                    setState(() {
-                    });
+                    setState(() {});
                   });
                 }),
             backgroundColor: Colors.transparent,
@@ -71,10 +70,12 @@ class _BelongingsPageState extends State<BelongingsPage> {
               ),
               title: Row(
                 children: [
-                  Image.asset("assets/images/belongings.png", width: 100.0,height: 80.0,),
-
+                  Image.asset(
+                    "assets/images/belongings.png",
+                    width: 100.0,
+                    height: 80.0,
+                  ),
                   Gap(30),
-
                   Text(
                     "リスト",
                     style: TextStyle(fontFamily: ThirdFont, fontSize: 25.0),
@@ -84,33 +85,41 @@ class _BelongingsPageState extends State<BelongingsPage> {
             ),
             body: Padding(
               padding: const EdgeInsets.all(15.0),
-              child: ListView(
-                children: belongings.keys.map((String key) {
-                  return CheckboxListTile(
-                    side: BorderSide(color: Colors.black54, width: 2),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                    title: Text(
-                      key,
-                      style: TextStyle(
-                        fontFamily: SubFont,
-                        fontSize: 20.0,
-                        color: Colors.black54,
-                        fontWeight: FontWeight.bold,
-                        decoration: belongings[key] ?? false
-                            ? TextDecoration.lineThrough
-                            : TextDecoration.none,
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black87),
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                child: ListView(
+                  // shrinkWrap: true,
+                  children: belongings.keys.map((String key) {
+                    return CheckboxListTile(
+                      activeColor:Colors.lightBlue,
+                      side: BorderSide(color: Colors.black54, width: 2),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                      title: Text(
+                        key,
+                        style: TextStyle(
+                          fontFamily: SubFont,
+                          fontSize: 20.0,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                          decoration: belongings[key] ?? false
+                              ? TextDecoration.lineThrough
+                              : TextDecoration.none,
+                        ),
                       ),
-                    ),
-                    secondary: FaIcon(FontAwesomeIcons.appleWhole),
-                    controlAffinity: ListTileControlAffinity.platform,
-                    value: belongings[key],
-                    onChanged: (bool? value) {
-                      setState(() {
-                        belongings[key] = value!;
-                      });
-                    },
-                  );
-                }).toList(),
+                      secondary: FaIcon(FontAwesomeIcons.appleWhole),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: belongings[key],
+                      onChanged: (bool? value) {
+                        setState(() {
+                          belongings[key] = value!;
+                        });
+                      },
+                    );
+                  }).toList(),
+                ),
               ),
             ),
           ),

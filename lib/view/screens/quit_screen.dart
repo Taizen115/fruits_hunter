@@ -3,11 +3,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/view/screens/home_screen.dart';
 import 'package:gap/gap.dart';
 
-class GradesScreen extends StatelessWidget {
+class QuitScreen extends StatelessWidget {
   final int numberOfHunt;
   final int getRate;
 
-  GradesScreen({required this.numberOfHunt, required this.getRate});
+  QuitScreen({required this.numberOfHunt, required this.getRate});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class GradesScreen extends StatelessWidget {
           child: Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/background/fruits_table.png"),
+                  image: AssetImage("assets/background/fertilizer.png"),
                   fit: BoxFit.cover),
             ),
           ),
@@ -60,10 +60,10 @@ class GradesScreen extends StatelessWidget {
                         elevation: 20.0,
                         child: Text(
                           "あなたの獲得した果物の数は, ${numberOfHunt}個です."
-                          "\nまた, 獲得率は, ${getRate}%です."
+                              "\nまた, 獲得率は, ${getRate}%です."
                           "\nお疲れさまでした.",
                           style:
-                              TextStyle(fontSize: 30.0, color: Colors.black87),
+                          TextStyle(fontSize: 30.0, color: Colors.black87),
                         ),
                       ),
                     ),
@@ -72,11 +72,12 @@ class GradesScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20.0),
                       child: Card(
                         color: Colors.lightBlue,
+                        surfaceTintColor: Colors.black87,
                         shadowColor: Colors.black54,
                         child: Text(
-                          "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
+                          "今回は, 最後まで解くことができませんでしたが, 次のチャレンジをお待ちしております.",
                           style:
-                              TextStyle(fontSize: 30.0, color: Colors.white),
+                          TextStyle(fontSize: 30.0, color: Colors.white70),
                         ),
                       ),
                     ),

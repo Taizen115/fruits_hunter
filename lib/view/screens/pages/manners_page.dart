@@ -71,40 +71,43 @@ class _MannersPageState extends State<MannersPage> {
                     Center(
                       child: Image.asset("assets/images/enjoy_picking.png"),
                     ),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(30.0),
-                      child: Container(
-                        color: Colors.white70,
-                        child: ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: mannersQuestions.length,
-                          itemBuilder: (context, index) {
-                            return ExpansionTile(
-                              backgroundColor: Colors.blue[500],
-                              title: Text(
-                                mannersQuestions[index.toString()]!,
-                                style: TextStyle(
-                                  fontFamily: SubFont,
-                                  fontSize: 20.0,
-                                  color: Colors.black87,
-                                ),
-                                textAlign: TextAlign.left,
-                              ),
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    mannersAnswers[index.toString()]!,
-                                    style: TextStyle(
-                                      fontSize: 25.0,
-                                      color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.left,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30.0),
+                        child: Container(
+                          color: Colors.white70,
+                          child: ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: mannersQuestions.length,
+                            itemBuilder: (context, index) {
+                              return ExpansionTile(
+                                backgroundColor: Colors.blue[500],
+                                title: Text(
+                                  mannersQuestions[index.toString()]!,
+                                  style: TextStyle(
+                                    fontFamily: SubFont,
+                                    fontSize: 20.0,
+                                    color: Colors.black87,
                                   ),
+                                  textAlign: TextAlign.left,
                                 ),
-                              ],
-                            );
-                          },
+                                children: [
+                                  ListTile(
+                                    title: Text(
+                                      mannersAnswers[index.toString()]!,
+                                      style: TextStyle(
+                                        fontSize: 25.0,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ),

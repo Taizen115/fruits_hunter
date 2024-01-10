@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
-import 'package:fruits_hunter/view/components/map_list.dart';
 import 'package:gap/gap.dart';
 import 'package:map_launcher/map_launcher.dart';
 import '../../../db/database.dart';
@@ -86,7 +85,7 @@ class _DetailPageState extends State<DetailPage> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children:[
-                    ClipOval(child: Image.asset("assets/images/${widget.selectedFruit.imageFileName}", width: 60.0, height: 80.0,)),
+                    Image.asset("assets/images/${widget.selectedFruit.imageFileName}", width: 80.0, height: 60.0,),
 
                     Gap(30),
 
@@ -98,17 +97,6 @@ class _DetailPageState extends State<DetailPage> {
             body: SingleChildScrollView(
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: MapList(
-                        color: Color(0xff4169e1),
-                        farmName: record?.address??"map",
-                        height: 100,
-                          address:"住所"),
-                    ),
-                  ),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -117,7 +105,7 @@ class _DetailPageState extends State<DetailPage> {
                       child: Container(
                         color: Colors.blue,
                         child: TextButton(
-                          onPressed: () => _goMapPage(context),
+                          onPressed: () => null,
                           child: Text("・果物狩りへ　\n ( Google map )",
                               style: TextStyle(
                                   fontFamily: MainFont,
@@ -177,29 +165,6 @@ class _DetailPageState extends State<DetailPage> {
           ),
         ),
       ),
-    );
-  }
-
-  _goMapPage(BuildContext context) async {
-    if (record == null) return;
-    //geocoding: 住所から緯度経度持ってこれるか？
-    final locations = await geocoding.locationFromAddress(
-      record!.address,
-    );
-    if (locations.isEmpty) return;
-    final selectedLocation = locations.first;
-
-    final availableMaps = await MapLauncher.installedMaps;
-    if (availableMaps.isEmpty) return;
-
-
-    //１．マーカーの表示
-    await availableMaps.first.showMarker(
-      coords: Coords(
-        selectedLocation.latitude,
-        selectedLocation.longitude,
-      ),
-      title: record!.farmName,
     );
   }
 
