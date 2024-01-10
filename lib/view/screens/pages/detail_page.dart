@@ -7,7 +7,6 @@ import 'package:map_launcher/map_launcher.dart';
 import '../../../db/database.dart';
 import 'package:geocoding/geocoding.dart' as geocoding;
 
-
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
 
@@ -20,10 +19,8 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   Record? record;
 
-
   @override
   Widget build(BuildContext context) {
-
     final Map<String, String> detailQuestions = {
       "0": "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
       "1": "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
@@ -52,52 +49,58 @@ class _DetailPageState extends State<DetailPage> {
     };
 
     return SafeArea(
-      child: DecoratedBox(
-        position: DecorationPosition.foreground,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Colors.black12, Colors.white60]),
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                  "assets/background/${widget.selectedFruit.backgroundImage}"),
-              fit: BoxFit.cover,
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.white,
+          centerTitle: true,
+          leading: TextButton(
+            child: Icon(
+              FontAwesomeIcons.arrowLeft,
+              color: Colors.white,
             ),
+            onPressed: () => Navigator.of(context).pop(),
           ),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              foregroundColor: Colors.white,
-              centerTitle: true,
-              leading: TextButton(
-                child: Icon(
-                  FontAwesomeIcons.arrowLeft,
-                  color: Colors.white,
-                ),
-                onPressed: () => Navigator.of(context).pop(),
+          title: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(children: [
+              Image.asset(
+                "assets/images/${widget.selectedFruit.imageFileName}",
+                width: 80.0,
+                height: 60.0,
               ),
-              title:Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children:[
-                    Image.asset("assets/images/${widget.selectedFruit.imageFileName}", width: 80.0, height: 60.0,),
-
-                    Gap(30),
-
-                    Text("${widget.selectedFruit.name}", style: TextStyle(fontSize: 25.0),)
-                  ]
-                ),
+              Gap(30),
+              Text(
+                "${widget.selectedFruit.name}",
+                style: TextStyle(fontSize: 25.0),
+              )
+            ]),
+          ),
+        ),
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            //１階：グラデーション
+            DecoratedBox(
+              position: DecorationPosition.foreground,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.black54, Colors.white60]),
+              ),
+              child: Image.asset(
+                "assets/background/${widget.selectedFruit.backgroundImage}",
+                fit: BoxFit.cover,
               ),
             ),
-            body: SingleChildScrollView(
+            //２階：コンテンツ
+            SingleChildScrollView(
               child: Column(
                 children: [
-
+                  Gap(kToolbarHeight + 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: ClipRRect(
@@ -125,6 +128,7 @@ class _DetailPageState extends State<DetailPage> {
                       child: Container(
                         color: Colors.white70,
                         child: ListView.builder(
+                          padding: EdgeInsets.zero,
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: detailQuestions.length,
@@ -134,11 +138,10 @@ class _DetailPageState extends State<DetailPage> {
                               title: Text(
                                 detailQuestions[index.toString()]!,
                                 style: TextStyle(
-                                  fontFamily: SubFont,
-                                  fontSize: 20.0,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold
-                                ),
+                                    fontFamily: SubFont,
+                                    fontSize: 20.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.left,
                               ),
                               children: [
@@ -162,10 +165,9 @@ class _DetailPageState extends State<DetailPage> {
                 ],
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
-
 }
