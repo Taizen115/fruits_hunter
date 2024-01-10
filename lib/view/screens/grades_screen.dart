@@ -45,7 +45,7 @@ class GradesScreen extends StatelessWidget {
               ),
               title: Text(
                 "クイズの成績",
-                style: TextStyle(fontSize: 30.0),
+                style: TextStyle(fontSize: 35.0),
               ),
             ),
             body: Center(
