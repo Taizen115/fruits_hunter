@@ -49,7 +49,7 @@ class _ListPageState extends State<ListPage> {
           ),
           title: Row(
             children: [
-              Image.asset("assets/images/fruit_basket.png", width: 80.0, height: 80.0,),
+              Image.asset("assets/images/fruit_basket.png", width: 80.0, height: 50.0,),
 
               Gap(30),
 

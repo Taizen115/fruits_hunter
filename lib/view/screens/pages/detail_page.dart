@@ -3,10 +3,9 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
-import 'package:map_launcher/map_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../db/database.dart';
-import 'package:geocoding/geocoding.dart' as geocoding;
+// import 'package:geocoding/geocoding.dart' as geocoding;
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -57,6 +56,15 @@ class _DetailPageState extends State<DetailPage> {
           backgroundColor: Colors.transparent,
           foregroundColor: Colors.white,
           centerTitle: true,
+          actions: [
+            InkWell(
+                onTap: _launchURL,
+                child: FaIcon(
+                  FontAwesomeIcons.locationDot,
+                  color: Colors.white70,
+                ),),
+            SizedBox(width: 20.0,),
+          ],
           leading: TextButton(
             child: Icon(
               FontAwesomeIcons.arrowLeft,
@@ -77,13 +85,6 @@ class _DetailPageState extends State<DetailPage> {
                 "${widget.selectedFruit.name}",
                 style: TextStyle(fontSize: 25.0),
               ),
-              Gap(20),
-              InkWell(
-                  onTap: _launchURL,
-                  child: FaIcon(
-                    FontAwesomeIcons.locationDot,
-                    color: Colors.white70,
-                  ))
             ]),
           ),
         ),
@@ -123,14 +124,13 @@ class _DetailPageState extends State<DetailPage> {
                           itemCount: detailQuestions.length,
                           itemBuilder: (context, index) {
                             return ExpansionTile(
-                              backgroundColor: Colors.blue[600],
+                              backgroundColor: Colors.blue[400],
                               title: Text(
                                 detailQuestions[index.toString()]!,
                                 style: TextStyle(
                                     fontFamily: SubFont,
                                     fontSize: 20.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                                    color: Colors.black,),
                                 textAlign: TextAlign.left,
                               ),
                               children: [
@@ -138,7 +138,7 @@ class _DetailPageState extends State<DetailPage> {
                                   title: Text(
                                     detailAnswers[index.toString()]!,
                                     style: TextStyle(
-                                      fontSize: 25.0,
+                                      fontSize: 20.0,
                                       color: Colors.white,
                                     ),
                                     textAlign: TextAlign.left,

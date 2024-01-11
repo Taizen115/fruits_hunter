@@ -1,4 +1,3 @@
-import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -64,14 +63,15 @@ class _QuizPageState extends State<QuizPage> {
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar: true,
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          foregroundColor: Colors.lightBlue,
+          foregroundColor: Colors.teal,
           centerTitle: true,
           leading: TextButton(
             child: Icon(
               FontAwesomeIcons.arrowLeft,
-              color: Colors.lightBlue,
+              color: Colors.teal,
             ),
             onPressed: () => _finishQuiz(),
           ),
@@ -86,9 +86,7 @@ class _QuizPageState extends State<QuizPage> {
               Text(
                 "クイズ",
                 style: TextStyle(
-                  fontFamily: MainFont,
-                  fontSize: 25.0,
-                ),
+                    fontFamily: MainFont, fontSize: 30.0, color: Colors.teal),
               ),
             ],
           ),
@@ -96,10 +94,23 @@ class _QuizPageState extends State<QuizPage> {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            Image.asset(
-              "assets/background/mikan_tree.png",
-              fit: BoxFit.cover,
+            //1階　グラデーション
+
+            DecoratedBox(
+              position: DecorationPosition.foreground,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.white70, Colors.black12]),
+              ),
+              child: Image.asset(
+                "assets/background/mikan_tree.png",
+                fit: BoxFit.cover,
+              ),
             ),
+
+            //2階　コンテンツ
 
             Padding(
               padding: const EdgeInsets.all(15.0),
@@ -117,8 +128,7 @@ class _QuizPageState extends State<QuizPage> {
                   Gap(50),
 
                   //TODO 選択肢表示部分
-                  _showChoices(),
-
+                  Expanded(child: _showChoices()),
                 ],
               ),
             ),
@@ -140,27 +150,25 @@ class _QuizPageState extends State<QuizPage> {
       padding: const EdgeInsets.only(
         left: 12.0,
         right: 12.0,
-        top: 12.0,
+        top: 20.0,
       ),
       child: Table(
         children: [
           TableRow(children: [
-            Center(
-              child: Text(
-                "残りの果物",
-                style: TextStyle(fontSize: 18.0, color: Colors.black54),
-              ),
+            Text(
+              "残りの果物",
+              style: TextStyle(fontSize: 16.0, color: Colors.black54),
             ),
             Center(
               child: Text(
                 "獲得果物数",
-                style: TextStyle(fontSize: 18.0, color: Colors.black54),
+                style: TextStyle(fontSize: 16.0, color: Colors.black54),
               ),
             ),
             Center(
               child: Text(
                 "獲得率",
-                style: TextStyle(fontSize: 18.0, color: Colors.black54),
+                style: TextStyle(fontSize: 16.0, color: Colors.black54),
               ),
             ),
           ]),
@@ -192,12 +200,17 @@ class _QuizPageState extends State<QuizPage> {
   //TODO 問題表示部分
   Widget _showQuestion() {
     if (isNextQuestioned)
-      return Bubble(
-        margin: BubbleEdges.only(top: 10),
-        color: Colors.white70,
-        child: Text(
-          question,
-          style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(15.0),
+        child: Container(
+          color: Colors.white70,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              question,
+              style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+            ),
+          ),
         ),
       );
     else {
@@ -206,7 +219,7 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   //TODO 選択肢部分
-  _showChoices() {
+  Widget _showChoices() {
     if (isNextQuestioned) {
       return Table(
         children: [
@@ -217,11 +230,12 @@ class _QuizPageState extends State<QuizPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
+                    height: 80,
                     color: Colors.red[300],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[0]),
                       child: Text(
-                        "A: ${choices[0]}",
+                        choices[0],
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -236,11 +250,12 @@ class _QuizPageState extends State<QuizPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
+                    height: 80,
                     color: Colors.blue[300],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[1]),
                       child: Text(
-                        "B: ${choices[1]}",
+                        choices[1],
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -259,11 +274,12 @@ class _QuizPageState extends State<QuizPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
+                    height: 80,
                     color: Colors.yellow[700],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[2]),
                       child: Text(
-                        "C: ${choices[2]}",
+                        choices[2],
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -278,11 +294,12 @@ class _QuizPageState extends State<QuizPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30),
                   child: Container(
-                    color: Colors.green[300],
+                    height: 80,
+                    color: Colors.green[500],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[3]),
                       child: Text(
-                        "D: ${choices[3]}",
+                        choices[3],
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 20.0,
@@ -300,7 +317,6 @@ class _QuizPageState extends State<QuizPage> {
       return Container();
     }
   }
-
 
   //TODO データベースから問題を出す
   void _getQuestion() async {
@@ -364,41 +380,56 @@ class _QuizPageState extends State<QuizPage> {
       return Container(
         child: Column(
           children: [
-            Gap(150),
-            Bubble(
-              margin: BubbleEdges.only(top: 10),
-              color: Colors.blue,
-              child: Text(
-                "答え : ${answer}",
-                style: TextStyle(
-                    fontFamily: SubFont, fontSize: 25.0, color: Colors.white70),
+            Gap(170),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: Container(
+                color: Colors.white70,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "答え : ${answer}",
+                    style: TextStyle(
+                        fontFamily: SubFont,
+                        fontSize: 20.0,
+                        color: Colors.teal),
+                  ),
+                ),
               ),
             ),
             Gap(20),
             Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Bubble(
-                margin: BubbleEdges.only(top: 10),
-                color: Colors.blue,
-                child: Text(
-                  "解説 : \n${explanation}",
-                  style: TextStyle(
-                      fontFamily: MainFont,
-                      fontSize: 25.0,
-                      color: Colors.white70),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(30.0),
+                child: Container(
+                  color: Colors.white70,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "解説 : \n${explanation}",
+                      style: TextStyle(
+                          fontFamily: MainFont,
+                          fontSize: 25.0,
+                          color: Colors.teal),
+                    ),
+                  ),
                 ),
               ),
             ),
             Gap(20),
             Center(
               child: ElevatedButton(
-                  child: Text(
-                    "Next Fruits!",
-                    style: TextStyle(fontFamily: SubFont, fontSize: 30.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "Next Fruit!",
+                      style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
+                    ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.blueAccent,
-                    backgroundColor: Colors.white70,
+                    foregroundColor: Colors.white70,
+                    backgroundColor: Colors.teal,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     ),

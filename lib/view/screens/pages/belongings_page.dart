@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
-import 'package:gap/gap.dart';
 
 class BelongingsPage extends StatefulWidget {
   @override
@@ -21,27 +20,22 @@ class _BelongingsPageState extends State<BelongingsPage> {
     'お水': false,
   };
 
+  Map<String, IconData> icons = {
+    '長袖シャツ or ラッシュガード': FontAwesomeIcons.shirt,
+    '長ズボン': FontAwesomeIcons.cubes,
+    '虫よけスプレー': FontAwesomeIcons.bug,
+    '日焼け止め': FontAwesomeIcons.sun,
+    '帽子': FontAwesomeIcons.redhat,
+    'ウェットティッシュ': FontAwesomeIcons.boxTissue,
+    'タオル': FontAwesomeIcons.glasses,
+    'クーラーボックス': FontAwesomeIcons.box,
+    'お水': FontAwesomeIcons.bottleWater,
+
+  };
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        DecoratedBox(
-          position: DecorationPosition.foreground,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.white70, Colors.white12]),
-          ),
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/background/fruits_line.png"),
-                  fit: BoxFit.cover),
-            ),
-          ),
-        ),
-        SafeArea(
+    return SafeArea(
           child: Scaffold(
             floatingActionButton: FloatingActionButton(
                 child: FaIcon(FontAwesomeIcons.eraser),
@@ -56,6 +50,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                     setState(() {});
                   });
                 }),
+            extendBodyBehindAppBar: true,
             backgroundColor: Colors.transparent,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
@@ -68,63 +63,65 @@ class _BelongingsPageState extends State<BelongingsPage> {
                 ),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              title: Row(
-                children: [
-                  Image.asset(
-                    "assets/images/belongings.png",
-                    width: 100.0,
-                    height: 80.0,
+              title: Text(
+                    "持ち物リスト",
+                    style: TextStyle(fontFamily: ThirdFont, fontSize: 30.0),
                   ),
-                  Gap(30),
-                  Text(
-                    "リスト",
-                    style: TextStyle(fontFamily: ThirdFont, fontSize: 25.0),
-                  ),
-                ],
               ),
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black87),
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                child: ListView(
-                  // shrinkWrap: true,
-                  children: belongings.keys.map((String key) {
-                    return CheckboxListTile(
-                      activeColor:Colors.lightBlue,
-                      side: BorderSide(color: Colors.black54, width: 2),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                      title: Text(
-                        key,
-                        style: TextStyle(
-                          fontFamily: SubFont,
-                          fontSize: 20.0,
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold,
-                          decoration: belongings[key] ?? false
-                              ? TextDecoration.lineThrough
-                              : TextDecoration.none,
+            body: Stack(
+              fit: StackFit.expand,
+              children: [
+                //1階　グラデーション
+
+              DecoratedBox(
+              position: DecorationPosition.foreground,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.white70, Colors.black12]),
+              ),
+                child:Image.asset("assets/background/fruits_line.png", fit: BoxFit.cover),),
+
+                //2階　コンテンツ
+
+                SizedBox(height: kToolbarHeight +10 ),
+
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: ListView(
+                    // shrinkWrap: true,
+                    children: belongings.keys.map((String key) {
+                      return CheckboxListTile(
+                        activeColor:Colors.lightBlue,
+                        side: BorderSide(color: Colors.black54, width: 2.0),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                        title: Text(
+                          key,
+                          style: TextStyle(
+                            fontFamily: SubFont,
+                            fontSize: 20.0,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold,
+                            decoration: belongings[key] ?? false
+                                ? TextDecoration.lineThrough
+                                : TextDecoration.none,
+                          ),
                         ),
-                      ),
-                      secondary: FaIcon(FontAwesomeIcons.appleWhole),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: belongings[key],
-                      onChanged: (bool? value) {
-                        setState(() {
-                          belongings[key] = value!;
-                        });
-                      },
-                    );
-                  }).toList(),
+                        secondary: FaIcon(icons[key], color: Colors.blue[700],),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: belongings[key],
+                        onChanged: (bool? value) {
+                          setState(() {
+                            belongings[key] = value!;
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ),
-        ),
-      ],
-    );
+          ),);
   }
 }

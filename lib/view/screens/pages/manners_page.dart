@@ -83,7 +83,7 @@ class _MannersPageState extends State<MannersPage> {
                             itemCount: mannersQuestions.length,
                             itemBuilder: (context, index) {
                               return ExpansionTile(
-                                backgroundColor: Colors.blue[500],
+                                backgroundColor: Colors.blue[400],
                                 title: Text(
                                   mannersQuestions[index.toString()]!,
                                   style: TextStyle(
@@ -98,7 +98,7 @@ class _MannersPageState extends State<MannersPage> {
                                     title: Text(
                                       mannersAnswers[index.toString()]!,
                                       style: TextStyle(
-                                        fontSize: 25.0,
+                                        fontSize: 20.0,
                                         color: Colors.white,
                                       ),
                                       textAlign: TextAlign.left,
