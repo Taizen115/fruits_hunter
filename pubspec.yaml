@@ -51,6 +51,9 @@ dependencies:
   image_picker: ^1.0.5
 
   geocoding: ^2.1.1
+  geolocator: ^10.1.0
+
+  flutter_launcher_icons: ^0.13.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,6 +66,15 @@ dev_dependencies:
 
   drift_dev: ^2.12.1
   build_runner: ^2.4.6
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/fruit_picker.png"
+
+  adaptive_icon_background: "#fafad2"
+  adaptive_icon_foreground: "assets/images/fruit_picker.png"
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

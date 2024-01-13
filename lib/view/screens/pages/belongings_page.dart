@@ -9,8 +9,7 @@ class BelongingsPage extends StatefulWidget {
 
 class _BelongingsPageState extends State<BelongingsPage> {
   Map<String, bool> belongings = {
-    '長袖シャツ or ラッシュガード': false,
-    '長ズボン': false,
+    '長袖シャツと長ズボン': false,
     '虫よけスプレー': false,
     '日焼け止め': false,
     '帽子': false,
@@ -21,13 +20,12 @@ class _BelongingsPageState extends State<BelongingsPage> {
   };
 
   Map<String, IconData> icons = {
-    '長袖シャツ or ラッシュガード': FontAwesomeIcons.shirt,
-    '長ズボン': FontAwesomeIcons.cubes,
+    '長袖シャツと長ズボン': FontAwesomeIcons.shirt,
     '虫よけスプレー': FontAwesomeIcons.bug,
     '日焼け止め': FontAwesomeIcons.sun,
     '帽子': FontAwesomeIcons.redhat,
     'ウェットティッシュ': FontAwesomeIcons.boxTissue,
-    'タオル': FontAwesomeIcons.glasses,
+    'タオル': FontAwesomeIcons.square,
     'クーラーボックス': FontAwesomeIcons.box,
     'お水': FontAwesomeIcons.bottleWater,
 
