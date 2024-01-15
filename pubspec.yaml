@@ -70,10 +70,10 @@ dev_dependencies:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/fruit_picker.png"
+  image_path: "assets/images/fruit_mix.png"
 
-  adaptive_icon_background: "#fafad2"
-  adaptive_icon_foreground: "assets/images/fruit_picker.png"
+  adaptive_icon_background: "#c0c0c0"
+  adaptive_icon_foreground: "assets/images/fruit_mix.png"
 
 
   # The "flutter_lints" package below contains a set of recommended lints to

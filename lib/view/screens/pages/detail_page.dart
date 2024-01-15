@@ -83,7 +83,7 @@ class _DetailPageState extends State<DetailPage> {
               Gap(10),
               Text(
                 "${widget.selectedFruit.name}",
-                style: TextStyle(fontSize: 25.0),
+                style: TextStyle(fontSize: 22.0),
               ),
             ]),
           ),
