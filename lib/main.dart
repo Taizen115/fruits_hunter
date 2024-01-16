@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      title: "FruitsHunter",
+      title: "果物狩！",
       theme: ThemeData(brightness: Brightness.light, fontFamily: MainFont, useMaterial3: true),
       home: HomeScreen(),
     );

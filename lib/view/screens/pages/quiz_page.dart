@@ -157,18 +157,18 @@ class _QuizPageState extends State<QuizPage> {
           TableRow(children: [
             Text(
               "残りの果物",
-              style: TextStyle(fontSize: 16.0, color: Colors.black54),
+              style: TextStyle(fontSize: 16.0, color: Colors.black),
             ),
             Center(
               child: Text(
                 "獲得果物数",
-                style: TextStyle(fontSize: 16.0, color: Colors.black54),
+                style: TextStyle(fontSize: 16.0, color: Colors.black),
               ),
             ),
             Center(
               child: Text(
                 "獲得率",
-                style: TextStyle(fontSize: 16.0, color: Colors.black54),
+                style: TextStyle(fontSize: 16.0, color: Colors.black),
               ),
             ),
           ]),
@@ -176,19 +176,19 @@ class _QuizPageState extends State<QuizPage> {
             Center(
               child: Text(
                 "${numberOfRemaining.toString()} 個",
-                style: TextStyle(fontSize: 20.0, color: Colors.black54),
+                style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
             Center(
               child: Text(
                 "${numberOfHunt.toString()} 個",
-                style: TextStyle(fontSize: 20.0, color: Colors.black54),
+                style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
             Center(
               child: Text(
                 "${getRate.toString()} ％",
-                style: TextStyle(fontSize: 20.0, color: Colors.black54),
+                style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             )
           ])
@@ -339,13 +339,13 @@ class _QuizPageState extends State<QuizPage> {
         return Center(
           child: Image.asset("assets/images/correct.png")
               .animate()
-              .fadeOut(duration: 2000.ms),
+              .fadeOut(duration: 1000.ms),
         );
       }
       return Center(
         child: Image.asset("assets/images/incorrect.png")
             .animate()
-            .fadeOut(duration: 2000.ms),
+            .fadeOut(duration: 1000.ms),
       );
     } else {
       return Container();
@@ -448,7 +448,7 @@ class _QuizPageState extends State<QuizPage> {
                   }),
             ),
           ],
-        ).animate().fade(duration: 500.ms).scale().then(delay: 500.ms),
+        ).animate().fade(duration: 500.ms).scale().then(),
       );
     } else {
       return Container();

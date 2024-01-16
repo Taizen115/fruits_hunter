@@ -53,49 +53,50 @@ class GradesScreen extends StatelessWidget {
               fit: StackFit.expand,
               children: [
                 //1階　グラデーション
-              DecoratedBox(
-              position: DecorationPosition.foreground,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.white12, Colors.black54]),
-              ),
-                child:Image.asset("assets/background/fruits_table.png", fit: BoxFit.cover),
-              ),
+                DecoratedBox(
+                  position: DecorationPosition.foreground,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.black38, Colors.white70]),
+                  ),
+                  child: Image.asset("assets/background/fruits_table.png",
+                      fit: BoxFit.cover),
+                ),
 
                 //2階　コンテンツ
 
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(30.0),
                     child: Column(
                       children: [
                         Gap(kToolbarHeight + 10),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(20.0),
                           child: Card(
-                            shadowColor: Colors.blue,
+                            color: Colors.white70,
                             elevation: 20.0,
                             child: Text(
                               "あなたの獲得した果物の数は, ${numberOfHunt}個です."
                               "\nまた, 獲得率は, ${getRate}%です."
                               "\nお疲れさまでした.",
-                              style:
-                                  TextStyle(fontSize: 30.0, color: Colors.black87),
+                              style: TextStyle(
+                                  fontSize: 30.0, color: Colors.black87),
                             ),
                           ),
                         ),
                         Gap(50),
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(30.0),
                           child: Card(
-                            color: Colors.lightBlue,
-                            shadowColor: Colors.black54,
+                            color: Colors.transparent,
+                            shadowColor: Colors.white70,
                             child: Text(
                               "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
-                              style:
-                                  TextStyle(fontSize: 30.0, color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 30.0, color: Colors.white),
                             ),
                           ),
                         ),

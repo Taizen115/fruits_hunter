@@ -5,7 +5,7 @@ import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../db/database.dart';
-// import 'package:geocoding/geocoding.dart' as geocoding;
+import 'package:geocoding/geocoding.dart' as geocoding;
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -159,6 +159,9 @@ class _DetailPageState extends State<DetailPage> {
       ),
     );
   }
+
+  //TODO 位置情報を取得する
+  //TODO 果物ごとの果樹園を検索できるようにする
 
   void _launchURL() async {
     final String url =

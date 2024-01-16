@@ -37,7 +37,6 @@ class _MannersPageState extends State<MannersPage> {
       backgroundColor: Colors.lightBlue,
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
-        elevation: 0,
         leading: TextButton(
           child: Icon(
             FontAwesomeIcons.arrowLeft,

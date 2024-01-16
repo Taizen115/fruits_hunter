@@ -25,7 +25,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
     '日焼け止め': FontAwesomeIcons.sun,
     '帽子': FontAwesomeIcons.redhat,
     'ウェットティッシュ': FontAwesomeIcons.boxTissue,
-    'タオル': FontAwesomeIcons.square,
+    'タオル': FontAwesomeIcons.rug,
     'クーラーボックス': FontAwesomeIcons.box,
     'お水': FontAwesomeIcons.bottleWater,
 
@@ -86,7 +86,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                 SizedBox(height: kToolbarHeight +10 ),
 
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: ListView(
                     // shrinkWrap: true,
                     children: belongings.keys.map((String key) {
@@ -106,7 +106,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                                 : TextDecoration.none,
                           ),
                         ),
-                        secondary: FaIcon(icons[key], color: Colors.blue[700],),
+                        secondary: FaIcon(icons[key], color: Colors.indigo,),
                         controlAffinity: ListTileControlAffinity.leading,
                         value: belongings[key],
                         onChanged: (bool? value) {
