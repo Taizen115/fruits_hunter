@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Image.asset(
                       "assets/background/concierge.png",
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),

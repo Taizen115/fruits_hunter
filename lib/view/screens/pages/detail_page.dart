@@ -5,7 +5,6 @@ import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../db/database.dart';
-import 'package:geolocator/geolocator.dart';
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -59,13 +58,24 @@ class _DetailPageState extends State<DetailPage> {
           foregroundColor: Colors.white,
           centerTitle: true,
           actions: [
-            InkWell(
-                onTap: _launchURL,
-                child: FaIcon(
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: IconButton(
+                onPressed: _launchURL,
+                tooltip: "クリックすると付近の果樹園を地図で表示できます。",
+                icon: FaIcon(
                   FontAwesomeIcons.locationDot,
                   color: Colors.white,
-                ),),
-            SizedBox(width: 20.0,),
+                ),
+              ),
+            ),
+            // InkWell(
+            //     onTap: _launchURL,
+            //     child: FaIcon(
+            //       FontAwesomeIcons.locationDot,
+            //       color: Colors.white,
+            //     ),),
+            //SizedBox(width: 20.0,),
           ],
           leading: TextButton(
             child: Icon(
@@ -130,9 +140,10 @@ class _DetailPageState extends State<DetailPage> {
                               title: Text(
                                 detailQuestions[index.toString()]!,
                                 style: TextStyle(
-                                    fontFamily: SubFont,
-                                    fontSize: 20.0,
-                                    color: Colors.black,),
+                                  fontFamily: SubFont,
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                ),
                                 textAlign: TextAlign.left,
                               ),
                               children: [
@@ -161,7 +172,6 @@ class _DetailPageState extends State<DetailPage> {
       ),
     );
   }
-
 
   //TODO 位置情報を取得する
 
