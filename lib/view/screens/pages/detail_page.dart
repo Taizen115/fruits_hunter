@@ -5,7 +5,7 @@ import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../db/database.dart';
-import 'package:geocoding/geocoding.dart' as geocoding;
+import 'package:geolocator/geolocator.dart';
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -18,6 +18,8 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   Record? record;
+  double? latitude;
+  double? longitude;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,7 @@ class _DetailPageState extends State<DetailPage> {
                 onTap: _launchURL,
                 child: FaIcon(
                   FontAwesomeIcons.locationDot,
-                  color: Colors.white70,
+                  color: Colors.white,
                 ),),
             SizedBox(width: 20.0,),
           ],
@@ -160,12 +162,12 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
+
   //TODO 位置情報を取得する
-  //TODO 果物ごとの果樹園を検索できるようにする
 
   void _launchURL() async {
     final String url =
-        'https://www.google.co.jp/maps/search/%E6%9E%9C%E6%A8%B9%E5%9C%92/';
+        'https://www.google.co.jp/maps/search/果樹園%E3%80%80${widget.selectedFruit.name}';
     final uri = Uri.parse(url);
     if (!(await launchUrl(uri))) {
       throw 'Could not launch $url';

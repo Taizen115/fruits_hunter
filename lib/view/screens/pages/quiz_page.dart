@@ -339,13 +339,13 @@ class _QuizPageState extends State<QuizPage> {
         return Center(
           child: Image.asset("assets/images/correct.png")
               .animate()
-              .fadeOut(duration: 1000.ms),
+              .fadeOut(duration: 500.ms),
         );
       }
       return Center(
         child: Image.asset("assets/images/incorrect.png")
             .animate()
-            .fadeOut(duration: 1000.ms),
+            .fadeOut(duration: 500.ms),
       );
     } else {
       return Container();
