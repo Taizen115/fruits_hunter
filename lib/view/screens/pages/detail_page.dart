@@ -4,8 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../../db/database.dart';
-import 'package:geolocator/geolocator.dart';
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -17,10 +17,6 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  Record? record;
-  double? latitude;
-  double? longitude;
-
   @override
   Widget build(BuildContext context) {
     final Map<String, String> detailQuestions = {
@@ -59,13 +55,16 @@ class _DetailPageState extends State<DetailPage> {
           foregroundColor: Colors.white,
           centerTitle: true,
           actions: [
-            InkWell(
-                onTap: _launchURL,
-                child: FaIcon(
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: IconButton(
+                icon: FaIcon(
                   FontAwesomeIcons.locationDot,
                   color: Colors.white,
-                ),),
-            SizedBox(width: 20.0,),
+                ),
+                onPressed: () => _goMap(),
+              ),
+            ),
           ],
           leading: TextButton(
             child: Icon(
@@ -130,9 +129,10 @@ class _DetailPageState extends State<DetailPage> {
                               title: Text(
                                 detailQuestions[index.toString()]!,
                                 style: TextStyle(
-                                    fontFamily: SubFont,
-                                    fontSize: 20.0,
-                                    color: Colors.black,),
+                                  fontFamily: SubFont,
+                                  fontSize: 20.0,
+                                  color: Colors.black,
+                                ),
                                 textAlign: TextAlign.left,
                               ),
                               children: [
@@ -163,7 +163,6 @@ class _DetailPageState extends State<DetailPage> {
   }
 
 
-  //TODO 位置情報を取得する
 
   void _launchURL() async {
     final String url =
@@ -172,5 +171,37 @@ class _DetailPageState extends State<DetailPage> {
     if (!(await launchUrl(uri))) {
       throw 'Could not launch $url';
     }
+  }
+
+  _goMap() {
+    return showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (_) => AlertDialog(
+          title: Text(
+            "果樹園",
+            style: TextStyle(fontSize: 25.0),
+          ),
+          content: Text(
+            "周辺の果樹園を検索してもよろしいでしょうか？",
+            style: TextStyle(fontSize: 20.0),
+          ),
+          actions: [
+            TextButton(
+              child: Text(
+                "キャンセル",
+                style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+              ),
+              onPressed: () => Navigator.pop(context),
+            ),
+            TextButton(
+              child: Text(
+                "OK",
+                style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+              ),
+              onPressed: _launchURL,
+            ),
+          ],
+        ));
   }
 }

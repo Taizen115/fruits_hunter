@@ -85,13 +85,13 @@ class _ListPageState extends State<ListPage> {
                         surfaceTintColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(
-                            Radius.circular(50.0),
+                            Radius.circular(20),
                           ),
                         ),
                         elevation: 100.0,
                         child: GridTile(
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
+                            borderRadius: BorderRadius.circular(20),
                             child: Image.asset(
                                 "assets/images/${fruit.imageFileName}"),
                           ),

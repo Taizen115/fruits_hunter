@@ -28,50 +28,49 @@ class _BelongingsPageState extends State<BelongingsPage> {
     'タオル': FontAwesomeIcons.rug,
     'クーラーボックス': FontAwesomeIcons.box,
     'お水': FontAwesomeIcons.bottleWater,
-
   };
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-          child: Scaffold(
-            floatingActionButton: FloatingActionButton(
-                child: FaIcon(FontAwesomeIcons.eraser),
-                backgroundColor: Colors.lightBlue,
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+            child: FaIcon(FontAwesomeIcons.eraser),
+            backgroundColor: Colors.lightBlue,
 
-                //TODO checkBoxを全て外す
-                onPressed: () {
-                  belongings.forEach((key, value) {
-                    if (value == true) {
-                      belongings[key] = false;
-                    }
-                    setState(() {});
-                  });
-                }),
-            extendBodyBehindAppBar: true,
-            backgroundColor: Colors.transparent,
-            appBar: AppBar(
-              backgroundColor: Colors.transparent,
-              foregroundColor: Colors.lightBlue,
-              centerTitle: true,
-              leading: TextButton(
-                child: Icon(
-                  FontAwesomeIcons.arrowLeft,
-                  color: Colors.lightBlue,
-                ),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-              title: Text(
-                    "持ち物リスト",
-                    style: TextStyle(fontFamily: ThirdFont, fontSize: 30.0),
-                  ),
-              ),
-            body: Stack(
-              fit: StackFit.expand,
-              children: [
-                //1階　グラデーション
+            //TODO checkBoxを全て外す
+            onPressed: () {
+              belongings.forEach((key, value) {
+                if (value == true) {
+                  belongings[key] = false;
+                }
+                setState(() {});
+              });
+            }),
+        extendBodyBehindAppBar: true,
+        backgroundColor: Colors.transparent,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.lightBlue,
+          centerTitle: true,
+          leading: TextButton(
+            child: Icon(
+              FontAwesomeIcons.arrowLeft,
+              color: Colors.lightBlue,
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text(
+            "持ち物リスト",
+            style: TextStyle(fontFamily: ThirdFont, fontSize: 30.0),
+          ),
+        ),
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            //1階　グラデーション
 
-              DecoratedBox(
+            DecoratedBox(
               position: DecorationPosition.foreground,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -79,11 +78,13 @@ class _BelongingsPageState extends State<BelongingsPage> {
                     end: Alignment.bottomCenter,
                     colors: [Colors.white70, Colors.black12]),
               ),
-                child:Image.asset("assets/background/fruits_line.png", fit: BoxFit.cover),),
+              child: Image.asset("assets/background/fruits_line.png",
+                  fit: BoxFit.cover),
+            ),
 
-                //2階　コンテンツ
+            //2階　コンテンツ
 
-                SizedBox(height: kToolbarHeight +10 ),
+            SizedBox(height: kToolbarHeight + 10),
 
                 Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -94,19 +95,27 @@ class _BelongingsPageState extends State<BelongingsPage> {
                         activeColor:Colors.lightBlue,
                         side: BorderSide(color: Colors.black54, width: 2.0),
                         contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                        title: Text(
-                          key,
-                          style: TextStyle(
-                            fontFamily: SubFont,
-                            fontSize: 20.0,
-                            color: Colors.black54,
-                            fontWeight: FontWeight.bold,
-                            decoration: belongings[key] ?? false
-                                ? TextDecoration.lineThrough
-                                : TextDecoration.none,
-                          ),
+                        title: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              key,
+                              style: TextStyle(
+                                fontFamily: SubFont,
+                                fontSize: 20.0,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                decoration: belongings[key] ?? false
+                                    ? TextDecoration.lineThrough
+                                    : TextDecoration.none,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: FaIcon(icons[key], color: Colors.lightBlue,),
+                            ),
+                          ],
                         ),
-                        secondary: FaIcon(icons[key], color: Colors.indigo,),
                         controlAffinity: ListTileControlAffinity.leading,
                         value: belongings[key],
                         onChanged: (bool? value) {

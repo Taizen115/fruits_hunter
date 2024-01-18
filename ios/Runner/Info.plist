@@ -7,7 +7,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
-		<string>Fruits Hunter</string>
+		<string>果物狩！</string>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
 		<key>CFBundleIdentifier</key>
@@ -39,7 +39,8 @@
 		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<false/>
 		<!-- geolocator Section -->
-		<string>This app needs access to location when open.</string>
+		<!-- <key>NSLocationWhenInUseUsageDescription</key>
+		<string>This app needs access to location when open.</string>-->
 		<!-- end of geolocator Section -->
 		<key>UIStatusBarHidden</key>
 		<false/>

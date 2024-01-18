@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     child: Image.asset(
                       "assets/background/concierge.png",
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             color: Colors.white),
                       ),
                       Text(
-                        "Picker",
+                        "Hunter",
                         style: TextStyle(
                             fontFamily: MainFont,
                             fontSize: 45.0,
