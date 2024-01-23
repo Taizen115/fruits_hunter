@@ -423,7 +423,7 @@ class _QuizPageState extends State<QuizPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "Next Fruit!",
+                      numberOfRemaining == 0 ? "結果発表！" : "Next Fruit!",
                       style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
                     ),
                   ),

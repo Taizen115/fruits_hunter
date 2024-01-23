@@ -18,7 +18,6 @@ class ListPage extends StatefulWidget {
 class _ListPageState extends State<ListPage> {
   List<Fruit> fruitsList = [];
 
-
   @override
   void initState() {
     super.initState();
@@ -49,10 +48,12 @@ class _ListPageState extends State<ListPage> {
           ),
           title: Row(
             children: [
-              Image.asset("assets/images/fruit_basket.png", width: 80.0, height: 50.0,),
-
+              Image.asset(
+                "assets/images/fruit_basket.png",
+                width: 80.0,
+                height: 50.0,
+              ),
               Gap(30),
-
               Text(
                 "果物一覧",
                 style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
@@ -63,53 +64,53 @@ class _ListPageState extends State<ListPage> {
         body: (fruitsList.isEmpty)
             ? Container()
             : Column(
-          children: [
-            ListCategoryChips(
-              onCategorySelected: (categoryId) =>
-                  _getTypeFruits(context, categoryId),
-            ),
-            Expanded(
-              child: Card(
-                color: Colors.white,
-                child: GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  children:
-                  List<Widget>.generate(fruitsList.length, (index) {
-                    final fruit = fruitsList[index];
-                    return InkWell(
-                      onTap: () => _goDetailPage(fruit),
-                      child: Card(
-                        color: Colors.white,
-                        shadowColor: Colors.white70,
-                        surfaceTintColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                        elevation: 100.0,
-                        child: GridTile(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                                "assets/images/${fruit.imageFileName}"),
-                          ),
-                          footer: Center(
-                              child: Text(
-                                fruit.name,
-                                style: TextStyle(
-                                    fontSize: 25.0, fontFamily: ThirdFont),
-                              )),
-                        ),
+                children: [
+                  ListCategoryChips(
+                    onCategorySelected: (categoryId) =>
+                        _getTypeFruits(context, categoryId),
+                  ),
+                  Expanded(
+                    child: Card(
+                      color: Colors.white,
+                      child: GridView.count(
+                        shrinkWrap: true,
+                        crossAxisCount: 2,
+                        children:
+                            List<Widget>.generate(fruitsList.length, (index) {
+                          final fruit = fruitsList[index];
+                          return InkWell(
+                            onTap: () => _goDetailPage(fruit),
+                            child: Card(
+                              color: Colors.white,
+                              shadowColor: Colors.white70,
+                              surfaceTintColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              elevation: 100.0,
+                              child: GridTile(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.asset(
+                                      "assets/images/${fruit.imageFileName}"),
+                                ),
+                                footer: Center(
+                                    child: Text(
+                                  fruit.name,
+                                  style: TextStyle(
+                                      fontSize: 25.0, fontFamily: ThirdFont),
+                                )),
+                              ),
+                            ),
+                          );
+                        }).animate(interval: 50.ms).scale(duration: 50.ms),
                       ),
-                    );
-                  }).animate(interval: 50.ms).scale(duration: 50.ms),
-                ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -120,10 +121,9 @@ class _ListPageState extends State<ListPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) =>
-            DetailPage(
-              selectedFruit: selectedFruit,
-            ),
+        builder: (context) => DetailPage(
+          selectedFruit: selectedFruit,
+        ),
       ),
     );
   }
@@ -133,29 +133,22 @@ class _ListPageState extends State<ListPage> {
   Future<void> _getTypeFruits(BuildContext context, categoryId) async {
     // print("category: ${categoryId}");
 
-     if (categoryId == 1) {
+    if (categoryId == 1) {
       fruitsList = await database.fruitsSpring;
-    }
-    else if (categoryId == 2) {
+
+    } else if (categoryId == 2) {
       fruitsList = await database.fruitsSummer;
-    }
-    else if (categoryId == 3) {
+
+    } else if (categoryId == 3) {
       fruitsList = await database.fruitsAutumn;
-    }
-    else if (categoryId == 4) {
-       fruitsList = await database.fruitsWinter;
-     }
-    else {
-         fruitsList = await database.fruitsList;
-       }
 
-     setState(() {
-     });
+    } else if (categoryId == 4) {
+      fruitsList = await database.fruitsWinter;
 
-      // final viewModel = Provider.of<NewsListViewModel>(context, listen: false);
-      // await viewModel.getNews(
-      //   searchType: SearchType.CATEGORY,
-      //   category: category,
-      // );
+    } else {
+      fruitsList = await database.fruitsList;
     }
+
+    setState(() {});
   }
+}

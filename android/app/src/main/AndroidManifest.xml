@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:label="果物狩！"
+        android:label="Fruit Hunter"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

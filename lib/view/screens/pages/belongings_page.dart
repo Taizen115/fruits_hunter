@@ -76,7 +76,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [Colors.white70, Colors.black12]),
+                    colors: [Colors.white60, Colors.white38]),
               ),
               child: Image.asset("assets/background/fruits_line.png",
                   fit: BoxFit.cover),

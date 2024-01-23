@@ -13,40 +13,24 @@ class GradesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        DecoratedBox(
-          position: DecorationPosition.foreground,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [Colors.white70, Colors.white12]),
-          ),
-          child: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/background/fruits_table.png"),
-                  fit: BoxFit.cover),
-            ),
-          ),
-        ),
         SafeArea(
           child: Scaffold(
             backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: true,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
-              foregroundColor: Colors.blue,
+              foregroundColor: Colors.green[300],
               centerTitle: true,
               leading: TextButton(
                 child: Icon(
                   FontAwesomeIcons.arrowLeft,
-                  color: Colors.lightBlue,
+                  color: Colors.green[300],
                 ),
                 onPressed: () => _goHomeScreen(context),
               ),
               title: Text(
                 "クイズの成績",
-                style: TextStyle(fontSize: 35.0),
+                style: TextStyle(fontSize: 30.0),
               ),
             ),
             body: Stack(
@@ -59,7 +43,7 @@ class GradesScreen extends StatelessWidget {
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [Colors.black38, Colors.white70]),
+                        colors: [Colors.black54, Colors.black12]),
                   ),
                   child: Image.asset("assets/background/fruits_table.png",
                       fit: BoxFit.cover),
@@ -76,14 +60,14 @@ class GradesScreen extends StatelessWidget {
                         ClipRRect(
                           borderRadius: BorderRadius.circular(20.0),
                           child: Card(
-                            color: Colors.white70,
+                            color: Colors.teal,
                             elevation: 20.0,
                             child: Text(
                               "あなたの獲得した果物の数は, ${numberOfHunt}個です."
                               "\nまた, 獲得率は, ${getRate}%です."
                               "\nお疲れさまでした.",
                               style: TextStyle(
-                                  fontSize: 30.0, color: Colors.black87),
+                                  fontSize: 30.0, color: Colors.white70),
                             ),
                           ),
                         ),
@@ -92,7 +76,7 @@ class GradesScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30.0),
                           child: Card(
                             color: Colors.transparent,
-                            shadowColor: Colors.white70,
+                            shadowColor: Colors.white60,
                             child: Text(
                               "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
                               style: TextStyle(
