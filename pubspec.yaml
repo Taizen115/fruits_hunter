@@ -54,7 +54,6 @@ dependencies:
 
   flutter_launcher_icons: ^0.13.1
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   # cupertino_icons: ^1.0.2
@@ -71,7 +70,7 @@ flutter_launcher_icons:
   ios: true
   image_path: "assets/images/fruit_mix.png"
 
-  adaptive_icon_background: "#ebf6f7"
+  adaptive_icon_background: "#ffffff"
   adaptive_icon_foreground: "assets/images/fruit_mix.png"
 
 
