@@ -1,19 +1,20 @@
 {
   "images" : [
     {
-      "filename" : "LaunchImage.png",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "filename" : "fruit_mix.png",
+      "idiom" : "universal"
     },
     {
-      "filename" : "LaunchImage@2x.png",
+      "filename" : "fruit_mix 1.png",
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "unassigned" : true
     },
     {
-      "filename" : "LaunchImage@3x.png",
+      "filename" : "fruit_mix 2.png",
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "unassigned" : true
     }
   ],
   "info" : {
