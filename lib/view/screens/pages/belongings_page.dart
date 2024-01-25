@@ -9,7 +9,7 @@ class BelongingsPage extends StatefulWidget {
 
 class _BelongingsPageState extends State<BelongingsPage> {
   Map<String, bool> belongings = {
-    '長袖シャツと長ズボン': false,
+    '長袖の服': false,
     '虫よけスプレー': false,
     '日焼け止め': false,
     '帽子': false,
@@ -20,7 +20,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
   };
 
   Map<String, IconData> icons = {
-    '長袖シャツと長ズボン': FontAwesomeIcons.shirt,
+    '長袖の服': FontAwesomeIcons.shirt,
     '虫よけスプレー': FontAwesomeIcons.bug,
     '日焼け止め': FontAwesomeIcons.sun,
     '帽子': FontAwesomeIcons.redhat,
@@ -78,7 +78,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                     end: Alignment.bottomCenter,
                     colors: [Colors.white60, Colors.white38]),
               ),
-              child: Image.asset("assets/background/fruits_line.png",
+              child: Image.asset("assets/background/fruit_line.jpg",
                   fit: BoxFit.cover),
             ),
 
@@ -86,49 +86,54 @@ class _BelongingsPageState extends State<BelongingsPage> {
 
             SizedBox(height: kToolbarHeight + 10),
 
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: ListView(
-                    // shrinkWrap: true,
-                    children: belongings.keys.map((String key) {
-                      return CheckboxListTile(
-                        activeColor:Colors.lightBlue,
-                        side: BorderSide(color: Colors.black54, width: 2.0),
-                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                        title: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              key,
-                              style: TextStyle(
-                                fontFamily: SubFont,
-                                fontSize: 20.0,
-                                color: Colors.black54,
-                                fontWeight: FontWeight.bold,
-                                decoration: belongings[key] ?? false
-                                    ? TextDecoration.lineThrough
-                                    : TextDecoration.none,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: FaIcon(icons[key], color: Colors.lightBlue,),
-                            ),
-                          ],
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ListView(
+                // shrinkWrap: true,
+                children: belongings.keys.map((String key) {
+                  return CheckboxListTile(
+                    activeColor: Colors.lightBlue,
+                    side: BorderSide(color: Colors.black54, width: 2.0),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
+
+                    title: Row(
+                      children: [
+                        Text(
+                          key,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontFamily: SubFont,
+                            fontSize: 20.0,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.bold,
+                            decoration: belongings[key] ?? false
+                                ? TextDecoration.lineThrough
+                                : TextDecoration.none,
+                          ),
                         ),
-                        controlAffinity: ListTileControlAffinity.leading,
-                        value: belongings[key],
-                        onChanged: (bool? value) {
-                          setState(() {
-                            belongings[key] = value!;
-                          });
-                        },
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FaIcon(
+                            icons[key],
+                            color: Colors.lightBlue,
+                          ),
+                        ),
+                      ],
+                    ),
+                    controlAffinity: ListTileControlAffinity.leading,
+                    value: belongings[key],
+                    onChanged: (bool? value) {
+                      setState(() {
+                        belongings[key] = value!;
+                      });
+                    },
+                  );
+                }).toList(),
+              ),
             ),
-          ),);
+          ],
+        ),
+      ),
+    );
   }
 }

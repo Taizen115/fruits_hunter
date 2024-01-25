@@ -17,6 +17,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+
   @override
   Widget build(BuildContext context) {
     final Map<String, String> detailQuestions = {
@@ -82,9 +83,11 @@ class _DetailPageState extends State<DetailPage> {
                 height: 50.0,
               ),
               Gap(10),
-              Text(
-                "${widget.selectedFruit.name}",
-                style: TextStyle(fontSize: 22.0),
+              Expanded(
+                child: Text(
+                  "${widget.selectedFruit.name}",
+                  style: TextStyle(fontSize: 22.0),
+                ),
               ),
             ]),
           ),
@@ -162,8 +165,6 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
-
-
   void _launchURL() async {
     final String url =
         'https://www.google.co.jp/maps/search/果樹園%E3%80%80${widget.selectedFruit.name}';
@@ -173,35 +174,43 @@ class _DetailPageState extends State<DetailPage> {
     }
   }
 
+
   _goMap() {
     return showDialog(
         barrierDismissible: false,
         context: context,
-        builder: (_) => AlertDialog(
-          title: Text(
-            "果樹園",
-            style: TextStyle(fontSize: 25.0),
-          ),
-          content: Text(
-            "周辺の果樹園を検索してもよろしいでしょうか？",
-            style: TextStyle(fontSize: 20.0),
-          ),
-          actions: [
-            TextButton(
-              child: Text(
-                "キャンセル",
-                style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
-              ),
-              onPressed: () => Navigator.pop(context),
+        builder: (_) {
+          return AlertDialog(
+            title: Text(
+              "果樹園",
+              style: TextStyle(fontSize: 25.0),
             ),
-            TextButton(
-              child: Text(
-                "OK",
-                style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
-              ),
-              onPressed: _launchURL,
+            content: Text(
+              "周辺の果樹園を検索してもよろしいでしょうか？",
+              style: TextStyle(fontSize: 20.0),
             ),
-          ],
-        ));
+            actions: [
+              TextButton(
+                child: Text(
+                  "キャンセル",
+                  style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              TextButton(
+                child: Text(
+                  "OK",
+                  style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                 _launchURL();
+                },
+              ),
+            ],
+          );
+        });
   }
 }

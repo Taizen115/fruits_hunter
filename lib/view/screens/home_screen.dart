@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           colors: [Colors.black54, Colors.black12]),
                     ),
                     child: Image.asset(
-                      "assets/background/concierge.png",
+                      "assets/background/concierge.jpg",
                       fit: BoxFit.cover,
                     ),
                   ),

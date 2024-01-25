@@ -45,7 +45,7 @@ class GradesScreen extends StatelessWidget {
                         end: Alignment.bottomCenter,
                         colors: [Colors.black54, Colors.black12]),
                   ),
-                  child: Image.asset("assets/background/fruits_table.png",
+                  child: Image.asset("assets/background/fruit_table.png",
                       fit: BoxFit.cover),
                 ),
 

@@ -100,7 +100,7 @@ class _ListPageState extends State<ListPage> {
                                     child: Text(
                                   fruit.name,
                                   style: TextStyle(
-                                      fontSize: 25.0, fontFamily: ThirdFont),
+                                      fontSize: 22.0, fontFamily: ThirdFont),
                                 )),
                               ),
                             ),
