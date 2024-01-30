@@ -17,6 +17,8 @@ class Fruits extends Table {
 
   TextColumn get famousBreed => text()();
 
+  TextColumn get sweetBreed => text()();
+
   TextColumn get seedlessVarieties => text()();
 
   TextColumn get priceRange => text()();

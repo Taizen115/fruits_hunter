@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fruits_hunter/view/screens/home_screen.dart';
 import 'package:gap/gap.dart';
+
+import 'home_screen.dart';
 
 class GradesScreen extends StatelessWidget {
   final int numberOfHunt;
@@ -57,31 +58,25 @@ class GradesScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         Gap(kToolbarHeight + 10),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(20.0),
-                          child: Card(
-                            color: Colors.teal,
-                            elevation: 20.0,
-                            child: Text(
-                              "あなたの獲得した果物の数は, ${numberOfHunt}個です."
-                              "\nまた, 獲得率は, ${getRate}%です."
-                              "\nお疲れさまでした.",
-                              style: TextStyle(
-                                  fontSize: 30.0, color: Colors.white70),
-                            ),
+                        Card(
+                          color: Colors.teal,
+                          elevation: 20.0,
+                          child: Text(
+                            "あなたの獲得した果物の数は, ${numberOfHunt}個です."
+                            "\nまた, 獲得率は, ${getRate}%です."
+                            "\nお疲れさまでした.",
+                            style: TextStyle(
+                                fontSize: 30.0, color: Colors.white),
                           ),
                         ),
-                        Gap(50),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(30.0),
-                          child: Card(
-                            color: Colors.transparent,
-                            shadowColor: Colors.white60,
-                            child: Text(
-                              "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
-                              style: TextStyle(
-                                  fontSize: 30.0, color: Colors.white),
-                            ),
+                        Gap(20),
+                        Card(
+                          color: Colors.transparent,
+                          shadowColor: Colors.white60,
+                          child: Text(
+                            "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
+                            style: TextStyle(
+                                fontSize: 30.0, color: Colors.white),
                           ),
                         ),
                       ],

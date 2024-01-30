@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_hunter/data/list_category.dart';
+import 'package:fruit_hunter/data/list_category.dart';
 
 class ListCategoryChips extends StatefulWidget {
   final ValueChanged<int>onCategorySelected;

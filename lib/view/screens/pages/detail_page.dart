@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fruits_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../db/database.dart';
+import '../../../style/style.dart';
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -17,7 +17,6 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-
   @override
   Widget build(BuildContext context) {
     final Map<String, String> detailQuestions = {
@@ -25,11 +24,12 @@ class _DetailPageState extends State<DetailPage> {
       "1": "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
       "2": "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
       "3": "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
-      "4": "4-2.${widget.selectedFruit.name}の種のない品種はどれですか？",
-      "5": "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
-      "6": "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
-      "7": "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
-      "8": "7.美味しい${widget.selectedFruit.name}の見分け方は？",
+      "4": "4-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
+      "5": "4-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
+      "6": "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
+      "7": "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
+      "8": "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
+      "9": "7.美味しい${widget.selectedFruit.name}の見分け方は？",
     };
 
     final Map<String, String> detailAnswers = {
@@ -40,11 +40,12 @@ class _DetailPageState extends State<DetailPage> {
       "1": "${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
       "2": "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
       "3": "${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
-      "4": "${widget.selectedFruit.seedlessVarieties}",
-      "5": "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
-      "6": "${widget.selectedFruit.nutrientEfficacy}",
-      "7": "場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
-      "8": "${widget.selectedFruit.distinguish}",
+      "4": "${widget.selectedFruit.sweetBreed}",
+      "5": "${widget.selectedFruit.seedlessVarieties}",
+      "6": "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
+      "7": "${widget.selectedFruit.nutrientEfficacy}",
+      "8": "場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
+      "9": "${widget.selectedFruit.distinguish}",
     };
 
     return SafeArea(
@@ -118,7 +119,7 @@ class _DetailPageState extends State<DetailPage> {
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
+                      borderRadius: BorderRadius.circular(30.0),
                       child: Container(
                         color: Colors.white70,
                         child: ListView.builder(
@@ -127,29 +128,38 @@ class _DetailPageState extends State<DetailPage> {
                           shrinkWrap: true,
                           itemCount: detailQuestions.length,
                           itemBuilder: (context, index) {
-                            return ExpansionTile(
-                              backgroundColor: Colors.blue[400],
-                              title: Text(
-                                detailQuestions[index.toString()]!,
-                                style: TextStyle(
-                                  fontFamily: SubFont,
-                                  fontSize: 20.0,
-                                  color: Colors.black,
-                                ),
-                                textAlign: TextAlign.left,
-                              ),
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    detailAnswers[index.toString()]!,
+                            return ClipRRect(
+                              borderRadius: BorderRadius.circular(30.0),
+                              child: ExpansionTile(
+                                backgroundColor: Colors.blue[400],
+                                title: Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Text(
+                                    detailQuestions[index.toString()]!,
                                     style: TextStyle(
+                                      fontFamily: SubFont,
                                       fontSize: 20.0,
-                                      color: Colors.white,
+                                      color: Colors.black,
                                     ),
                                     textAlign: TextAlign.left,
                                   ),
                                 ),
-                              ],
+                                children: [
+                                  ListTile(
+                                    title: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        detailAnswers[index.toString()]!,
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          color: Colors.white,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             );
                           },
                         ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
@@ -174,7 +184,6 @@ class _DetailPageState extends State<DetailPage> {
     }
   }
 
-
   _goMap() {
     return showDialog(
         barrierDismissible: false,
@@ -186,7 +195,7 @@ class _DetailPageState extends State<DetailPage> {
               style: TextStyle(fontSize: 25.0),
             ),
             content: Text(
-              "周辺の果樹園を検索してもよろしいでしょうか？",
+              "周辺の果樹園を検索しても\nよろしいでしょうか？",
               style: TextStyle(fontSize: 20.0),
             ),
             actions: [
@@ -206,7 +215,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 onPressed: () {
                   Navigator.pop(context);
-                 _launchURL();
+                  _launchURL();
                 },
               ),
             ],

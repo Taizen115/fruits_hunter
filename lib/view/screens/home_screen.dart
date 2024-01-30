@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:fruits_hunter/db/database.dart';
-import 'package:fruits_hunter/style/style.dart';
-import 'package:fruits_hunter/view/screens/pages/belongings_page.dart';
-import 'package:fruits_hunter/view/screens/pages/list_page.dart';
-import 'package:fruits_hunter/view/screens/pages/manners_page.dart';
-import 'package:fruits_hunter/view/screens/pages/quiz_page.dart';
+import 'package:fruit_hunter/db/database.dart';
+import 'package:fruit_hunter/style/style.dart';
+import 'package:fruit_hunter/view/screens/pages/list_page.dart';
 import 'package:gap/gap.dart';
+import 'pages/belongings_page.dart';
+import 'pages/manners_page.dart';
+import 'pages/quiz_page.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

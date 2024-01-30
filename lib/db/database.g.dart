@@ -35,6 +35,12 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
   late final GeneratedColumn<String> famousBreed = GeneratedColumn<String>(
       'famous_breed', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _sweetBreedMeta =
+      const VerificationMeta('sweetBreed');
+  @override
+  late final GeneratedColumn<String> sweetBreed = GeneratedColumn<String>(
+      'sweet_breed', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _seedlessVarietiesMeta =
       const VerificationMeta('seedlessVarieties');
   @override
@@ -124,6 +130,7 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
         famousArea,
         season,
         famousBreed,
+        sweetBreed,
         seedlessVarieties,
         priceRange,
         nutrients,
@@ -178,6 +185,14 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
               data['famous_breed']!, _famousBreedMeta));
     } else if (isInserting) {
       context.missing(_famousBreedMeta);
+    }
+    if (data.containsKey('sweet_breed')) {
+      context.handle(
+          _sweetBreedMeta,
+          sweetBreed.isAcceptableOrUnknown(
+              data['sweet_breed']!, _sweetBreedMeta));
+    } else if (isInserting) {
+      context.missing(_sweetBreedMeta);
     }
     if (data.containsKey('seedless_varieties')) {
       context.handle(
@@ -276,6 +291,8 @@ class $FruitsTable extends Fruits with TableInfo<$FruitsTable, Fruit> {
           .read(DriftSqlType.string, data['${effectivePrefix}season'])!,
       famousBreed: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}famous_breed'])!,
+      sweetBreed: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}sweet_breed'])!,
       seedlessVarieties: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}seedless_varieties'])!,
       priceRange: attachedDatabase.typeMapping
@@ -313,6 +330,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
   final String famousArea;
   final String season;
   final String famousBreed;
+  final String sweetBreed;
   final String seedlessVarieties;
   final String priceRange;
   final String nutrients;
@@ -330,6 +348,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       required this.famousArea,
       required this.season,
       required this.famousBreed,
+      required this.sweetBreed,
       required this.seedlessVarieties,
       required this.priceRange,
       required this.nutrients,
@@ -349,6 +368,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
     map['famous_area'] = Variable<String>(famousArea);
     map['season'] = Variable<String>(season);
     map['famous_breed'] = Variable<String>(famousBreed);
+    map['sweet_breed'] = Variable<String>(sweetBreed);
     map['seedless_varieties'] = Variable<String>(seedlessVarieties);
     map['price_range'] = Variable<String>(priceRange);
     map['nutrients'] = Variable<String>(nutrients);
@@ -370,6 +390,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       famousArea: Value(famousArea),
       season: Value(season),
       famousBreed: Value(famousBreed),
+      sweetBreed: Value(sweetBreed),
       seedlessVarieties: Value(seedlessVarieties),
       priceRange: Value(priceRange),
       nutrients: Value(nutrients),
@@ -393,6 +414,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       famousArea: serializer.fromJson<String>(json['famousArea']),
       season: serializer.fromJson<String>(json['season']),
       famousBreed: serializer.fromJson<String>(json['famousBreed']),
+      sweetBreed: serializer.fromJson<String>(json['sweetBreed']),
       seedlessVarieties: serializer.fromJson<String>(json['seedlessVarieties']),
       priceRange: serializer.fromJson<String>(json['priceRange']),
       nutrients: serializer.fromJson<String>(json['nutrients']),
@@ -415,6 +437,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       'famousArea': serializer.toJson<String>(famousArea),
       'season': serializer.toJson<String>(season),
       'famousBreed': serializer.toJson<String>(famousBreed),
+      'sweetBreed': serializer.toJson<String>(sweetBreed),
       'seedlessVarieties': serializer.toJson<String>(seedlessVarieties),
       'priceRange': serializer.toJson<String>(priceRange),
       'nutrients': serializer.toJson<String>(nutrients),
@@ -435,6 +458,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
           String? famousArea,
           String? season,
           String? famousBreed,
+          String? sweetBreed,
           String? seedlessVarieties,
           String? priceRange,
           String? nutrients,
@@ -452,6 +476,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
         famousArea: famousArea ?? this.famousArea,
         season: season ?? this.season,
         famousBreed: famousBreed ?? this.famousBreed,
+        sweetBreed: sweetBreed ?? this.sweetBreed,
         seedlessVarieties: seedlessVarieties ?? this.seedlessVarieties,
         priceRange: priceRange ?? this.priceRange,
         nutrients: nutrients ?? this.nutrients,
@@ -472,6 +497,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
           ..write('famousArea: $famousArea, ')
           ..write('season: $season, ')
           ..write('famousBreed: $famousBreed, ')
+          ..write('sweetBreed: $sweetBreed, ')
           ..write('seedlessVarieties: $seedlessVarieties, ')
           ..write('priceRange: $priceRange, ')
           ..write('nutrients: $nutrients, ')
@@ -494,6 +520,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
       famousArea,
       season,
       famousBreed,
+      sweetBreed,
       seedlessVarieties,
       priceRange,
       nutrients,
@@ -514,6 +541,7 @@ class Fruit extends DataClass implements Insertable<Fruit> {
           other.famousArea == this.famousArea &&
           other.season == this.season &&
           other.famousBreed == this.famousBreed &&
+          other.sweetBreed == this.sweetBreed &&
           other.seedlessVarieties == this.seedlessVarieties &&
           other.priceRange == this.priceRange &&
           other.nutrients == this.nutrients &&
@@ -533,6 +561,7 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
   final Value<String> famousArea;
   final Value<String> season;
   final Value<String> famousBreed;
+  final Value<String> sweetBreed;
   final Value<String> seedlessVarieties;
   final Value<String> priceRange;
   final Value<String> nutrients;
@@ -551,6 +580,7 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     this.famousArea = const Value.absent(),
     this.season = const Value.absent(),
     this.famousBreed = const Value.absent(),
+    this.sweetBreed = const Value.absent(),
     this.seedlessVarieties = const Value.absent(),
     this.priceRange = const Value.absent(),
     this.nutrients = const Value.absent(),
@@ -570,6 +600,7 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     required String famousArea,
     required String season,
     required String famousBreed,
+    required String sweetBreed,
     required String seedlessVarieties,
     required String priceRange,
     required String nutrients,
@@ -587,6 +618,7 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
         famousArea = Value(famousArea),
         season = Value(season),
         famousBreed = Value(famousBreed),
+        sweetBreed = Value(sweetBreed),
         seedlessVarieties = Value(seedlessVarieties),
         priceRange = Value(priceRange),
         nutrients = Value(nutrients),
@@ -600,6 +632,7 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     Expression<String>? famousArea,
     Expression<String>? season,
     Expression<String>? famousBreed,
+    Expression<String>? sweetBreed,
     Expression<String>? seedlessVarieties,
     Expression<String>? priceRange,
     Expression<String>? nutrients,
@@ -619,6 +652,7 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
       if (famousArea != null) 'famous_area': famousArea,
       if (season != null) 'season': season,
       if (famousBreed != null) 'famous_breed': famousBreed,
+      if (sweetBreed != null) 'sweet_breed': sweetBreed,
       if (seedlessVarieties != null) 'seedless_varieties': seedlessVarieties,
       if (priceRange != null) 'price_range': priceRange,
       if (nutrients != null) 'nutrients': nutrients,
@@ -640,6 +674,7 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
       Value<String>? famousArea,
       Value<String>? season,
       Value<String>? famousBreed,
+      Value<String>? sweetBreed,
       Value<String>? seedlessVarieties,
       Value<String>? priceRange,
       Value<String>? nutrients,
@@ -658,6 +693,7 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
       famousArea: famousArea ?? this.famousArea,
       season: season ?? this.season,
       famousBreed: famousBreed ?? this.famousBreed,
+      sweetBreed: sweetBreed ?? this.sweetBreed,
       seedlessVarieties: seedlessVarieties ?? this.seedlessVarieties,
       priceRange: priceRange ?? this.priceRange,
       nutrients: nutrients ?? this.nutrients,
@@ -690,6 +726,9 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
     }
     if (famousBreed.present) {
       map['famous_breed'] = Variable<String>(famousBreed.value);
+    }
+    if (sweetBreed.present) {
+      map['sweet_breed'] = Variable<String>(sweetBreed.value);
     }
     if (seedlessVarieties.present) {
       map['seedless_varieties'] = Variable<String>(seedlessVarieties.value);
@@ -738,6 +777,7 @@ class FruitsCompanion extends UpdateCompanion<Fruit> {
           ..write('famousArea: $famousArea, ')
           ..write('season: $season, ')
           ..write('famousBreed: $famousBreed, ')
+          ..write('sweetBreed: $sweetBreed, ')
           ..write('seedlessVarieties: $seedlessVarieties, ')
           ..write('priceRange: $priceRange, ')
           ..write('nutrients: $nutrients, ')

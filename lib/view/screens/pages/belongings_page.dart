@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fruits_hunter/style/style.dart';
+
+import '../../../style/style.dart';
 
 class BelongingsPage extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
     'ウェットティッシュ': false,
     'タオル': false,
     'クーラーボックス': false,
-    'お水': false,
+    '飲み物': false,
   };
 
   Map<String, IconData> icons = {
@@ -27,7 +28,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
     'ウェットティッシュ': FontAwesomeIcons.boxTissue,
     'タオル': FontAwesomeIcons.rug,
     'クーラーボックス': FontAwesomeIcons.box,
-    'お水': FontAwesomeIcons.bottleWater,
+    '飲み物': FontAwesomeIcons.bottleWater,
   };
 
   @override
@@ -87,15 +88,13 @@ class _BelongingsPageState extends State<BelongingsPage> {
             SizedBox(height: kToolbarHeight + 10),
 
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(5.0),
               child: ListView(
                 // shrinkWrap: true,
                 children: belongings.keys.map((String key) {
                   return CheckboxListTile(
                     activeColor: Colors.lightBlue,
                     side: BorderSide(color: Colors.black54, width: 2.0),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
-
                     title: Row(
                       children: [
                         Text(
@@ -112,7 +111,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(10.0),
                           child: FaIcon(
                             icons[key],
                             color: Colors.lightBlue,

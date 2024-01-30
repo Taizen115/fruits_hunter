@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fruits_hunter/db/database.dart';
-import 'package:fruits_hunter/main.dart';
+import 'package:fruit_hunter/db/database.dart';
+import 'package:fruit_hunter/main.dart';
 import 'package:gap/gap.dart';
-
 import '../../../style/style.dart';
 import '../grades_screen.dart';
 

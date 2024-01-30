@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fruits_hunter/style/style.dart';
+import 'package:fruit_hunter/style/style.dart';
 
 class MannersPage extends StatefulWidget {
   @override
@@ -51,8 +51,8 @@ class _MannersPageState extends State<MannersPage> {
             Stack(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 100.0),
-                  height: 800.0,
+                  margin: EdgeInsets.only(top: 50.0),
+                  height: 950.0,
                   decoration: BoxDecoration(
                     color: Colors.white70,
                     borderRadius: BorderRadius.circular(30.0),
@@ -81,29 +81,38 @@ class _MannersPageState extends State<MannersPage> {
                             shrinkWrap: true,
                             itemCount: mannersQuestions.length,
                             itemBuilder: (context, index) {
-                              return ExpansionTile(
-                                backgroundColor: Colors.blue[400],
-                                title: Text(
-                                  mannersQuestions[index.toString()]!,
-                                  style: TextStyle(
-                                    fontFamily: SubFont,
-                                    fontSize: 20.0,
-                                    color: Colors.black87,
-                                  ),
-                                  textAlign: TextAlign.left,
-                                ),
-                                children: [
-                                  ListTile(
-                                    title: Text(
-                                      mannersAnswers[index.toString()]!,
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(30.0),
+                                child: ExpansionTile(
+                                  backgroundColor: Colors.blue[400],
+                                  title: Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text(
+                                      mannersQuestions[index.toString()]!,
                                       style: TextStyle(
+                                        fontFamily: SubFont,
                                         fontSize: 20.0,
-                                        color: Colors.white,
+                                        color: Colors.black87,
                                       ),
                                       textAlign: TextAlign.left,
                                     ),
                                   ),
-                                ],
+                                  children: [
+                                    ListTile(
+                                      title: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text(
+                                          mannersAnswers[index.toString()]!,
+                                          style: TextStyle(
+                                            fontSize: 20.0,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               );
                             },
                           ),
@@ -111,9 +120,9 @@ class _MannersPageState extends State<MannersPage> {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),

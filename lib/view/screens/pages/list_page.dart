@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fruits_hunter/data/list_category.dart';
-import 'package:fruits_hunter/main.dart';
-import 'package:fruits_hunter/style/style.dart';
-import 'package:fruits_hunter/view/components/list_category_chips.dart';
-import 'package:fruits_hunter/view/screens/pages/detail_page.dart';
+import 'package:fruit_hunter/main.dart';
+import 'package:fruit_hunter/view/screens/pages/detail_page.dart';
 import 'package:gap/gap.dart';
-
+import '../../../data/list_category.dart';
 import '../../../db/database.dart';
+import '../../../style/style.dart';
+import '../../components/list_category_chips.dart';
 
 class ListPage extends StatefulWidget {
   @override
@@ -100,7 +99,7 @@ class _ListPageState extends State<ListPage> {
                                     child: Text(
                                   fruit.name,
                                   style: TextStyle(
-                                      fontSize: 22.0, fontFamily: ThirdFont),
+                                      fontSize: 25.0, fontFamily: ThirdFont),
                                 )),
                               ),
                             ),
