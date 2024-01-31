@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "fruit_mixx.png",
+      "filename" : "fruit_mix_ios.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "fruit_mixx 1.png",
+      "filename" : "fruit_mix_ios 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "fruit_mixx 2.png",
+      "filename" : "fruit_mix_ios 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
