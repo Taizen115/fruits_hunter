@@ -40,7 +40,7 @@ class _DetailPageState extends State<DetailPage> {
       "1": "${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
       "2": "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
       "3": "${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
-      "4": "${widget.selectedFruit.sweetBreed}",
+      "4": "${widget.selectedFruit.sweetBreed}\n最新の品種は品種改良で糖度が高いものが多いので、是非チェックしてみて下さい.",
       "5": "${widget.selectedFruit.seedlessVarieties}",
       "6": "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
       "7": "${widget.selectedFruit.nutrientEfficacy}",

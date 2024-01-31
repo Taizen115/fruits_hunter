@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => _goListPage(),
                 child: Text(
                   "果物一覧",
-                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                  style: TextStyle(fontSize: 25.0),
                 )),
           ),
           Padding(
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => _selectNumberOfQuiz(),
                 child: Text(
                   "クイズ",
-                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                  style: TextStyle(fontSize: 25.0),
                 )),
           ),
         ]),
@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => _goBelogingsPage(),
                 child: Text(
                   "持ち物",
-                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                  style: TextStyle(fontSize: 25.0),
                 )),
           ),
           Padding(
@@ -165,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () => _goMannersPage(),
                 child: Text(
                   "マナー",
-                  style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                  style: TextStyle(fontSize: 25.0),
                 )),
           ),
         ]),
