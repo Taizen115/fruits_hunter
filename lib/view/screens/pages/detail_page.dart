@@ -116,6 +116,23 @@ class _DetailPageState extends State<DetailPage> {
               child: Column(
                 children: [
                   Gap(kToolbarHeight + 10),
+
+                  Center(
+                    child: Container(
+                      color: Colors.teal,
+                      width: 200.0,
+                      height: 30.0,
+                      child: Center(
+                        child: Text(
+                          "広告予定",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Gap(10),
+
                   Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: ClipRRect(

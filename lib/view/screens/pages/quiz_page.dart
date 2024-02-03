@@ -128,6 +128,25 @@ class _QuizPageState extends State<QuizPage> {
 
                   //TODO 選択肢表示部分
                   Expanded(child: _showChoices()),
+
+                  Gap(20),
+
+                  //TODO 広告
+                  Center(
+                    child: Container(
+                      color: Colors.teal,
+                      width: 200.0,
+                      height: 30.0,
+                      child: Center(
+                        child: Text(
+                          "広告予定",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Gap(10),
                 ],
               ),
             ),

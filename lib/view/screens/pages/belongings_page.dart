@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 
 import '../../../style/style.dart';
 
@@ -85,50 +86,70 @@ class _BelongingsPageState extends State<BelongingsPage> {
 
             //2階　コンテンツ
 
-            SizedBox(height: kToolbarHeight + 10),
+            Column(
+              children: [
 
-            Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: ListView(
-                // shrinkWrap: true,
-                children: belongings.keys.map((String key) {
-                  return CheckboxListTile(
-                    activeColor: Colors.lightBlue,
-                    side: BorderSide(color: Colors.black54, width: 2.0),
-                    title: Row(
-                      children: [
-                        Text(
-                          key,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontFamily: SubFont,
-                            fontSize: 20.0,
-                            color: Colors.black54,
-                            fontWeight: FontWeight.bold,
-                            decoration: belongings[key] ?? false
-                                ? TextDecoration.lineThrough
-                                : TextDecoration.none,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: FaIcon(
-                            icons[key],
-                            color: Colors.lightBlue,
-                          ),
-                        ),
-                      ],
+                Gap(kToolbarHeight + 10),
+
+                Center(
+                  child: Container(
+                    color: Colors.teal,
+                    width: 200.0,
+                    height: 30.0,
+                    child: Center(
+                      child: Text(
+                        "広告予定",
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    value: belongings[key],
-                    onChanged: (bool? value) {
-                      setState(() {
-                        belongings[key] = value!;
-                      });
-                    },
-                  );
-                }).toList(),
-              ),
+                  ),
+                ),
+                Gap(20),
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    children: belongings.keys.map((String key) {
+                      return CheckboxListTile(
+                        activeColor: Colors.lightBlue,
+                        side: BorderSide(color: Colors.black54, width: 2.0),
+                        title: Row(
+                          children: [
+                            Text(
+                              key,
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontFamily: SubFont,
+                                fontSize: 20.0,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.bold,
+                                decoration: belongings[key] ?? false
+                                    ? TextDecoration.lineThrough
+                                    : TextDecoration.none,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: FaIcon(
+                                icons[key],
+                                color: Colors.lightBlue,
+                              ),
+                            ),
+                          ],
+                        ),
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: belongings[key],
+                        onChanged: (bool? value) {
+                          setState(() {
+                            belongings[key] = value!;
+                          });
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

@@ -65,8 +65,8 @@ class GradesScreen extends StatelessWidget {
                             "あなたの獲得した果物の数は, ${numberOfHunt}個です."
                             "\nまた, 獲得率は, ${getRate}%です."
                             "\nお疲れさまでした.",
-                            style: TextStyle(
-                                fontSize: 30.0, color: Colors.white),
+                            style:
+                                TextStyle(fontSize: 30.0, color: Colors.white),
                           ),
                         ),
                         Gap(20),
@@ -75,8 +75,22 @@ class GradesScreen extends StatelessWidget {
                           shadowColor: Colors.white60,
                           child: Text(
                             "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
-                            style: TextStyle(
-                                fontSize: 30.0, color: Colors.white),
+                            style:
+                                TextStyle(fontSize: 30.0, color: Colors.white),
+                          ),
+                        ),
+                        Gap(10),
+                        Center(
+                          child: Container(
+                            color: Colors.teal,
+                            width: 200.0,
+                            height: 30.0,
+                            child: Center(
+                              child: Text(
+                                "広告予定",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
                           ),
                         ),
                       ],

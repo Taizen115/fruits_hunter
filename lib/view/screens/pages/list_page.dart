@@ -68,6 +68,25 @@ class _ListPageState extends State<ListPage> {
                     onCategorySelected: (categoryId) =>
                         _getTypeFruits(context, categoryId),
                   ),
+
+                  Gap(10),
+
+                  Center(
+                    child: Container(
+                      color: Colors.teal,
+                      width: 200.0,
+                      height: 30.0,
+                      child: Center(
+                        child: Text(
+                          "広告予定",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Gap(10),
+
                   Expanded(
                     child: Card(
                       color: Colors.white,

@@ -4,6 +4,7 @@ import 'package:fruit_hunter/db/database.dart';
 import 'package:fruit_hunter/style/style.dart';
 import 'package:fruit_hunter/view/screens/pages/list_page.dart';
 import 'package:gap/gap.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'pages/belongings_page.dart';
 import 'pages/manners_page.dart';
 import 'pages/quiz_page.dart';
@@ -15,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Question> quizList = [];
+
+  final bannerAd = adManager.bannerAd;
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +101,34 @@ class _HomeScreenState extends State<HomeScreen> {
         Gap(10),
         //選択肢部分
         _choicePart(),
+
+        Gap(10),
+        //バージョン記載
+        Text(
+          "'FruitHunter' ver 1.0.0 ©Taylors Guild, N.P.O",
+          style: TextStyle(fontSize: 12.0),
+        ),
+
+        Gap(10),
+
+        Center(
+          child: (bannerAd == null)
+              ? Container(
+                  width: 0.0,
+                  height: 0.0,
+                )
+              : Container(
+                  color: Colors.teal,
+                  width: 200.0,
+                  height: 30.0,
+                  child: Center(
+                    child: AdWidget(
+                      ad: bannerAd,
+                    ),
+                  ),
+                ),
+        ),
+        Gap(10),
       ]),
     ));
   }
@@ -190,27 +221,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextButton(
                   child: Text(
                     "10問",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.blueAccent),
+                    style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
                   ),
                   onPressed: () => _goQuizPage(context, 10),
                 ),
                 TextButton(
                   child: Text(
                     "20問",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.green),
+                    style: TextStyle(fontSize: 20.0, color: Colors.green),
                   ),
                   onPressed: () => _goQuizPage(context, 20),
                 ),
                 TextButton(
                   child: Text(
                     "30問",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.redAccent),
+                    style: TextStyle(fontSize: 20.0, color: Colors.redAccent),
                   ),
                   onPressed: () => _goQuizPage(context, 30),
                 ),
@@ -228,7 +253,8 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => QuizPage(numberOfQuestions: numberOfQuestion,
+            builder: (context) => QuizPage(
+                  numberOfQuestions: numberOfQuestion,
                 )));
   }
 
