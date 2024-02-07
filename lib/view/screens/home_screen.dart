@@ -5,6 +5,7 @@ import 'package:fruit_hunter/style/style.dart';
 import 'package:fruit_hunter/view/screens/pages/list_page.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import '../components/ad_manager.dart';
 import 'pages/belongings_page.dart';
 import 'pages/manners_page.dart';
 import 'pages/quiz_page.dart';
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Question> quizList = [];
 
-  final bannerAd = adManager.bannerAd;
+  final bannerAd = AdManager;
 
   @override
   Widget build(BuildContext context) {
@@ -118,9 +119,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 0.0,
                 )
               : Container(
-                  color: Colors.teal,
-                  width: 200.0,
-                  height: 30.0,
+                  width: bannerAd.size.width.toDouble(),
+                  height: bannerAd.size.height.toDouble(),
                   child: Center(
                     child: AdWidget(
                       ad: bannerAd,

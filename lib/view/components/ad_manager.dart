@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdManager {
@@ -19,9 +18,12 @@ class AdManager {
     );
   }
 
-  dispose(){
-    bannerAd?.dispose();
+  void loadBannerAd(){
+    bannerAd?.load();
+  }
 
+  void dispose(){
+    bannerAd?.dispose();
   }
 
   static String get appId {
