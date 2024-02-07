@@ -46,103 +46,114 @@ class _MannersPageState extends State<MannersPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(top: 50.0),
-                  height: 1100.0,
-                  decoration: BoxDecoration(
-                    color: Colors.white70,
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                ),
-                Column(
-                  children: [
-                    Text(
-                      "マナー",
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          fontFamily: ThirdFont,
-                          color: Colors.white),
-                    ),
-                    Center(
-                      child: Image.asset("assets/images/enjoy_picking.png"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(30.0),
-                        child: Container(
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(top: 50.0),
+                        height: 1100.0,
+                        decoration: BoxDecoration(
                           color: Colors.white70,
-                          child: Padding(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            "マナー",
+                            style: TextStyle(
+                                fontSize: 30.0,
+                                fontFamily: ThirdFont,
+                                color: Colors.white),
+                          ),
+                          Center(
+                            child: Image.asset("assets/images/enjoy_picking.png"),
+                          ),
+                          Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: ListView.builder(
-                              physics: NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: mannersQuestions.length,
-                              itemBuilder: (context, index) {
-                                return ClipRRect(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  child: ExpansionTile(
-                                    backgroundColor: Colors.blue[400],
-                                    title: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Text(
-                                        mannersQuestions[index.toString()]!,
-                                        style: TextStyle(
-                                          fontFamily: SubFont,
-                                          fontSize: 20.0,
-                                          color: Colors.black87,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ),
-                                    children: [
-                                      ListTile(
-                                        title: Padding(
-                                          padding: const EdgeInsets.all(5.0),
-                                          child: Text(
-                                            mannersAnswers[index.toString()]!,
-                                            style: TextStyle(
-                                              fontSize: 20.0,
-                                              color: Colors.white,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(30.0),
+                              child: Container(
+                                color: Colors.white70,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount: mannersQuestions.length,
+                                    itemBuilder: (context, index) {
+                                      return ClipRRect(
+                                        borderRadius: BorderRadius.circular(30.0),
+                                        child: ExpansionTile(
+                                          backgroundColor: Colors.blue[400],
+                                          title: Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Text(
+                                              mannersQuestions[index.toString()]!,
+                                              style: TextStyle(
+                                                fontFamily: SubFont,
+                                                fontSize: 20.0,
+                                                color: Colors.black87,
+                                              ),
+                                              textAlign: TextAlign.left,
                                             ),
-                                            textAlign: TextAlign.left,
                                           ),
+                                          children: [
+                                            ListTile(
+                                              title: Padding(
+                                                padding: const EdgeInsets.all(5.0),
+                                                child: Text(
+                                                  mannersAnswers[index.toString()]!,
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                    color: Colors.white,
+                                                  ),
+                                                  textAlign: TextAlign.left,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
+                                      );
+                                    },
                                   ),
-                                );
-                              },
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: Container(
-                        color: Colors.teal,
-                        width: 200.0,
-                        height: 30.0,
-                        child: Center(
-                          child: Text(
-                            "広告予定",
-                            style: TextStyle(color: Colors.white),
+                          Center(
+                            child: Container(
+                              color: Colors.teal,
+                              width: 200.0,
+                              height: 30.0,
+                              child: Center(
+                                child: Text(
+                                  "広告予定",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          Gap(20),
+                        ],
                       ),
-                    ),
-                    Gap(20),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+          //TODO 広告
+          Container(
+            height: 30,
+            color: Colors.red,
+          )
+        ],
       ),
     );
   }

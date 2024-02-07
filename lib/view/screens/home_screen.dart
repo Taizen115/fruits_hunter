@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruit_hunter/db/database.dart';
+import 'package:fruit_hunter/main.dart';
 import 'package:fruit_hunter/style/style.dart';
 import 'package:fruit_hunter/view/screens/pages/list_page.dart';
 import 'package:gap/gap.dart';
@@ -18,120 +19,130 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Question> quizList = [];
 
-  final bannerAd = AdManager;
+  @override
+  void initState() {
+    super.initState();
+    adManager.loadBannerAd();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      body: Column(children: [
-        Expanded(
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Padding(
+      child: Scaffold(
+        body: Column(
+          children: [
+            Expanded(
+              child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: DecoratedBox(
-                    position: DecorationPosition.foreground,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Colors.black54, Colors.black12]),
-                    ),
-                    child: Image.asset(
-                      "assets/background/concierge.jpg",
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Gap(50),
-                      Text(
-                        "Dear",
-                        style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 50.0,
-                            color: Colors.white70),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: DecoratedBox(
+                        position: DecorationPosition.foreground,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Colors.black54, Colors.black12]),
+                        ),
+                        child: Image.asset(
+                          "assets/background/concierge.jpg",
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      Text(
-                        "Fruit",
-                        style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 70.0,
-                            color: Colors.white),
-                      ),
-                      Text(
-                        "Hunter",
-                        style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 45.0,
-                            color: Colors.white70),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        Gap(10),
-
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Center(
-            child: Text(
-              "どのような果物狩りの手伝いが\n必要でしょうか？ ",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 25.0,
-                fontFamily: MainFont,
-              ),
-            ).animate().fade(delay: 2500.ms).scale().then(),
-          ),
-        ),
-        Gap(10),
-        //選択肢部分
-        _choicePart(),
-
-        Gap(10),
-        //バージョン記載
-        Text(
-          "'FruitHunter' ver 1.0.0 ©Taylors Guild, N.P.O",
-          style: TextStyle(fontSize: 12.0),
-        ),
-
-        Gap(10),
-
-        Center(
-          child: (bannerAd == null)
-              ? Container(
-                  width: 0.0,
-                  height: 0.0,
-                )
-              : Container(
-                  width: bannerAd.size.width.toDouble(),
-                  height: bannerAd.size.height.toDouble(),
-                  child: Center(
-                    child: AdWidget(
-                      ad: bannerAd,
                     ),
-                  ),
+                    Container(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Column(
+                          children: [
+                            Spacer(),
+                            Text(
+                              "Dear",
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 50.0,
+                                  color: Colors.white70),
+                            ),
+                            Text(
+                              "Fruit",
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 70.0,
+                                  color: Colors.white),
+                            ),
+                            Text(
+                              "Hunter",
+                              style: TextStyle(
+                                  fontFamily: MainFont,
+                                  fontSize: 45.0,
+                                  color: Colors.white70),
+                            ),
+                            Spacer(),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+              ),
+            ),
+
+            Gap(10),
+
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Center(
+                child: Text(
+                  "どのような果物狩りの手伝いが\n必要でしょうか？ ",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 25.0,
+                    fontFamily: MainFont,
+                  ),
+                ).animate().fade(delay: 2500.ms).scale().then(),
+              ),
+            ),
+            Gap(10),
+            //選択肢部分
+            _choicePart(),
+
+            Gap(10),
+            //バージョン記載
+            Text(
+              "'FruitHunter' ver 1.0.0 ©Taylors Guild, N.P.O",
+              style: TextStyle(fontSize: 12.0),
+            ),
+
+            Gap(10),
+
+            Center(
+              child: (adManager.bannerAd == null)
+                  ? Container(
+                      width: 0.0,
+                      height: 0.0,
+                    )
+                  : Container(
+                      width: adManager.bannerAd!.size.width.toDouble(),
+                      height: adManager.bannerAd!.size.height.toDouble(),
+                      child: Center(
+                        child: AdWidget(
+                          ad: adManager.bannerAd!,
+                        ),
+                      ),
+                    ),
+            ),
+            Gap(10),
+          ],
         ),
-        Gap(10),
-      ]),
-    ));
+      ),
+    );
   }
+
+
 
   Widget _choicePart() {
     return Table(
