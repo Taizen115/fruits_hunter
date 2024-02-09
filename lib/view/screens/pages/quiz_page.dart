@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
 import 'package:fruit_hunter/main.dart';
 import 'package:gap/gap.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../style/style.dart';
 import '../grades_screen.dart';
 
@@ -48,11 +49,14 @@ class _QuizPageState extends State<QuizPage> {
     numberOfHunt = 0;
     getRate = 0;
     numberOfRemaining = widget.numberOfQuestions;
-
-    //広告
-    adManager.loadBannerAd();
-
     _getQuestion();
+   initAd();
+  }
+
+  //広告
+  void initAd() {
+    adManager.initBannerAd();
+    adManager.loadBannerAd();
   }
 
   @override
@@ -136,19 +140,21 @@ class _QuizPageState extends State<QuizPage> {
 
                   //TODO 広告
                   Center(
-                    child: Container(
-                      color: Colors.teal,
-                      width: 200.0,
-                      height: 30.0,
+                    child: (adManager.bannerAd == null)
+                        ? Container(
+                      width: 0.0,
+                      height: 0.0,
+                    )
+                        : Container(
+                      width: adManager.bannerAd!.size.width.toDouble(),
+                      height: adManager.bannerAd!.size.height.toDouble(),
                       child: Center(
-                        child: Text(
-                          "広告予定",
-                          style: TextStyle(color: Colors.white),
+                        child: AdWidget(
+                          ad: adManager.bannerAd!,
                         ),
                       ),
                     ),
                   ),
-
                   Gap(10),
                 ],
               ),
@@ -456,7 +462,7 @@ class _QuizPageState extends State<QuizPage> {
                     ),
                   ),
                   onPressed: () {
-                    if (numberOfRemaining == 0) {
+                    if (numberOfRemaining == 0)  {
                       Navigator.push(
                           context,
                           MaterialPageRoute(

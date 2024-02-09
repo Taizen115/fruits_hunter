@@ -23,7 +23,6 @@ void main() async {
 
   //広告
   await adManager.initAdmob();
-  adManager.initBannerAd();
 
   runApp(
     DevicePreview(

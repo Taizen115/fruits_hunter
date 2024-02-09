@@ -14,10 +14,15 @@ class _MannersPageState extends State<MannersPage> {
   @override
   void initState() {
     super.initState();
+   initAd();
+  }
 
-    //広告
+  //広告
+  void initAd() {
+    adManager.initBannerAd();
     adManager.loadBannerAd();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +156,7 @@ class _MannersPageState extends State<MannersPage> {
           ),
           //広告
           Center(
-            child: (adManager == null)
+            child: (adManager.bannerAd! == null)
                 ? Container(
               width: 0.0,
               height: 0.0,

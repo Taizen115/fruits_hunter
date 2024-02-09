@@ -22,11 +22,18 @@ class _ListPageState extends State<ListPage> {
   void initState() {
     super.initState();
     _getTypeFruits(context, categories);
+    initAd();
+  }
+
+  //広告
+  void initAd() {
+    adManager.initBannerAd();
     adManager.loadBannerAd();
   }
 
   @override
   void dispose() {
+    adManager.disposeBannerAd();
     super.dispose();
   }
 
@@ -45,7 +52,10 @@ class _ListPageState extends State<ListPage> {
               FontAwesomeIcons.arrowLeft,
               color: Colors.lightBlue,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () async {
+              await adManager.disposeBannerAd();
+              Navigator.of(context).pop();
+            },
           ),
           title: Row(
             children: [
@@ -139,7 +149,8 @@ class _ListPageState extends State<ListPage> {
 
   //DetailPageにデータを持って移行させる
 
-  _goDetailPage(Fruit selectedFruit) {
+  _goDetailPage(Fruit selectedFruit) async {
+    await adManager.disposeBannerAd();
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -148,6 +159,7 @@ class _ListPageState extends State<ListPage> {
         ),
       ),
     );
+    initAd();
   }
 
   //TODO 季節ごとに果物（DB）を表示させる

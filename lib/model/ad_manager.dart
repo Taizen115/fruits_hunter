@@ -22,8 +22,8 @@ class AdManager {
     bannerAd?.load();
   }
 
-  void dispose(){
-    bannerAd?.dispose();
+  Future<void> disposeBannerAd() async {
+    await bannerAd?.dispose();
   }
 
 

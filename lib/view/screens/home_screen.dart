@@ -21,11 +21,18 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    initAd();
+  }
+
+  //広告
+  void initAd() {
+    adManager.initBannerAd();
     adManager.loadBannerAd();
   }
 
   @override
   void dispose() {
+    adManager.disposeBannerAd();
     super.dispose();
   }
 
@@ -116,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Gap(10),
 
         Center(
-          child: (adManager == null)
+          child: (adManager.bannerAd == null)
               ? Container(
                   width: 0.0,
                   height: 0.0,
@@ -254,12 +261,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ));
   }
 
-  _goListPage() {
+  _goListPage() async {
+    await adManager.disposeBannerAd();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => ListPage()));
+    initAd();
   }
 
-  _goQuizPage(BuildContext context, int numberOfQuestion) {
+  _goQuizPage(BuildContext context, int numberOfQuestion) async {
+    await adManager.disposeBannerAd();
     Navigator.pop(context);
     Navigator.push(
         context,
@@ -267,15 +277,20 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (context) => QuizPage(
                   numberOfQuestions: numberOfQuestion,
                 )));
+    initAd();
   }
 
-  _goBelogingsPage() {
+  _goBelogingsPage() async {
+    await adManager.disposeBannerAd();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => BelongingsPage()));
+    initAd();
   }
 
-  _goMannersPage() {
+  _goMannersPage() async {
+    await adManager.disposeBannerAd();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => MannersPage()));
+    initAd();
   }
 }

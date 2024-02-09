@@ -23,6 +23,11 @@ class _DetailPageState extends State<DetailPage> {
   @override
   void initState() {
     super.initState();
+    initAd();
+  }
+
+  void initAd() {
+    adManager.initBannerAd();
     adManager.loadBannerAd();
   }
 
@@ -189,7 +194,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 Center(
-                  child: (adManager == null)
+                  child: (adManager.bannerAd! == null)
                       ? Container(
                     width: 0.0,
                     height: 0.0,

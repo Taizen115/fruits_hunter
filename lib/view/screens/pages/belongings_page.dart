@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../main.dart';
 import '../../../style/style.dart';
@@ -33,10 +34,15 @@ class _BelongingsPageState extends State<BelongingsPage> {
     '飲み物': FontAwesomeIcons.bottleWater,
   };
 
-  //広告
   @override
   void initState() {
     super.initState();
+    initAd();
+  }
+
+  //広告
+  void initAd() {
+    adManager.initBannerAd();
     adManager.loadBannerAd();
   }
 
@@ -96,21 +102,22 @@ class _BelongingsPageState extends State<BelongingsPage> {
 
             Column(
               children: [
-
                 Gap(kToolbarHeight + 10),
-
                 Center(
-                  child: Container(
-                    color: Colors.teal,
-                    width: 200.0,
-                    height: 30.0,
-                    child: Center(
-                      child: Text(
-                        "広告予定",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ),
+                  child: (adManager.bannerAd == null)
+                      ? Container(
+                          width: 0.0,
+                          height: 0.0,
+                        )
+                      : Container(
+                          width: adManager.bannerAd!.size.width.toDouble(),
+                          height: adManager.bannerAd!.size.height.toDouble(),
+                          child: Center(
+                            child: AdWidget(
+                              ad: adManager.bannerAd!,
+                            ),
+                          ),
+                        ),
                 ),
                 Gap(20),
                 Padding(

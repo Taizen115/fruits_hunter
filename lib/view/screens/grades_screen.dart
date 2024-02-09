@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../main.dart';
 import 'home_screen.dart';
@@ -22,8 +23,15 @@ class _GradesScreenState extends State<GradesScreen> {
   @override
   void initState() {
     super.initState();
+    initAd();
+  }
+
+  //広告
+  void initAd() {
+    adManager.initBannerAd();
     adManager.loadBannerAd();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,14 +104,17 @@ class _GradesScreenState extends State<GradesScreen> {
                         ),
                         Gap(10),
                         Center(
-                          child: Container(
-                            color: Colors.teal,
-                            width: 200.0,
-                            height: 30.0,
+                          child: (adManager.bannerAd! == null)
+                              ? Container(
+                            width: 0.0,
+                            height: 0.0,
+                          )
+                              : Container(
+                            width: adManager.bannerAd!.size.width.toDouble(),
+                            height: adManager.bannerAd!.size.height.toDouble(),
                             child: Center(
-                              child: Text(
-                                "広告予定",
-                                style: TextStyle(color: Colors.white),
+                              child: AdWidget(
+                                ad: adManager.bannerAd!,
                               ),
                             ),
                           ),
