@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/main.dart';
 import 'package:fruit_hunter/view/screens/pages/detail_page.dart';
 import 'package:gap/gap.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../data/list_category.dart';
 import '../../../db/database.dart';
 import '../../../style/style.dart';
@@ -21,6 +22,7 @@ class _ListPageState extends State<ListPage> {
   void initState() {
     super.initState();
     _getTypeFruits(context, categories);
+    adManager.loadBannerAd();
   }
 
   @override
@@ -68,25 +70,27 @@ class _ListPageState extends State<ListPage> {
                     onCategorySelected: (categoryId) =>
                         _getTypeFruits(context, categoryId),
                   ),
-
                   Gap(10),
 
+                  //TODO 広告を実装したいと考えているが、「This AdWidget is already in the Widget tree」のエラーメッセージが出て、広告が表示されない
+
                   Center(
-                    child: Container(
-                      color: Colors.teal,
-                      width: 200.0,
-                      height: 30.0,
+                    child: (adManager == null)
+                        ? Container(
+                      width: 0.0,
+                      height: 0.0,
+                    )
+                        : Container(
+                      width: adManager.bannerAd!.size.width.toDouble(),
+                      height: adManager.bannerAd!.size.height.toDouble(),
                       child: Center(
-                        child: Text(
-                          "広告予定",
-                          style: TextStyle(color: Colors.white),
+                        child: AdWidget(
+                          ad: adManager.bannerAd!,
                         ),
                       ),
                     ),
                   ),
-
                   Gap(10),
-
                   Expanded(
                     child: Card(
                       color: Colors.white,
@@ -153,16 +157,12 @@ class _ListPageState extends State<ListPage> {
 
     if (categoryId == 1) {
       fruitsList = await database.fruitsSpring;
-
     } else if (categoryId == 2) {
       fruitsList = await database.fruitsSummer;
-
     } else if (categoryId == 3) {
       fruitsList = await database.fruitsAutumn;
-
     } else if (categoryId == 4) {
       fruitsList = await database.fruitsWinter;
-
     } else {
       fruitsList = await database.fruitsList;
     }

@@ -5,7 +5,7 @@ import 'package:fruit_hunter/style/style.dart';
 import 'package:fruit_hunter/view/screens/pages/list_page.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../components/ad_manager.dart';
+import '../../main.dart';
 import 'pages/belongings_page.dart';
 import 'pages/manners_page.dart';
 import 'pages/quiz_page.dart';
@@ -18,7 +18,16 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Question> quizList = [];
 
-  final bannerAd = AdManager;
+  @override
+  void initState() {
+    super.initState();
+    adManager.loadBannerAd();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   alignment: Alignment.center,
                   child: Column(
                     children: [
-                      Gap(50),
+                      Spacer(),
                       Text(
                         "Dear",
                         style: TextStyle(
@@ -65,16 +74,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Fruit",
                         style: TextStyle(
                             fontFamily: MainFont,
-                            fontSize: 70.0,
+                            fontSize: 60.0,
                             color: Colors.white),
                       ),
                       Text(
                         "Hunter",
                         style: TextStyle(
                             fontFamily: MainFont,
-                            fontSize: 45.0,
+                            fontSize: 40.0,
                             color: Colors.white70),
-                      )
+                      ),
+                      Spacer(),
                     ],
                   ),
                 ),
@@ -104,29 +114,30 @@ class _HomeScreenState extends State<HomeScreen> {
         _choicePart(),
 
         Gap(10),
-        //バージョン記載
-        Text(
-          "'FruitHunter' ver 1.0.0 ©Taylors Guild, N.P.O",
-          style: TextStyle(fontSize: 12.0),
-        ),
-
-        Gap(10),
 
         Center(
-          child: (bannerAd == null)
+          child: (adManager == null)
               ? Container(
                   width: 0.0,
                   height: 0.0,
                 )
               : Container(
-                  width: bannerAd.size.width.toDouble(),
-                  height: bannerAd.size.height.toDouble(),
+                  width: adManager.bannerAd!.size.width.toDouble(),
+                  height: adManager.bannerAd!.size.height.toDouble(),
                   child: Center(
                     child: AdWidget(
-                      ad: bannerAd,
+                      ad: adManager.bannerAd!,
                     ),
                   ),
                 ),
+        ),
+
+        Gap(10),
+
+        //バージョン記載
+        Text(
+          "'FruitHunter' ver 1.0.0 ©Taylors Guild, N.P.O",
+          style: TextStyle(fontSize: 12.0),
         ),
         Gap(10),
       ]),

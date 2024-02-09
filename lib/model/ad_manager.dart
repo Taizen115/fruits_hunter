@@ -26,6 +26,7 @@ class AdManager {
     bannerAd?.dispose();
   }
 
+
   static String get appId {
     if (Platform.isAndroid) {
       return "ca-app-pub-3940256099942544~3347511713";

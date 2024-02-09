@@ -3,6 +3,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fruit_hunter/model/ad_manager.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'db/database.dart';
@@ -11,10 +12,18 @@ import 'view/screens/home_screen.dart';
 
 late MyDatabase database;
 
+//広告
+AdManager adManager = AdManager();
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var dbPath = await getDbPath();
   database = MyDatabase(dbPath: dbPath);
+
+  //広告
+  await adManager.initAdmob();
+  adManager.initBannerAd();
 
   runApp(
     DevicePreview(

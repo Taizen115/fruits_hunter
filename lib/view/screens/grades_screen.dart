@@ -2,13 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 
+import '../../main.dart';
 import 'home_screen.dart';
 
-class GradesScreen extends StatelessWidget {
+class GradesScreen extends StatefulWidget {
   final int numberOfHunt;
   final int getRate;
 
   GradesScreen({required this.numberOfHunt, required this.getRate});
+
+  @override
+  State<GradesScreen> createState() => _GradesScreenState();
+}
+
+class _GradesScreenState extends State<GradesScreen> {
+
+
+  //広告
+  @override
+  void initState() {
+    super.initState();
+    adManager.loadBannerAd();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +77,8 @@ class GradesScreen extends StatelessWidget {
                           color: Colors.teal,
                           elevation: 20.0,
                           child: Text(
-                            "あなたの獲得した果物の数は, ${numberOfHunt}個です."
-                            "\nまた, 獲得率は, ${getRate}%です."
+                            "あなたの獲得した果物の数は, ${widget.numberOfHunt}個です."
+                            "\nまた, 獲得率は, ${widget.getRate}%です."
                             "\nお疲れさまでした.",
                             style:
                                 TextStyle(fontSize: 30.0, color: Colors.white),

@@ -49,6 +49,9 @@ class _QuizPageState extends State<QuizPage> {
     getRate = 0;
     numberOfRemaining = widget.numberOfQuestions;
 
+    //広告
+    adManager.loadBannerAd();
+
     _getQuestion();
   }
 

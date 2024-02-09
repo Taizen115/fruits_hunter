@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../db/database.dart';
+import '../../../main.dart';
 import '../../../style/style.dart';
 
 class DetailPage extends StatefulWidget {
@@ -17,6 +19,18 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    adManager.loadBannerAd();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Map<String, String> detailQuestions = {
@@ -112,79 +126,85 @@ class _DetailPageState extends State<DetailPage> {
             ),
 
             //2階　コンテンツ
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  Gap(kToolbarHeight + 10),
+            Column(
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Gap(kToolbarHeight + 10),
 
-                  Center(
-                    child: Container(
-                      color: Colors.teal,
-                      width: 200.0,
-                      height: 30.0,
-                      child: Center(
-                        child: Text(
-                          "広告予定",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  Gap(10),
-
-                  Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30.0),
-                      child: Container(
-                        color: Colors.white70,
-                        child: ListView.builder(
-                          padding: EdgeInsets.zero,
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemCount: detailQuestions.length,
-                          itemBuilder: (context, index) {
-                            return ClipRRect(
-                              borderRadius: BorderRadius.circular(30.0),
-                              child: ExpansionTile(
-                                backgroundColor: Colors.blue[400],
-                                title: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Text(
-                                    detailQuestions[index.toString()]!,
-                                    style: TextStyle(
-                                      fontFamily: SubFont,
-                                      fontSize: 20.0,
-                                      color: Colors.black,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ),
-                                children: [
-                                  ListTile(
-                                    title: Padding(
-                                      padding: const EdgeInsets.all(5.0),
-                                      child: Text(
-                                        detailAnswers[index.toString()]!,
-                                        style: TextStyle(
-                                          fontSize: 20.0,
-                                          color: Colors.white,
+                        Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30.0),
+                            child: Container(
+                              color: Colors.white70,
+                              child: ListView.builder(
+                                padding: EdgeInsets.zero,
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: detailQuestions.length,
+                                itemBuilder: (context, index) {
+                                  return ClipRRect(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    child: ExpansionTile(
+                                      backgroundColor: Colors.blue[400],
+                                      title: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: Text(
+                                          detailQuestions[index.toString()]!,
+                                          style: TextStyle(
+                                            fontFamily: SubFont,
+                                            fontSize: 20.0,
+                                            color: Colors.black,
+                                          ),
+                                          textAlign: TextAlign.left,
                                         ),
-                                        textAlign: TextAlign.left,
                                       ),
+                                      children: [
+                                        ListTile(
+                                          title: Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Text(
+                                              detailAnswers[index.toString()]!,
+                                              style: TextStyle(
+                                                fontSize: 20.0,
+                                                color: Colors.white,
+                                              ),
+                                              textAlign: TextAlign.left,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
+                                  );
+                                },
+                              ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Center(
+                  child: (adManager == null)
+                      ? Container(
+                    width: 0.0,
+                    height: 0.0,
+                  )
+                      : Container(
+                    width: adManager.bannerAd!.size.width.toDouble(),
+                    height: adManager.bannerAd!.size.height.toDouble(),
+                    child: Center(
+                      child: AdWidget(
+                        ad: adManager.bannerAd!,
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 
+import '../../../main.dart';
 import '../../../style/style.dart';
 
 class BelongingsPage extends StatefulWidget {
@@ -31,6 +32,13 @@ class _BelongingsPageState extends State<BelongingsPage> {
     'クーラーボックス': FontAwesomeIcons.box,
     '飲み物': FontAwesomeIcons.bottleWater,
   };
+
+  //広告
+  @override
+  void initState() {
+    super.initState();
+    adManager.loadBannerAd();
+  }
 
   @override
   Widget build(BuildContext context) {
