@@ -22,11 +22,17 @@ class _ListPageState extends State<ListPage> {
   void initState() {
     super.initState();
     _getTypeFruits(context, categories);
+    initAd();
+  }
+
+  void initAd() {
+    adManager.initBannerAd();
     adManager.loadBannerAd();
   }
 
   @override
   void dispose() {
+    adManager.disposeBannerAd();
     super.dispose();
   }
 
@@ -45,7 +51,10 @@ class _ListPageState extends State<ListPage> {
               FontAwesomeIcons.arrowLeft,
               color: Colors.lightBlue,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () async {
+              await adManager.disposeBannerAd();
+              Navigator.of(context).pop();
+            },
           ),
           title: Row(
             children: [

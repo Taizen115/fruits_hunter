@@ -21,11 +21,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    initAd();
+  }
+
+  void initAd() {
+    adManager.initBannerAd();
     adManager.loadBannerAd();
   }
 
   @override
   void dispose() {
+    adManager.disposeBannerAd();
     super.dispose();
   }
 
@@ -116,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Gap(10),
 
         Center(
-          child: (adManager == null)
+          child: (adManager.bannerAd == null)
               ? Container(
                   width: 0.0,
                   height: 0.0,
@@ -254,9 +260,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ));
   }
 
-  _goListPage() {
-    Navigator.push(
+  _goListPage() async {
+    await adManager.disposeBannerAd();
+    await Navigator.push(
         context, MaterialPageRoute(builder: (context) => ListPage()));
+    initAd();
   }
 
   _goQuizPage(BuildContext context, int numberOfQuestion) {
