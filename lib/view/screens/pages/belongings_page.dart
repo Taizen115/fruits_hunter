@@ -120,48 +120,50 @@ class _BelongingsPageState extends State<BelongingsPage> {
                         ),
                 ),
                 Gap(20),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    children: belongings.keys.map((String key) {
-                      return CheckboxListTile(
-                        activeColor: Colors.lightBlue,
-                        side: BorderSide(color: Colors.black54, width: 2.0),
-                        title: Row(
-                          children: [
-                            Text(
-                              key,
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontFamily: SubFont,
-                                fontSize: 20.0,
-                                color: Colors.black54,
-                                fontWeight: FontWeight.bold,
-                                decoration: belongings[key] ?? false
-                                    ? TextDecoration.lineThrough
-                                    : TextDecoration.none,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: ListView(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      children: belongings.keys.map((String key) {
+                        return CheckboxListTile(
+                          activeColor: Colors.lightBlue,
+                          side: BorderSide(color: Colors.black54, width: 2.0),
+                          title: Row(
+                            children: [
+                              Text(
+                                key,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontFamily: SubFont,
+                                  fontSize: 20.0,
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: belongings[key] ?? false
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
+                                ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: FaIcon(
-                                icons[key],
-                                color: Colors.lightBlue,
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: FaIcon(
+                                  icons[key],
+                                  color: Colors.lightBlue,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        controlAffinity: ListTileControlAffinity.leading,
-                        value: belongings[key],
-                        onChanged: (bool? value) {
-                          setState(() {
-                            belongings[key] = value!;
-                          });
-                        },
-                      );
-                    }).toList(),
+                            ],
+                          ),
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: belongings[key],
+                          onChanged: (bool? value) {
+                            setState(() {
+                              belongings[key] = value!;
+                            });
+                          },
+                        );
+                      }).toList(),
+                    ),
                   ),
                 ),
               ],

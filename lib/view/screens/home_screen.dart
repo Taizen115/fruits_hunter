@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fruit_hunter/db/database.dart';
@@ -42,12 +43,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Scaffold(
       body: Column(children: [
         Expanded(
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: ClipRRect(
+          child: Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                ClipRRect(
                   borderRadius: BorderRadius.circular(50.0),
                   child: DecoratedBox(
                     position: DecorationPosition.foreground,
@@ -63,40 +64,52 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-              ),
-              Container(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Column(
-                    children: [
-                      Spacer(),
-                      Text(
-                        "Dear",
-                        style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 50.0,
-                            color: Colors.white70),
-                      ),
-                      Text(
-                        "Fruit",
-                        style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 60.0,
-                            color: Colors.white),
-                      ),
-                      Text(
-                        "Hunter",
-                        style: TextStyle(
-                            fontFamily: MainFont,
-                            fontSize: 40.0,
-                            color: Colors.white70),
-                      ),
-                      Spacer(),
-                    ],
+                Container(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Column(
+                      children: [
+                        Spacer(),
+                        Expanded(
+                          flex: 5,
+                          child: AutoSizeText(
+                            "Dear",
+                            maxLines: 1,
+                            style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 50.0,
+                                color: Colors.white70),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 6,
+                          child: AutoSizeText(
+                            "Fruit",
+                            maxLines: 1,
+                            style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 60.0,
+                                color: Colors.white),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: AutoSizeText(
+                            "Hunter",
+                            maxLines: 1,
+                            style: TextStyle(
+                                fontFamily: MainFont,
+                                fontSize: 40.0,
+                                color: Colors.white70),
+                          ),
+                        ),
+                        Spacer(),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
 

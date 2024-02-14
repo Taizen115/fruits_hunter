@@ -119,19 +119,16 @@ class _QuizPageState extends State<QuizPage> {
             //2階　コンテンツ
 
             Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
                 children: [
-                  Gap(50),
+                  Gap(kToolbarHeight + 8),
                   //TODO データ表示部分
                   _dataPart(),
-
-                  Gap(50),
 
                   //TODO 問題表示部分
                   _showQuestion(),
 
-                  Gap(50),
 
                   //TODO 選択肢表示部分
                   Expanded(child: _showChoices()),
@@ -140,7 +137,7 @@ class _QuizPageState extends State<QuizPage> {
 
                   //TODO 広告
                   Center(
-                    child: (adManager.bannerAd == null)
+                    child: (adManager.bannerAd == null || isExplained)
                         ? Container(
                       width: 0.0,
                       height: 0.0,
@@ -174,10 +171,8 @@ class _QuizPageState extends State<QuizPage> {
   //TODO データ表示部分
   Widget _dataPart() {
     return Padding(
-      padding: const EdgeInsets.only(
-        left: 12.0,
-        right: 12.0,
-        top: 20.0,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12.0
       ),
       child: Table(
         children: [
@@ -227,15 +222,18 @@ class _QuizPageState extends State<QuizPage> {
   //TODO 問題表示部分
   Widget _showQuestion() {
     if (isNextQuestioned)
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(15.0),
-        child: Container(
-          color: Colors.white70,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              question,
-              style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15.0),
+          child: Container(
+            color: Colors.white70,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                question,
+                style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+              ),
             ),
           ),
         ),
