@@ -89,20 +89,20 @@ class _GradesScreenState extends State<GradesScreen> {
                             "\nまた, 獲得率は, ${widget.getRate}%です."
                             "\nお疲れさまでした.",
                             style:
-                                TextStyle(fontSize: 30.0, color: Colors.white),
+                                TextStyle(fontSize: 25.0, color: Colors.white),
                           ),
                         ),
-                        Gap(20),
+                        Gap(50),
                         Card(
                           color: Colors.transparent,
                           shadowColor: Colors.white60,
                           child: Text(
                             "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
                             style:
-                                TextStyle(fontSize: 30.0, color: Colors.white),
+                                TextStyle(fontSize: 25.0, color: Colors.white),
                           ),
                         ),
-                        Gap(10),
+                        Gap(50),
                         Center(
                           child: (adManager.bannerAd! == null)
                               ? Container(
