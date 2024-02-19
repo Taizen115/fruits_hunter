@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
@@ -84,25 +85,33 @@ class _GradesScreenState extends State<GradesScreen> {
                         Card(
                           color: Colors.teal,
                           elevation: 20.0,
-                          child: Text(
-                            "あなたの獲得した果物の数は, ${widget.numberOfHunt}個です."
-                            "\nまた, 獲得率は, ${widget.getRate}%です."
-                            "\nお疲れさまでした.",
-                            style:
-                                TextStyle(fontSize: 25.0, color: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: AutoSizeText(
+                              "あなたの獲得した果物の数は, ${widget.numberOfHunt}個です."
+                              "\nまた, 獲得率は, ${widget.getRate}%です."
+                              "\nお疲れさまでした.",
+                              maxLines: 4,
+                              style:
+                                  TextStyle(fontSize: 50.0, color: Colors.white),
+                            ),
                           ),
                         ),
-                        Gap(50),
+                        Spacer(),
                         Card(
                           color: Colors.transparent,
                           shadowColor: Colors.white60,
-                          child: Text(
-                            "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
-                            style:
-                                TextStyle(fontSize: 25.0, color: Colors.white),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: AutoSizeText(
+                              "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
+                              maxLines: 4,
+                              style:
+                                  TextStyle(fontSize: 50.0, color: Colors.white),
+                            ),
                           ),
                         ),
-                        Gap(50),
+                        Spacer(),
                         Center(
                           child: (adManager.bannerAd! == null)
                               ? Container(

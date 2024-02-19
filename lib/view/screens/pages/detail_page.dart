@@ -193,6 +193,7 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ),
                 ),
+                Gap(20.0),
                 Center(
                   child: (adManager.bannerAd! == null)
                       ? Container(

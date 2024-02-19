@@ -1,6 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/style/style.dart';
+import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../main.dart';
@@ -110,12 +112,12 @@ class _MannersPageState extends State<MannersPage> {
                                           backgroundColor: Colors.blue[400],
                                           title: Padding(
                                             padding: const EdgeInsets.all(5.0),
-                                            child: Text(
+                                            child: AutoSizeText(
                                               mannersQuestions[
                                                   index.toString()]!,
                                               style: TextStyle(
                                                 fontFamily: SubFont,
-                                                fontSize: 20.0,
+                                                fontSize: 25.0,
                                                 color: Colors.black87,
                                               ),
                                               textAlign: TextAlign.left,
@@ -126,11 +128,11 @@ class _MannersPageState extends State<MannersPage> {
                                               title: Padding(
                                                 padding:
                                                     const EdgeInsets.all(5.0),
-                                                child: Text(
+                                                child: AutoSizeText(
                                                   mannersAnswers[
                                                       index.toString()]!,
                                                   style: TextStyle(
-                                                    fontSize: 20.0,
+                                                    fontSize: 25.0,
                                                     color: Colors.white,
                                                   ),
                                                   textAlign: TextAlign.left,
@@ -154,6 +156,7 @@ class _MannersPageState extends State<MannersPage> {
               ),
             ),
           ),
+          Gap(20),
           //広告
           Center(
             child: (adManager.bannerAd! == null)

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -50,7 +51,7 @@ class _QuizPageState extends State<QuizPage> {
     getRate = 0;
     numberOfRemaining = widget.numberOfQuestions;
     _getQuestion();
-   initAd();
+    initAd();
   }
 
   //広告
@@ -119,43 +120,44 @@ class _QuizPageState extends State<QuizPage> {
             //2階　コンテンツ
 
             Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
                 children: [
-                  Gap(50),
+                  Gap(kToolbarHeight + 15.0),
                   //TODO データ表示部分
-                  _dataPart(),
-
-                  Gap(50),
+                  Expanded(flex: 2, child: _dataPart()),
 
                   //TODO 問題表示部分
-                  _showQuestion(),
+                  Expanded(flex: 3, child: _showQuestion()),
 
-                  Gap(50),
+                  Spacer(),
 
                   //TODO 選択肢表示部分
-                  Expanded(child: _showChoices()),
+                  Expanded(flex: 3, child: _showChoices()),
 
-                  Gap(20),
+                  //Spacer(),
 
                   //TODO 広告
-                  Center(
-                    child: (adManager.bannerAd == null)
-                        ? Container(
-                      width: 0.0,
-                      height: 0.0,
-                    )
-                        : Container(
-                      width: adManager.bannerAd!.size.width.toDouble(),
-                      height: adManager.bannerAd!.size.height.toDouble(),
-                      child: Center(
-                        child: AdWidget(
-                          ad: adManager.bannerAd!,
-                        ),
-                      ),
+                  Expanded(
+                    flex: 2,
+                    child: Center(
+                      child: (adManager.bannerAd == null || isExplained)
+                          ? Container(
+                              width: 0.0,
+                              height: 0.0,
+                            )
+                          : Container(
+                              width: adManager.bannerAd!.size.width.toDouble(),
+                              height:
+                                  adManager.bannerAd!.size.height.toDouble(),
+                              child: Center(
+                                child: AdWidget(
+                                  ad: adManager.bannerAd!,
+                                ),
+                              ),
+                            ),
                     ),
                   ),
-                  Gap(10),
                 ],
               ),
             ),
@@ -177,7 +179,6 @@ class _QuizPageState extends State<QuizPage> {
       padding: const EdgeInsets.only(
         left: 12.0,
         right: 12.0,
-        top: 20.0,
       ),
       child: Table(
         children: [
@@ -228,14 +229,15 @@ class _QuizPageState extends State<QuizPage> {
   Widget _showQuestion() {
     if (isNextQuestioned)
       return ClipRRect(
-        borderRadius: BorderRadius.circular(15.0),
+        borderRadius: BorderRadius.circular(30.0),
         child: Container(
           color: Colors.white70,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
+            padding: const EdgeInsets.all(10.0),
+            child: AutoSizeText(
               question,
-              style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+              maxLines: 4,
+              style: TextStyle(fontSize: 50.0),
             ),
           ),
         ),
@@ -248,44 +250,43 @@ class _QuizPageState extends State<QuizPage> {
   //TODO 選択肢部分
   Widget _showChoices() {
     if (isNextQuestioned) {
-      return Table(
+      return Column(
         children: [
-          TableRow(
+          Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
+              Expanded(
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(30.0),
                   child: Container(
-                    height: 80,
                     color: Colors.red[300],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[0]),
-                      child: Text(
+                      child: AutoSizeText(
                         choices[0],
+                        maxLines: 1,
                         style: TextStyle(
                             fontFamily: MainFont,
-                            fontSize: 20.0,
+                            fontSize: 25.0,
                             color: Colors.white),
                       ),
                     ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
+              Gap(30),
+              Expanded(
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(30.0),
                   child: Container(
-                    height: 80,
                     color: Colors.blue[300],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[1]),
-                      child: Text(
+                      child: AutoSizeText(
                         choices[1],
+                        maxLines: 1,
                         style: TextStyle(
                             fontFamily: MainFont,
-                            fontSize: 20.0,
+                            fontSize: 25.0,
                             color: Colors.white),
                       ),
                     ),
@@ -294,42 +295,42 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ],
           ),
-          TableRow(
+          Gap(30),
+          Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
+              Expanded(
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(30.0),
                   child: Container(
-                    height: 80,
                     color: Colors.yellow[700],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[2]),
-                      child: Text(
+                      child: AutoSizeText(
                         choices[2],
+                        maxLines: 1,
                         style: TextStyle(
                             fontFamily: MainFont,
-                            fontSize: 20.0,
+                            fontSize: 25.0,
                             color: Colors.white),
                       ),
                     ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
+              Gap(30),
+              Expanded(
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(30.0),
                   child: Container(
-                    height: 80,
                     color: Colors.green[500],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[3]),
-                      child: Text(
+                      child: AutoSizeText(
                         choices[3],
+                        maxLines: 1,
                         style: TextStyle(
                             fontFamily: MainFont,
-                            fontSize: 20.0,
+                            fontSize: 25.0,
                             color: Colors.white),
                       ),
                     ),
@@ -407,62 +408,72 @@ class _QuizPageState extends State<QuizPage> {
       return Container(
         child: Column(
           children: [
-            Gap(170),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: Container(
-                color: Colors.white70,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "答え : ${answer}",
-                    style: TextStyle(
-                        fontFamily: SubFont,
-                        fontSize: 20.0,
-                        color: Colors.teal),
-                  ),
-                ),
-              ),
-            ),
-            Gap(20),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
+            Gap(kToolbarHeight + 100),
+            Expanded(
+              flex: 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(30.0),
                 child: Container(
                   color: Colors.white70,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "解説 : \n${explanation}",
+                    child: AutoSizeText(
+                      "答え : ${answer}",
+                      maxLines: 1,
                       style: TextStyle(
-                          fontFamily: MainFont,
-                          fontSize: 25.0,
+                          fontSize: 30.0,
                           color: Colors.teal),
                     ),
                   ),
                 ),
               ),
             ),
-            Gap(20),
-            Center(
+            Spacer(),
+
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30.0),
+                  child: Container(
+                    color: Colors.white70,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: AutoSizeText(
+                        "解説 : \n${explanation}",
+                        maxLines: 6,
+                        style: TextStyle(
+                            fontSize: 50.0,
+                            color: Colors.teal),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Spacer(),
+
+            Expanded(
+              flex: 1,
               child: ElevatedButton(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
+                    child: AutoSizeText(
                       numberOfRemaining == 0 ? "結果発表！" : "Next Fruit!",
-                      style: TextStyle(fontFamily: SubFont, fontSize: 20.0),
+                      maxLines: 1,
+                      style: TextStyle(fontFamily: SubFont, fontSize: 30.0),
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white70,
                     backgroundColor: Colors.teal,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     ),
                   ),
                   onPressed: () {
-                    if (numberOfRemaining == 0)  {
+                    if (numberOfRemaining == 0) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -474,6 +485,7 @@ class _QuizPageState extends State<QuizPage> {
                     }
                   }),
             ),
+            Spacer(),
           ],
         ).animate().fade(duration: 500.ms).scale().then(),
       );
