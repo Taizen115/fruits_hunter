@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/style/style.dart';
@@ -68,87 +69,86 @@ class _MannersPageState extends State<MannersPage> {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 50.0),
-                        height: 1500.0,
-                        decoration: BoxDecoration(
-                          color: Colors.white70,
+            child: Stack(
+              //fit: StackFit.expand,
+              children: [
+                //1階
+                Container(
+                  //height: double.infinity,
+                  margin: EdgeInsets.only(top: 50.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white70,
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+                //２階
+                Column(
+                  children: [
+                    Center(
+                      child:
+                          Image.asset("assets/images/enjoy_picking.png"),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+                        child: ClipRRect(
                           borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          Center(
-                            child:
-                                Image.asset("assets/images/enjoy_picking.png"),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(30.0),
-                              child: Container(
-                                color: Colors.white70,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ListView.builder(
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemCount: mannersQuestions.length,
-                                    itemBuilder: (context, index) {
-                                      return ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                        child: ExpansionTile(
-                                          backgroundColor: Colors.blue[400],
+                          child: Container(
+                            color: Colors.white70,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ListView.builder(
+                                //physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: mannersQuestions.length,
+                                itemBuilder: (context, index) {
+                                  return ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.circular(30.0),
+                                    child: ExpansionTile(
+                                      backgroundColor: Colors.blue[400],
+                                      title: Padding(
+                                        padding: const EdgeInsets.all(5.0),
+                                        child: AutoSizeText(
+                                          mannersQuestions[
+                                              index.toString()]!,
+                                          style: TextStyle(
+                                            fontFamily: SubFont,
+                                            fontSize: 20.0,
+                                            color: Colors.black87,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        ),
+                                      ),
+                                      children: [
+                                        ListTile(
                                           title: Padding(
-                                            padding: const EdgeInsets.all(5.0),
+                                            padding:
+                                                const EdgeInsets.all(5.0),
                                             child: AutoSizeText(
-                                              mannersQuestions[
+                                              mannersAnswers[
                                                   index.toString()]!,
                                               style: TextStyle(
-                                                fontFamily: SubFont,
                                                 fontSize: 20.0,
-                                                color: Colors.black87,
+                                                color: Colors.white,
                                               ),
                                               textAlign: TextAlign.left,
                                             ),
                                           ),
-                                          children: [
-                                            ListTile(
-                                              title: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(5.0),
-                                                child: AutoSizeText(
-                                                  mannersAnswers[
-                                                      index.toString()]!,
-                                                  style: TextStyle(
-                                                    fontSize: 20.0,
-                                                    color: Colors.white,
-                                                  ),
-                                                  textAlign: TextAlign.left,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
                                         ),
-                                      );
-                                    },
-                                  ),
-                                ),
+                                      ],
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
           Gap(20),
