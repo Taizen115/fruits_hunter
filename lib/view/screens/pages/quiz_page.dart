@@ -265,7 +265,6 @@ class _QuizPageState extends State<QuizPage> {
                         choices[0],
                         maxLines: 1,
                         style: TextStyle(
-                            fontFamily: MainFont,
                             fontSize: 25.0,
                             color: Colors.white),
                       ),
@@ -285,7 +284,6 @@ class _QuizPageState extends State<QuizPage> {
                         choices[1],
                         maxLines: 1,
                         style: TextStyle(
-                            fontFamily: MainFont,
                             fontSize: 25.0,
                             color: Colors.white),
                       ),
@@ -302,14 +300,13 @@ class _QuizPageState extends State<QuizPage> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(30.0),
                   child: Container(
-                    color: Colors.yellow[700],
+                    color: Colors.yellow[800],
                     child: TextButton(
                       onPressed: () => _checkAnswer(choices[2]),
                       child: AutoSizeText(
                         choices[2],
                         maxLines: 1,
                         style: TextStyle(
-                            fontFamily: MainFont,
                             fontSize: 25.0,
                             color: Colors.white),
                       ),
@@ -329,7 +326,6 @@ class _QuizPageState extends State<QuizPage> {
                         choices[3],
                         maxLines: 1,
                         style: TextStyle(
-                            fontFamily: MainFont,
                             fontSize: 25.0,
                             color: Colors.white),
                       ),

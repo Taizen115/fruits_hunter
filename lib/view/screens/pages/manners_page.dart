@@ -55,6 +55,7 @@ class _MannersPageState extends State<MannersPage> {
       backgroundColor: Colors.lightBlue,
       appBar: AppBar(
         backgroundColor: Colors.lightBlue,
+        centerTitle: true,
         leading: TextButton(
           child: Icon(
             FontAwesomeIcons.arrowLeft,
@@ -62,6 +63,7 @@ class _MannersPageState extends State<MannersPage> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
+        title: Text("マナー", style: TextStyle(fontFamily: ThirdFont, fontSize: 30.0, color: Colors.white,),),
       ),
       body: Column(
         children: [
@@ -73,7 +75,7 @@ class _MannersPageState extends State<MannersPage> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(top: 50.0),
-                        height: 1100.0,
+                        height: 1500.0,
                         decoration: BoxDecoration(
                           color: Colors.white70,
                           borderRadius: BorderRadius.circular(30.0),
@@ -81,13 +83,6 @@ class _MannersPageState extends State<MannersPage> {
                       ),
                       Column(
                         children: [
-                          Text(
-                            "マナー",
-                            style: TextStyle(
-                                fontSize: 30.0,
-                                fontFamily: ThirdFont,
-                                color: Colors.white),
-                          ),
                           Center(
                             child:
                                 Image.asset("assets/images/enjoy_picking.png"),
@@ -117,7 +112,7 @@ class _MannersPageState extends State<MannersPage> {
                                                   index.toString()]!,
                                               style: TextStyle(
                                                 fontFamily: SubFont,
-                                                fontSize: 25.0,
+                                                fontSize: 20.0,
                                                 color: Colors.black87,
                                               ),
                                               textAlign: TextAlign.left,
@@ -132,7 +127,7 @@ class _MannersPageState extends State<MannersPage> {
                                                   mannersAnswers[
                                                       index.toString()]!,
                                                   style: TextStyle(
-                                                    fontSize: 25.0,
+                                                    fontSize: 20.0,
                                                     color: Colors.white,
                                                   ),
                                                   textAlign: TextAlign.left,

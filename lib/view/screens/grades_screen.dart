@@ -18,8 +18,6 @@ class GradesScreen extends StatefulWidget {
 }
 
 class _GradesScreenState extends State<GradesScreen> {
-
-
   //広告
   @override
   void initState() {
@@ -32,7 +30,6 @@ class _GradesScreenState extends State<GradesScreen> {
     adManager.initBannerAd();
     adManager.loadBannerAd();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +82,9 @@ class _GradesScreenState extends State<GradesScreen> {
                         Card(
                           color: Colors.teal,
                           elevation: 20.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: AutoSizeText(
@@ -92,8 +92,8 @@ class _GradesScreenState extends State<GradesScreen> {
                               "\nまた, 獲得率は, ${widget.getRate}%です."
                               "\nお疲れさまでした.",
                               maxLines: 4,
-                              style:
-                                  TextStyle(fontSize: 50.0, color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 50.0, color: Colors.white),
                             ),
                           ),
                         ),
@@ -101,13 +101,16 @@ class _GradesScreenState extends State<GradesScreen> {
                         Card(
                           color: Colors.transparent,
                           shadowColor: Colors.white60,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: AutoSizeText(
                               "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
                               maxLines: 4,
-                              style:
-                                  TextStyle(fontSize: 50.0, color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 50.0, color: Colors.white),
                             ),
                           ),
                         ),
@@ -115,18 +118,20 @@ class _GradesScreenState extends State<GradesScreen> {
                         Center(
                           child: (adManager.bannerAd! == null)
                               ? Container(
-                            width: 0.0,
-                            height: 0.0,
-                          )
+                                  width: 0.0,
+                                  height: 0.0,
+                                )
                               : Container(
-                            width: adManager.bannerAd!.size.width.toDouble(),
-                            height: adManager.bannerAd!.size.height.toDouble(),
-                            child: Center(
-                              child: AdWidget(
-                                ad: adManager.bannerAd!,
-                              ),
-                            ),
-                          ),
+                                  width:
+                                      adManager.bannerAd!.size.width.toDouble(),
+                                  height: adManager.bannerAd!.size.height
+                                      .toDouble(),
+                                  child: Center(
+                                    child: AdWidget(
+                                      ad: adManager.bannerAd!,
+                                    ),
+                                  ),
+                                ),
                         ),
                       ],
                     ),
