@@ -4,6 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
 import 'package:fruit_hunter/main.dart';
+import 'package:fruit_hunter/view/screens/all_correct_screen.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../style/style.dart';
@@ -469,13 +470,21 @@ class _QuizPageState extends State<QuizPage> {
                     ),
                   ),
                   onPressed: () {
-                    if (numberOfRemaining == 0) {
+                    if (numberOfRemaining == 0 && getRate == 100) {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => GradesScreen(
+                              builder: (context) => AllCorrectScreen(
                                   numberOfHunt: numberOfHunt,
                                   getRate: getRate)));
+                    } else if (numberOfRemaining == 0) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  GradesScreen(
+                                      numberOfHunt: numberOfHunt,
+                                      getRate: getRate)));
                     } else {
                       setFruits();
                     }

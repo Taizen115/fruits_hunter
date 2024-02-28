@@ -4,8 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:path/path.dart' as p;
 
 import '../../../main.dart';
+import 'list_page.dart';
 
 class MannersPage extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class _MannersPageState extends State<MannersPage> {
   @override
   void initState() {
     super.initState();
-   initAd();
+    initAd();
   }
 
   //広告
@@ -24,7 +26,6 @@ class _MannersPageState extends State<MannersPage> {
     adManager.initBannerAd();
     adManager.loadBannerAd();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -40,15 +41,16 @@ class _MannersPageState extends State<MannersPage> {
     };
 
     final Map<String, String> mannersAnswers = {
-      "0": "品種名と旬の時期と産地によって, 果物の味は変動するので, 事前に調べてから果物狩りに行くのがポイントです.",
+      "0":
+      "品種名と旬の時期と産地によって, 果物の味は変動するので, 事前に調べてから果物狩りに行くのがポイントです.\n本アプリの果物一覧もご参考下さい.",
       "1": "農園では, 走り回ったり騒いだりせず, 周囲に配慮して楽しく果物狩りを過ごして頂けると有難いです. ",
       "2": "果物を摘むときは, 農園の方のお話を聞いて, 木などを傷つけないように配慮して頂けると有難いです. ",
       "3":
-          "雨が降ったら, 電話で農園に連絡した方が良いかもしれません. また, 全天候型の農園もあるので, そういった農園を選ぶのもポイントです. ",
+      "雨が降ったら, 電話で農園に連絡した方が良いかもしれません. また, 全天候型の農園もあるので, そういった農園を選ぶのもポイントです. ",
       "4": "予約は不要な所もございますが, 農園に事前に電話かメールをして予約なさった方が確実かと思われます. ",
       "5": "オシャレな格好をして出かけるのも素晴らしいですが, それに加えて汚れても大丈夫で, 動きやすい服装がおすすめです. ",
       "6":
-          "お供のアイテムとして, 夏場は虫除けスプレー, 日焼け止め, タオル, クーラーボックスがあると良いと思われます. あと, 食べる時にウェットティッシュがあると, 尚良いです. ",
+      "お供のアイテムとして, 夏場は虫除けスプレー, 日焼け止め, タオル, クーラーボックスがあると良いと思われます. あと, 食べる時にウェットティッシュがあると, 尚良いです. ",
       "7": "農園の方に直接尋ねるのが良いと思われます. それぞれのルールを守って, 満足できる果物狩りを楽しんでください. "
     };
     return Scaffold(
@@ -63,7 +65,14 @@ class _MannersPageState extends State<MannersPage> {
           ),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text("マナー", style: TextStyle(fontFamily: ThirdFont, fontSize: 30.0, color: Colors.white,),),
+        title: Text(
+          "マナー",
+          style: TextStyle(
+            fontFamily: ThirdFont,
+            fontSize: 30.0,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Column(
         children: [
@@ -83,12 +92,26 @@ class _MannersPageState extends State<MannersPage> {
                 Column(
                   children: [
                     Center(
-                      child:
-                          Image.asset("assets/images/enjoy_picking.png"),
+                      child: Image.asset("assets/images/enjoy_picking.png"),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.teal,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                20.0)),
+                          )),
+                      onPressed: () => _goListPage(),
+                      child: Text(
+                        "果物一覧",
+                        style: TextStyle(fontSize: 25.0,),
+                      ),
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 8.0, right: 8.0, left: 8.0),
+                        padding: const EdgeInsets.only(
+                            top: 8.0, right: 8.0, left: 8.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30.0),
                           child: Container(
@@ -101,15 +124,13 @@ class _MannersPageState extends State<MannersPage> {
                                 itemCount: mannersQuestions.length,
                                 itemBuilder: (context, index) {
                                   return ClipRRect(
-                                    borderRadius:
-                                        BorderRadius.circular(30.0),
+                                    borderRadius: BorderRadius.circular(30.0),
                                     child: ExpansionTile(
                                       backgroundColor: Colors.blue[400],
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: AutoSizeText(
-                                          mannersQuestions[
-                                              index.toString()]!,
+                                          mannersQuestions[index.toString()]!,
                                           style: TextStyle(
                                             fontFamily: SubFont,
                                             fontSize: 20.0,
@@ -121,11 +142,9 @@ class _MannersPageState extends State<MannersPage> {
                                       children: [
                                         ListTile(
                                           title: Padding(
-                                            padding:
-                                                const EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: AutoSizeText(
-                                              mannersAnswers[
-                                                  index.toString()]!,
+                                              mannersAnswers[index.toString()]!,
                                               style: TextStyle(
                                                 fontSize: 20.0,
                                                 color: Colors.white,
@@ -170,5 +189,12 @@ class _MannersPageState extends State<MannersPage> {
         ],
       ),
     );
+  }
+
+  _goListPage() async {
+    await adManager.disposeBannerAd();
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => ListPage()));
+    initAd();
   }
 }

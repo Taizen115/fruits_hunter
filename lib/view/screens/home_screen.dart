@@ -8,6 +8,7 @@ import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../main.dart';
 import 'pages/belongings_page.dart';
+import 'pages/credit_page.dart';
 import 'pages/manners_page.dart';
 import 'pages/quiz_page.dart';
 
@@ -113,8 +114,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
 
-        Gap(10),
-
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Center(
@@ -124,43 +123,57 @@ class _HomeScreenState extends State<HomeScreen> {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black87,
-                fontSize: 25.0,
+                fontSize: 20.0,
                 fontFamily: MainFont,
               ),
             ).animate().fade(delay: 500.ms).scale().then(),
           ),
         ),
-        Gap(10),
         //選択肢部分
         _choicePart(),
 
-        Gap(10),
-
-        Center(
-          child: (adManager.bannerAd == null)
-              ? Container(
-                  width: 0.0,
-                  height: 0.0,
-                )
-              : Container(
-                  width: adManager.bannerAd!.size.width.toDouble(),
-                  height: adManager.bannerAd!.size.height.toDouble(),
-                  child: Center(
-                    child: AdWidget(
-                      ad: adManager.bannerAd!,
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Center(
+            child: (adManager.bannerAd == null)
+                ? Container(
+                    width: 0.0,
+                    height: 0.0,
+                  )
+                : Container(
+                    width: adManager.bannerAd!.size.width.toDouble(),
+                    height: adManager.bannerAd!.size.height.toDouble(),
+                    child: Center(
+                      child: AdWidget(
+                        ad: adManager.bannerAd!,
+                      ),
                     ),
                   ),
-                ),
+          ),
         ),
-
-        Gap(10),
 
         //バージョン記載
-        Text(
-          "'FruitHunter' ver 1.0.0 ©Taylors Guild, N.P.O",
-          style: TextStyle(fontSize: 12.0),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "'FruitHunter' ver 1.0.0 ©Taylors Guild, N.P.O",
+            style: TextStyle(fontSize: 12.0),
+          ),
         ),
-        Gap(10),
+
+       Padding(
+         padding: const EdgeInsets.all(8.0),
+         child: ClipRRect(
+           borderRadius: BorderRadius.circular(20.0),
+           child: Container(
+             color: Colors.grey,
+             child: ElevatedButton(
+                 onPressed: () => _goCreditPage(),
+                 child: Text("クレジット", style: TextStyle(fontSize: 15.0, color: Colors.black54, fontWeight: FontWeight.bold),),),
+           ),
+         ),
+       ),
+
       ]),
     ));
   }
@@ -170,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         TableRow(children: [
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white70,
@@ -179,13 +192,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
                 onPressed: () => _goListPage(),
-                child: Text(
+                child: AutoSizeText(
                   "果物一覧",
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black54,
@@ -194,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
                 onPressed: () => _selectNumberOfQuiz(),
-                child: Text(
+                child: AutoSizeText(
                   "クイズ",
                   style: TextStyle(fontSize: 25.0),
                 )),
@@ -202,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ]),
         TableRow(children: [
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black54,
@@ -211,13 +224,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
                 onPressed: () => _goBelogingsPage(),
-                child: Text(
+                child: AutoSizeText(
                   "持ち物",
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white70,
@@ -226,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
                 onPressed: () => _goMannersPage(),
-                child: Text(
+                child: AutoSizeText(
                   "マナー",
                   style: TextStyle(fontSize: 25.0),
                 )),
@@ -305,6 +318,13 @@ class _HomeScreenState extends State<HomeScreen> {
     await adManager.disposeBannerAd();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => MannersPage()));
+    initAd();
+  }
+
+  _goCreditPage() async {
+    await adManager.disposeBannerAd();
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => CreditPage()));
     initAd();
   }
 }
