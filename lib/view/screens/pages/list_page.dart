@@ -39,111 +39,133 @@ class _ListPageState extends State<ListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        // extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          foregroundColor: Colors.lightBlue,
-          centerTitle: true,
-          leading: TextButton(
-            child: Icon(
-              FontAwesomeIcons.arrowLeft,
-              color: Colors.lightBlue,
-            ),
-            onPressed: () async {
-              await adManager.disposeBannerAd();
-              Navigator.of(context).pop();
-            },
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+
+        //1階　グラデーション
+        DecoratedBox(
+          position: DecorationPosition.foreground,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Colors.black26, Colors.white10]),
           ),
-          title: Row(
-            children: [
-              Image.asset(
-                "assets/images/fruit_basket.png",
-                width: 80.0,
-                height: 50.0,
-              ),
-              Gap(30),
-              Text(
-                "果物一覧",
-                style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
-              ),
-            ],
-          ),
+          child: Image.asset("assets/background/trees.png", fit: BoxFit.cover),
         ),
-        body: (fruitsList.isEmpty)
-            ? Container()
-            : Column(
+
+        //2階　コンテンツ
+        SafeArea(
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            // extendBodyBehindAppBar: true,
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              foregroundColor: Colors.white,
+              centerTitle: true,
+              leading: TextButton(
+                child: Icon(
+                  FontAwesomeIcons.arrowLeft,
+                  color: Colors.white,
+                ),
+                onPressed: () async {
+                  await adManager.disposeBannerAd();
+                  Navigator.of(context).pop();
+                },
+              ),
+              title: Row(
                 children: [
-                  ListCategoryChips(
-                    onCategorySelected: (categoryId) =>
-                        _getTypeFruits(context, categoryId),
+                  Image.asset(
+                    "assets/images/fruit_basket.png",
+                    width: 80.0,
+                    height: 50.0,
                   ),
-                  Gap(10),
-
-                  //TODO 広告を実装したいと考えているが、「This AdWidget is already in the Widget tree」のエラーメッセージが出て、広告が表示されない
-
-                  Center(
-                    child: (adManager == null)
-                        ? Container(
-                      width: 0.0,
-                      height: 0.0,
-                    )
-                        : Container(
-                      width: adManager.bannerAd!.size.width.toDouble(),
-                      height: adManager.bannerAd!.size.height.toDouble(),
-                      child: Center(
-                        child: AdWidget(
-                          ad: adManager.bannerAd!,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Gap(10),
-                  Expanded(
-                    child: Card(
-                      color: Colors.white,
-                      child: GridView.count(
-                        shrinkWrap: true,
-                        crossAxisCount: 2,
-                        children:
-                            List<Widget>.generate(fruitsList.length, (index) {
-                          final fruit = fruitsList[index];
-                          return InkWell(
-                            onTap: () => _goDetailPage(fruit),
-                            child: Card(
-                              color: Colors.white,
-                              shadowColor: Colors.white70,
-                              surfaceTintColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(20),
-                                ),
-                              ),
-                              elevation: 100.0,
-                              child: GridTile(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image.asset(
-                                      "assets/images/${fruit.imageFileName}"),
-                                ),
-                                footer: Center(
-                                    child: Text(
-                                  fruit.name,
-                                  style: TextStyle(
-                                      fontSize: 25.0, fontFamily: ThirdFont),
-                                )),
-                              ),
-                            ),
-                          );
-                        }).animate(interval: 50.ms).scale(duration: 50.ms),
-                      ),
-                    ),
+                  Gap(30),
+                  Text(
+                    "果物一覧",
+                    style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
                   ),
                 ],
               ),
-      ),
+            ),
+            body: (fruitsList.isEmpty)
+                ? Container()
+                : Column(
+                    children: [
+                      ListCategoryChips(
+                        onCategorySelected: (categoryId) =>
+                            _getTypeFruits(context, categoryId),
+                      ),
+                      Gap(10),
+
+                      //TODO 広告を実装したいと考えているが、「This AdWidget is already in the Widget tree」のエラーメッセージが出て、広告が表示されない
+
+                      Center(
+                        child: (adManager == null)
+                            ? Container(
+                                width: 0.0,
+                                height: 0.0,
+                              )
+                            : Container(
+                                width:
+                                    adManager.bannerAd!.size.width.toDouble(),
+                                height:
+                                    adManager.bannerAd!.size.height.toDouble(),
+                                child: Center(
+                                  child: AdWidget(
+                                    ad: adManager.bannerAd!,
+                                  ),
+                                ),
+                              ),
+                      ),
+                      Gap(10),
+                      Expanded(
+                        child: Card(
+                          color: Colors.white,
+                          child: GridView.count(
+                            shrinkWrap: true,
+                            crossAxisCount: 2,
+                            children: List<Widget>.generate(fruitsList.length,
+                                (index) {
+                              final fruit = fruitsList[index];
+                              return InkWell(
+                                onTap: () => _goDetailPage(fruit),
+                                child: Card(
+                                  color: Colors.white,
+                                  shadowColor: Colors.white70,
+                                  surfaceTintColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                  ),
+                                  elevation: 100.0,
+                                  child: GridTile(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                          "assets/images/${fruit.imageFileName}"),
+                                    ),
+                                    footer: Center(
+                                        child: Text(
+                                      fruit.name,
+                                      style: TextStyle(
+                                          fontSize: 25.0,
+                                          fontFamily: ThirdFont),
+                                    )),
+                                  ),
+                                ),
+                              );
+                            }).animate(interval: 50.ms).scale(duration: 50.ms),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+          ),
+        ),
+      ],
     );
   }
 

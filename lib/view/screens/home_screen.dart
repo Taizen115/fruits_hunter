@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
 import 'package:fruit_hunter/style/style.dart';
 import 'package:fruit_hunter/view/screens/pages/list_page.dart';
-import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../main.dart';
 import 'pages/belongings_page.dart';
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               fit: StackFit.expand,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadius.circular(50.0),
+                  borderRadius: BorderRadius.circular(30.0),
                   child: DecoratedBox(
                     position: DecorationPosition.foreground,
                     decoration: BoxDecoration(
@@ -66,47 +66,56 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Container(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Column(
-                      children: [
-                        Spacer(),
-                        Expanded(
-                          flex: 5,
-                          child: AutoSizeText(
-                            "Dear",
-                            maxLines: 1,
-                            style: TextStyle(
-                                fontFamily: MainFont,
-                                fontSize: 50.0,
-                                color: Colors.white60),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 3,
+                        child: Container(
+                          alignment: Alignment.topRight,
+                          child: TextButton(
+                            onPressed: () => _goCreditPage(),
+                            child: Icon(
+                              FontAwesomeIcons.creditCard,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                        Expanded(
-                          flex: 6,
-                          child: AutoSizeText(
-                            "Fruit",
-                            maxLines: 1,
-                            style: TextStyle(
-                                fontFamily: MainFont,
-                                fontSize: 60.0,
-                                color: Colors.white),
-                          ),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: AutoSizeText(
+                          "Dear",
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontFamily: MainFont,
+                              fontSize: 50.0,
+                              color: Colors.white60),
                         ),
-                        Expanded(
-                          flex: 5,
-                          child: AutoSizeText(
-                            "Hunter",
-                            maxLines: 1,
-                            style: TextStyle(
-                                fontFamily: MainFont,
-                                fontSize: 50.0,
-                                color: Colors.grey),
-                          ),
+                      ),
+                      Expanded(
+                        flex: 6,
+                        child: AutoSizeText(
+                          "Fruit",
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontFamily: MainFont,
+                              fontSize: 60.0,
+                              color: Colors.white),
                         ),
-                        Spacer(),
-                      ],
-                    ),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: AutoSizeText(
+                          "Hunter",
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontFamily: MainFont,
+                              fontSize: 50.0,
+                              color: Colors.grey),
+                        ),
+                      ),
+                      Spacer(),
+                    ],
                   ),
                 ),
               ],
@@ -160,20 +169,6 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(fontSize: 12.0),
           ),
         ),
-
-       Padding(
-         padding: const EdgeInsets.all(8.0),
-         child: ClipRRect(
-           borderRadius: BorderRadius.circular(20.0),
-           child: Container(
-             color: Colors.grey,
-             child: ElevatedButton(
-                 onPressed: () => _goCreditPage(),
-                 child: Text("クレジット", style: TextStyle(fontSize: 15.0, color: Colors.black54, fontWeight: FontWeight.bold),),),
-           ),
-         ),
-       ),
-
       ]),
     ));
   }

@@ -80,7 +80,7 @@ class _GradesScreenState extends State<GradesScreen> {
                       children: [
                         Gap(kToolbarHeight + 10),
                         Card(
-                          color: Colors.teal,
+                          color: Colors.transparent,
                           elevation: 20.0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),

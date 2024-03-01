@@ -80,7 +80,7 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                       children: [
                         Gap(kToolbarHeight + 10),
                         Card(
-                          color: Colors.teal,
+                          color: Colors.transparent,
                           elevation: 20.0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
@@ -89,7 +89,7 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                             padding: const EdgeInsets.all(10.0),
                             child: AutoSizeText(
                               "全問正解、おめでとうございます！素晴らしいです."
-                                  "\nお疲れさまでした.",
+                              "\nお疲れさまでした.",
                               maxLines: 4,
                               style: TextStyle(
                                   fontSize: 50.0, color: Colors.white),
@@ -99,7 +99,7 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                         Spacer(),
                         Card(
                           color: Colors.transparent,
-                          shadowColor: Colors.white60,
+                          elevation: 20.0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
@@ -109,7 +109,7 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                               "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
                               maxLines: 4,
                               style: TextStyle(
-                                  fontSize: 50.0, color: Colors.white),
+                                  fontSize: 50.0, color: Colors.white70),
                             ),
                           ),
                         ),
@@ -117,20 +117,20 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                         Center(
                           child: (adManager.bannerAd! == null)
                               ? Container(
-                            width: 0.0,
-                            height: 0.0,
-                          )
+                                  width: 0.0,
+                                  height: 0.0,
+                                )
                               : Container(
-                            width:
-                            adManager.bannerAd!.size.width.toDouble(),
-                            height: adManager.bannerAd!.size.height
-                                .toDouble(),
-                            child: Center(
-                              child: AdWidget(
-                                ad: adManager.bannerAd!,
-                              ),
-                            ),
-                          ),
+                                  width:
+                                      adManager.bannerAd!.size.width.toDouble(),
+                                  height: adManager.bannerAd!.size.height
+                                      .toDouble(),
+                                  child: Center(
+                                    child: AdWidget(
+                                      ad: adManager.bannerAd!,
+                                    ),
+                                  ),
+                                ),
                         ),
                       ],
                     ),
