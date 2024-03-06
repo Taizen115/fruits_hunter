@@ -50,7 +50,7 @@ class _ListPageState extends State<ListPage> {
             gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Colors.black26, Colors.white10]),
+                colors: [Colors.black38, Colors.white10]),
           ),
           child: Image.asset("assets/background/trees.png", fit: BoxFit.cover),
         ),
@@ -84,7 +84,7 @@ class _ListPageState extends State<ListPage> {
                   Gap(30),
                   Text(
                     "果物一覧",
-                    style: TextStyle(fontFamily: MainFont, fontSize: 25.0),
+                    style: TextStyle(color: Colors.white, fontFamily: MainFont, fontSize: 25.0),
                   ),
                 ],
               ),

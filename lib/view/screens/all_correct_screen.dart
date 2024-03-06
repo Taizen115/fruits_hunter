@@ -88,8 +88,8 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: AutoSizeText(
-                              "全問正解、おめでとうございます！素晴らしいです."
-                              "\nお疲れさまでした.",
+                              "全問正解\nおめでとうございます\n素晴らしいです🤩"
+                              "\nお疲れさまでした",
                               maxLines: 4,
                               style: TextStyle(
                                   fontSize: 50.0, color: Colors.white),
@@ -103,14 +103,11 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: AutoSizeText(
-                              "果物の知識について, 少しお助けできたでしょうか？\n今度は, 実際の果物狩りで, 楽しんでみてください.",
-                              maxLines: 4,
-                              style: TextStyle(
-                                  fontSize: 50.0, color: Colors.white70),
-                            ),
+                          child: AutoSizeText(
+                            "果物の知識について\n少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください",
+                            maxLines: 4,
+                            style: TextStyle(
+                                fontSize: 50.0, color: Colors.white),
                           ),
                         ),
                         Spacer(),

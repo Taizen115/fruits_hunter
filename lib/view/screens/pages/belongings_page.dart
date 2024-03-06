@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_hunter/view/components/belongings_control.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -13,16 +14,16 @@ class BelongingsPage extends StatefulWidget {
 }
 
 class _BelongingsPageState extends State<BelongingsPage> {
-  Map<String, bool> belongings = {
-    '長袖の服': false,
-    '虫よけスプレー': false,
-    '日焼け止め': false,
-    '帽子': false,
-    'ウェットティッシュ': false,
-    'タオル': false,
-    'クーラーボックス': false,
-    '飲み物': false,
-  };
+  // Map<String, bool> belongings = {
+  //   '長袖の服': false,
+  //   '虫よけスプレー': false,
+  //   '日焼け止め': false,
+  //   '帽子': false,
+  //   'ウェットティッシュ': false,
+  //   'タオル': false,
+  //   'クーラーボックス': false,
+  //   '飲み物': false,
+  // };
 
   Map<String, IconData> icons = {
     '長袖の服': FontAwesomeIcons.shirt,
@@ -57,9 +58,9 @@ class _BelongingsPageState extends State<BelongingsPage> {
 
             //TODO checkBoxを全て外す
             onPressed: () {
-              belongings.forEach((key, value) {
+              BelongingsControl.belongings.forEach((key, value) {
                 if (value == true) {
-                  belongings[key] = false;
+                  BelongingsControl.belongings[key] = false;
                 }
                 setState(() {});
               });
@@ -128,7 +129,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                     child: ListView(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
-                      children: belongings.keys.map((String key) {
+                      children: BelongingsControl.belongings.keys.map((String key) {
                         return CheckboxListTile(
                           activeColor: Colors.lightBlue,
                           side: BorderSide(color: Colors.black54, width: 2.0),
@@ -143,7 +144,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                                   fontSize: 20.0,
                                   color: Colors.black54,
                                   fontWeight: FontWeight.bold,
-                                  decoration: belongings[key] ?? false
+                                  decoration: BelongingsControl.belongings[key] ?? false
                                       ? TextDecoration.lineThrough
                                       : TextDecoration.none,
                                 ),
@@ -158,10 +159,10 @@ class _BelongingsPageState extends State<BelongingsPage> {
                             ],
                           ),
                           controlAffinity: ListTileControlAffinity.leading,
-                          value: belongings[key],
+                          value: BelongingsControl.belongings[key],
                           onChanged: (bool? value) {
                             setState(() {
-                              belongings[key] = value!;
+                              BelongingsControl.belongings[key] = value!;
                             });
                           },
                         );

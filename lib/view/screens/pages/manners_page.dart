@@ -29,7 +29,7 @@ class _MannersPageState extends State<MannersPage> {
   @override
   Widget build(BuildContext context) {
     final List mannersQuestions = [
-      "果物狩りで, 事前に何を調べたらいいですか？",
+      // "果物狩りで, 事前に何を調べたらいいですか？",
       "農園で果物狩りをするとき, 走り回ったりしてもいいでしょうか？",
       "果物を摘むときに, 配慮することはありますか？",
       "当日雨が降った場合, どうしたらいいですか？",
@@ -40,7 +40,7 @@ class _MannersPageState extends State<MannersPage> {
     ];
 
     final List mannersAnswers = [
-      "品種名と旬の時期と産地によって, 果物の味は変動するので, 事前に調べてから果物狩りに行くのがポイントです.",
+      // "品種名と旬の時期と産地によって, 果物の味は変動するので, 事前に調べてから果物狩りに行くのがポイントです.",
       "農園では, 走り回ったり騒いだりせず, 周囲に配慮して楽しく果物狩りを過ごして頂けると有難いです. ",
       "果物を摘むときは, 農園の方のお話を聞いて, 木などを傷つけないように配慮して頂けると有難いです. ",
       "雨が降ったら, 電話で農園に連絡した方が良いかもしれません. また, 全天候型の農園もあるので, そういった農園を選ぶのもポイントです. ",
@@ -90,22 +90,6 @@ class _MannersPageState extends State<MannersPage> {
                   children: [
                     Center(
                       child: Image.asset("assets/images/enjoy_picking.png"),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Colors.teal,
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(20.0)),
-                          )),
-                      onPressed: () => _goListPage(),
-                      child: Text(
-                        "果物一覧",
-                        style: TextStyle(
-                          fontSize: 25.0,
-                        ),
-                      ),
                     ),
                     Expanded(
                       child: Padding(
@@ -188,17 +172,5 @@ class _MannersPageState extends State<MannersPage> {
         ],
       ),
     );
-  }
-
-
-
-
-
-
-  _goListPage() async {
-    await adManager.disposeBannerAd();
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => ListPage()));
-    initAd();
   }
 }
