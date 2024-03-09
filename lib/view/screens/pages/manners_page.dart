@@ -6,7 +6,6 @@ import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../../main.dart';
-import 'list_page.dart';
 
 class MannersPage extends StatefulWidget {
   @override

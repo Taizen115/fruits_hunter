@@ -105,6 +105,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
             Column(
               children: [
                 Gap(kToolbarHeight + 10),
+
                 Center(
                   child: (adManager.bannerAd == null)
                       ? Container(
@@ -121,6 +122,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                           ),
                         ),
                 ),
+
                 Gap(20),
 
                 Expanded(

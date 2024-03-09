@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: TextButton(
                             onPressed: () => _goCreditPage(),
                             child: Icon(
-                              FontAwesomeIcons.creditCard,
+                              FontAwesomeIcons.copyright,
                               color: Colors.white,
                             ),
                           ),
