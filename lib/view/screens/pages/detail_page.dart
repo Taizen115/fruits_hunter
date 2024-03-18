@@ -38,34 +38,74 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, String> detailQuestions = {
-      "0": "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
-      "1": "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
-      "2": "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
-      "3": "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
-      "4": "4-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
-      "5": "4-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
-      "6": "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
-      "7": "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
-      "8": "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
-      "9": "7.美味しい${widget.selectedFruit.name}の見分け方は？",
-    };
+    final List detailQuestions = [
+    "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
+    "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
+    "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
+    "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
+    "4-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
+    "4-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
+    "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
+    "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
+    "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
+    "7.美味しい${widget.selectedFruit.name}の見分け方は？",
+    ];
 
-    final Map<String, String> detailAnswers = {
-      "0": "とれたての果物をその場でたべられるのが, 一番の魅力でございます. "
-          "農園によって, 様々な品種をお楽しみ頂けます.お持ち帰りできる農園もあるので,"
-          " 家に帰って新鮮な果物を楽しめます."
-          "旅行中のイベントとして, その土地自慢の果物狩りをお楽しみ頂けます.",
-      "1": "${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
-      "2": "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
-      "3": "${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
-      "4": "${widget.selectedFruit.sweetBreed}\n最新の品種は品種改良で糖度が高いものが多いので, 是非チェックしてみて下さい.",
-      "5": "${widget.selectedFruit.seedlessVarieties}",
-      "6": "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
-      "7": "${widget.selectedFruit.nutrientEfficacy}",
-      "8": "場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
-      "9": "${widget.selectedFruit.distinguish}",
-    };
+    final List detailAnswers = [
+      //1.
+      "とれたての果物をその場でたべられるのが, 一番の魅力でございます. "
+      "農園によって, 様々な品種をお楽しみ頂けます.お持ち帰りできる農園もあるので,"
+       " 家に帰って新鮮な果物を楽しめます."
+      "旅行中のイベントとして, その土地自慢の果物狩りをお楽しみ頂けます.",
+      //2.
+      "${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
+      //3.
+      "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
+      //4.
+      "${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
+      //4-2.
+      "${widget.selectedFruit.sweetBreed}\n最新の品種は品種改良で糖度が高いものが多いので, 是非チェックしてみて下さい.",
+      //4-3.
+      "${widget.selectedFruit.seedlessVarieties}",
+      //5.
+      "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
+      //5.2
+      "${widget.selectedFruit.nutrientEfficacy}",
+      //6.
+      "場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
+      //7.
+      "${widget.selectedFruit.distinguish}",
+    ];
+
+
+    // final Map<String, String> detailQuestions = {
+    //   "0": "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
+    //   "1": "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
+    //   "2": "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
+    //   "3": "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
+    //   "4": "4-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
+    //   "5": "4-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
+    //   "6": "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
+    //   "7": "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
+    //   "8": "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
+    //   "9": "7.美味しい${widget.selectedFruit.name}の見分け方は？",
+    // };
+    //
+    // final Map<String, String> detailAnswers = {
+    //   "0": "とれたての果物をその場でたべられるのが, 一番の魅力でございます. "
+    //       "農園によって, 様々な品種をお楽しみ頂けます.お持ち帰りできる農園もあるので,"
+    //       " 家に帰って新鮮な果物を楽しめます."
+    //       "旅行中のイベントとして, その土地自慢の果物狩りをお楽しみ頂けます.",
+    //   "1": "${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
+    //   "2": "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
+    //   "3": "${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
+    //   "4": "${widget.selectedFruit.sweetBreed}\n最新の品種は品種改良で糖度が高いものが多いので, 是非チェックしてみて下さい.",
+    //   "5": "${widget.selectedFruit.seedlessVarieties}",
+    //   "6": "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
+    //   "7": "${widget.selectedFruit.nutrientEfficacy}",
+    //   "8": "場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
+    //   "9": "${widget.selectedFruit.distinguish}",
+    // };
 
     return SafeArea(
       child: Scaffold(
@@ -158,7 +198,7 @@ class _DetailPageState extends State<DetailPage> {
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: Text(
-                                          detailQuestions[index.toString()]!,
+                                          detailQuestions[index].toString(),
                                           style: TextStyle(
                                             fontFamily: SubFont,
                                             fontSize: 20.0,
@@ -172,7 +212,7 @@ class _DetailPageState extends State<DetailPage> {
                                           title: Padding(
                                             padding: const EdgeInsets.all(5.0),
                                             child: Text(
-                                              detailAnswers[index.toString()]!,
+                                              detailAnswers[index].toString(),
                                               style: TextStyle(
                                                 fontSize: 20.0,
                                                 color: Colors.white,
