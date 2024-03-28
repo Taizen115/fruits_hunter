@@ -19,7 +19,6 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-
   @override
   void initState() {
     super.initState();
@@ -39,26 +38,32 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     final List detailQuestions = [
-    "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
-    "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
-    "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
-    "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
-    "4-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
-    "4-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
-    "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
-    "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
-    "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
-    "7.美味しい${widget.selectedFruit.name}の見分け方は？",
+      "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
+      "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
+      "2-2. 産地を選ぶために参考にするポイントはありますか？",
+      "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
+      "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
+      "4-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
+      "4-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
+      "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
+      "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
+      "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
+      "7.美味しい${widget.selectedFruit.name}の見分け方は？",
     ];
 
     final List detailAnswers = [
       //1.
       "とれたての果物をその場でたべられるのが, 一番の魅力でございます. "
-      "農園によって, 様々な品種をお楽しみ頂けます.お持ち帰りできる農園もあるので,"
-       " 家に帰って新鮮な果物を楽しめます."
-      "旅行中のイベントとして, その土地自慢の果物狩りをお楽しみ頂けます.",
+          "農園によって, 様々な品種をお楽しみ頂けます.お持ち帰りできる農園もあるので,"
+          " 家に帰って新鮮な果物を楽しめます."
+          "旅行中のイベントとして, その土地自慢の果物狩りをお楽しみ頂けます.",
       //2.
       "${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
+      //2-2.
+      "温暖な地域で栽培された果物は, 糖度が高く, 甘みが強い傾向があります. 寒冷な地域で栽培された果物は, 酸味が強い傾向があります. \n\n"
+          "土の粒子が粗い砂質土壌で栽培された果物は, 糖度が高く, 甘味が強い傾向があります."
+          "火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n "
+          "有機質肥料を使って栽培された果物は, 化学肥料で栽培された果物よりも甘みが強い傾向があります.",
       //3.
       "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
       //4.
@@ -76,36 +81,6 @@ class _DetailPageState extends State<DetailPage> {
       //7.
       "${widget.selectedFruit.distinguish}",
     ];
-
-
-    // final Map<String, String> detailQuestions = {
-    //   "0": "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
-    //   "1": "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
-    //   "2": "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
-    //   "3": "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
-    //   "4": "4-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
-    //   "5": "4-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
-    //   "6": "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
-    //   "7": "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
-    //   "8": "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
-    //   "9": "7.美味しい${widget.selectedFruit.name}の見分け方は？",
-    // };
-    //
-    // final Map<String, String> detailAnswers = {
-    //   "0": "とれたての果物をその場でたべられるのが, 一番の魅力でございます. "
-    //       "農園によって, 様々な品種をお楽しみ頂けます.お持ち帰りできる農園もあるので,"
-    //       " 家に帰って新鮮な果物を楽しめます."
-    //       "旅行中のイベントとして, その土地自慢の果物狩りをお楽しみ頂けます.",
-    //   "1": "${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
-    //   "2": "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
-    //   "3": "${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
-    //   "4": "${widget.selectedFruit.sweetBreed}\n最新の品種は品種改良で糖度が高いものが多いので, 是非チェックしてみて下さい.",
-    //   "5": "${widget.selectedFruit.seedlessVarieties}",
-    //   "6": "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
-    //   "7": "${widget.selectedFruit.nutrientEfficacy}",
-    //   "8": "場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
-    //   "9": "${widget.selectedFruit.distinguish}",
-    // };
 
     return SafeArea(
       child: Scaffold(
@@ -178,7 +153,6 @@ class _DetailPageState extends State<DetailPage> {
                     child: Column(
                       children: [
                         Gap(kToolbarHeight + 10),
-
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: ClipRRect(
@@ -237,18 +211,18 @@ class _DetailPageState extends State<DetailPage> {
                 Center(
                   child: (adManager.bannerAd! == null)
                       ? Container(
-                    width: 0.0,
-                    height: 0.0,
-                  )
+                          width: 0.0,
+                          height: 0.0,
+                        )
                       : Container(
-                    width: adManager.bannerAd!.size.width.toDouble(),
-                    height: adManager.bannerAd!.size.height.toDouble(),
-                    child: Center(
-                      child: AdWidget(
-                        ad: adManager.bannerAd!,
-                      ),
-                    ),
-                  ),
+                          width: adManager.bannerAd!.size.width.toDouble(),
+                          height: adManager.bannerAd!.size.height.toDouble(),
+                          child: Center(
+                            child: AdWidget(
+                              ad: adManager.bannerAd!,
+                            ),
+                          ),
+                        ),
                 ),
               ],
             ),

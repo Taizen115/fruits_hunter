@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Expanded(
                         flex: 5,
                         child: AutoSizeText(
-                          "Hunter",
+                          "Picker",
                           maxLines: 1,
                           style: TextStyle(
                               fontFamily: MainFont,
@@ -201,9 +201,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _selectNumberOfQuiz(),
+                onPressed: () => _goMannersPage(),
                 child: AutoSizeText(
-                  "クイズ",
+                  "マナー",
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -233,9 +233,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goMannersPage(),
+                onPressed: () => _selectNumberOfQuiz(),
                 child: AutoSizeText(
-                  "マナー",
+                  "クイズ",
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
