@@ -35,7 +35,7 @@ class CreditPage extends StatelessWidget {
             leading: TextButton(
               child: Icon(
                 FontAwesomeIcons.arrowLeft,
-                color: Colors.white,
+                color: Colors.black87,
               ),
               onPressed: () => Navigator.of(context).pop(),
             ),

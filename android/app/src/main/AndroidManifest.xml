@@ -2,9 +2,13 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    //android 14対応
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
-        android:label="果物Life"
+        android:label="くだもの狩り"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
