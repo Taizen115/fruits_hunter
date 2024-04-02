@@ -106,6 +106,7 @@ class _MannersPageState extends State<MannersPage> {
                                   return ClipRRect(
                                     borderRadius: BorderRadius.circular(30.0),
                                     child: ExpansionTile(
+                                      trailing: FaIcon(FontAwesomeIcons.user),
                                       backgroundColor: Colors.blue[400],
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),

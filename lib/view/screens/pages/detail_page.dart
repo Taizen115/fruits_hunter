@@ -172,6 +172,7 @@ class _DetailPageState extends State<DetailPage> {
                                     borderRadius: BorderRadius.circular(30.0),
                                     child:
                                     ExpansionTile(
+                                      backgroundColor: Colors.blue[400],
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: Text(
@@ -179,7 +180,7 @@ class _DetailPageState extends State<DetailPage> {
                                           style: TextStyle(
                                             fontFamily: SubFont,
                                             fontSize: 20.0,
-                                            color: Colors.indigo,
+                                            color: Colors.black87,
                                           ),
                                           textAlign: TextAlign.left,
                                         ),
@@ -192,7 +193,7 @@ class _DetailPageState extends State<DetailPage> {
                                             detailAnswers[index].toString(),
                                             style: TextStyle(
                                               fontSize: 20.0,
-                                              color: Colors.black87,
+                                              color: Colors.white,
                                             ),
                                             textAlign: TextAlign.left,
                                           ),
