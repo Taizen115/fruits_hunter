@@ -102,7 +102,9 @@ class _ListPageState extends State<ListPage> {
                       //TODO 広告を実装したいと考えているが、「This AdWidget is already in the Widget tree」のエラーメッセージが出て、広告が表示されない
 
                       Center(
-                        child: (adManager == null)
+                        //TODO[0405]"adManager == null"ではなく"adManager.bannerAd == null"にする必要あり
+                        child: (adManager.bannerAd == null)
+                        //child: (adManager == null)
                             ? Container(
                                 width: 0.0,
                                 height: 0.0,
@@ -120,8 +122,14 @@ class _ListPageState extends State<ListPage> {
                               ),
                       ),
                       Gap(10),
+
                       Expanded(
-                        child: Card(
+                        /*
+                        * TODO[0405]一部端末でリストが表示されない問題
+                        *  => shrinkWrapをfalseにしてfruitsListが空の場合の条件分岐を加えると解消するだろうか？？
+                        * */
+                        child: (fruitsList.isEmpty) ? Container() : Card(
+                        //child: Card(
                           color: Colors.white,
                           child: GridView.count(
                             shrinkWrap: true,
@@ -181,7 +189,9 @@ class _ListPageState extends State<ListPage> {
         ),
       ),
     );
-    initAd();
+    //TODO[0405]DetailPageで再度initAdするならここはdisposeじゃないか？
+    //initAd();
+    adManager.disposeBannerAd();
   }
 
   //TODO 季節ごとに果物（DB）を表示させる

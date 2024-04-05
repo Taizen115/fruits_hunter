@@ -246,7 +246,9 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 Gap(20.0),
                 Center(
-                  child: (adManager.bannerAd! == null)
+                  //TODO[0405]Nullチェックする前に「!」をつけてはいけない
+                  child: (adManager.bannerAd == null)
+                  //child: (adManager.bannerAd! == null)
                       ? Container(
                     width: 0.0,
                     height: 0.0,
