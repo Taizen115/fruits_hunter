@@ -106,7 +106,7 @@ class _MannersPageState extends State<MannersPage> {
                                   return ClipRRect(
                                     borderRadius: BorderRadius.circular(30.0),
                                     child: ExpansionTile(
-                                      trailing: FaIcon(FontAwesomeIcons.user),
+                                      // trailing: FaIcon(FontAwesomeIcons.user),
                                       backgroundColor: Colors.blue[400],
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
@@ -152,7 +152,7 @@ class _MannersPageState extends State<MannersPage> {
           Gap(20),
           //広告
           Center(
-            child: (adManager.bannerAd! == null)
+            child: (adManager.bannerAd == null)
                 ? Container(
                     width: 0.0,
                     height: 0.0,

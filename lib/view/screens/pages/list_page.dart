@@ -102,7 +102,7 @@ class _ListPageState extends State<ListPage> {
                       //TODO 広告を実装したいと考えているが、「This AdWidget is already in the Widget tree」のエラーメッセージが出て、広告が表示されない
 
                       Center(
-                        child: (adManager == null)
+                        child: (adManager.bannerAd == null)
                             ? Container(
                                 width: 0.0,
                                 height: 0.0,
@@ -121,7 +121,8 @@ class _ListPageState extends State<ListPage> {
                       ),
                       Gap(10),
                       Expanded(
-                        child: Card(
+                        child: (fruitsList.isEmpty) ? Container() : Card(
+                          // child: Card(
                           color: Colors.white,
                           child: GridView.count(
                             shrinkWrap: true,
@@ -181,7 +182,7 @@ class _ListPageState extends State<ListPage> {
         ),
       ),
     );
-    initAd();
+    adManager.disposeBannerAd();
   }
 
   //TODO 季節ごとに果物（DB）を表示させる

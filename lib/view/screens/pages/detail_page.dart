@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
@@ -185,56 +183,24 @@ class _DetailPageState extends State<DetailPage> {
                                           textAlign: TextAlign.left,
                                         ),
                                       ),
-                                      trailing: FaIcon(FontAwesomeIcons.leaf
-                                      ),
+                                      // trailing: FaIcon(FontAwesomeIcons.leaf
                                       children: [
                                         ListTile(
-                                          title: Text(
-                                            detailAnswers[index].toString(),
-                                            style: TextStyle(
-                                              fontSize: 20.0,
-                                              color: Colors.white,
+                                          title: Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: Text(
+                                              detailAnswers[index].toString(),
+                                              style: TextStyle(
+                                                fontSize: 20.0,
+                                                color: Colors.white,
+                                              ),
+                                              textAlign: TextAlign.left,
                                             ),
-                                            textAlign: TextAlign.left,
                                           ),
                                         ),
                                       ],
                                     ),
                                   );
-
-
-                                  // child: ExpansionTile(
-                                  //   backgroundColor: Colors.blue[400],
-                                  //   title: Padding(
-                                  //     padding: const EdgeInsets.all(5.0),
-                                  //     child: Text(
-                                  //       detailQuestions[index].toString(),
-                                  //       style: TextStyle(
-                                  //         fontFamily: SubFont,
-                                  //         fontSize: 20.0,
-                                  //         color: Colors.black,
-                                  //       ),
-                                  //       textAlign: TextAlign.left,
-                                  //     ),
-                                  //   ),
-                                  //   children: [
-                                  //     ListTile(
-                                  //       title: Padding(
-                                  //         padding:
-                                  //             const EdgeInsets.all(5.0),
-                                  //         child: Text(
-                                  //           detailAnswers[index].toString(),
-                                  //           style: TextStyle(
-                                  //             fontSize: 20.0,
-                                  //             color: Colors.white,
-                                  //           ),
-                                  //           textAlign: TextAlign.left,
-                                  //         ),
-                                  //       ),
-                                  //     ),
-                                  //   ],
-                                  // ),
-
                                 },
                               ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
                             ),
@@ -246,7 +212,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
                 Gap(20.0),
                 Center(
-                  child: (adManager.bannerAd! == null)
+                  child: (adManager.bannerAd == null)
                       ? Container(
                     width: 0.0,
                     height: 0.0,

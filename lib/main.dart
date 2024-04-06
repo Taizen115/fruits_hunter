@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fruit_hunter/model/ad_manager.dart';
@@ -27,7 +26,7 @@ void main() async {
   runApp(
     DevicePreview(
       builder: (context) => MyApp(),
-      enabled: !kReleaseMode,
+      enabled: false,
     ),
   );
 }

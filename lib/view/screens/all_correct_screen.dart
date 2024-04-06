@@ -112,7 +112,7 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                         ),
                         Spacer(),
                         Center(
-                          child: (adManager.bannerAd! == null)
+                          child: (adManager.bannerAd == null)
                               ? Container(
                                   width: 0.0,
                                   height: 0.0,
