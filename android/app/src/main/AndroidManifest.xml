@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:label="果物Spot"
+        android:label="果物狩り"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
@@ -39,6 +39,6 @@
             android:value="2" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
+            android:value="ca-app-pub-3364901739591913~8245503054"/>
     </application>
 </manifest>
