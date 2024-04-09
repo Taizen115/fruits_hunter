@@ -5,7 +5,6 @@ import 'package:fruit_hunter/main.dart';
 import 'package:fruit_hunter/view/screens/pages/detail_page.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../../../data/list_category.dart';
 import '../../../db/database.dart';
 import '../../../style/style.dart';
 import '../../components/list_category_chips.dart';
@@ -21,7 +20,7 @@ class _ListPageState extends State<ListPage> {
   @override
   void initState() {
     super.initState();
-    _getTypeFruits(context, categories);
+    _getTypeFruits(context, 0);
     initAd();
   }
 
@@ -122,7 +121,6 @@ class _ListPageState extends State<ListPage> {
                       Gap(10),
                       Expanded(
                         child: (fruitsList.isEmpty) ? Container() : Card(
-                          // child: Card(
                           color: Colors.white,
                           child: GridView.count(
                             shrinkWrap: true,
@@ -187,7 +185,7 @@ class _ListPageState extends State<ListPage> {
 
   //TODO 季節ごとに果物（DB）を表示させる
 
-  Future<void> _getTypeFruits(BuildContext context, categoryId) async {
+  Future<void> _getTypeFruits(BuildContext context, int categoryId) async {
     // print("category: ${categoryId}");
 
     if (categoryId == 1) {
