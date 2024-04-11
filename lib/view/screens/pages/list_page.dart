@@ -88,9 +88,11 @@ class _ListPageState extends State<ListPage> {
                 ],
               ),
             ),
-            body: (fruitsList.isEmpty)
-                ? Container()
-                : Column(
+            body:
+            // (fruitsList.isEmpty)
+            //     ? Container()
+            //     :
+            Column(
                     children: [
                       ListCategoryChips(
                         onCategorySelected: (categoryId) =>
