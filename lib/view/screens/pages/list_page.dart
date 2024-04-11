@@ -41,7 +41,6 @@ class _ListPageState extends State<ListPage> {
     return Stack(
       fit: StackFit.expand,
       children: [
-
         //1階　グラデーション
         DecoratedBox(
           position: DecorationPosition.foreground,
@@ -83,16 +82,17 @@ class _ListPageState extends State<ListPage> {
                   Gap(30),
                   Text(
                     "果物一覧",
-                    style: TextStyle(color: Colors.white, fontFamily: MainFont, fontSize: 25.0),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: MainFont,
+                        fontSize: 25.0),
                   ),
                 ],
               ),
             ),
-            body:
-            // (fruitsList.isEmpty)
-            //     ? Container()
-            //     :
-            Column(
+            body: (fruitsList.isEmpty)
+                ? Container()
+                : Column(
                     children: [
                       ListCategoryChips(
                         onCategorySelected: (categoryId) =>
@@ -122,45 +122,50 @@ class _ListPageState extends State<ListPage> {
                       ),
                       Gap(10),
                       Expanded(
-                        child: (fruitsList.isEmpty) ? Container() : Card(
-                          color: Colors.white,
-                          child: GridView.count(
-                            shrinkWrap: true,
-                            crossAxisCount: 2,
-                            children: List<Widget>.generate(fruitsList.length,
-                                (index) {
-                              final fruit = fruitsList[index];
-                              return InkWell(
-                                onTap: () => _goDetailPage(fruit),
-                                child: Card(
-                                  color: Colors.white,
-                                  shadowColor: Colors.white70,
-                                  surfaceTintColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(20),
-                                    ),
-                                  ),
-                                  elevation: 100.0,
-                                  child: GridTile(
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                          "assets/images/${fruit.imageFileName}"),
-                                    ),
-                                    footer: Center(
-                                        child: Text(
-                                      fruit.name,
-                                      style: TextStyle(
-                                          fontSize: 25.0,
-                                          fontFamily: ThirdFont),
-                                    )),
-                                  ),
+                        child: (fruitsList.isEmpty)
+                            ? Container()
+                            : Card(
+                                color: Colors.white,
+                                child: GridView.count(
+                                  shrinkWrap: true,
+                                  crossAxisCount: 2,
+                                  children: List<Widget>.generate(
+                                          fruitsList.length, (index) {
+                                    final fruit = fruitsList[index];
+                                    return InkWell(
+                                      onTap: () => _goDetailPage(fruit),
+                                      child: Card(
+                                        color: Colors.white,
+                                        shadowColor: Colors.white70,
+                                        surfaceTintColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(20),
+                                          ),
+                                        ),
+                                        elevation: 100.0,
+                                        child: GridTile(
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(20),
+                                            child: Image.asset(
+                                                "assets/images/${fruit.imageFileName}"),
+                                          ),
+                                          footer: Center(
+                                              child: Text(
+                                            fruit.name,
+                                            style: TextStyle(
+                                                fontSize: 25.0,
+                                                fontFamily: ThirdFont),
+                                          )),
+                                        ),
+                                      ),
+                                    );
+                                  })
+                                      .animate(interval: 50.ms)
+                                      .scale(duration: 50.ms),
                                 ),
-                              );
-                            }).animate(interval: 50.ms).scale(duration: 50.ms),
-                          ),
-                        ),
+                              ),
                       ),
                     ],
                   ),
