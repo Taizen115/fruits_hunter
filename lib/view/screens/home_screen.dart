@@ -283,13 +283,11 @@ class _HomeScreenState extends State<HomeScreen> {
             ));
   }
 
-  //TODO initAd()をadManager.disposeBannerAd()に変更したら、果物一覧に影響しないでしょうか？
   _goListPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => ListPage()));
-    adManager.disposeBannerAd();
-    //initAd();
+    initAd();
   }
 
   _goQuizPage(BuildContext context, int numberOfQuestion) async {
