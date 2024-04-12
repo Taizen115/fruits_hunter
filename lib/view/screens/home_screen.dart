@@ -20,9 +20,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Question> quizList = [];
 
+  //追加
+  List<Fruit> allFruitsList = [];
+
   @override
   void initState() {
     super.initState();
+    //追加
+    _getFruitsList();
     initAd();
   }
 
@@ -286,7 +291,12 @@ class _HomeScreenState extends State<HomeScreen> {
   _goListPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ListPage()));
+        //全ての果物リストを渡す
+        context,
+        MaterialPageRoute(
+            builder: (context) => ListPage(
+                  allFruitsList: allFruitsList,
+                )));
     initAd();
   }
 
@@ -321,5 +331,11 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => CreditPage()));
     initAd();
+  }
+
+  void _getFruitsList() async {
+    allFruitsList = await database.fruitsList;
+    print("allFruitsList$allFruitsList");
+    print("allFruitsList.length${allFruitsList.length}");
   }
 }

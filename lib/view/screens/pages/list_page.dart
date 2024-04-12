@@ -10,6 +10,12 @@ import '../../../style/style.dart';
 import '../../components/list_category_chips.dart';
 
 class ListPage extends StatefulWidget {
+  final List<Fruit> allFruitsList;
+
+  ListPage({
+    required this.allFruitsList,
+  });
+
   @override
   State<ListPage> createState() => _ListPageState();
 }
@@ -195,17 +201,24 @@ class _ListPageState extends State<ListPage> {
   Future<void> _getTypeFruits(BuildContext context, int categoryId) async {
     // print("category: ${categoryId}");
 
+    //whereで全てのフルーツデータから抽出
     if (categoryId == 1) {
-      fruitsList = await database.fruitsSpring;
+      fruitsList = await widget.allFruitsList.where((record) => record.typeSpring).toList();
+      //fruitsList = await database.fruitsSpring;
     } else if (categoryId == 2) {
-      fruitsList = await database.fruitsSummer;
+      fruitsList = await widget.allFruitsList.where((record) => record.typeSummer).toList();
+      //fruitsList = await database.fruitsSummer;
     } else if (categoryId == 3) {
-      fruitsList = await database.fruitsAutumn;
+      fruitsList = await widget.allFruitsList.where((record) => record.typeAutumn).toList();
+      //fruitsList = await database.fruitsAutumn;
     } else if (categoryId == 4) {
-      fruitsList = await database.fruitsWinter;
+      fruitsList = await widget.allFruitsList.where((record) => record.typeWinter).toList();
+      //fruitsList = await database.fruitsWinter;
     } else {
-      fruitsList = await database.fruitsList;
+      fruitsList = await widget.allFruitsList;
+      //fruitsList = await database.fruitsList;
     }
+    print(fruitsList.length);
 
     setState(() {});
   }
