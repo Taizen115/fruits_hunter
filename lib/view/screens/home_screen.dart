@@ -170,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "'FruitHunter' ver 1.0.0 ©Taylors Guild, N.P.O",
+            "'FruitPicker' ver 1.0.0 ©Taylors Guild, N.P.O",
             style: TextStyle(fontSize: 12.0),
           ),
         ),
