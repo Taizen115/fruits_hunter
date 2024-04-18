@@ -27,6 +27,7 @@ class _ListPageState extends State<ListPage> {
   @override
   void initState() {
     super.initState();
+    fruitsList = widget.allFruitsList;
     _getTypeFruits(context, 0);
     initAd();
   }
@@ -45,8 +46,6 @@ class _ListPageState extends State<ListPage> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -100,7 +99,14 @@ class _ListPageState extends State<ListPage> {
               ),
             ),
             body: (fruitsList.isEmpty)
-                ? Container()
+                ? Center(
+                    child: Text(
+                      "データが取得できませんでした。\n申し訳ありませんが画面を一旦閉じて\n再度実行してください",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
                 : Column(
                     children: [
                       ListCategoryChips(
@@ -131,50 +137,48 @@ class _ListPageState extends State<ListPage> {
                       ),
                       Gap(10),
                       Expanded(
-                        child: (fruitsList.isEmpty)
-                            ? Container()
-                            : Card(
-                                color: Colors.white,
-                                child: GridView.count(
-                                  shrinkWrap: true,
-                                  crossAxisCount: 2,
-                                  children: List<Widget>.generate(
-                                          fruitsList.length, (index) {
-                                    final fruit = fruitsList[index];
-                                    return InkWell(
-                                      onTap: () => _goDetailPage(fruit),
-                                      child: Card(
-                                        color: Colors.white,
-                                        shadowColor: Colors.white70,
-                                        surfaceTintColor: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                        ),
-                                        elevation: 100.0,
-                                        child: GridTile(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            child: Image.asset(
-                                                "assets/images/${fruit.imageFileName}"),
-                                          ),
-                                          footer: Center(
-                                              child: Text(
-                                            fruit.name,
-                                            style: TextStyle(
-                                                fontSize: 25.0,
-                                                fontFamily: ThirdFont),
-                                          )),
+                        child: Card(
+                          color: Colors.white,
+                          child: GridView.count(
+                            shrinkWrap: true,
+                            crossAxisCount: 2,
+                            children: List<Widget>.generate(
+                              fruitsList.length,
+                              (index) {
+                                final fruit = fruitsList[index];
+                                return InkWell(
+                                  onTap: () => _goDetailPage(fruit),
+                                  child: Card(
+                                    color: Colors.white,
+                                    shadowColor: Colors.white70,
+                                    surfaceTintColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(20),
+                                      ),
+                                    ),
+                                    elevation: 100.0,
+                                    child: GridTile(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Image.asset(
+                                            "assets/images/${fruit.imageFileName}"),
+                                      ),
+                                      footer: Center(
+                                        child: Text(
+                                          fruit.name,
+                                          style: TextStyle(
+                                              fontSize: 25.0,
+                                              fontFamily: ThirdFont),
                                         ),
                                       ),
-                                    );
-                                  })
-                                      .animate(interval: 50.ms)
-                                      .scale(duration: 50.ms),
-                                ),
-                              ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).animate(interval: 50.ms).scale(duration: 50.ms),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -203,22 +207,32 @@ class _ListPageState extends State<ListPage> {
 
   Future<void> _getTypeFruits(BuildContext context, int categoryId) async {
     if (widget.allFruitsList.isEmpty) {
-      Fluttertoast.showToast(msg: "[ListPage]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください");
+      Fluttertoast.showToast(
+          msg: "[ListPage]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください");
+      return;
     }
     // print("category: ${categoryId}");
 
     //whereで全てのフルーツデータから抽出
     if (categoryId == 1) {
-      fruitsList = await widget.allFruitsList.where((record) => record.typeSpring).toList();
+      fruitsList = await widget.allFruitsList
+          .where((record) => record.typeSpring)
+          .toList();
       //fruitsList = await database.fruitsSpring;
     } else if (categoryId == 2) {
-      fruitsList = await widget.allFruitsList.where((record) => record.typeSummer).toList();
+      fruitsList = await widget.allFruitsList
+          .where((record) => record.typeSummer)
+          .toList();
       //fruitsList = await database.fruitsSummer;
     } else if (categoryId == 3) {
-      fruitsList = await widget.allFruitsList.where((record) => record.typeAutumn).toList();
+      fruitsList = await widget.allFruitsList
+          .where((record) => record.typeAutumn)
+          .toList();
       //fruitsList = await database.fruitsAutumn;
     } else if (categoryId == 4) {
-      fruitsList = await widget.allFruitsList.where((record) => record.typeWinter).toList();
+      fruitsList = await widget.allFruitsList
+          .where((record) => record.typeWinter)
+          .toList();
       //fruitsList = await database.fruitsWinter;
     } else {
       fruitsList = await widget.allFruitsList;
