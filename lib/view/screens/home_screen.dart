@@ -2,6 +2,7 @@ import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
 import 'package:fruit_hunter/style/style.dart';
@@ -324,14 +325,26 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _goListPage() async {
     await adManager.disposeBannerAd();
+
+    if (allFruitsList.isEmpty) {
+      allFruitsList = await database.fruitsList;
+    }
+
+    if (allFruitsList.isEmpty) {
+      Fluttertoast.showToast(
+          msg: "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください");
+    }
+
     Navigator.push(
-        //全ての果物リストを渡す
-        context,
-        MaterialPageRoute(
-            builder: (context) => ListPage(
-                  allFruitsList: allFruitsList,
-                )));
-    initAd();
+      //全ての果物リストを渡す
+      context,
+      MaterialPageRoute(
+        builder: (context) => ListPage(
+          allFruitsList: allFruitsList,
+        ),
+      ),
+    );
+    //initAd();
   }
 
   _goQuizPage(BuildContext context, int numberOfQuestion) async {
@@ -343,21 +356,21 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (context) => QuizPage(
                   numberOfQuestions: numberOfQuestion,
                 )));
-    initAd();
+    //initAd();
   }
 
   _goBelogingsPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => BelongingsPage()));
-    initAd();
+    //initAd();
   }
 
   _goMannersPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => MannersPage()));
-    initAd();
+    //initAd();
   }
 
   _goCreditPage() async {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/main.dart';
 import 'package:fruit_hunter/view/screens/pages/detail_page.dart';
@@ -44,6 +45,8 @@ class _ListPageState extends State<ListPage> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Stack(
       fit: StackFit.expand,
       children: [
@@ -199,6 +202,9 @@ class _ListPageState extends State<ListPage> {
   //TODO 季節ごとに果物（DB）を表示させる
 
   Future<void> _getTypeFruits(BuildContext context, int categoryId) async {
+    if (widget.allFruitsList.isEmpty) {
+      Fluttertoast.showToast(msg: "[ListPage]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください");
+    }
     // print("category: ${categoryId}");
 
     //whereで全てのフルーツデータから抽出
