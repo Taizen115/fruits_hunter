@@ -1,3 +1,4 @@
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -29,6 +30,39 @@ class _HomeScreenState extends State<HomeScreen> {
     //追加
     _getFruitsList();
     initAd();
+    initAtt();
+  }
+
+  //ATT
+  void initAtt() async {
+    final attStatus = await AppTrackingTransparency.trackingAuthorizationStatus;
+    if (attStatus == TrackingStatus.notDetermined) {
+      // Show a custom explainer dialog before the system dialog
+      await showCustomTrackingDialog(context);
+      // Wait for dialog popping animation
+      await Future.delayed(const Duration(milliseconds: 200));
+      await AppTrackingTransparency.requestTrackingAuthorization();
+    }
+  }
+
+  Future<void> showCustomTrackingDialog(BuildContext context) async {
+    await showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Dear User'),
+        content: const Text(
+          'We care about your privacy and data security. We keep this app free by showing ads. '
+          'Can we continue to use your data to tailor ads for you?\n\nYou can change your choice anytime in the app settings. '
+          'Our partners will collect data and use a unique identifier on your device to show you ads.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Continue'),
+          ),
+        ],
+      ),
+    );
   }
 
   //広告
