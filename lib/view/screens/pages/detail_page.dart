@@ -170,7 +170,7 @@ class _DetailPageState extends State<DetailPage> {
                                     borderRadius: BorderRadius.circular(30.0),
                                     child:
                                     ExpansionTile(
-                                      backgroundColor: Colors.blue[400],
+                                      backgroundColor: Colors.teal,
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: Text(
@@ -263,7 +263,7 @@ class _DetailPageState extends State<DetailPage> {
               TextButton(
                 child: Text(
                   "キャンセル",
-                  style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                  style: TextStyle(fontSize: 20.0, color: Colors.black54),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -272,7 +272,7 @@ class _DetailPageState extends State<DetailPage> {
               TextButton(
                 child: Text(
                   "OK",
-                  style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                  style: TextStyle(fontSize: 20.0, color: Colors.orangeAccent),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
