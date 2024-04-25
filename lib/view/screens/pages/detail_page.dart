@@ -41,10 +41,10 @@ class _DetailPageState extends State<DetailPage> {
       "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
       "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
       "2-2. 産地を選ぶために参考にするポイントはありますか？",
-      "3.${widget.selectedFruit.name}の旬の時期はいつですか？",
-      "4.${widget.selectedFruit.name}の有名な品種は何ですか？",
-      "4-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
-      "4-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
+      "3.${widget.selectedFruit.name}の有名な品種は何ですか？",
+      "3-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
+      "3-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
+      "4.${widget.selectedFruit.name}の旬の時期はいつですか？",
       "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
       "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
       "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
@@ -65,14 +65,14 @@ class _DetailPageState extends State<DetailPage> {
           "火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n "
           "有機質肥料を使って栽培された果物は, 化学肥料で栽培された果物よりも甘みが強い傾向があります.",
       //3.
-      "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
-      //4.
       "${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
-      //4-2.
+      //3-2.
       "${widget.selectedFruit
           .sweetBreed}\n最新の品種は品種改良で糖度が高いものが多いので, 是非チェックしてみて下さい.",
-      //4-3.
+      //3-3.
       "${widget.selectedFruit.seedlessVarieties}",
+      //4.
+      "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
       //5.
       "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
       //5.2
@@ -211,6 +211,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 Gap(20.0),
+
                 Center(
                   child: (adManager.bannerAd == null)
                       ? Container(
