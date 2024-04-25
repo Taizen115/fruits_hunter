@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //追加
     _getFruitsList();
     initAd();
-    initAtt();
+    if (Platform.isIOS) initAtt();
   }
 
   //ATT
@@ -50,16 +52,15 @@ class _HomeScreenState extends State<HomeScreen> {
     await showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Dear User'),
+        title: const Text('広告の表示について'),
         content: const Text(
-          'We care about your privacy and data security. We keep this app free by showing ads. '
-          'Can we continue to use your data to tailor ads for you?\n\nYou can change your choice anytime in the app settings. '
-          'Our partners will collect data and use a unique identifier on your device to show you ads.',
-        ),
+            "パーソナライズされた広告の表示を許可して頂けるかどうかを次のダイアログで選択してください。"
+                "\n\n許可頂くことで興味関心の低い広告の表示を減らすことができます。"
+                "\n\nこれによってお客様の個人情報が取得されることはありませんのでご安心ください。"),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Continue'),
+            child: const Text('次にすすむ'),
           ),
         ],
       ),
