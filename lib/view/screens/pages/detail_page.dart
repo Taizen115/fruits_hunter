@@ -38,7 +38,7 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     final List detailQuestions = [
-      "1.他のアウトドアにはない果物狩りの魅力は何ですか？",
+      "1.美味しい果物を食べるとき, 鮮度が重要なのはなぜですか？",
       "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
       "2-2. 産地を選ぶために参考にするポイントはありますか？",
       "3.${widget.selectedFruit.name}の有名な品種は何ですか？",
@@ -53,10 +53,8 @@ class _DetailPageState extends State<DetailPage> {
 
     final List detailAnswers = [
       //1.
-      "とれたての果物をその場でたべられるのが, 一番の魅力でございます. "
-          "農園によって, 様々な品種をお楽しみ頂けます.お持ち帰りできる農園もあるので,"
-          " 家に帰って新鮮な果物を楽しめます."
-          "旅行中のイベントとして, その土地自慢の果物狩りをお楽しみ頂けます.",
+      "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. "
+          "\nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます.",
       //2.
       "${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
       //2-2.
@@ -170,7 +168,7 @@ class _DetailPageState extends State<DetailPage> {
                                     borderRadius: BorderRadius.circular(30.0),
                                     child:
                                     ExpansionTile(
-                                      backgroundColor: Colors.teal,
+                                      backgroundColor: Colors.lightBlue,
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: Text(
