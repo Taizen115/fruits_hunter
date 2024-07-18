@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/main.dart';
@@ -142,41 +142,49 @@ class _ListPageState extends State<ListPage> {
                           child: GridView.count(
                             shrinkWrap: true,
                             crossAxisCount: 2,
-                            children: List<Widget>.generate(
-                              fruitsList.length,
-                              (index) {
-                                final fruit = fruitsList[index];
-                                return InkWell(
-                                  onTap: () => _goDetailPage(fruit),
-                                  child: Card(
-                                    color: Colors.white,
-                                    shadowColor: Colors.white70,
-                                    surfaceTintColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(20),
+                            children: AnimationConfiguration.toStaggeredList(
+                              duration: const Duration(milliseconds: 175),
+                              childAnimationBuilder: (widget) =>
+                                  FadeInAnimation(
+                                child: widget,
+                              ),
+                              children: List<Widget>.generate(
+                                fruitsList.length,
+                                (index) {
+                                  final fruit = fruitsList[index];
+                                  return InkWell(
+                                    onTap: () => _goDetailPage(fruit),
+                                    child: Card(
+                                      color: Colors.white,
+                                      shadowColor: Colors.white70,
+                                      surfaceTintColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(20),
+                                        ),
                                       ),
-                                    ),
-                                    elevation: 100.0,
-                                    child: GridTile(
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(20),
-                                        child: Image.asset(
-                                            "assets/images/${fruit.imageFileName}"),
-                                      ),
-                                      footer: Center(
-                                        child: Text(
-                                          fruit.name,
-                                          style: TextStyle(
-                                              fontSize: 25.0,
-                                              fontFamily: ThirdFont),
+                                      elevation: 100.0,
+                                      child: GridTile(
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          child: Image.asset(
+                                              "assets/images/${fruit.imageFileName}"),
+                                        ),
+                                        footer: Center(
+                                          child: Text(
+                                            fruit.name,
+                                            style: TextStyle(
+                                                fontSize: 25.0,
+                                                fontFamily: ThirdFont),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
-                            ).animate(interval: 50.ms).scale(duration: 50.ms),
+                                  );
+                                },
+                              ),
+                            ),
                           ),
                         ),
                       ),
