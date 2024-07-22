@@ -143,7 +143,7 @@ class _ListPageState extends State<ListPage> {
                             shrinkWrap: true,
                             crossAxisCount: 2,
                             children: AnimationConfiguration.toStaggeredList(
-                              duration: const Duration(milliseconds: 175),
+                              duration: const Duration(milliseconds: 360),
                               childAnimationBuilder: (widget) =>
                                   FadeInAnimation(
                                 child: widget,
