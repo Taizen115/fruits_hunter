@@ -139,44 +139,52 @@ class _ListPageState extends State<ListPage> {
                       Expanded(
                         child: Card(
                           color: Colors.white,
-                          child: GridView.count(
-                            shrinkWrap: true,
-                            crossAxisCount: 2,
-                            children: AnimationConfiguration.toStaggeredList(
-                              duration: const Duration(milliseconds: 360),
-                              childAnimationBuilder: (widget) =>
-                                  FadeInAnimation(
-                                child: widget,
-                              ),
+                          //TODO: AnimationLimiterはつけておこう
+                          //https://pub.dev/packages/flutter_staggered_animations#animationlimiter
+                          child: AnimationLimiter(
+                            child: GridView.count(
+                              shrinkWrap: true,
+                              crossAxisCount: 2,
                               children: List<Widget>.generate(
                                 fruitsList.length,
                                 (index) {
                                   final fruit = fruitsList[index];
-                                  return InkWell(
-                                    onTap: () => _goDetailPage(fruit),
-                                    child: Card(
-                                      color: Colors.white,
-                                      shadowColor: Colors.white70,
-                                      surfaceTintColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                          Radius.circular(20),
-                                        ),
-                                      ),
-                                      elevation: 100.0,
-                                      child: GridTile(
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                              "assets/images/${fruit.imageFileName}"),
-                                        ),
-                                        footer: Center(
-                                          child: Text(
-                                            fruit.name,
-                                            style: TextStyle(
-                                                fontSize: 25.0,
-                                                fontFamily: ThirdFont),
+                                  //TODO: GridViewで使う場合はtoStaggeredListではなくstaggeredGrid
+                                  //https://pub.dev/packages/flutter_staggered_animations#gridview
+                                  return AnimationConfiguration.staggeredGrid(
+                                    position: index,
+                                    duration: Duration(milliseconds: 375),
+                                    columnCount: 2,
+                                    child: ScaleAnimation(
+                                      child: FadeInAnimation(
+                                        child: InkWell(
+                                          onTap: () => _goDetailPage(fruit),
+                                          child: Card(
+                                            color: Colors.white,
+                                            shadowColor: Colors.white70,
+                                            surfaceTintColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(20),
+                                              ),
+                                            ),
+                                            elevation: 100.0,
+                                            child: GridTile(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                child: Image.asset(
+                                                    "assets/images/${fruit.imageFileName}"),
+                                              ),
+                                              footer: Center(
+                                                child: Text(
+                                                  fruit.name,
+                                                  style: TextStyle(
+                                                      fontSize: 25.0,
+                                                      fontFamily: ThirdFont),
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
