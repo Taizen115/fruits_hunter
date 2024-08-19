@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/model/ad_manager.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -23,6 +25,8 @@ void main() async {
   //広告
   await adManager.initAdmob();
 
+
+  //DevicePreviewは、色んな機種で動きを確認できる。trueにしたらその機能が使える
   runApp(
     DevicePreview(
       builder: (context) => MyApp(),
@@ -52,6 +56,17 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: "Fruit Hunter",
+
+      //多言語対応
+      localizationsDelegates: [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+
+      //Deviceのテーマを変更できる。useMaterial3をtrueにすると最新の表示になる。
       theme: ThemeData(brightness: Brightness.light, fontFamily: MainFont, useMaterial3: true),
       home: HomeScreen(),
     );

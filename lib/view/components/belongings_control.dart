@@ -1,3 +1,4 @@
+//持ち物checkで、1つのダートファイルにしてTop levelでアクセス可能にする
 class BelongingsControl {
   static Map<String, bool> belongings = {
     '長袖の服': false,

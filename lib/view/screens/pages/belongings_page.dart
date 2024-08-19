@@ -5,6 +5,7 @@ import 'package:fruit_hunter/view/components/belongings_control.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../main.dart';
 import '../../../style/style.dart';
 
@@ -26,6 +27,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
     '飲み物': FontAwesomeIcons.bottleWater,
   };
 
+  //initは初期化
   @override
   void initState() {
     super.initState();
@@ -42,9 +44,14 @@ class _BelongingsPageState extends State<BelongingsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
         floatingActionButton: FloatingActionButton(
             child: FaIcon(FontAwesomeIcons.eraser),
             backgroundColor: Colors.lightBlue,
+
+            //BelongingsControl.belongings.forEach : 持ち物リスト (BelongingsControl.belongings) の中身を一つずつ取り出して処理を行うループです。
+            // チェックが入っているもの (value == true) に対して、チェックを外す処理 (BelongingsControl.belongings[key] = false;) を行います。
+            // setState(() {}); : アプリの画面を更新するための処理です。
 
             //TODO checkBoxを全て外す
             onPressed: () {
@@ -69,7 +76,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           title: Text(
-            "持ち物リスト",
+            S.of(context).BelongingList,
             style: TextStyle(fontFamily: ThirdFont, fontSize: 30.0),
           ),
         ),
@@ -115,6 +122,17 @@ class _BelongingsPageState extends State<BelongingsPage> {
 
                 Gap(20),
 
+
+                //BelongingsControl.belongings.keys.map : 持ち物リストのキー (持ち物名) を一つずつ取り出して処理を行うループです。
+                // CheckboxListTile: チェックボックスと持ち物名、アイコンなどを組み合わせて表示します。
+                // チェックが入っていると、持ち物名に取り消し線が引かれます
+                // (decoration: BelongingsControl.belongings[key] ? TextDecoration.lineThrough : TextDecoration.none,)
+                // icons という変数には、おそらく持ち物ごとに割り当てられたアイコンの情報が入っています。
+
+                //持ち物リストを画面に表示するための核となる部分です。
+                // BelongingsControl.belongings に保存されている持ち物情報をもとに、
+                // CheckboxListTile を繰り返し生成し、ListView に表示することで、
+                // ユーザーはそれぞれの持ち物に対してチェックをつけることができるようになっています。
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(5.0),

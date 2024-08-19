@@ -7,6 +7,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
+import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/style/style.dart';
 import 'package:fruit_hunter/view/screens/pages/list_page.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -21,7 +22,14 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+//"パーソナライズされた広告の表示を許可して頂けるかどうかを次のダイアログで選択してください。"
+//"\n\n許可頂くことで興味関心の低い広告の表示を減らすことができます。"
+//"\n\nこれによってお客様の個人情報が取得されることはありませんのでご安心ください。"
+
+
+
 class _HomeScreenState extends State<HomeScreen> {
+
   List<Question> quizList = [];
 
   //追加
@@ -47,6 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
       await AppTrackingTransparency.requestTrackingAuthorization();
     }
   }
+
+  //ユーザーに対する個人情報の但し書き
 
   Future<void> showCustomTrackingDialog(BuildContext context) async {
     await showDialog<void>(
@@ -84,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
         child: Scaffold(
       body: Column(children: [
+        //コンシェルジュの写真のTop Page
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -164,11 +175,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
 
+        //Top Page の宣伝文句
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Center(
             child: AutoSizeText(
-              "どのような果物狩りの手伝いが\n必要でしょうか？ ",
+              S.of(context).Catchphrase,
+              // "どのような果物狩りの手伝いが\n必要でしょうか？ ",
               maxLines: 2,
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -182,6 +195,8 @@ class _HomeScreenState extends State<HomeScreen> {
         //選択肢部分
         _choicePart(),
 
+
+        //広告
         Padding(
           padding: const EdgeInsets.all(10.0),
           child: Center(
@@ -214,6 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ));
   }
 
+  //選択ボタン
   Widget _choicePart() {
     return Table(
       children: [
@@ -229,7 +245,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goListPage(),
                 child: AutoSizeText(
-                  "果物一覧",
+                  S.of(context).List,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -244,7 +260,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goMannersPage(),
                 child: AutoSizeText(
-                  "マナー",
+                 S.of(context).Manners,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -261,7 +277,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goBelogingsPage(),
                 child: AutoSizeText(
-                  "持ち物",
+                  S.of(context).Belongings,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -276,7 +292,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _selectNumberOfQuiz(),
                 child: AutoSizeText(
-                  "クイズ",
+                  S.of(context).Quiz,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -285,37 +301,38 @@ class _HomeScreenState extends State<HomeScreen> {
     ).animate().fade(delay: 1000.ms).scale().then(delay: 500.ms);
   }
 
+  //クイズを何問解くかのダイアログ
   _selectNumberOfQuiz() {
     return showDialog(
         barrierDismissible: true,
         context: context,
         builder: (_) => AlertDialog(
               title: Text(
-                "問題数",
+                S.of(context).QuestionCount,
                 style: TextStyle(fontSize: 25.0),
               ),
               content: Text(
-                "何問解きますか？",
+                S.of(context).HowManyQuestions,
                 style: TextStyle(fontSize: 20.0),
               ),
               actions: [
                 TextButton(
                   child: Text(
-                    "10問",
+                    S.of(context).TenQuestions,
                     style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
                   ),
                   onPressed: () => _goQuizPage(context, 10),
                 ),
                 TextButton(
                   child: Text(
-                    "20問",
+                    S.of(context).TwentyQuestions,
                     style: TextStyle(fontSize: 20.0, color: Colors.green),
                   ),
                   onPressed: () => _goQuizPage(context, 20),
                 ),
                 TextButton(
                   child: Text(
-                    "30問",
+                    S.of(context).ThirtyQuestions,
                     style: TextStyle(fontSize: 20.0, color: Colors.redAccent),
                   ),
                   onPressed: () => _goQuizPage(context, 30),
@@ -324,9 +341,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ));
   }
 
+  //4択の1つ、果物一覧ページに飛ぶ
   _goListPage() async {
     await adManager.disposeBannerAd();
 
+    //allFruitsList.isEmpty: allFruitsList が空かどうかを判定しています
+    // データベースからフルーツリストを取得し、allFruitsList に代入しています。await キーワードは、非同期処理であることを示しています。
     if (allFruitsList.isEmpty) {
       allFruitsList = await database.fruitsList;
     }
@@ -348,6 +368,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //initAd();
   }
 
+  //4択の1つ、クイズ画面に飛ぶ
   _goQuizPage(BuildContext context, int numberOfQuestion) async {
     await adManager.disposeBannerAd();
     Navigator.pop(context);
@@ -360,6 +381,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //initAd();
   }
 
+  //4択の1つ、持ち物ページに飛ぶ
   _goBelogingsPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
@@ -367,6 +389,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //initAd();
   }
 
+  //4択の1つ、マナーページに飛ぶ
   _goMannersPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
@@ -374,6 +397,7 @@ class _HomeScreenState extends State<HomeScreen> {
     //initAd();
   }
 
+  //どのサイトを参考にしたかがわかるページに飛ぶ
   _goCreditPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(

@@ -5,6 +5,8 @@ import 'package:drift/native.dart';
 
 part 'database.g.dart';
 
+//TODO databaseのコードについて、理解が不足している
+
 class Fruits extends Table {
 
   IntColumn get id => integer()();

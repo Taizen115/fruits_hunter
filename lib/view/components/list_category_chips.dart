@@ -13,6 +13,11 @@ class ListCategoryChips extends StatefulWidget {
 class _ListCategoryChipsState extends State<ListCategoryChips> {
   var value = 0;
 
+  //children：Wrapの中にどんなものを入れるのか、その中身を決める部分です。
+  // List.generate：ボタンをたくさん作るための命令です。
+  // categories.length：ボタンを作る数を決めています。例えば、フルーツの種類の数だけボタンを作りたい場合、
+  // categoriesというリストにフルーツの名前が全部入っているので、その数だけボタンを作ります。
+  // (int index)：ボタンを作る順番を表す番号です。1番目のボタン、2番目のボタン、…のように区別するためのものです。
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -29,7 +34,7 @@ class _ListCategoryChipsState extends State<ListCategoryChips> {
             selected: value == index,
             onSelected: (bool isSelected) {
               setState(() {
-                value = isSelected ? index:index;
+                value == index;
                 widget.onCategorySelected(index);
               });
             },

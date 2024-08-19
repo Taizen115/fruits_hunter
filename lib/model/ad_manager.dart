@@ -3,6 +3,23 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdManager {
 
+  //このコードは、スマホアプリの中に広告を表示するためのプログラムです。
+  // Googleの広告サービスであるAdMobを使って、アプリの中に広告を表示します。
+
+  //bannerAd: 広告そのものが入る箱です。
+  // initAdmob(): 広告を表示するための準備をする関数です。
+  // initBannerAd(): 広告を作る関数です。
+  // loadBannerAd(): 広告を読み込む関数です。
+  // disposeBannerAd(): 広告を消す関数です。
+  // appId: アプリのIDを入れる箱です。
+  // bannerAdUnitId: 広告のIDを入れる箱です。
+
+  // 難しい言葉
+  // BannerAd: 横長の広告のこと
+  // AdRequest: 広告をリクエストするためのもの
+  // BannerAdListener: 広告に関する情報を聞くためのもの
+  // Platform: スマホの種類（AndroidかiOSか）のこと
+
   BannerAd? bannerAd;
 
   Future<void> initAdmob() {

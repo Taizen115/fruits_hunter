@@ -7,6 +7,7 @@ import 'package:fruit_hunter/view/screens/pages/detail_page.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../db/database.dart';
+import '../../../generated/l10n.dart';
 import '../../../style/style.dart';
 import '../../components/list_category_chips.dart';
 
@@ -22,6 +23,8 @@ class ListPage extends StatefulWidget {
 }
 
 class _ListPageState extends State<ListPage> {
+
+  //fruitsListの初期化
   List<Fruit> fruitsList = [];
 
   @override
@@ -89,7 +92,7 @@ class _ListPageState extends State<ListPage> {
                   ),
                   Gap(30),
                   Text(
-                    "果物一覧",
+                    S.of(context).FruitList,
                     style: TextStyle(
                         color: Colors.white,
                         fontFamily: MainFont,
@@ -101,7 +104,7 @@ class _ListPageState extends State<ListPage> {
             body: (fruitsList.isEmpty)
                 ? Center(
                     child: Text(
-                      "データが取得できませんでした。\n申し訳ありませんが画面を一旦閉じて\n再度実行してください",
+                      S.of(context).Attention,
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -136,6 +139,22 @@ class _ListPageState extends State<ListPage> {
                               ),
                       ),
                       Gap(10),
+
+                      //animationを使って、GridViewで並べる
+
+                      /*Expanded：画面の空いているスペースをいっぱいに使うための部品です。
+                      Card：フルーツの一覧を囲む枠のようなものです。
+                      AnimationLimiter：アニメーションを制御する部品です。
+                      GridView.count：フルーツの一覧を2列で並べるための部品です。
+                      AnimationConfiguration.toStaggeredList：フルーツを一つずつアニメーションさせるための部品です。
+                      List.generate：フルーツの一覧を作るための部品です。
+                      AnimationConfiguration.staggeredGrid：フルーツをグリッド状に並べながらアニメーションさせるための部品です。
+                      ScaleAnimation：フルーツを拡大縮小するアニメーションです。
+                      FadeInAnimation：フルーツをフェードイン（徐々に表示）するアニメーションです。
+                      InkWell：フルーツをタップしたときの処理をする部品です。
+                      Card：各フルーツを表示するための枠のようなものです。
+                      */
+
                       Expanded(
                         child: Card(
                           color: Colors.white,
@@ -171,6 +190,8 @@ class _ListPageState extends State<ListPage> {
                                                 ),
                                               ),
                                               elevation: 100.0,
+
+                                              //果物の写真と下記に名前を表記する
                                               child: GridTile(
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -233,6 +254,12 @@ class _ListPageState extends State<ListPage> {
     // print("category: ${categoryId}");
 
     //whereで全てのフルーツデータから抽出
+
+    //widget.allFruitsList: 全てのフルーツの情報が入っているリストです。
+    // where((record) => record.typeSpring): このリストの中から、「typeSpring」
+    // というマークがついている（つまり、春に食べられる）フルーツだけを抜き出します。
+    // toList(): 抜き出したフルーツを新しいリスト (fruitsList) にまとめます。
+
     if (categoryId == 1) {
       fruitsList = await widget.allFruitsList
           .where((record) => record.typeSpring)
@@ -255,7 +282,6 @@ class _ListPageState extends State<ListPage> {
       //fruitsList = await database.fruitsWinter;
     } else {
       fruitsList = await widget.allFruitsList;
-      //fruitsList = await database.fruitsList;
     }
     print(fruitsList.length);
 

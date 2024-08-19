@@ -81,6 +81,9 @@ class _DetailPageState extends State<DetailPage> {
       "${widget.selectedFruit.distinguish}",
     ];
 
+
+    //このコードは、アプリの1画面の見た目を設定する部分の説明です。
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -234,6 +237,7 @@ class _DetailPageState extends State<DetailPage> {
     );
   }
 
+  //最寄りの果樹園を検索
   void _launchURL() async {
     final String url =
         'https://www.google.co.jp/maps/search/果樹園%E3%80%80${widget.selectedFruit
@@ -244,6 +248,7 @@ class _DetailPageState extends State<DetailPage> {
     }
   }
 
+  //最寄りの果樹園を検索するかどうかを聞く
   _goMap() {
     return showDialog(
         barrierDismissible: false,
@@ -268,6 +273,8 @@ class _DetailPageState extends State<DetailPage> {
                   Navigator.pop(context);
                 },
               ),
+
+              //_launchURLで最寄りの果樹園に飛ぶ
               TextButton(
                 child: Text(
                   "OK",

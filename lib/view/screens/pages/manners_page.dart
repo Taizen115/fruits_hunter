@@ -5,6 +5,7 @@ import 'package:fruit_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
+import '../../../generated/l10n.dart';
 import '../../../main.dart';
 
 class MannersPage extends StatefulWidget {
@@ -28,23 +29,39 @@ class _MannersPageState extends State<MannersPage> {
   @override
   Widget build(BuildContext context) {
     final List mannersQuestions = [
-      "果樹園で果物狩りをするとき, 走り回ったりしてもいいでしょうか？",
-      "果物を摘むときに, 配慮することはありますか？",
-      "当日雨が降った場合, どうしたらいいですか？",
-      "予約はした方がいいですか？",
-      "どういった服装をして, 出掛けたらいいですか？",
-      "何か持って行った方がいいものはありますか？",
-      "果樹園のルールは, どうやって知ったらいいですか？",
+      S.of(context).mannerQuestions0,
+      S.of(context).mannerQuestions1,
+      S.of(context).mannerQuestions2,
+      S.of(context).mannerQuestions3,
+      S.of(context).mannerQuestions4,
+      S.of(context).mannerQuestions5,
+      S.of(context).mannerQuestions6,
+
+      // "果樹園で果物狩りをするとき, 走り回ったりしてもいいでしょうか？",
+      // "果物を摘むときに, 配慮することはありますか？",
+      // "当日雨が降った場合, どうしたらいいですか？",
+      // "予約はした方がいいですか？",
+      // "どういった服装をして, 出掛けたらいいですか？",
+      // "何か持って行った方がいいものはありますか？",
+      // "果樹園のルールは, どうやって知ったらいいですか？",
     ];
 
     final List mannersAnswers = [
-      "果樹園では, 走り回ったり騒いだりせず, 周囲に配慮して楽しく果物狩りを過ごして頂けると有難いです. ",
-      "果物を摘むときは, 果樹園の方のお話を聞いて, 木などを傷つけないように配慮して頂けると有難いです. ",
-      "雨が降ったら, 電話で果樹園に連絡した方が良いかもしれません. また, 全天候型の農園もあるので, そういった果樹園を選ぶのもポイントです. ",
-      "予約は不要な所もございますが, 果樹園に事前に電話かメールをして予約なさった方が確実かと思われます. ",
-      "オシャレな格好をして出かけるのも素晴らしいですが, それに加えて汚れても大丈夫で, 動きやすい服装がおすすめです. ",
-      "お供のアイテムとして, 夏場は虫除けスプレー, 日焼け止め, タオル, クーラーボックスがあると良いと思われます. あと, 食べる時にウェットティッシュがあると, 尚良いです. ",
-      "果樹園の方に直接尋ねるのが良いと思われます. それぞれのルールを守って, 満足できる果物狩りを楽しんでください.",
+      S.of(context).mannerAnswers0,
+      S.of(context).mannerAnswers1,
+      S.of(context).mannerAnswers2,
+      S.of(context).mannerAnswers3,
+      S.of(context).mannerAnswers4,
+      S.of(context).mannerAnswers5,
+      S.of(context).mannerAnswers6,
+
+      // "果樹園では, 走り回ったり騒いだりせず, 周囲に配慮して楽しく果物狩りを過ごして頂けると有難いです. ",
+      // "果物を摘むときは, 果樹園の方のお話を聞いて, 木などを傷つけないように配慮して頂けると有難いです. ",
+      // "雨が降ったら, 電話で果樹園に連絡した方が良いかもしれません. また, 全天候型の農園もあるので, そういった果樹園を選ぶのもポイントです. ",
+      // "予約は不要な所もございますが, 果樹園に事前に電話かメールをして予約なさった方が確実かと思われます. ",
+      // "オシャレな格好をして出かけるのも素晴らしいですが, それに加えて汚れても大丈夫で, 動きやすい服装がおすすめです. ",
+      // "お供のアイテムとして, 夏場は虫除けスプレー, 日焼け止め, タオル, クーラーボックスがあると良いと思われます. あと, 食べる時にウェットティッシュがあると, 尚良いです. ",
+      // "果樹園の方に直接尋ねるのが良いと思われます. それぞれのルールを守って, 満足できる果物狩りを楽しんでください.",
     ];
 
     return Scaffold(
@@ -60,7 +77,7 @@ class _MannersPageState extends State<MannersPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          "マナー",
+          S.of(context).Manners,
           style: TextStyle(
             fontFamily: ThirdFont,
             fontSize: 30.0,

@@ -22,6 +22,8 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  //初期化
+
   int numberOfRemaining = 0;
   int numberOfHunt = 0;
   int getRate = 0;
@@ -344,6 +346,8 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   //TODO データベースから問題を出す
+  //isNextQuestionedで次の問題が出るようになってる
+
   void _getQuestion() async {
     questions = await database.quizList;
     questions.shuffle();
@@ -378,6 +382,8 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   //TODO 正解不正解をチェックする
+  //果物獲得率も表記する
+
   void _checkAnswer(String textPart) {
     if (answer == textPart) {
       isCorrect = true;
@@ -469,6 +475,8 @@ class _QuizPageState extends State<QuizPage> {
                       borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     ),
                   ),
+
+                  //全問正解とそれ以外を場合分けしてる
                   onPressed: () {
                     if (numberOfRemaining == 0 && getRate == 100) {
                       Navigator.push(

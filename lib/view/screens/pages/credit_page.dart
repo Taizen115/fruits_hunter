@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/main.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -40,7 +41,7 @@ class CreditPage extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
             ),
             title: Text(
-              "クレジット表記",
+              S.of(context).Credits,
               style: TextStyle(
                 fontFamily: ThirdFont,
                 fontSize: 30.0,
@@ -74,22 +75,19 @@ class CreditPage extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: RichText(
                   text: TextSpan(
-                    text: "写真・イラスト\n\n",
+                    text: S.of(context).PhotoIllustration,
                     style: TextStyle(fontSize: 30.0, color: Colors.blue),
                     children: <TextSpan>[
                       TextSpan(
-                        text: "・Topページ: Pexelsより引用\n\n"
-                            "・果物一覧ページ, クイズページ: 写真AC, イラストACより引用\n\n"
-                            "・持ち物ページ, マナーページ, クレッジットページ: イラストACより引用\n\n",
+                        text: S.of(context).TopPage,
                         style: TextStyle(fontSize: 20.0, color: Colors.black54),
                       ),
                       TextSpan(
-                        text: "フォント・アイコン名\n\n",
+                        text: S.of(context).FontIcon,
                         style: TextStyle(fontSize: 30.0, color: Colors.orange),
                       ),
                       TextSpan(
-                        text: "・Google Font\n\n"
-                            "・FontAwesomeIcon",
+                        text: S.of(context).GoogleFontFontAwesomeIcon,
                         style: TextStyle(fontSize: 20.0, color: Colors.black54),
                       ),
                     ],
@@ -103,3 +101,13 @@ class CreditPage extends StatelessWidget {
     );
   }
 }
+
+//クレジット表記
+//写真・イラスト
+//Topページ：Pexelsより引用
+//果物一覧ページ, クイズページ: 写真AC, イラストACより引用
+//持ち物ページ・マナーページ、クレジットページ : イラストACより引用
+//
+//フォント・アイコン名
+//Google Font
+//FontAwesomeIcon
