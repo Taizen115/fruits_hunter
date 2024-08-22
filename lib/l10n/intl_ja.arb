@@ -53,5 +53,20 @@
   "WetWipes": "ウェットティッシュ",
   "FaceTowel": "タオル",
   "Cooler": "クーラーボックス",
-  "Drink": "飲み物"
+  "Drink": "飲み物",
+
+  "TheRest": "残りの果物",
+  "FruitCount": "獲得果物数",
+  "DropRate": "獲得率",
+
+  "QuizAnswer": "答え:",
+  "QuizExplanation": "解説:",
+  "Result": "結果発表！",
+  "NextFruit": "NextFruit！",
+
+  "QuizFinish": "クイズの終了",
+  "FinishQuestion": "クイズを終了してもよろしいでしょうか？",
+  "Cancel": "キャンセル",
+  "OK": "OK"
+
 }

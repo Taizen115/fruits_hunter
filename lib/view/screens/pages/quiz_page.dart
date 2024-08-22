@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
+import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/main.dart';
 import 'package:fruit_hunter/view/screens/all_correct_screen.dart';
 import 'package:gap/gap.dart';
@@ -94,7 +95,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               Gap(30),
               Text(
-                "クイズ",
+                S.of(context).Quiz,
                 style: TextStyle(
                     fontFamily: MainFont, fontSize: 30.0, color: Colors.teal),
               ),
@@ -187,32 +188,32 @@ class _QuizPageState extends State<QuizPage> {
         children: [
           TableRow(children: [
             Text(
-              "残りの果物",
-              style: TextStyle(fontSize: 16.0, color: Colors.black),
+              S.of(context).TheRest,
+              style: TextStyle(fontSize: 20.0, color: Colors.black),
             ),
             Center(
               child: Text(
-                "獲得果物数",
-                style: TextStyle(fontSize: 16.0, color: Colors.black),
+                S.of(context).FruitCount,
+                style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
             Center(
               child: Text(
-                "獲得率",
-                style: TextStyle(fontSize: 16.0, color: Colors.black),
+                S.of(context).DropRate,
+                style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
           ]),
           TableRow(children: [
             Center(
               child: Text(
-                "${numberOfRemaining.toString()} 個",
+                "${numberOfRemaining.toString()} ",
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
             Center(
               child: Text(
-                "${numberOfHunt.toString()} 個",
+                "${numberOfHunt.toString()} ",
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
@@ -420,12 +421,16 @@ class _QuizPageState extends State<QuizPage> {
                   color: Colors.white70,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: AutoSizeText(
-                      "答え : ${answer}",
-                      maxLines: 1,
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          color: Colors.teal),
+                    child: Column(
+                      children: [
+                        AutoSizeText(
+                           S.of(context).QuizAnswer + "${answer}",
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontSize: 30.0,
+                              color: Colors.teal),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -444,7 +449,7 @@ class _QuizPageState extends State<QuizPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: AutoSizeText(
-                        "解説 : \n${explanation}",
+                        S.of(context).QuizExplanation + "\n${explanation}",
                         maxLines: 6,
                         style: TextStyle(
                             fontSize: 50.0,
@@ -463,7 +468,7 @@ class _QuizPageState extends State<QuizPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: AutoSizeText(
-                      numberOfRemaining == 0 ? "結果発表！" : "Next Fruit!",
+                      numberOfRemaining == 0 ? S.of(context).Result : S.of(context).NextFruit,
                       maxLines: 1,
                       style: TextStyle(fontFamily: SubFont, fontSize: 30.0),
                     ),
@@ -541,24 +546,24 @@ class _QuizPageState extends State<QuizPage> {
         context: context,
         builder: (_) => AlertDialog(
               title: Text(
-                "クイズの終了",
+                S.of(context).QuizFinish,
                 style: TextStyle(fontSize: 25.0),
               ),
               content: Text(
-                "クイズを終了してもよろしいでしょうか？",
+                S.of(context).FinishQuestion,
                 style: TextStyle(fontSize: 20.0),
               ),
               actions: [
                 TextButton(
                   child: Text(
-                    "キャンセル",
+                    S.of(context).Cancel,
                     style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
                   ),
                   onPressed: () => Navigator.pop(context),
                 ),
                 TextButton(
                   child: Text(
-                    "OK",
+                    S.of(context).OK,
                     style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
                   ),
                   onPressed: () {
