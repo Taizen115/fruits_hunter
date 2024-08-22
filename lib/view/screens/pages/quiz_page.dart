@@ -10,6 +10,8 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../style/style.dart';
 import '../grades_screen.dart';
 
+import 'package:intl/intl.dart';
+
 class QuizPage extends StatefulWidget {
   final numberOfQuestions;
 
@@ -46,6 +48,7 @@ class _QuizPageState extends State<QuizPage> {
 
   int _index = 0;
   late Question? _currentQuestion;
+
 
   @override
   void initState() {
@@ -514,7 +517,7 @@ class _QuizPageState extends State<QuizPage> {
       isCorrectIncorrectImageEnabled = false;
       isExplained = false;
       isNextQuestioned = true;
-      question = _currentQuestion!.question;
+      question = (currentLocale == "ja") ? _currentQuestion!.question : _currentQuestion!.questionEn;
       answer = _currentQuestion!.answer;
       choice1 = _currentQuestion!.choice1;
       choice2 = _currentQuestion!.choice2;

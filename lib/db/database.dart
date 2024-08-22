@@ -8,7 +8,6 @@ part 'database.g.dart';
 //TODO databaseのコードについて、理解が不足している
 
 class Fruits extends Table {
-
   IntColumn get id => integer()();
 
   TextColumn get name => text()();
@@ -42,14 +41,14 @@ class Fruits extends Table {
   BoolColumn get typeAutumn => boolean().withDefault(Constant(false))();
 
   BoolColumn get typeWinter => boolean().withDefault(Constant(false))();
-
 }
 
 class Questions extends Table {
-
   IntColumn get id => integer()();
 
   TextColumn get question => text()();
+
+  TextColumn get questionEn => text()();
 
   TextColumn get answer => text()();
 
@@ -60,7 +59,6 @@ class Questions extends Table {
   TextColumn get choice3 => text()();
 
   TextColumn get explanation => text()();
-
 }
 
 LazyDatabase _openConnection(String dbPath) {
@@ -76,31 +74,41 @@ LazyDatabase _openConnection(String dbPath) {
 class MyDatabase extends _$MyDatabase {
   final String dbPath;
 
-
   MyDatabase({required this.dbPath}) : super(_openConnection(dbPath));
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
+
+  @override
+  MigrationStrategy get migration {
+    return MigrationStrategy(
+      onCreate: (Migrator m) async {
+        await m.createAll();
+      },
+      onUpgrade: (Migrator m, int from, int to) async {
+        if (from < 2) {
+          // we added the dueDate property in the change from version 1 to
+          // version 2
+          await m.addColumn(questions, questions.questionEn);
+        }
+      },
+    );
+  }
 
   Future<List<Fruit>> get fruitsList => select(fruits).get();
 
   //TODO 春夏秋冬で分類して呼び出す
-  Future<List<Fruit>> get  fruitsSpring =>
-      (select(fruits)
-        ..where((table) => table.typeSpring.equals(true))).get();
+  Future<List<Fruit>> get fruitsSpring =>
+      (select(fruits)..where((table) => table.typeSpring.equals(true))).get();
 
   Future<List<Fruit>> get fruitsSummer =>
-      (select(fruits)
-        ..where((table) => table.typeSummer.equals(true))).get();
+      (select(fruits)..where((table) => table.typeSummer.equals(true))).get();
 
   Future<List<Fruit>> get fruitsAutumn =>
-      (select(fruits)
-        ..where((table) => table.typeAutumn.equals(true))).get();
+      (select(fruits)..where((table) => table.typeAutumn.equals(true))).get();
 
-  Future<List<Fruit>> get  fruitsWinter =>
-      (select(fruits)
-        ..where((table) => table.typeWinter.equals(true))).get();
-
+  Future<List<Fruit>> get fruitsWinter =>
+      (select(fruits)..where((table) => table.typeWinter.equals(true))).get();
 
   Future<List<Question>> get quizList => select(questions).get();
 }

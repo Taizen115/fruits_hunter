@@ -11,19 +11,26 @@ import 'db/database.dart';
 import 'style/style.dart';
 import 'view/screens/home_screen.dart';
 
+import "package:intl/intl.dart";
+
 late MyDatabase database;
 
 //広告
 AdManager adManager = AdManager();
 
+String currentLocale = "en";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var dbPath = await getDbPath();
   database = MyDatabase(dbPath: dbPath);
 
+  currentLocale = Intl.getCurrentLocale();
+
   //広告
   await adManager.initAdmob();
+
+
 
 
   //DevicePreviewは、色んな機種で動きを確認できる。trueにしたらその機能が使える

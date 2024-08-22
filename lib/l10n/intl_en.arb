@@ -1,0 +1,75 @@
+{
+  "Catchphrase":"What kind of help do you need with\nfruit picking?",
+  "List": "List",
+  "Manners": "Manners",
+  "Belongings": "Belongings",
+  "Quiz": "Quiz",
+
+  "Credits": "Copyright Notice",
+  "PhotoIllustration": "Photo・illustration\n\n",
+  "TopPage": "・Top Page : Image courtesy of Pexels\n\n ・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n",
+  "FontIcon": "Font and icon name\n\n",
+  "GoogleFontFontAwesomeIcon": "Google Font\n\nFontAwesomeIcon",
+
+  "ado": "Banner ad display",
+  "adoText": "Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n",
+  "Next": "Proceed to the next page.",
+
+  "QuestionCount": "Number of questions",
+  "HowManyQuestions": "How many questions will you answer?",
+  "TenQuestions": "10",
+  "TwentyQuestions": "20",
+  "ThirtyQuestions": "30",
+
+
+  "FruitList": "Seasonal Fruits",
+  "Attention":"We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later.",
+  "All": "all season",
+  "SpringFruit": "Spring",
+  "SummerFruit": "Summer",
+  "AutumnFruit":"Autumn",
+  "WinterFruit": "Winter",
+
+  "mannerQuestions0": "Is it okay to run around while picking fruits in the orchard?",
+  "mannerQuestions1": "Are there any rules about how to pick the fruits?",
+  "mannerQuestions2": "What happens if it rains on the day? Do I need to cancel?",
+  "mannerQuestions3": "Would it be better to make a reservation?",
+  "mannerQuestions4": "What kind of clothes should I wear?",
+  "mannerQuestions5": "Is there anything else I should bring?",
+  "mannerQuestions6": "How do I find out the orchard's rules?",
+
+  "mannerAnswers0": "It would be wonderful if you could enjoy picking fruits while being considerate of others. ",
+  "mannerAnswers1": "It would be helpful if you could follow our guidelines and handle the trees gently while picking fruits.",
+  "mannerAnswers2": "If it rains on the day, we recommend that you contact the orchard in advance. Alternatively, you may want to choose an all-weather farm ",
+  "mannerAnswers3": "While some orchards may not require reservations, it is highly recommended that you contact the orchard beforehand by phone or email to confirm availability. ",
+  "mannerAnswers4": "While it's great to dress up, it's also advisable to wear comfortable clothing that you don't mind getting dirty. ",
+  "mannerAnswers5": "As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. Additionally, wet wipes would be convenient for mealtimes.",
+  "mannerAnswers6": "It would be best to ask the orchard staff directly. By following their rules, you can enjoy a satisfying fruit-picking experience.",
+
+
+  "BelongingList": "checklist",
+  "Shirt": "long-sleeved top",
+  "Spray": "insect repellent",
+  "Sunscreen": "sunscreen",
+  "Cap": "cap",
+  "WetWipes": "wet wipes",
+  "FaceTowel": "face towel",
+  "Cooler": "cooler",
+  "Drink": "drink",
+
+
+  "TheRest": "the rest",
+  "FruitCount": "fruit count",
+  "DropRate": "drop rate",
+
+  "QuizAnswer": "Answer:",
+  "QuizExplanation": "Explanation:",
+  "Result": "Results announcement！",
+  "NextFruit": "NextFruit！",
+
+  "QuizFinish": "Concluding the quiz",
+  "FinishQuestion": "Would you like to conclude the quiz now?",
+  "Cancel": "Cancel",
+  "OK": "OK"
+
+}

@@ -1,5 +1,7 @@
 
 
+import 'package:flutter/material.dart';
+
 class Category {
   final int categoryId;
   final String nameJp;
@@ -7,8 +9,8 @@ class Category {
   Category({required this.categoryId, required this.nameJp,});
 }
 
-final List<Category> categories = [
-  Category(categoryId: 0, nameJp: "全て",),
+List<Category> getCategories(BuildContext context) => [
+  Category(categoryId: 0, nameJp: S.of(context),),
   Category(categoryId: 1, nameJp: "春の果物"),
   Category(categoryId: 2, nameJp: "夏の果物"),
   Category(categoryId: 3, nameJp: "秋の果物"),

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_hunter/data/belonging.dart';
 import 'package:fruit_hunter/view/components/belongings_control.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -16,8 +17,8 @@ class BelongingsPage extends StatefulWidget {
 
 class _BelongingsPageState extends State<BelongingsPage> {
 
-  Map<String, IconData> icons = {
-    '長袖の服': FontAwesomeIcons.shirt,
+  Map<String, Belonging> belongings = {
+    '長袖の服': Belonging(name: S.of(context)., iconData: FontAwesomeIcons.font),
     '虫よけスプレー': FontAwesomeIcons.bug,
     '日焼け止め': FontAwesomeIcons.sun,
     '帽子': FontAwesomeIcons.redhat,
@@ -146,7 +147,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                           title: Row(
                             children: [
                               AutoSizeText(
-                                key,
+                                belongings[key]!.name,
                                 maxLines: 1,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
@@ -162,7 +163,7 @@ class _BelongingsPageState extends State<BelongingsPage> {
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: FaIcon(
-                                  icons[key],
+                                  belongings[key]!.iconData,
                                   color: Colors.lightBlue,
                                 ),
                               ),
