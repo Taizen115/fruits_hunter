@@ -51,27 +51,27 @@ class Questions extends Table {
 
   TextColumn get question => text()();
 
-  TextColumn get questionEn => text()();
+  TextColumn get questionEn => text().nullable()();
 
   TextColumn get answer => text()();
 
-  TextColumn get answerEn => text()();
+  TextColumn get answerEn => text().nullable()();
 
   TextColumn get choice1 => text()();
 
-  TextColumn get choice1En => text()();
+  TextColumn get choice1En => text().nullable()();
 
   TextColumn get choice2 => text()();
 
-  TextColumn get choice2En => text()();
+  TextColumn get choice2En => text().nullable()();
 
   TextColumn get choice3 => text()();
 
-  TextColumn get choice3En => text()();
+  TextColumn get choice3En => text().nullable()();
 
   TextColumn get explanation => text()();
 
-  TextColumn get explanationEn => text()();
+  TextColumn get explanationEn => text().nullable()();
 
 }
 
@@ -137,4 +137,6 @@ class MyDatabase extends _$MyDatabase {
 
 
   Future<List<Question>> get quizList => select(questions).get();
+
+
 }
