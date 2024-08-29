@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_hunter/data/belonging.dart';
 import 'package:fruit_hunter/view/components/belongings_control.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -15,16 +16,47 @@ class BelongingsPage extends StatefulWidget {
 }
 
 class _BelongingsPageState extends State<BelongingsPage> {
-
-  Map<String, IconData> icons = {
-    '長袖の服': FontAwesomeIcons.shirt,
-    '虫よけスプレー': FontAwesomeIcons.bug,
-    '日焼け止め': FontAwesomeIcons.sun,
-    '帽子': FontAwesomeIcons.redhat,
-    'ウェットティッシュ': FontAwesomeIcons.boxTissue,
-    'タオル': FontAwesomeIcons.rug,
-    'クーラーボックス': FontAwesomeIcons.box,
-    '飲み物': FontAwesomeIcons.bottleWater,
+  Map<String, Belonging> belongings (BuildContext context) => {
+    "長袖の服": Belonging(
+      name: S.of(context).Shirt,
+      iconData: FontAwesomeIcons.shirt,
+    ),
+    "虫よけスプレー": Belonging(
+      name: S.of(context).Spray,
+      iconData: FontAwesomeIcons.bug,
+    ),
+    "日焼け止め": Belonging(
+      name: S.of(context).Sunscreen,
+      iconData: FontAwesomeIcons.sun,
+    ),
+    "帽子": Belonging(
+      name: S.of(context).Cap,
+      iconData: FontAwesomeIcons.redhat,
+    ),
+    "ウェットティッシュ": Belonging(
+      name: S.of(context).WetWipes,
+      iconData: FontAwesomeIcons.boxTissue,
+    ),
+    "タオル": Belonging(
+      name: S.of(context).FaceTowel,
+      iconData: FontAwesomeIcons.rug,
+    ),
+    "クーラーボックス": Belonging(
+      name: S.of(context).Cooler,
+      iconData: FontAwesomeIcons.box,
+    ),
+    "飲み物": Belonging(
+      name: S.of(context).Drink,
+      iconData: FontAwesomeIcons.bottleWater,
+    ),
+    // '長袖の服':Belonging(name: S.of(context).Shirt, iconData: FontAwesomeIcons.shirt,),
+    // '虫よけスプレー': FontAwesomeIcons.bug,
+    // '日焼け止め': FontAwesomeIcons.sun,
+    // '帽子': FontAwesomeIcons.redhat,
+    // 'ウェットティッシュ': FontAwesomeIcons.boxTissue,
+    // 'タオル': FontAwesomeIcons.rug,
+    // 'クーラーボックス': FontAwesomeIcons.box,
+    // '飲み物': FontAwesomeIcons.bottleWater,
   };
 
   //initは初期化
@@ -44,7 +76,6 @@ class _BelongingsPageState extends State<BelongingsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
         floatingActionButton: FloatingActionButton(
             child: FaIcon(FontAwesomeIcons.eraser),
             backgroundColor: Colors.lightBlue,
@@ -122,7 +153,6 @@ class _BelongingsPageState extends State<BelongingsPage> {
 
                 Gap(20),
 
-
                 //BelongingsControl.belongings.keys.map : 持ち物リストのキー (持ち物名) を一つずつ取り出して処理を行うループです。
                 // CheckboxListTile: チェックボックスと持ち物名、アイコンなどを組み合わせて表示します。
                 // チェックが入っていると、持ち物名に取り消し線が引かれます
@@ -133,20 +163,22 @@ class _BelongingsPageState extends State<BelongingsPage> {
                 // BelongingsControl.belongings に保存されている持ち物情報をもとに、
                 // CheckboxListTile を繰り返し生成し、ListView に表示することで、
                 // ユーザーはそれぞれの持ち物に対してチェックをつけることができるようになっています。
+
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: ListView(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
-                      children: BelongingsControl.belongings.keys.map((String key) {
+                      children:
+                          BelongingsControl.belongings.keys.map((String key) {
                         return CheckboxListTile(
                           activeColor: Colors.lightBlue,
                           side: BorderSide(color: Colors.black54, width: 2.0),
                           title: Row(
                             children: [
                               AutoSizeText(
-                                key,
+                                belongings(context)[key]!.name,
                                 maxLines: 1,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
@@ -154,15 +186,16 @@ class _BelongingsPageState extends State<BelongingsPage> {
                                   fontSize: 20.0,
                                   color: Colors.black54,
                                   fontWeight: FontWeight.bold,
-                                  decoration: BelongingsControl.belongings[key] ?? false
-                                      ? TextDecoration.lineThrough
-                                      : TextDecoration.none,
+                                  decoration:
+                                      BelongingsControl.belongings[key] ?? false
+                                          ? TextDecoration.lineThrough
+                                          : TextDecoration.none,
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: FaIcon(
-                                  icons[key],
+                                  belongings(context)[key]!.iconData,
                                   color: Colors.lightBlue,
                                 ),
                               ),

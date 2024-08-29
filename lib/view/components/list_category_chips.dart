@@ -22,7 +22,7 @@ class _ListCategoryChipsState extends State<ListCategoryChips> {
   Widget build(BuildContext context) {
     return Wrap(
       spacing: 4.0,
-      children: List.generate(categories.length, (int index) {
+      children: List.generate(getCategories(context).length, (int index) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: ChoiceChip(
@@ -30,7 +30,7 @@ class _ListCategoryChipsState extends State<ListCategoryChips> {
             selectedColor: Colors.blue[500],
             backgroundColor: Colors.white70,
             showCheckmark: false,
-            label: Text(categories[index].nameJp, style: TextStyle(fontSize: 15.0, color: Colors.black, ),),
+            label: Text(getCategories(context)[index].nameJp, style: TextStyle(fontSize: 15.0, color: Colors.black, ),),
             selected: value == index,
             onSelected: (bool isSelected) {
               setState(() {

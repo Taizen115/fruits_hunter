@@ -10,17 +10,24 @@ import 'package:path_provider/path_provider.dart';
 import 'db/database.dart';
 import 'style/style.dart';
 import 'view/screens/home_screen.dart';
+import "package:intl/intl.dart";
+
 
 late MyDatabase database;
 
 //広告
 AdManager adManager = AdManager();
 
+//多言語化
+String currentLocale = "en";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var dbPath = await getDbPath();
   database = MyDatabase(dbPath: dbPath);
+
+  //多言語化
+  currentLocale = Intl.getCurrentLocale();
 
   //広告
   await adManager.initAdmob();

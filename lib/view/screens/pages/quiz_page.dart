@@ -8,8 +8,10 @@ import 'package:fruit_hunter/main.dart';
 import 'package:fruit_hunter/view/screens/all_correct_screen.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 import '../../../style/style.dart';
 import '../grades_screen.dart';
+import 'package:intl/intl.dart';
 
 class QuizPage extends StatefulWidget {
   final numberOfQuestions;
@@ -23,6 +25,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+
   //初期化
 
   int numberOfRemaining = 0;
@@ -47,6 +50,9 @@ class _QuizPageState extends State<QuizPage> {
 
   int _index = 0;
   late Question? _currentQuestion;
+
+  //多言語化
+  final currentLocale = Intl.getCurrentLocale();
 
   @override
   void initState() {
@@ -207,13 +213,13 @@ class _QuizPageState extends State<QuizPage> {
           TableRow(children: [
             Center(
               child: Text(
-                "${numberOfRemaining.toString()} ",
+                "${numberOfRemaining.toString()}" + S.of(context).Hunt,
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
             Center(
               child: Text(
-                "${numberOfHunt.toString()} ",
+                "${numberOfHunt.toString()}" + S.of(context).Hunt,
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
@@ -519,12 +525,12 @@ class _QuizPageState extends State<QuizPage> {
       isCorrectIncorrectImageEnabled = false;
       isExplained = false;
       isNextQuestioned = true;
-      question = _currentQuestion!.question;
-      answer = _currentQuestion!.answer;
-      choice1 = _currentQuestion!.choice1;
-      choice2 = _currentQuestion!.choice2;
-      choice3 = _currentQuestion!.choice3;
-      explanation = _currentQuestion!.explanation;
+      question = (currentLocale == "ja")? _currentQuestion!.question: _currentQuestion!.questionEn;
+      answer = (currentLocale == "ja")? _currentQuestion!.answer: _currentQuestion!.answerEn;
+      choice1 = (currentLocale == "ja")? _currentQuestion!.choice1: _currentQuestion!.choice1En;
+      choice2 = (currentLocale == "ja")? _currentQuestion!.choice2: _currentQuestion!.choice2En;
+      choice3 = (currentLocale == "ja")? _currentQuestion!.choice3: _currentQuestion!.choice3En;
+      explanation = (currentLocale == "ja")? _currentQuestion!.explanation: _currentQuestion!.explanationEn;
 
       choices[0] = answer;
       choices[1] = choice1;

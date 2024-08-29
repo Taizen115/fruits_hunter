@@ -11,6 +11,8 @@ import '../../../generated/l10n.dart';
 import '../../../style/style.dart';
 import '../../components/list_category_chips.dart';
 
+import 'package:intl/intl.dart';
+
 class ListPage extends StatefulWidget {
   final List<Fruit> allFruitsList;
 
@@ -26,6 +28,9 @@ class _ListPageState extends State<ListPage> {
 
   //fruitsListの初期化
   List<Fruit> fruitsList = [];
+
+  //多言語化
+  final currentLocale = Intl.getCurrentLocale();
 
   @override
   void initState() {

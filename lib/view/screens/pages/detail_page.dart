@@ -9,10 +9,15 @@ import '../../../db/database.dart';
 import '../../../main.dart';
 import '../../../style/style.dart';
 
+import 'package:intl/intl.dart';
+
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
 
   DetailPage({required this.selectedFruit});
+
+  //多言語化
+  final currentLocale = Intl.getCurrentLocale();
 
   @override
   State<DetailPage> createState() => _DetailPageState();

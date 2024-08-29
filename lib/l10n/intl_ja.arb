@@ -59,14 +59,21 @@
   "FruitCount": "獲得果物数",
   "DropRate": "獲得率",
 
+  "Hunt" :"個",
+
   "QuizAnswer": "答え:",
   "QuizExplanation": "解説:",
   "Result": "結果発表！",
-  "NextFruit": "NextFruit！",
+  "NextFruit": "Next Fruit！",
 
   "QuizFinish": "クイズの終了",
   "FinishQuestion": "クイズを終了してもよろしいでしょうか？",
   "Cancel": "キャンセル",
-  "OK": "OK"
+  "OK": "OK",
 
+  "QuizScore": "クイズの成績",
+  "ScoreSay1": "獲得した果物の数は, ...",
+  "ScoreSay2": "\n獲得率は, ... ",
+  "ScoreSay3": "おつかれさまでした！",
+  "FinalComment": "果物の知識について\nお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください",
 }

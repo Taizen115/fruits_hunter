@@ -1,11 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-
 import '../../main.dart';
 import 'home_screen.dart';
+
 
 class GradesScreen extends StatefulWidget {
   final int numberOfHunt;
@@ -51,7 +52,7 @@ class _GradesScreenState extends State<GradesScreen> {
                 onPressed: () => _goHomeScreen(context),
               ),
               title: Text(
-                "クイズの成績",
+                S.of(context).QuizScore,
                 style: TextStyle(fontSize: 30.0),
               ),
             ),
@@ -79,22 +80,16 @@ class _GradesScreenState extends State<GradesScreen> {
                     child: Column(
                       children: [
                         Gap(kToolbarHeight + 10),
-                        Card(
-                          color: Colors.transparent,
-                          elevation: 20.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: AutoSizeText(
-                              "獲得した果物の数は\n${widget.numberOfHunt}個です"
-                              "\n獲得率は${widget.getRate}%です"
-                              "\nお疲れさまでした",
-                              maxLines: 4,
-                              style: TextStyle(
-                                  fontSize: 50.0, color: Colors.white),
-                            ),
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text(
+                            S.of(context).ScoreSay1 +
+                                "\n${widget.numberOfHunt}\n" +
+                                S.of(context).ScoreSay2 +
+                                "\n${widget.getRate}%\n" +
+                            S.of(context).ScoreSay3,
+                            style: TextStyle(
+                                fontSize: 25.0, color: Colors.white),
                           ),
                         ),
                         Spacer(),
@@ -107,10 +102,10 @@ class _GradesScreenState extends State<GradesScreen> {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: AutoSizeText(
-                              "果物の知識について\nお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください",
+                              S.of(context).FinalComment,
                               maxLines: 4,
                               style: TextStyle(
-                                  fontSize: 50.0, color: Colors.white),
+                                  fontSize: 30.0, color: Colors.white70),
                             ),
                           ),
                         ),

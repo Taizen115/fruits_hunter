@@ -1,4 +1,5 @@
-
+import 'package:flutter/material.dart';
+import 'package:fruit_hunter/generated/l10n.dart';
 
 class Category {
   final int categoryId;
@@ -7,10 +8,10 @@ class Category {
   Category({required this.categoryId, required this.nameJp,});
 }
 
-final List<Category> categories = [
-  Category(categoryId: 0, nameJp: "全て",),
-  Category(categoryId: 1, nameJp: "春の果物"),
-  Category(categoryId: 2, nameJp: "夏の果物"),
-  Category(categoryId: 3, nameJp: "秋の果物"),
-  Category(categoryId: 4, nameJp: "冬の果物"),
+List<Category> getCategories(BuildContext context) => [
+  Category(categoryId: 0, nameJp: S.of(context).All,),
+  Category(categoryId: 1, nameJp: S.of(context).SpringFruit,),
+  Category(categoryId: 2, nameJp: S.of(context).SummerFruit,),
+  Category(categoryId: 3, nameJp: S.of(context).AutumnFruit,),
+  Category(categoryId: 4, nameJp: S.of(context).WinterFruit,),
 ];

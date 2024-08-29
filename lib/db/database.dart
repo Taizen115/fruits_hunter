@@ -51,15 +51,27 @@ class Questions extends Table {
 
   TextColumn get question => text()();
 
+  TextColumn get questionEn => text()();
+
   TextColumn get answer => text()();
+
+  TextColumn get answerEn => text()();
 
   TextColumn get choice1 => text()();
 
+  TextColumn get choice1En => text()();
+
   TextColumn get choice2 => text()();
+
+  TextColumn get choice2En => text()();
 
   TextColumn get choice3 => text()();
 
+  TextColumn get choice3En => text()();
+
   TextColumn get explanation => text()();
+
+  TextColumn get explanationEn => text()();
 
 }
 
@@ -80,7 +92,29 @@ class MyDatabase extends _$MyDatabase {
   MyDatabase({required this.dbPath}) : super(_openConnection(dbPath));
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
+
+  @override
+  MigrationStrategy get migration {
+    return MigrationStrategy(
+      onCreate: (Migrator m) async {
+        await m.createAll();
+      },
+      onUpgrade: (Migrator m, int from, int to) async {
+        if (from < 2) {
+          // we added the dueDate property in the change from version 1 to
+          // version 2
+          await m.addColumn(questions, questions.questionEn);
+          await m.addColumn(questions, questions.answerEn);
+          await m.addColumn(questions, questions.choice1En);
+          await m.addColumn(questions, questions.choice2En);
+          await m.addColumn(questions, questions.choice3En);
+          await m.addColumn(questions, questions.explanationEn);
+        }
+      },
+    );
+  }
+
 
   Future<List<Fruit>> get fruitsList => select(fruits).get();
 
