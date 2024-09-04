@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -9,7 +10,6 @@ import '../../../db/database.dart';
 import '../../../main.dart';
 import '../../../style/style.dart';
 
-import 'package:intl/intl.dart';
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -17,7 +17,7 @@ class DetailPage extends StatefulWidget {
   DetailPage({required this.selectedFruit});
 
   //多言語化
-  final currentLocale = Intl.getCurrentLocale();
+  String currentLocale = "en";
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -43,47 +43,60 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     final List detailQuestions = [
-      "1.美味しい果物を食べるとき, 鮮度が重要なのはなぜですか？",
-      "2.${widget.selectedFruit.name}の主要な産地はどこですか？",
-      "2-2. 産地を選ぶために参考にするポイントはありますか？",
-      "3.${widget.selectedFruit.name}の有名な品種は何ですか？",
-      "3-2.${widget.selectedFruit.name}の糖度の高い品種はどれですか？",
-      "3-3.${widget.selectedFruit.name}の種のない品種はどれですか？",
-      "4.${widget.selectedFruit.name}の旬の時期はいつですか？",
-      "5.${widget.selectedFruit.name}には, どんな栄養素が含まれますか？",
-      "5-2.${widget.selectedFruit.name}の栄養素には, どんな効能がありますか？",
-      "6.${widget.selectedFruit.name}の収穫体験は, 大体どのぐらいかかりますか？",
-      "7.美味しい${widget.selectedFruit.name}の見分け方は？",
+      S.of(context).DetailQuestion0,
+      S.of(context).DetailQuestion1,
+      S.of(context).DetailQuestion2,
+      S.of(context).DetailQuestion3,
+      S.of(context).DetailQuestion4,
+      S.of(context).DetailQuestion5,
+      S.of(context).DetailQuestion6,
+      S.of(context).DetailQuestion7,
+      S.of(context).DetailQuestion8,
+      S.of(context).DetailQuestion9,
+      S.of(context).DetailQuestion10,
+
+      // "1.美味しい果物を食べるとき, 鮮度が重要なのはなぜですか？",
+      // "2.主要な産地はどこですか？",
+      // "2-2. 産地を選ぶために参考にするポイントはありますか？",
+      // "3.有名な品種は何ですか？",
+      // "3-2.糖度の高い品種はどれですか？",
+      // "3-3.種のない品種はどれですか？",
+      // "4.旬の時期はいつですか？",
+      // "5.どんな栄養素が含まれますか？",
+      // "5-2.栄養素には, どんな効能がありますか？",
+      // "6.収穫体験は, 大体どのぐらいかかりますか？",
+      // "7.食べ頃の見分け方は？",
     ];
 
     final List detailAnswers = [
+      S.of(context).DetailAnswer0,
       //1.
-      "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. "
-          "\nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます.",
+      // "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. "
+      //     "\nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます.",
       //2.
-      "${widget.selectedFruit.famousArea}, 等が生産量の多い産地とされております.",
+      (currentLocale == "en") ? "${widget.selectedFruit.famousAreaEn}":"${widget.selectedFruit.famousArea}",
       //2-2.
-      "温暖な地域で栽培された果物は, 糖度が高く, 甘みが強い傾向があります. 寒冷な地域で栽培された果物は, 酸味が強い傾向があります. \n\n"
-          "土の粒子が粗い砂質土壌で栽培された果物は, 糖度が高く, 甘味が強い傾向があります."
-          "火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n "
-          "有機質肥料を使って栽培された果物は, 化学肥料で栽培された果物よりも甘みが強い傾向があります.",
+      S.of(context).DetailAnswer1,
+      // "温暖な地域で栽培された果物は, 糖度が高く, 甘みが強い傾向があります. 寒冷な地域で栽培された果物は, 酸味が強い傾向があります. \n\n"
+      //     "土の粒子が粗い砂質土壌で栽培された果物は, 糖度が高く, 甘味が強い傾向があります."
+      //     "火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n "
+      //     "有機質肥料を使って栽培された果物は, 化学肥料で栽培された果物よりも甘みが強い傾向があります.",
       //3.
-      "${widget.selectedFruit.famousBreed}, 等が有名な品種とされております.",
+      (currentLocale == "en") ? "${widget.selectedFruit.famousBreedEn}":"${widget.selectedFruit.famousBreed}",
       //3-2.
-      "${widget.selectedFruit
-          .sweetBreed}\n最新の品種は品種改良で糖度が高いものが多いので, 是非チェックしてみて下さい.",
+      (currentLocale == "en") ? "${widget.selectedFruit.sweetBreedEn}":"${widget.selectedFruit.sweetBreed}",
       //3-3.
-      "${widget.selectedFruit.seedlessVarieties}",
+      (currentLocale == "en") ? "${widget.selectedFruit.seedlessVarietiesEn}":"${widget.selectedFruit.seedlessVarieties}",
       //4.
-      "大体${widget.selectedFruit.season}の時期に, 果樹園が営業しております.",
+      (currentLocale == "en") ? "${widget.selectedFruit.seasonEn}":"${widget.selectedFruit.season}",
       //5.
-      "栄養素は, ${widget.selectedFruit.nutrients}が含まれております.",
+      (currentLocale == "en") ? "${widget.selectedFruit.nutrientsEn}":"${widget.selectedFruit.nutrients}",
       //5.2
-      "${widget.selectedFruit.nutrientEfficacy}",
+      (currentLocale == "en") ? "${widget.selectedFruit.nutrientEfficacyEn}":"${widget.selectedFruit.nutrientEfficacy}",
       //6.
-      "場所と時期によりますが, 大体${widget.selectedFruit.priceRange}の費用がかかります.",
+      (currentLocale == "en") ? "${widget.selectedFruit.priceRangeEn}":"${widget.selectedFruit.priceRange}",
       //7.
-      "${widget.selectedFruit.distinguish}",
+      (currentLocale == "en") ? "${widget.selectedFruit.distinguishEn}":"${widget.selectedFruit.distinguish}",
     ];
 
 
@@ -261,17 +274,20 @@ class _DetailPageState extends State<DetailPage> {
         builder: (_) {
           return AlertDialog(
             title: Text(
-              "果樹園",
+              //果樹園
+              S.of(context).GoMap0,
               style: TextStyle(fontSize: 25.0),
             ),
             content: Text(
-              "周辺の果樹園を検索しても\nよろしいでしょうか？",
+              //"周辺の果樹園を検索しても\nよろしいでしょうか？",
+              S.of(context).GoMap1,
               style: TextStyle(fontSize: 20.0),
             ),
             actions: [
               TextButton(
                 child: Text(
-                  "キャンセル",
+                  S.of(context).GoMap2,
+                  // "キャンセル",
                   style: TextStyle(fontSize: 20.0, color: Colors.black54),
                 ),
                 onPressed: () {
@@ -282,7 +298,8 @@ class _DetailPageState extends State<DetailPage> {
               //_launchURLで最寄りの果樹園に飛ぶ
               TextButton(
                 child: Text(
-                  "OK",
+                  S.of(context).GoMap3,
+                  // "OK",
                   style: TextStyle(fontSize: 20.0, color: Colors.orangeAccent),
                 ),
                 onPressed: () {

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -51,7 +52,8 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                 onPressed: () => _goHomeScreen(context),
               ),
               title: Text(
-                "全問正解",
+                S.of(context).AllCorrect0,
+                // "全問正解",
                 style: TextStyle(fontSize: 30.0),
               ),
             ),
@@ -88,8 +90,9 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: AutoSizeText(
-                              "全問正解\nおめでとうございます\n素晴らしいです🤩"
-                              "\nお疲れさまでした",
+                              // "全問正解\nおめでとうございます\n素晴らしいです🤩"
+                              // "\nお疲れさまでした",
+                              S.of(context).AllCorrect1,
                               maxLines: 4,
                               style: TextStyle(
                                   fontSize: 50.0, color: Colors.white),
@@ -103,11 +106,11 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
-                          child: AutoSizeText(
-                            "果物の知識について\n少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください",
-                            maxLines: 4,
+                          child: Text(
+                            // "果物の知識について\n少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください",
+                            S.of(context).AllCorrect2,
                             style: TextStyle(
-                                fontSize: 50.0, color: Colors.white),
+                                fontSize: 25.0, color: Colors.white),
                           ),
                         ),
                         Spacer(),

@@ -206,7 +206,7 @@ class _ListPageState extends State<ListPage> {
                                                 ),
                                                 footer: Center(
                                                   child: Text(
-                                                    fruit.name,
+                                                    (currentLocale == "ja") ? fruit.name : fruit.nameEn ?? "",
                                                     style: TextStyle(
                                                         fontSize: 25.0,
                                                         fontFamily: ThirdFont),

@@ -1,0 +1,103 @@
+{
+  "Catchphrase":"What kind of help do you need with\nfruit picking?",
+  "List": "List",
+  "Manners": "Manners",
+  "Belongings": "Belongings",
+  "Quiz": "Quiz",
+
+  "Credits": "Copyright Notice",
+  "PhotoIllustration": "Photo・illustration\n\n",
+  "TopPage": "・Top Page : Image courtesy of Pexels\n\n ・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n",
+  "FontIcon": "Font and icon name\n\n",
+  "GoogleFontFontAwesomeIcon": "Google Font\n\nFontAwesomeIcon",
+
+  "ado": "Banner ad display",
+  "adoText": "Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n",
+  "Next": "Proceed to the next page.",
+
+  "QuestionCount": "Number of questions",
+  "HowManyQuestions": "How many questions will you answer?",
+  "TenQuestions": "10",
+  "TwentyQuestions": "20",
+  "ThirtyQuestions": "30",
+
+  "FruitList": "Seasonal Fruits",
+  "Attention":"We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later.",
+  "All": "All Season",
+  "SpringFruit": "Spring",
+  "SummerFruit": "Summer",
+  "AutumnFruit":"Autumn",
+  "WinterFruit": "Winter",
+
+  "DetailQuestion0": "1. What makes freshness so important for enjoying delicious fruits?",
+  "DetailQuestion1": "2. What are the major production areas?",
+  "DetailQuestion2": "2-2. What factors should I consider when choosing a production area?",
+  "DetailQuestion3": "3. What are the well-known cultivars? ",
+  "DetailQuestion4": "3-2. Which varieties have the highest sugar content?",
+  "DetailQuestion5": "3-3. Which varieties are seedless?",
+  "DetailQuestion6": "4. When is the best season to eat fruits? ",
+  "DetailQuestion7": "5. What are the nutritional values?",
+  "DetailQuestion8": "5-2. What are the benefits of nutrients?",
+  "DetailQuestion9": "6. What is the cost of a harvest experience?",
+  "DetailQuestion10": "7. How can I tell if it's ripe?",
+
+  "DetailAnswer0": "Fresh fruits have a great taste and aroma, and their nutrients remain intact. \nThey are also rich in dietary fiber and can help boost your immune system",
+  "DetailAnswer1": "Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \nFruits cultivated in cold regions often have a higher acidity.\nFruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\nFruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\nFruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers.",
+
+  "GoMap0": "Orchard",
+  "GoMap1": "Shall I look up some orchards in your area?",
+  "GoMap2": "Cancel",
+  "GoMap3": "OK",
+
+  "mannerQuestions0": "Is it okay to run around while picking fruits in the orchard?",
+  "mannerQuestions1": "Are there any rules about how to pick the fruits?",
+  "mannerQuestions2": "What happens if it rains on the day? Do I need to cancel?",
+  "mannerQuestions3": "Would it be better to make a reservation?",
+  "mannerQuestions4": "What kind of clothes should I wear?",
+  "mannerQuestions5": "Is there anything else I should bring?",
+  "mannerQuestions6": "How do I find out the orchard's rules?",
+
+  "mannerAnswers0": "It would be wonderful if you could enjoy picking fruits while being considerate of others. ",
+  "mannerAnswers1": "It would be helpful if you could follow our guidelines and handle the trees gently while picking fruits.",
+  "mannerAnswers2": "If it rains on the day, we recommend that you contact the orchard in advance. Alternatively, you may want to choose an all-weather farm ",
+  "mannerAnswers3": "While some orchards may not require reservations, it is highly recommended that you contact the orchard beforehand by phone or email to confirm availability. ",
+  "mannerAnswers4": "While it's great to dress up, it's also advisable to wear comfortable clothing that you don't mind getting dirty. ",
+  "mannerAnswers5": "As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. Additionally, wet wipes would be convenient for mealtimes.",
+  "mannerAnswers6": "It would be best to ask the orchard staff directly. By following their rules, you can enjoy a satisfying fruit-picking experience.",
+
+  "BelongingList": "checklist",
+  "Shirt": "long-sleeved top",
+  "Spray": "insect repellent",
+  "Sunscreen": "sunscreen",
+  "Cap": "cap",
+  "WetWipes": "wet wipes",
+  "FaceTowel": "face towel",
+  "Cooler": "cooler",
+  "Drink": "drink",
+
+  "TheRest": "the rest",
+  "FruitCount": "fruit count",
+  "DropRate": "drop rate",
+
+  "Hunt" : "fruits",
+
+  "QuizAnswer": "Answer:",
+  "QuizExplanation": "Explanation:",
+  "Result": "Results announcement！",
+  "NextFruit": "Next Fruit！",
+
+  "QuizFinish": "Concluding the quiz",
+  "FinishQuestion": "Would you like to conclude the quiz now?",
+  "Cancel": "Cancel",
+  "OK": "OK",
+
+  "QuizScore": "Quiz Score",
+  "ScoreSay1": "The number of fruits you got is... ",
+  "ScoreSay2": "\nYour success rate is... ",
+  "ScoreSay3": "Good Job！",
+  "FinalComment": "For your next visit, why don't you try picking your own fruit?",
+
+  "AllCorrect0": "All correct!",
+  "AllCorrect1": "You've achieved a perfect score🤩 \nThat's impressive. \nGreat job.",
+  "AllCorrect2": "It would be a great experience to pick your own fresh fruits. \nI encourage you to try it. "
+}

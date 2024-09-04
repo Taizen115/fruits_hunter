@@ -7,7 +7,6 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../main.dart';
 import 'home_screen.dart';
 
-
 class GradesScreen extends StatefulWidget {
   final int numberOfHunt;
   final int getRate;
@@ -139,9 +138,10 @@ class _GradesScreenState extends State<GradesScreen> {
       ],
     );
   }
+  }
 
   _goHomeScreen(context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomeScreen()));
   }
-}
+

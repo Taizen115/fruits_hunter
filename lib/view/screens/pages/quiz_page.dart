@@ -418,7 +418,7 @@ class _QuizPageState extends State<QuizPage> {
       return Container(
         child: Column(
           children: [
-            Gap(kToolbarHeight + 100),
+            Gap(kToolbarHeight + 120),
             Expanded(
               flex: 1,
               child: ClipRRect(
@@ -431,9 +431,9 @@ class _QuizPageState extends State<QuizPage> {
                       children: [
                         AutoSizeText(
                            S.of(context).QuizAnswer + "${answer}",
-                          maxLines: 1,
+                          maxLines: 2,
                           style: TextStyle(
-                              fontSize: 30.0,
+                              fontSize: 20.0,
                               color: Colors.teal),
                         ),
                       ],
@@ -458,7 +458,7 @@ class _QuizPageState extends State<QuizPage> {
                         S.of(context).QuizExplanation + "\n${explanation}",
                         maxLines: 6,
                         style: TextStyle(
-                            fontSize: 50.0,
+                            fontSize: 30.0,
                             color: Colors.teal),
                       ),
                     ),
@@ -525,12 +525,12 @@ class _QuizPageState extends State<QuizPage> {
       isCorrectIncorrectImageEnabled = false;
       isExplained = false;
       isNextQuestioned = true;
-      question = (currentLocale == "ja")? _currentQuestion!.question: _currentQuestion!.questionEn;
-      answer = (currentLocale == "ja")? _currentQuestion!.answer: _currentQuestion!.answerEn;
-      choice1 = (currentLocale == "ja")? _currentQuestion!.choice1: _currentQuestion!.choice1En;
-      choice2 = (currentLocale == "ja")? _currentQuestion!.choice2: _currentQuestion!.choice2En;
-      choice3 = (currentLocale == "ja")? _currentQuestion!.choice3: _currentQuestion!.choice3En;
-      explanation = (currentLocale == "ja")? _currentQuestion!.explanation: _currentQuestion!.explanationEn;
+      question = (currentLocale == "ja")? _currentQuestion!.question: _currentQuestion!.questionEn ?? "";
+      answer = (currentLocale == "ja")? _currentQuestion!.answer: _currentQuestion!.answerEn ?? "";
+      choice1 = (currentLocale == "ja")? _currentQuestion!.choice1: _currentQuestion!.choice1En ?? "";
+      choice2 = (currentLocale == "ja")? _currentQuestion!.choice2: _currentQuestion!.choice2En ?? "";
+      choice3 = (currentLocale == "ja")? _currentQuestion!.choice3: _currentQuestion!.choice3En ?? "";
+      explanation = (currentLocale == "ja")? _currentQuestion!.explanation: _currentQuestion!.explanationEn ?? "";
 
       choices[0] = answer;
       choices[1] = choice1;

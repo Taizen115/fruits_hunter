@@ -13,27 +13,47 @@ class Fruits extends Table {
 
   TextColumn get name => text()();
 
+  TextColumn get nameEn => text().nullable()();
+
   TextColumn get famousArea => text()();
+
+  TextColumn get famousAreaEn => text().nullable()();
 
   TextColumn get season => text()();
 
+  TextColumn get seasonEn => text().nullable()();
+
   TextColumn get famousBreed => text()();
+
+  TextColumn get famousBreedEn => text().nullable()();
 
   TextColumn get sweetBreed => text()();
 
+  TextColumn get sweetBreedEn => text().nullable()();
+
   TextColumn get seedlessVarieties => text()();
+
+  TextColumn get seedlessVarietiesEn => text().nullable()();
 
   TextColumn get priceRange => text()();
 
+  TextColumn get priceRangeEn => text().nullable()();
+
   TextColumn get nutrients => text()();
 
+  TextColumn get nutrientsEn => text().nullable()();
+
   TextColumn get nutrientEfficacy => text()();
+
+  TextColumn get nutrientEfficacyEn => text().nullable()();
 
   TextColumn get imageFileName => text()();
 
   TextColumn get backgroundImage => text()();
 
   TextColumn get distinguish => text()();
+
+  TextColumn get distinguishEn => text().nullable()();
 
   BoolColumn get typeSpring => boolean().withDefault(Constant(false))();
 
@@ -51,27 +71,27 @@ class Questions extends Table {
 
   TextColumn get question => text()();
 
-  TextColumn get questionEn => text()();
+  TextColumn get questionEn => text().nullable()();
 
   TextColumn get answer => text()();
 
-  TextColumn get answerEn => text()();
+  TextColumn get answerEn => text().nullable()();
 
   TextColumn get choice1 => text()();
 
-  TextColumn get choice1En => text()();
+  TextColumn get choice1En => text().nullable()();
 
   TextColumn get choice2 => text()();
 
-  TextColumn get choice2En => text()();
+  TextColumn get choice2En => text().nullable()();
 
   TextColumn get choice3 => text()();
 
-  TextColumn get choice3En => text()();
+  TextColumn get choice3En => text().nullable()();
 
   TextColumn get explanation => text()();
 
-  TextColumn get explanationEn => text()();
+  TextColumn get explanationEn => text().nullable()();
 
 }
 
@@ -110,6 +130,17 @@ class MyDatabase extends _$MyDatabase {
           await m.addColumn(questions, questions.choice2En);
           await m.addColumn(questions, questions.choice3En);
           await m.addColumn(questions, questions.explanationEn);
+
+          await m.addColumn(fruits, fruits.nameEn);
+          await m.addColumn(fruits, fruits.famousAreaEn);
+          await m.addColumn(fruits, fruits.seasonEn);
+          await m.addColumn(fruits, fruits.famousBreedEn);
+          await m.addColumn(fruits, fruits.sweetBreedEn);
+          await m.addColumn(fruits, fruits.seedlessVarietiesEn);
+          await m.addColumn(fruits, fruits.priceRangeEn);
+          await m.addColumn(fruits, fruits.nutrientsEn);
+          await m.addColumn(fruits, fruits.nutrientEfficacyEn);
+          await m.addColumn(fruits, fruits.distinguishEn);
         }
       },
     );
