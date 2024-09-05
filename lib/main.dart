@@ -19,7 +19,7 @@ late MyDatabase database;
 AdManager adManager = AdManager();
 
 //多言語化
-String currentLocale = "en";
+String currentLanguage = "en";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +27,7 @@ void main() async {
   database = MyDatabase(dbPath: dbPath);
 
   //多言語化
-  currentLocale = Intl.getCurrentLocale();
+  currentLanguage = Intl.getCurrentLocale();
 
   //広告
   await adManager.initAdmob();
@@ -58,6 +58,7 @@ Future<String> getDbPath() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,

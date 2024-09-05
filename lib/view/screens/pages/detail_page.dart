@@ -10,6 +10,7 @@ import '../../../db/database.dart';
 import '../../../main.dart';
 import '../../../style/style.dart';
 
+import 'package:intl/intl.dart';
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -42,6 +43,7 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   Widget build(BuildContext context) {
+
     final List detailQuestions = [
       S.of(context).DetailQuestion0,
       S.of(context).DetailQuestion1,
@@ -74,7 +76,9 @@ class _DetailPageState extends State<DetailPage> {
       // "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. "
       //     "\nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます.",
       //2.
-      (currentLocale == "en") ? "${widget.selectedFruit.famousAreaEn}":"${widget.selectedFruit.famousArea}",
+      (currentLanguage == "en")
+          ? "${widget.selectedFruit.famousAreaEn}"
+          : "${widget.selectedFruit.famousArea}",
       //2-2.
       S.of(context).DetailAnswer1,
       // "温暖な地域で栽培された果物は, 糖度が高く, 甘みが強い傾向があります. 寒冷な地域で栽培された果物は, 酸味が強い傾向があります. \n\n"
@@ -82,25 +86,42 @@ class _DetailPageState extends State<DetailPage> {
       //     "火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n "
       //     "有機質肥料を使って栽培された果物は, 化学肥料で栽培された果物よりも甘みが強い傾向があります.",
       //3.
-      (currentLocale == "en") ? "${widget.selectedFruit.famousBreedEn}":"${widget.selectedFruit.famousBreed}",
+      (currentLanguage == "en")
+          ? "${widget.selectedFruit.famousBreedEn}"
+          : "${widget.selectedFruit.famousBreed}",
       //3-2.
-      (currentLocale == "en") ? "${widget.selectedFruit.sweetBreedEn}":"${widget.selectedFruit.sweetBreed}",
+      (currentLanguage == "en")
+          ? "${widget.selectedFruit.sweetBreedEn}"
+          : "${widget.selectedFruit.sweetBreed}",
       //3-3.
-      (currentLocale == "en") ? "${widget.selectedFruit.seedlessVarietiesEn}":"${widget.selectedFruit.seedlessVarieties}",
+      (currentLanguage == "en")
+          ? "${widget.selectedFruit.seedlessVarietiesEn}"
+          : "${widget.selectedFruit.seedlessVarieties}",
       //4.
-      (currentLocale == "en") ? "${widget.selectedFruit.seasonEn}":"${widget.selectedFruit.season}",
+      (currentLanguage == "en")
+          ? "${widget.selectedFruit.seasonEn}"
+          : "${widget.selectedFruit.season}",
       //5.
-      (currentLocale == "en") ? "${widget.selectedFruit.nutrientsEn}":"${widget.selectedFruit.nutrients}",
+      (currentLanguage == "en")
+          ? "${widget.selectedFruit.nutrientsEn}"
+          : "${widget.selectedFruit.nutrients}",
       //5.2
-      (currentLocale == "en") ? "${widget.selectedFruit.nutrientEfficacyEn}":"${widget.selectedFruit.nutrientEfficacy}",
+      (currentLanguage == "en")
+          ? "${widget.selectedFruit.nutrientEfficacyEn}"
+          : "${widget.selectedFruit.nutrientEfficacy}",
       //6.
-      (currentLocale == "en") ? "${widget.selectedFruit.priceRangeEn}":"${widget.selectedFruit.priceRange}",
+      (currentLanguage == "en")
+          ? "${widget.selectedFruit.priceRangeEn}"
+          : "${widget.selectedFruit.priceRange}",
       //7.
-      (currentLocale == "en") ? "${widget.selectedFruit.distinguishEn}":"${widget.selectedFruit.distinguish}",
+      (currentLanguage == "en")
+          ? "${widget.selectedFruit.distinguishEn}"
+          : "${widget.selectedFruit.distinguish}",
     ];
 
-
     //このコードは、アプリの1画面の見た目を設定する部分の説明です。
+
+    final name = (currentLanguage == "en") ? widget.selectedFruit.nameEn : widget.selectedFruit.name;
 
     return SafeArea(
       child: Scaffold(
@@ -140,7 +161,7 @@ class _DetailPageState extends State<DetailPage> {
               Gap(10),
               Expanded(
                 child: Text(
-                  "${widget.selectedFruit.name}",
+                  name ?? "",
                   style: TextStyle(fontSize: 22.0),
                 ),
               ),
@@ -187,8 +208,7 @@ class _DetailPageState extends State<DetailPage> {
                                 itemBuilder: (context, index) {
                                   return ClipRRect(
                                     borderRadius: BorderRadius.circular(30.0),
-                                    child:
-                                    ExpansionTile(
+                                    child: ExpansionTile(
                                       backgroundColor: Colors.lightBlue,
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
@@ -230,22 +250,21 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 Gap(20.0),
-
                 Center(
                   child: (adManager.bannerAd == null)
                       ? Container(
-                    width: 0.0,
-                    height: 0.0,
-                  )
+                          width: 0.0,
+                          height: 0.0,
+                        )
                       : Container(
-                    width: adManager.bannerAd!.size.width.toDouble(),
-                    height: adManager.bannerAd!.size.height.toDouble(),
-                    child: Center(
-                      child: AdWidget(
-                        ad: adManager.bannerAd!,
-                      ),
-                    ),
-                  ),
+                          width: adManager.bannerAd!.size.width.toDouble(),
+                          height: adManager.bannerAd!.size.height.toDouble(),
+                          child: Center(
+                            child: AdWidget(
+                              ad: adManager.bannerAd!,
+                            ),
+                          ),
+                        ),
                 ),
               ],
             ),
@@ -258,8 +277,7 @@ class _DetailPageState extends State<DetailPage> {
   //最寄りの果樹園を検索
   void _launchURL() async {
     final String url =
-        'https://www.google.co.jp/maps/search/果樹園%E3%80%80${widget.selectedFruit
-        .name}';
+        'https://www.google.co.jp/maps/search/果樹園%E3%80%80${widget.selectedFruit.name}';
     final uri = Uri.parse(url);
     if (!(await launchUrl(uri))) {
       throw 'Could not launch $url';
