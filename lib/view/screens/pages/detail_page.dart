@@ -10,6 +10,8 @@ import '../../../db/database.dart';
 import '../../../main.dart';
 import '../../../style/style.dart';
 
+import 'package:intl/intl.dart';
+
 
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
@@ -17,7 +19,7 @@ class DetailPage extends StatefulWidget {
   DetailPage({required this.selectedFruit});
 
   //多言語化
-  String currentLocale = "en";
+  final currentLocale = Intl.getCurrentLocale();
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -74,7 +76,7 @@ class _DetailPageState extends State<DetailPage> {
       // "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. "
       //     "\nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます.",
       //2.
-      (currentLocale == "en") ? "${widget.selectedFruit.famousAreaEn}":"${widget.selectedFruit.famousArea}",
+      (currentLanguage == "ja") ? "${widget.selectedFruit.famousArea}":"${widget.selectedFruit.famousAreaEn}",
       //2-2.
       S.of(context).DetailAnswer1,
       // "温暖な地域で栽培された果物は, 糖度が高く, 甘みが強い傾向があります. 寒冷な地域で栽培された果物は, 酸味が強い傾向があります. \n\n"
@@ -82,21 +84,21 @@ class _DetailPageState extends State<DetailPage> {
       //     "火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n "
       //     "有機質肥料を使って栽培された果物は, 化学肥料で栽培された果物よりも甘みが強い傾向があります.",
       //3.
-      (currentLocale == "en") ? "${widget.selectedFruit.famousBreedEn}":"${widget.selectedFruit.famousBreed}",
+      (currentLanguage == "ja") ? "${widget.selectedFruit.famousBreed}":"${widget.selectedFruit.famousBreedEn}",
       //3-2.
-      (currentLocale == "en") ? "${widget.selectedFruit.sweetBreedEn}":"${widget.selectedFruit.sweetBreed}",
+      (currentLanguage == "ja") ? "${widget.selectedFruit.sweetBreed}":"${widget.selectedFruit.sweetBreedEn}",
       //3-3.
-      (currentLocale == "en") ? "${widget.selectedFruit.seedlessVarietiesEn}":"${widget.selectedFruit.seedlessVarieties}",
+      (currentLanguage == "ja") ? "${widget.selectedFruit.seedlessVarieties}":"${widget.selectedFruit.seedlessVarietiesEn}",
       //4.
-      (currentLocale == "en") ? "${widget.selectedFruit.seasonEn}":"${widget.selectedFruit.season}",
+      (currentLanguage == "ja") ? "${widget.selectedFruit.season}":"${widget.selectedFruit.seasonEn}",
       //5.
-      (currentLocale == "en") ? "${widget.selectedFruit.nutrientsEn}":"${widget.selectedFruit.nutrients}",
+      (currentLanguage == "ja") ? "${widget.selectedFruit.nutrients}":"${widget.selectedFruit.nutrientsEn}",
       //5.2
-      (currentLocale == "en") ? "${widget.selectedFruit.nutrientEfficacyEn}":"${widget.selectedFruit.nutrientEfficacy}",
+      (currentLanguage == "ja") ? "${widget.selectedFruit.nutrientEfficacy}":"${widget.selectedFruit.nutrientEfficacyEn}",
       //6.
-      (currentLocale == "en") ? "${widget.selectedFruit.priceRangeEn}":"${widget.selectedFruit.priceRange}",
+      (currentLanguage == "ja") ? "${widget.selectedFruit.priceRange}":"${widget.selectedFruit.priceRangeEn}",
       //7.
-      (currentLocale == "en") ? "${widget.selectedFruit.distinguishEn}":"${widget.selectedFruit.distinguish}",
+      (currentLanguage == "ja") ? "${widget.selectedFruit.distinguish}":"${widget.selectedFruit.distinguishEn}",
     ];
 
 
@@ -140,7 +142,7 @@ class _DetailPageState extends State<DetailPage> {
               Gap(10),
               Expanded(
                 child: Text(
-                  "${widget.selectedFruit.name}",
+                  (currentLanguage == "ja") ? "${widget.selectedFruit.name}": "${widget.selectedFruit.nameEn}",
                   style: TextStyle(fontSize: 22.0),
                 ),
               ),

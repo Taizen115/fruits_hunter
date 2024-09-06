@@ -91,6 +91,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    currentLanguage = Localizations.localeOf(context).languageCode;
+
     return SafeArea(
         child: Scaffold(
       body: Column(children: [
