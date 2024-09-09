@@ -19,7 +19,7 @@ class DetailPage extends StatefulWidget {
   DetailPage({required this.selectedFruit});
 
   //多言語化
-  final currentLocale = Intl.getCurrentLocale();
+  final currentLanguage = Intl.getCurrentLocale();
 
   @override
   State<DetailPage> createState() => _DetailPageState();

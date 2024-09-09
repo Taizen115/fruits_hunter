@@ -52,7 +52,7 @@ class _QuizPageState extends State<QuizPage> {
   late Question? _currentQuestion;
 
   //多言語化
-  final currentLocale = Intl.getCurrentLocale();
+  final currentLanguage = Intl.getCurrentLocale();
 
   @override
   void initState() {
@@ -525,12 +525,12 @@ class _QuizPageState extends State<QuizPage> {
       isCorrectIncorrectImageEnabled = false;
       isExplained = false;
       isNextQuestioned = true;
-      question = (currentLocale == "ja")? _currentQuestion!.question: _currentQuestion!.questionEn ?? "";
-      answer = (currentLocale == "ja")? _currentQuestion!.answer: _currentQuestion!.answerEn ?? "";
-      choice1 = (currentLocale == "ja")? _currentQuestion!.choice1: _currentQuestion!.choice1En ?? "";
-      choice2 = (currentLocale == "ja")? _currentQuestion!.choice2: _currentQuestion!.choice2En ?? "";
-      choice3 = (currentLocale == "ja")? _currentQuestion!.choice3: _currentQuestion!.choice3En ?? "";
-      explanation = (currentLocale == "ja")? _currentQuestion!.explanation: _currentQuestion!.explanationEn ?? "";
+      question = (currentLanguage == "ja")? _currentQuestion!.question: _currentQuestion!.questionEn ?? "";
+      answer = (currentLanguage == "ja")? _currentQuestion!.answer: _currentQuestion!.answerEn ?? "";
+      choice1 = (currentLanguage == "ja")? _currentQuestion!.choice1: _currentQuestion!.choice1En ?? "";
+      choice2 = (currentLanguage == "ja")? _currentQuestion!.choice2: _currentQuestion!.choice2En ?? "";
+      choice3 = (currentLanguage == "ja")? _currentQuestion!.choice3: _currentQuestion!.choice3En ?? "";
+      explanation = (currentLanguage == "ja")? _currentQuestion!.explanation: _currentQuestion!.explanationEn ?? "";
 
       choices[0] = answer;
       choices[1] = choice1;

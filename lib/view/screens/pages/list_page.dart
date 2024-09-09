@@ -30,7 +30,7 @@ class _ListPageState extends State<ListPage> {
   List<Fruit> fruitsList = [];
 
   //多言語化
-  final currentLocale = Intl.getCurrentLocale();
+  final currentLanguage = Intl.getCurrentLocale();
 
   @override
   void initState() {
@@ -206,7 +206,7 @@ class _ListPageState extends State<ListPage> {
                                                 ),
                                                 footer: Center(
                                                   child: Text(
-                                                    (currentLocale == "ja") ? fruit.name : fruit.nameEn ?? "",
+                                                    (currentLanguage == "ja") ? fruit.name : fruit.nameEn ?? "",
                                                     style: TextStyle(
                                                         fontSize: 25.0,
                                                         fontFamily: ThirdFont),
