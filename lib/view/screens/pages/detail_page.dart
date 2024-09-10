@@ -12,7 +12,6 @@ import '../../../style/style.dart';
 
 import 'package:intl/intl.dart';
 
-
 class DetailPage extends StatefulWidget {
   final Fruit selectedFruit;
 
@@ -76,7 +75,9 @@ class _DetailPageState extends State<DetailPage> {
       // "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. "
       //     "\nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます.",
       //2.
-      (currentLanguage == "ja") ? "${widget.selectedFruit.famousArea}":"${widget.selectedFruit.famousAreaEn}",
+      (currentLanguage == "ja")
+          ? "${widget.selectedFruit.famousArea}"
+          : "${widget.selectedFruit.famousAreaEn}",
       //2-2.
       S.of(context).DetailAnswer1,
       // "温暖な地域で栽培された果物は, 糖度が高く, 甘みが強い傾向があります. 寒冷な地域で栽培された果物は, 酸味が強い傾向があります. \n\n"
@@ -84,23 +85,38 @@ class _DetailPageState extends State<DetailPage> {
       //     "火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n "
       //     "有機質肥料を使って栽培された果物は, 化学肥料で栽培された果物よりも甘みが強い傾向があります.",
       //3.
-      (currentLanguage == "ja") ? "${widget.selectedFruit.famousBreed}":"${widget.selectedFruit.famousBreedEn}",
+      (currentLanguage == "ja")
+          ? "${widget.selectedFruit.famousBreed}"
+          : "${widget.selectedFruit.famousBreedEn}",
       //3-2.
-      (currentLanguage == "ja") ? "${widget.selectedFruit.sweetBreed}":"${widget.selectedFruit.sweetBreedEn}",
+      (currentLanguage == "ja")
+          ? "${widget.selectedFruit.sweetBreed}"
+          : "${widget.selectedFruit.sweetBreedEn}",
       //3-3.
-      (currentLanguage == "ja") ? "${widget.selectedFruit.seedlessVarieties}":"${widget.selectedFruit.seedlessVarietiesEn}",
+      (currentLanguage == "ja")
+          ? "${widget.selectedFruit.seedlessVarieties}"
+          : "${widget.selectedFruit.seedlessVarietiesEn}",
       //4.
-      (currentLanguage == "ja") ? "${widget.selectedFruit.season}":"${widget.selectedFruit.seasonEn}",
+      (currentLanguage == "ja")
+          ? "${widget.selectedFruit.season}"
+          : "${widget.selectedFruit.seasonEn}",
       //5.
-      (currentLanguage == "ja") ? "${widget.selectedFruit.nutrients}":"${widget.selectedFruit.nutrientsEn}",
+      (currentLanguage == "ja")
+          ? "${widget.selectedFruit.nutrients}"
+          : "${widget.selectedFruit.nutrientsEn}",
       //5.2
-      (currentLanguage == "ja") ? "${widget.selectedFruit.nutrientEfficacy}":"${widget.selectedFruit.nutrientEfficacyEn}",
+      (currentLanguage == "ja")
+          ? "${widget.selectedFruit.nutrientEfficacy}"
+          : "${widget.selectedFruit.nutrientEfficacyEn}",
       //6.
-      (currentLanguage == "ja") ? "${widget.selectedFruit.priceRange}":"${widget.selectedFruit.priceRangeEn}",
+      (currentLanguage == "ja")
+          ? "${widget.selectedFruit.priceRange}"
+          : "${widget.selectedFruit.priceRangeEn}",
       //7.
-      (currentLanguage == "ja") ? "${widget.selectedFruit.distinguish}":"${widget.selectedFruit.distinguishEn}",
+      (currentLanguage == "ja")
+          ? "${widget.selectedFruit.distinguish}"
+          : "${widget.selectedFruit.distinguishEn}",
     ];
-
 
     //このコードは、アプリの1画面の見た目を設定する部分の説明です。
 
@@ -142,7 +158,9 @@ class _DetailPageState extends State<DetailPage> {
               Gap(10),
               Expanded(
                 child: Text(
-                  (currentLanguage == "ja") ? "${widget.selectedFruit.name}": "${widget.selectedFruit.nameEn}",
+                  (currentLanguage == "ja")
+                      ? "${widget.selectedFruit.name}"
+                      : "${widget.selectedFruit.nameEn}",
                   style: TextStyle(fontSize: 22.0),
                 ),
               ),
@@ -189,8 +207,7 @@ class _DetailPageState extends State<DetailPage> {
                                 itemBuilder: (context, index) {
                                   return ClipRRect(
                                     borderRadius: BorderRadius.circular(30.0),
-                                    child:
-                                    ExpansionTile(
+                                    child: ExpansionTile(
                                       backgroundColor: Colors.lightBlue,
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
@@ -232,22 +249,21 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
                 Gap(20.0),
-
                 Center(
                   child: (adManager.bannerAd == null)
                       ? Container(
-                    width: 0.0,
-                    height: 0.0,
-                  )
+                          width: 0.0,
+                          height: 0.0,
+                        )
                       : Container(
-                    width: adManager.bannerAd!.size.width.toDouble(),
-                    height: adManager.bannerAd!.size.height.toDouble(),
-                    child: Center(
-                      child: AdWidget(
-                        ad: adManager.bannerAd!,
-                      ),
-                    ),
-                  ),
+                          width: adManager.bannerAd!.size.width.toDouble(),
+                          height: adManager.bannerAd!.size.height.toDouble(),
+                          child: Center(
+                            child: AdWidget(
+                              ad: adManager.bannerAd!,
+                            ),
+                          ),
+                        ),
                 ),
               ],
             ),
@@ -259,9 +275,10 @@ class _DetailPageState extends State<DetailPage> {
 
   //最寄りの果樹園を検索
   void _launchURL() async {
-    final String url =
-        'https://www.google.co.jp/maps/search/果樹園%E3%80%80${widget.selectedFruit
-        .name}';
+    final String url = (currentLanguage == "ja")
+        ? 'https://www.google.co.jp/maps/search/果樹園%E3%80%80${widget.selectedFruit.name}'
+        : 'https://www.google.co.jp/maps/search/orchard%E3%80%80${widget.selectedFruit.nameEn}';
+
     final uri = Uri.parse(url);
     if (!(await launchUrl(uri))) {
       throw 'Could not launch $url';
