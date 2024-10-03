@@ -418,14 +418,11 @@ class _QuizPageState extends State<QuizPage> {
                   color: Colors.white70,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        AutoSizeText(
-                          S.of(context).QuizAnswer + "${answer}",
-                          maxLines: 2,
-                          style: TextStyle(fontSize: 20.0, color: Colors.teal),
-                        ),
-                      ],
+                    child: AutoSizeText(
+                      S.of(context).QuizAnswer + " ${answer}",
+                      maxLines: 2,
+                      style: TextStyle(fontSize: 20.0, color: Colors.teal),
+                      minFontSize: 12.0,
                     ),
                   ),
                 ),

@@ -51,50 +51,52 @@ class CreditPage extends StatelessWidget {
           ),
 
           //2階　コンテンツ
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Gap(20.0),
-              Center(
-                child: (adManager.bannerAd == null)
-                    ? Container(
-                        width: 0.0,
-                        height: 0.0,
-                      )
-                    : Container(
-                        width: adManager.bannerAd!.size.width.toDouble(),
-                        height: adManager.bannerAd!.size.height.toDouble(),
-                        child: Center(
-                          child: AdWidget(
-                            ad: adManager.bannerAd!,
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Gap(20.0),
+                Center(
+                  child: (adManager.bannerAd == null)
+                      ? Container(
+                          width: 0.0,
+                          height: 0.0,
+                        )
+                      : Container(
+                          width: adManager.bannerAd!.size.width.toDouble(),
+                          height: adManager.bannerAd!.size.height.toDouble(),
+                          child: Center(
+                            child: AdWidget(
+                              ad: adManager.bannerAd!,
+                            ),
                           ),
                         ),
-                      ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: RichText(
-                  text: TextSpan(
-                    text: S.of(context).PhotoIllustration,
-                    style: TextStyle(fontSize: 30.0, color: Colors.blue),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: S.of(context).TopPage,
-                        style: TextStyle(fontSize: 20.0, color: Colors.black54),
-                      ),
-                      TextSpan(
-                        text: S.of(context).FontIcon,
-                        style: TextStyle(fontSize: 30.0, color: Colors.orange),
-                      ),
-                      TextSpan(
-                        text: S.of(context).GoogleFontFontAwesomeIcon,
-                        style: TextStyle(fontSize: 20.0, color: Colors.black54),
-                      ),
-                    ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: RichText(
+                    text: TextSpan(
+                      text: S.of(context).PhotoIllustration,
+                      style: TextStyle(fontSize: 30.0, color: Colors.blue),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: S.of(context).TopPage,
+                          style: TextStyle(fontSize: 20.0, color: Colors.black54),
+                        ),
+                        TextSpan(
+                          text: S.of(context).FontIcon,
+                          style: TextStyle(fontSize: 30.0, color: Colors.orange),
+                        ),
+                        TextSpan(
+                          text: S.of(context).GoogleFontFontAwesomeIcon,
+                          style: TextStyle(fontSize: 20.0, color: Colors.black54),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

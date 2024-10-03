@@ -79,36 +79,43 @@ class _GradesScreenState extends State<GradesScreen> {
                     child: Column(
                       children: [
                         Gap(kToolbarHeight + 10),
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            S.of(context).ScoreSay1 +
-                                "\n${widget.numberOfHunt}\n" +
-                                S.of(context).ScoreSay2 +
-                                "\n${widget.getRate}%\n" +
-                            S.of(context).ScoreSay3,
-                            style: TextStyle(
-                                fontSize: 25.0, color: Colors.white),
-                          ),
-                        ),
-                        Spacer(),
-                        Card(
-                          color: Colors.transparent,
-                          shadowColor: Colors.white60,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
+                        Expanded(
+                          flex: 2,
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: AutoSizeText(
-                              S.of(context).FinalComment,
-                              maxLines: 4,
+                              S.of(context).ScoreSay1 +
+                                  "\n${widget.numberOfHunt}\n" +
+                                  S.of(context).ScoreSay2 +
+                                  "\n${widget.getRate}%\n" +
+                              S.of(context).ScoreSay3,
                               style: TextStyle(
-                                  fontSize: 30.0, color: Colors.white70),
+                                  fontSize: 25.0, color: Colors.white),
+                              minFontSize: 12.0,
                             ),
                           ),
                         ),
-                        Spacer(),
+                        Expanded(
+                          flex: 1,
+                          child: Card(
+                            color: Colors.transparent,
+                            shadowColor: Colors.white60,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: AutoSizeText(
+                                S.of(context).FinalComment,
+                                maxLines: 4,
+                                minFontSize: 12.0,
+                                style: TextStyle(
+                                    fontSize: 30.0, color: Colors.white70),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Gap(8.0),
                         Center(
                           child: (adManager.bannerAd == null)
                               ? Container(
