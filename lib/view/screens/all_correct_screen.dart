@@ -81,39 +81,46 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                     child: Column(
                       children: [
                         Gap(kToolbarHeight + 10),
-                        Card(
-                          color: Colors.transparent,
-                          elevation: 20.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: AutoSizeText(
-                              // "全問正解\nおめでとうございます\n素晴らしいです🤩"
-                              // "\nお疲れさまでした",
-                              S.of(context).AllCorrect1,
-                              maxLines: 4,
-                              style: TextStyle(
-                                  fontSize: 50.0, color: Colors.white),
+                        Expanded(
+                          flex: 1,
+                          child: Card(
+                            color: Colors.transparent,
+                            elevation: 20.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: AutoSizeText(
+                                // "全問正解\nおめでとうございます\n素晴らしいです🤩"
+                                // "\nお疲れさまでした",
+                                S.of(context).AllCorrect1,
+                                maxLines: 4,
+                                style: TextStyle(
+                                    fontSize: 50.0, color: Colors.white),
+                                minFontSize: 20.0,
+                              ),
                             ),
                           ),
                         ),
-                        Spacer(),
-                        Card(
-                          color: Colors.transparent,
-                          elevation: 20.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Text(
-                            // "果物の知識について\n少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください",
-                            S.of(context).AllCorrect2,
-                            style: TextStyle(
-                                fontSize: 25.0, color: Colors.white),
+                        Gap(10.0),
+                        Expanded(
+                          flex: 1,
+                          child: Card(
+                            color: Colors.transparent,
+                            elevation: 20.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Text(
+                              // "果物の知識について\n少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください",
+                              S.of(context).AllCorrect2,
+                              style: TextStyle(
+                                  fontSize: 25.0, color: Colors.white),
+                            ),
                           ),
                         ),
-                        Spacer(),
+                        Gap(10.0),
                         Center(
                           child: (adManager.bannerAd == null)
                               ? Container(

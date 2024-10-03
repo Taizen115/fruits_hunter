@@ -34,7 +34,7 @@ class _ListCategoryChipsState extends State<ListCategoryChips> {
             selected: value == index,
             onSelected: (bool isSelected) {
               setState(() {
-                value == index;
+                value = index;
                 widget.onCategorySelected(index);
               });
             },
