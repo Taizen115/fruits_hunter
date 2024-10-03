@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Ado": MessageLookupByLibrary.simpleMessage("広告の表示について"),
+        "AdoText": MessageLookupByLibrary.simpleMessage(
+            "パーソナライズされた広告の表示を許可して頂けるかどうかを次のダイアログで選択してください。\n\n許可頂くことで興味関心の低い広告の表示を減らすことができます。\n\nこれによってお客様の個人情報が取得されることはありませんのでご安心ください。"),
         "All": MessageLookupByLibrary.simpleMessage("全て"),
         "AllCorrect0": MessageLookupByLibrary.simpleMessage("全問正解！"),
         "AllCorrect1": MessageLookupByLibrary.simpleMessage(
@@ -75,6 +78,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "FontIcon": MessageLookupByLibrary.simpleMessage("フォント・アイコン名\n\n"),
         "FruitCount": MessageLookupByLibrary.simpleMessage("獲得果物数"),
         "FruitList": MessageLookupByLibrary.simpleMessage("果物一覧"),
+        "GetData": MessageLookupByLibrary.simpleMessage(
+            "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください"),
         "GoMap0": MessageLookupByLibrary.simpleMessage("果樹園"),
         "GoMap1":
             MessageLookupByLibrary.simpleMessage("周辺の果樹園を検索しても\nよろしいでしょうか？"),
@@ -114,9 +119,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "TwentyQuestions": MessageLookupByLibrary.simpleMessage("20問"),
         "WetWipes": MessageLookupByLibrary.simpleMessage("ウェットティッシュ"),
         "WinterFruit": MessageLookupByLibrary.simpleMessage("冬の果物"),
-        "ado": MessageLookupByLibrary.simpleMessage("広告の表示について"),
-        "adoText": MessageLookupByLibrary.simpleMessage(
-            "パーソナライズされた広告の表示を許可して頂けるかどうかを次のダイアログで選択してください。\n\n許可頂くことで興味関心の低い広告の表示を減らすことができます。\n\nこれによってお客様の個人情報が取得されることはありませんのでご安心ください。"),
         "mannerAnswers0": MessageLookupByLibrary.simpleMessage(
             "果樹園では, 走り回ったり騒いだりせず, 周囲に配慮して楽しく果物狩りを過ごして頂けると有難いです. "),
         "mannerAnswers1": MessageLookupByLibrary.simpleMessage(

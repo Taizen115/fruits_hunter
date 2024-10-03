@@ -80,10 +80,10 @@ class S {
     );
   }
 
-  /// `Belongings`
+  /// `Belonging`
   String get Belongings {
     return Intl.message(
-      'Belongings',
+      'Belonging',
       name: 'Belongings',
       desc: '',
       args: [],
@@ -95,6 +95,16 @@ class S {
     return Intl.message(
       'Quiz',
       name: 'Quiz',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `[Home]Please close the screen and try again`
+  String get GetData {
+    return Intl.message(
+      '[Home]Please close the screen and try again',
+      name: 'GetData',
       desc: '',
       args: [],
     );
@@ -151,20 +161,20 @@ class S {
   }
 
   /// `Banner ad display`
-  String get ado {
+  String get Ado {
     return Intl.message(
       'Banner ad display',
-      name: 'ado',
+      name: 'Ado',
       desc: '',
       args: [],
     );
   }
 
   /// `Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n`
-  String get adoText {
+  String get AdoText {
     return Intl.message(
       'Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n',
-      name: 'adoText',
+      name: 'AdoText',
       desc: '',
       args: [],
     );

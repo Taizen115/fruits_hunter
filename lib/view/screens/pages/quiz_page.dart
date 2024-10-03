@@ -25,7 +25,6 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-
   //初期化
 
   int numberOfRemaining = 0;
@@ -274,9 +273,7 @@ class _QuizPageState extends State<QuizPage> {
                       child: AutoSizeText(
                         choices[0],
                         maxLines: 1,
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            color: Colors.white),
+                        style: TextStyle(fontSize: 25.0, color: Colors.white),
                       ),
                     ),
                   ),
@@ -293,9 +290,7 @@ class _QuizPageState extends State<QuizPage> {
                       child: AutoSizeText(
                         choices[1],
                         maxLines: 1,
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            color: Colors.white),
+                        style: TextStyle(fontSize: 25.0, color: Colors.white),
                       ),
                     ),
                   ),
@@ -316,9 +311,7 @@ class _QuizPageState extends State<QuizPage> {
                       child: AutoSizeText(
                         choices[2],
                         maxLines: 1,
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            color: Colors.white),
+                        style: TextStyle(fontSize: 25.0, color: Colors.white),
                       ),
                     ),
                   ),
@@ -335,9 +328,7 @@ class _QuizPageState extends State<QuizPage> {
                       child: AutoSizeText(
                         choices[3],
                         maxLines: 1,
-                        style: TextStyle(
-                            fontSize: 25.0,
-                            color: Colors.white),
+                        style: TextStyle(fontSize: 25.0, color: Colors.white),
                       ),
                     ),
                   ),
@@ -430,11 +421,9 @@ class _QuizPageState extends State<QuizPage> {
                     child: Column(
                       children: [
                         AutoSizeText(
-                           S.of(context).QuizAnswer + "${answer}",
+                          S.of(context).QuizAnswer + "${answer}",
                           maxLines: 2,
-                          style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.teal),
+                          style: TextStyle(fontSize: 20.0, color: Colors.teal),
                         ),
                       ],
                     ),
@@ -443,7 +432,6 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
             Spacer(),
-
             Expanded(
               flex: 5,
               child: Padding(
@@ -457,9 +445,7 @@ class _QuizPageState extends State<QuizPage> {
                       child: AutoSizeText(
                         S.of(context).QuizExplanation + "\n${explanation}",
                         maxLines: 6,
-                        style: TextStyle(
-                            fontSize: 30.0,
-                            color: Colors.teal),
+                        style: TextStyle(fontSize: 30.0, color: Colors.teal),
                       ),
                     ),
                   ),
@@ -467,14 +453,15 @@ class _QuizPageState extends State<QuizPage> {
               ),
             ),
             Spacer(),
-
             Expanded(
               flex: 1,
               child: ElevatedButton(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: AutoSizeText(
-                      numberOfRemaining == 0 ? S.of(context).Result : S.of(context).NextFruit,
+                      numberOfRemaining == 0
+                          ? S.of(context).Result
+                          : S.of(context).NextFruit,
                       maxLines: 1,
                       style: TextStyle(fontFamily: SubFont, fontSize: 30.0),
                     ),
@@ -500,10 +487,9 @@ class _QuizPageState extends State<QuizPage> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  GradesScreen(
-                                      numberOfHunt: numberOfHunt,
-                                      getRate: getRate)));
+                              builder: (context) => GradesScreen(
+                                  numberOfHunt: numberOfHunt,
+                                  getRate: getRate)));
                     } else {
                       setFruits();
                     }
@@ -525,12 +511,24 @@ class _QuizPageState extends State<QuizPage> {
       isCorrectIncorrectImageEnabled = false;
       isExplained = false;
       isNextQuestioned = true;
-      question = (currentLanguage == "ja")? _currentQuestion!.question: _currentQuestion!.questionEn ?? "";
-      answer = (currentLanguage == "ja")? _currentQuestion!.answer: _currentQuestion!.answerEn ?? "";
-      choice1 = (currentLanguage == "ja")? _currentQuestion!.choice1: _currentQuestion!.choice1En ?? "";
-      choice2 = (currentLanguage == "ja")? _currentQuestion!.choice2: _currentQuestion!.choice2En ?? "";
-      choice3 = (currentLanguage == "ja")? _currentQuestion!.choice3: _currentQuestion!.choice3En ?? "";
-      explanation = (currentLanguage == "ja")? _currentQuestion!.explanation: _currentQuestion!.explanationEn ?? "";
+      question = (currentLanguage == "ja")
+          ? _currentQuestion!.question
+          : _currentQuestion!.questionEn ?? "";
+      answer = (currentLanguage == "ja")
+          ? _currentQuestion!.answer
+          : _currentQuestion!.answerEn ?? "";
+      choice1 = (currentLanguage == "ja")
+          ? _currentQuestion!.choice1
+          : _currentQuestion!.choice1En ?? "";
+      choice2 = (currentLanguage == "ja")
+          ? _currentQuestion!.choice2
+          : _currentQuestion!.choice2En ?? "";
+      choice3 = (currentLanguage == "ja")
+          ? _currentQuestion!.choice3
+          : _currentQuestion!.choice3En ?? "";
+      explanation = (currentLanguage == "ja")
+          ? _currentQuestion!.explanation
+          : _currentQuestion!.explanationEn ?? "";
 
       choices[0] = answer;
       choices[1] = choice1;
@@ -548,36 +546,37 @@ class _QuizPageState extends State<QuizPage> {
 
   _finishQuiz() {
     return showDialog(
-        barrierDismissible: false,
-        context: context,
-        builder: (_) => AlertDialog(
-              title: Text(
-                S.of(context).QuizFinish,
-                style: TextStyle(fontSize: 25.0),
-              ),
-              content: Text(
-                S.of(context).FinishQuestion,
-                style: TextStyle(fontSize: 20.0),
-              ),
-              actions: [
-                TextButton(
-                  child: Text(
-                    S.of(context).Cancel,
-                    style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                ),
-                TextButton(
-                  child: Text(
-                    S.of(context).OK,
-                    style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
-            ));
+      barrierDismissible: false,
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text(
+          S.of(context).QuizFinish,
+          style: TextStyle(fontSize: 25.0),
+        ),
+        content: Text(
+          S.of(context).FinishQuestion,
+          style: TextStyle(fontSize: 20.0),
+        ),
+        actions: [
+          TextButton(
+            child: Text(
+              S.of(context).Cancel,
+              style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+          TextButton(
+            child: Text(
+              S.of(context).OK,
+              style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

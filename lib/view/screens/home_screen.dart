@@ -62,15 +62,23 @@ class _HomeScreenState extends State<HomeScreen> {
     await showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('広告の表示について'),
-        content: const Text(
-            "パーソナライズされた広告の表示を許可して頂けるかどうかを次のダイアログで選択してください。"
-                "\n\n許可頂くことで興味関心の低い広告の表示を減らすことができます。"
-                "\n\nこれによってお客様の個人情報が取得されることはありませんのでご安心ください。"),
+        title: Text(
+            S.of(context).Ado
+            // '広告の表示について'
+          ),
+        content: Text(
+          S.of(context).AdoText
+            // "パーソナライズされた広告の表示を許可して頂けるかどうかを次のダイアログで選択してください。"
+            //     "\n\n許可頂くことで興味関心の低い広告の表示を減らすことができます。"
+            //     "\n\nこれによってお客様の個人情報が取得されることはありませんのでご安心ください。"
+           ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('次にすすむ'),
+            child: Text(
+              S.of(context).Next,
+                // '次にすすむ'
+            ),
           ),
         ],
       ),
@@ -355,7 +363,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
     if (allFruitsList.isEmpty) {
       Fluttertoast.showToast(
-          msg: "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください");
+          msg: S.of(context).GetData);
+          //"[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください");
     }
 
     Navigator.push(

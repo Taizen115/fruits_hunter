@@ -2,8 +2,10 @@
   "Catchphrase":"What kind of help do you need with\nfruit picking?",
   "List": "List",
   "Manners": "Manners",
-  "Belongings": "Belongings",
+  "Belongings": "Belonging",
   "Quiz": "Quiz",
+
+  "GetData": "[Home]Please close the screen and try again",
 
   "Credits": "Copyright Notice",
   "PhotoIllustration": "Photo・illustration\n\n",
@@ -11,8 +13,8 @@
   "FontIcon": "Font and icon name\n\n",
   "GoogleFontFontAwesomeIcon": "Google Font\n\nFontAwesomeIcon",
 
-  "ado": "Banner ad display",
-  "adoText": "Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n",
+  "Ado": "Banner ad display",
+  "AdoText": "Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n",
   "Next": "Proceed to the next page.",
 
   "QuestionCount": "Number of questions",

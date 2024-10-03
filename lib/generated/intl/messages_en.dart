@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "Ado": MessageLookupByLibrary.simpleMessage("Banner ad display"),
+        "AdoText": MessageLookupByLibrary.simpleMessage(
+            "Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n"),
         "All": MessageLookupByLibrary.simpleMessage("All Season"),
         "AllCorrect0": MessageLookupByLibrary.simpleMessage("All correct!"),
         "AllCorrect1": MessageLookupByLibrary.simpleMessage(
@@ -32,7 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later."),
         "AutumnFruit": MessageLookupByLibrary.simpleMessage("Autumn"),
         "BelongingList": MessageLookupByLibrary.simpleMessage("checklist"),
-        "Belongings": MessageLookupByLibrary.simpleMessage("Belongings"),
+        "Belongings": MessageLookupByLibrary.simpleMessage("Belonging"),
         "Cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "Cap": MessageLookupByLibrary.simpleMessage("cap"),
         "Catchphrase": MessageLookupByLibrary.simpleMessage(
@@ -76,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Font and icon name\n\n"),
         "FruitCount": MessageLookupByLibrary.simpleMessage("fruit count"),
         "FruitList": MessageLookupByLibrary.simpleMessage("Seasonal Fruits"),
+        "GetData": MessageLookupByLibrary.simpleMessage(
+            "[Home]Please close the screen and try again"),
         "GoMap0": MessageLookupByLibrary.simpleMessage("Orchard"),
         "GoMap1": MessageLookupByLibrary.simpleMessage(
             "Shall I look up some orchards in your area?"),
@@ -121,9 +126,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "TwentyQuestions": MessageLookupByLibrary.simpleMessage("20"),
         "WetWipes": MessageLookupByLibrary.simpleMessage("wet wipes"),
         "WinterFruit": MessageLookupByLibrary.simpleMessage("Winter"),
-        "ado": MessageLookupByLibrary.simpleMessage("Banner ad display"),
-        "adoText": MessageLookupByLibrary.simpleMessage(
-            "Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n"),
         "mannerAnswers0": MessageLookupByLibrary.simpleMessage(
             "It would be wonderful if you could enjoy picking fruits while being considerate of others. "),
         "mannerAnswers1": MessageLookupByLibrary.simpleMessage(
