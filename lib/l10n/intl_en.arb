@@ -43,8 +43,8 @@
   "DetailQuestion9": "6. What is the cost of a harvest experience?",
   "DetailQuestion10": "7. How can I tell if it's ripe?",
 
-  "DetailAnswer0": "Fresh fruits have a great taste and aroma, and their nutrients remain intact. \nThey are also rich in dietary fiber and can help boost your immune system",
-  "DetailAnswer1": "Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \nFruits cultivated in cold regions often have a higher acidity.\nFruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\nFruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\nFruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers.",
+  "DetailAnswer0": "Fresh fruits have a great taste and aroma, and their nutrients remain intact. \n\nThey are also rich in dietary fiber and can help boost your immune system.",
+  "DetailAnswer1": "① Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \n\n② Fruits cultivated in cold regions often have a higher acidity.\n\n③ Fruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\n\n④ Fruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\n\n⑤ Fruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers.",
 
   "GoMap0": "Orchard",
   "GoMap1": "Shall I look up some orchards in your area?",
@@ -60,12 +60,12 @@
   "mannerQuestions6": "How do I find out the orchard's rules?",
 
   "mannerAnswers0": "It would be wonderful if you could enjoy picking fruits while being considerate of others. ",
-  "mannerAnswers1": "It would be helpful if you could follow our guidelines and handle the trees gently while picking fruits.",
-  "mannerAnswers2": "If it rains on the day, we recommend that you contact the orchard in advance. Alternatively, you may want to choose an all-weather farm ",
-  "mannerAnswers3": "While some orchards may not require reservations, it is highly recommended that you contact the orchard beforehand by phone or email to confirm availability. ",
+  "mannerAnswers1": "It would be helpful if you could follow guidelines and handle the trees gently while picking fruits.",
+  "mannerAnswers2": "If it rains on the day, we recommend that you contact the orchard in advance. \n\nAlternatively, you may want to choose an all-weather farm ",
+  "mannerAnswers3": "While some orchards may not require reservations, it is highly recommended that you contact the orchard before hand by phone or email to confirm availability. ",
   "mannerAnswers4": "While it's great to dress up, it's also advisable to wear comfortable clothing that you don't mind getting dirty. ",
-  "mannerAnswers5": "As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. Additionally, wet wipes would be convenient for mealtimes.",
-  "mannerAnswers6": "It would be best to ask the orchard staff directly. By following their rules, you can enjoy a satisfying fruit-picking experience.",
+  "mannerAnswers5": "As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. \n\nAdditionally, wet wipes would be convenient for mealtimes.",
+  "mannerAnswers6": "It would be best to ask the orchard staff directly. \n\nBy following their rules, you can enjoy a satisfying fruit-picking experience.",
 
   "BelongingList": "checklist",
   "Shirt": "long-sleeved top",

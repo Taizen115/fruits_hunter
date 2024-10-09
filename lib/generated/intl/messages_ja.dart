@@ -43,9 +43,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Cooler": MessageLookupByLibrary.simpleMessage("クーラーボックス"),
         "Credits": MessageLookupByLibrary.simpleMessage("クレジット表記"),
         "DetailAnswer0": MessageLookupByLibrary.simpleMessage(
-            "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. \nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます."),
+            "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. \n\nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます."),
         "DetailAnswer1": MessageLookupByLibrary.simpleMessage(
-            "温暖な地域で栽培された果物は, 糖度が高く, 甘みが強い傾向があります. 寒冷な地域で栽培された果物は, 酸味が強い傾向があります. \n\n土の粒子が粗い砂質土壌で栽培された果物は, 糖度が高く, 甘味が強い傾向があります.火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n有機質肥料を使って栽培された果物は, 化学肥料で栽培された果物よりも甘みが強い傾向があります."),
+            "① 温暖な地域で栽培された果物は, 糖度が高く, 甘みが強い傾向があります. \n\n② 寒冷な地域で栽培された果物は, 酸味が強い傾向があります. \n\n③ 土の粒子が粗い砂質土壌で栽培された果物は, 糖度が高く, 甘味が強い傾向があります.\n\n④ 火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n⑤ 有機質肥料を使って栽培された果物は, 化学肥料で栽培された果物よりも甘みが強い傾向があります."),
         "DetailQuestion0": MessageLookupByLibrary.simpleMessage(
             "1.美味しい果物を食べるとき, 鮮度が重要なのはなぜですか？"),
         "DetailQuestion1":

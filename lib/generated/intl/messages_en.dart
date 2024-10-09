@@ -43,9 +43,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "Cooler": MessageLookupByLibrary.simpleMessage("cooler"),
         "Credits": MessageLookupByLibrary.simpleMessage("Copyright Notice"),
         "DetailAnswer0": MessageLookupByLibrary.simpleMessage(
-            "Fresh fruits have a great taste and aroma, and their nutrients remain intact. \nThey are also rich in dietary fiber and can help boost your immune system"),
+            "Fresh fruits have a great taste and aroma, and their nutrients remain intact. \n\nThey are also rich in dietary fiber and can help boost your immune system."),
         "DetailAnswer1": MessageLookupByLibrary.simpleMessage(
-            "Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \nFruits cultivated in cold regions often have a higher acidity.\nFruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\nFruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\nFruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers."),
+            "① Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \n\n② Fruits cultivated in cold regions often have a higher acidity.\n\n③ Fruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\n\n④ Fruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\n\n⑤ Fruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers."),
         "DetailQuestion0": MessageLookupByLibrary.simpleMessage(
             "1. What makes freshness so important for enjoying delicious fruits?"),
         "DetailQuestion1": MessageLookupByLibrary.simpleMessage(
@@ -129,17 +129,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "mannerAnswers0": MessageLookupByLibrary.simpleMessage(
             "It would be wonderful if you could enjoy picking fruits while being considerate of others. "),
         "mannerAnswers1": MessageLookupByLibrary.simpleMessage(
-            "It would be helpful if you could follow our guidelines and handle the trees gently while picking fruits."),
+            "It would be helpful if you could follow guidelines and handle the trees gently while picking fruits."),
         "mannerAnswers2": MessageLookupByLibrary.simpleMessage(
-            "If it rains on the day, we recommend that you contact the orchard in advance. Alternatively, you may want to choose an all-weather farm "),
+            "If it rains on the day, we recommend that you contact the orchard in advance. \n\nAlternatively, you may want to choose an all-weather farm "),
         "mannerAnswers3": MessageLookupByLibrary.simpleMessage(
-            "While some orchards may not require reservations, it is highly recommended that you contact the orchard beforehand by phone or email to confirm availability. "),
+            "While some orchards may not require reservations, it is highly recommended that you contact the orchard before hand by phone or email to confirm availability. "),
         "mannerAnswers4": MessageLookupByLibrary.simpleMessage(
             "While it\'s great to dress up, it\'s also advisable to wear comfortable clothing that you don\'t mind getting dirty. "),
         "mannerAnswers5": MessageLookupByLibrary.simpleMessage(
-            "As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. Additionally, wet wipes would be convenient for mealtimes."),
+            "As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. \n\nAdditionally, wet wipes would be convenient for mealtimes."),
         "mannerAnswers6": MessageLookupByLibrary.simpleMessage(
-            "It would be best to ask the orchard staff directly. By following their rules, you can enjoy a satisfying fruit-picking experience."),
+            "It would be best to ask the orchard staff directly. \n\nBy following their rules, you can enjoy a satisfying fruit-picking experience."),
         "mannerQuestions0": MessageLookupByLibrary.simpleMessage(
             "Is it okay to run around while picking fruits in the orchard?"),
         "mannerQuestions1": MessageLookupByLibrary.simpleMessage(

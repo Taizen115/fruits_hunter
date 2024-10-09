@@ -420,20 +420,20 @@ class S {
     );
   }
 
-  /// `Fresh fruits have a great taste and aroma, and their nutrients remain intact. \nThey are also rich in dietary fiber and can help boost your immune system`
+  /// `Fresh fruits have a great taste and aroma, and their nutrients remain intact. \n\nThey are also rich in dietary fiber and can help boost your immune system.`
   String get DetailAnswer0 {
     return Intl.message(
-      'Fresh fruits have a great taste and aroma, and their nutrients remain intact. \nThey are also rich in dietary fiber and can help boost your immune system',
+      'Fresh fruits have a great taste and aroma, and their nutrients remain intact. \n\nThey are also rich in dietary fiber and can help boost your immune system.',
       name: 'DetailAnswer0',
       desc: '',
       args: [],
     );
   }
 
-  /// `Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \nFruits cultivated in cold regions often have a higher acidity.\nFruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\nFruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\nFruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers.`
+  /// `① Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \n\n② Fruits cultivated in cold regions often have a higher acidity.\n\n③ Fruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\n\n④ Fruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\n\n⑤ Fruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers.`
   String get DetailAnswer1 {
     return Intl.message(
-      'Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \nFruits cultivated in cold regions often have a higher acidity.\nFruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\nFruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\nFruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers.',
+      '① Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \n\n② Fruits cultivated in cold regions often have a higher acidity.\n\n③ Fruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\n\n④ Fruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\n\n⑤ Fruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers.',
       name: 'DetailAnswer1',
       desc: '',
       args: [],
@@ -560,30 +560,30 @@ class S {
     );
   }
 
-  /// `It would be helpful if you could follow our guidelines and handle the trees gently while picking fruits.`
+  /// `It would be helpful if you could follow guidelines and handle the trees gently while picking fruits.`
   String get mannerAnswers1 {
     return Intl.message(
-      'It would be helpful if you could follow our guidelines and handle the trees gently while picking fruits.',
+      'It would be helpful if you could follow guidelines and handle the trees gently while picking fruits.',
       name: 'mannerAnswers1',
       desc: '',
       args: [],
     );
   }
 
-  /// `If it rains on the day, we recommend that you contact the orchard in advance. Alternatively, you may want to choose an all-weather farm `
+  /// `If it rains on the day, we recommend that you contact the orchard in advance. \n\nAlternatively, you may want to choose an all-weather farm `
   String get mannerAnswers2 {
     return Intl.message(
-      'If it rains on the day, we recommend that you contact the orchard in advance. Alternatively, you may want to choose an all-weather farm ',
+      'If it rains on the day, we recommend that you contact the orchard in advance. \n\nAlternatively, you may want to choose an all-weather farm ',
       name: 'mannerAnswers2',
       desc: '',
       args: [],
     );
   }
 
-  /// `While some orchards may not require reservations, it is highly recommended that you contact the orchard beforehand by phone or email to confirm availability. `
+  /// `While some orchards may not require reservations, it is highly recommended that you contact the orchard before hand by phone or email to confirm availability. `
   String get mannerAnswers3 {
     return Intl.message(
-      'While some orchards may not require reservations, it is highly recommended that you contact the orchard beforehand by phone or email to confirm availability. ',
+      'While some orchards may not require reservations, it is highly recommended that you contact the orchard before hand by phone or email to confirm availability. ',
       name: 'mannerAnswers3',
       desc: '',
       args: [],
@@ -600,20 +600,20 @@ class S {
     );
   }
 
-  /// `As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. Additionally, wet wipes would be convenient for mealtimes.`
+  /// `As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. \n\nAdditionally, wet wipes would be convenient for mealtimes.`
   String get mannerAnswers5 {
     return Intl.message(
-      'As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. Additionally, wet wipes would be convenient for mealtimes.',
+      'As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. \n\nAdditionally, wet wipes would be convenient for mealtimes.',
       name: 'mannerAnswers5',
       desc: '',
       args: [],
     );
   }
 
-  /// `It would be best to ask the orchard staff directly. By following their rules, you can enjoy a satisfying fruit-picking experience.`
+  /// `It would be best to ask the orchard staff directly. \n\nBy following their rules, you can enjoy a satisfying fruit-picking experience.`
   String get mannerAnswers6 {
     return Intl.message(
-      'It would be best to ask the orchard staff directly. By following their rules, you can enjoy a satisfying fruit-picking experience.',
+      'It would be best to ask the orchard staff directly. \n\nBy following their rules, you can enjoy a satisfying fruit-picking experience.',
       name: 'mannerAnswers6',
       desc: '',
       args: [],
