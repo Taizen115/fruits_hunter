@@ -130,10 +130,10 @@ class S {
     );
   }
 
-  /// `・Top Page : Image courtesy of Pexels\n\n ・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n`
+  /// `・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n`
   String get TopPage {
     return Intl.message(
-      '・Top Page : Image courtesy of Pexels\n\n ・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n',
+      '・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n',
       name: 'TopPage',
       desc: '',
       args: [],
@@ -150,10 +150,10 @@ class S {
     );
   }
 
-  /// `Google Font\n\nFontAwesomeIcon`
+  /// `・Google Font\n\n・FontAwesomeIcon`
   String get GoogleFontFontAwesomeIcon {
     return Intl.message(
-      'Google Font\n\nFontAwesomeIcon',
+      '・Google Font\n\n・FontAwesomeIcon',
       name: 'GoogleFontFontAwesomeIcon',
       desc: '',
       args: [],

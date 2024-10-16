@@ -87,7 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "GoMap2": MessageLookupByLibrary.simpleMessage("Cancel"),
         "GoMap3": MessageLookupByLibrary.simpleMessage("OK"),
         "GoogleFontFontAwesomeIcon": MessageLookupByLibrary.simpleMessage(
-            "Google Font\n\nFontAwesomeIcon"),
+            "・Google Font\n\n・FontAwesomeIcon"),
         "HowManyQuestions": MessageLookupByLibrary.simpleMessage(
             "How many questions will you answer?"),
         "Hunt": MessageLookupByLibrary.simpleMessage("fruits"),
@@ -122,7 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "TheRest": MessageLookupByLibrary.simpleMessage("the rest"),
         "ThirtyQuestions": MessageLookupByLibrary.simpleMessage("30"),
         "TopPage": MessageLookupByLibrary.simpleMessage(
-            "・Top Page : Image courtesy of Pexels\n\n ・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n"),
+            "・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n"),
         "TwentyQuestions": MessageLookupByLibrary.simpleMessage("20"),
         "WetWipes": MessageLookupByLibrary.simpleMessage("wet wipes"),
         "WinterFruit": MessageLookupByLibrary.simpleMessage("Winter"),

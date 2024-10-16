@@ -86,7 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "GoMap2": MessageLookupByLibrary.simpleMessage("キャンセル"),
         "GoMap3": MessageLookupByLibrary.simpleMessage("OK"),
         "GoogleFontFontAwesomeIcon": MessageLookupByLibrary.simpleMessage(
-            "Google Font\n\nFontAwesomeIcon"),
+            "・Google Font\n\n・FontAwesomeIcon"),
         "HowManyQuestions": MessageLookupByLibrary.simpleMessage("何問解きますか？"),
         "Hunt": MessageLookupByLibrary.simpleMessage("個"),
         "List": MessageLookupByLibrary.simpleMessage("果物一覧"),
