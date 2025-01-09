@@ -1,8 +1,8 @@
 {
   "Catchphrase":"What kind of help do you need with\nfruit picking?",
   "List": "List",
-  "Manners": "Manners",
   "Belongings": "Belonging",
+  "Feature": "Feature",
   "Quiz": "Quiz",
 
   "GetData": "[Home]Please close the screen and try again",
@@ -50,6 +50,8 @@
   "GoMap1": "Shall I look up some orchards in your area?",
   "GoMap2": "Cancel",
   "GoMap3": "OK",
+
+  "Manners": "Manners",
 
   "mannerQuestions0": "Is it okay to run around while picking fruits in the orchard?",
   "mannerQuestions1": "Are there any rules about how to pick the fruits?",

@@ -70,21 +70,21 @@ class S {
     );
   }
 
-  /// `Manners`
-  String get Manners {
-    return Intl.message(
-      'Manners',
-      name: 'Manners',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Belonging`
   String get Belongings {
     return Intl.message(
       'Belonging',
       name: 'Belongings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Feature`
+  String get Feature {
+    return Intl.message(
+      'Feature',
+      name: 'Feature',
       desc: '',
       args: [],
     );
@@ -475,6 +475,16 @@ class S {
     return Intl.message(
       'OK',
       name: 'GoMap3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manners`
+  String get Manners {
+    return Intl.message(
+      'Manners',
+      name: 'Manners',
       desc: '',
       args: [],
     );

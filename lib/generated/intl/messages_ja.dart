@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Drink": MessageLookupByLibrary.simpleMessage("飲み物"),
         "DropRate": MessageLookupByLibrary.simpleMessage("獲得率"),
         "FaceTowel": MessageLookupByLibrary.simpleMessage("タオル"),
+        "Feature": MessageLookupByLibrary.simpleMessage("特集"),
         "FinalComment": MessageLookupByLibrary.simpleMessage(
             "果物の知識について\nお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください."),
         "FinishQuestion":

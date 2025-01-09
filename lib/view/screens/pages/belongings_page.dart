@@ -9,6 +9,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../../generated/l10n.dart';
 import '../../../main.dart';
 import '../../../style/style.dart';
+import 'manners_page.dart';
 
 class BelongingsPage extends StatefulWidget {
   @override
@@ -106,6 +107,19 @@ class _BelongingsPageState extends State<BelongingsPage> {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
+          actions: <Widget>[
+            PopupMenuButton(
+              iconColor: Colors.indigo,
+              color: Colors.white,
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  child: Text("マナー", style: TextStyle(fontSize: 20.0),),
+                  onTap: () => _goMannersPage(context),
+                ),
+              ],
+            ),
+
+          ],
           title: Text(
             S.of(context).BelongingList,
             style: TextStyle(fontFamily: ThirdFont, fontSize: 30.0),
@@ -219,5 +233,10 @@ class _BelongingsPageState extends State<BelongingsPage> {
         ),
       ),
     );
+  }
+
+  _goMannersPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => MannersPage()));
   }
 }

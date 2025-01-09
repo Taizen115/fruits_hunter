@@ -9,12 +9,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
 import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/style/style.dart';
+import 'package:fruit_hunter/view/screens/pages/feature_page.dart';
 import 'package:fruit_hunter/view/screens/pages/list_page.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../main.dart';
 import 'pages/belongings_page.dart';
 import 'pages/credit_page.dart';
-import 'pages/manners_page.dart';
 import 'pages/quiz_page.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -268,9 +268,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goMannersPage(),
+                onPressed: () => _goBelongingsPage(),
                 child: AutoSizeText(
-                 S.of(context).Manners,
+                 S.of(context).Belongings,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -285,9 +285,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goBelogingsPage(),
+                onPressed: () => _goFeaturePage(),
                 child: AutoSizeText(
-                  S.of(context).Belongings,
+                  S.of(context).Feature,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -392,19 +392,19 @@ class _HomeScreenState extends State<HomeScreen> {
     //initAd();
   }
 
-  //4択の1つ、持ち物ページに飛ぶ
-  _goBelogingsPage() async {
+  //4択の1つ、特集ページに飛ぶ
+  _goFeaturePage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => BelongingsPage()));
+        context, MaterialPageRoute(builder: (context) => FeaturePage()));
     //initAd();
   }
 
-  //4択の1つ、マナーページに飛ぶ
-  _goMannersPage() async {
+  //4択の1つ、持ち物ページに飛ぶ
+  _goBelongingsPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => MannersPage()));
+        context, MaterialPageRoute(builder: (context) => BelongingsPage()));
     //initAd();
   }
 
@@ -421,4 +421,6 @@ class _HomeScreenState extends State<HomeScreen> {
     print("allFruitsList$allFruitsList");
     print("allFruitsList.length${allFruitsList.length}");
   }
+
+
 }

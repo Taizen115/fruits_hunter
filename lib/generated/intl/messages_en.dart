@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Drink": MessageLookupByLibrary.simpleMessage("drink"),
         "DropRate": MessageLookupByLibrary.simpleMessage("drop rate"),
         "FaceTowel": MessageLookupByLibrary.simpleMessage("face towel"),
+        "Feature": MessageLookupByLibrary.simpleMessage("Feature"),
         "FinalComment": MessageLookupByLibrary.simpleMessage(
             "For your next visit, why don\'t you try picking your own fruit?"),
         "FinishQuestion": MessageLookupByLibrary.simpleMessage(
