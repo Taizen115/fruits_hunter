@@ -5,15 +5,15 @@ import 'package:fruit_hunter/style/style.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../../../generated/l10n.dart';
-import '../../../main.dart';
+import '../../generated/l10n.dart';
+import '../../main.dart';
 
-class MannersPage extends StatefulWidget {
+class MannersScreen extends StatefulWidget {
   @override
-  State<MannersPage> createState() => _MannersPageState();
+  State<MannersScreen> createState() => _MannersScreenState();
 }
 
-class _MannersPageState extends State<MannersPage> {
+class _MannersScreenState extends State<MannersScreen> {
   @override
   void initState() {
     super.initState();

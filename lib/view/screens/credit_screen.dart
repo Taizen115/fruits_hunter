@@ -5,9 +5,9 @@ import 'package:fruit_hunter/main.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../../../style/style.dart';
+import '../../style/style.dart';
 
-class CreditPage extends StatelessWidget {
+class CreditScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(

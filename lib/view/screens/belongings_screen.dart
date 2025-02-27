@@ -6,59 +6,59 @@ import 'package:fruit_hunter/view/components/belongings_control.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../../../generated/l10n.dart';
-import '../../../main.dart';
-import '../../../style/style.dart';
-import 'manners_page.dart';
+import '../../generated/l10n.dart';
+import '../../main.dart';
+import '../../style/style.dart';
+import 'manners_screen.dart';
 
-class BelongingsPage extends StatefulWidget {
+class BelongingsScreen extends StatefulWidget {
   @override
-  State<BelongingsPage> createState() => _BelongingsPageState();
+  State<BelongingsScreen> createState() => _BelongingsScreenState();
 }
 
-class _BelongingsPageState extends State<BelongingsPage> {
-  Map<String, Belonging> belongings (BuildContext context) => {
-    "長袖の服": Belonging(
-      name: S.of(context).Shirt,
-      iconData: FontAwesomeIcons.shirt,
-    ),
-    "虫よけスプレー": Belonging(
-      name: S.of(context).Spray,
-      iconData: FontAwesomeIcons.bug,
-    ),
-    "日焼け止め": Belonging(
-      name: S.of(context).Sunscreen,
-      iconData: FontAwesomeIcons.sun,
-    ),
-    "帽子": Belonging(
-      name: S.of(context).Cap,
-      iconData: FontAwesomeIcons.redhat,
-    ),
-    "ウェットティッシュ": Belonging(
-      name: S.of(context).WetWipes,
-      iconData: FontAwesomeIcons.boxTissue,
-    ),
-    "タオル": Belonging(
-      name: S.of(context).FaceTowel,
-      iconData: FontAwesomeIcons.rug,
-    ),
-    "クーラーボックス": Belonging(
-      name: S.of(context).Cooler,
-      iconData: FontAwesomeIcons.box,
-    ),
-    "飲み物": Belonging(
-      name: S.of(context).Drink,
-      iconData: FontAwesomeIcons.bottleWater,
-    ),
-    // '長袖の服':Belonging(name: S.of(context).Shirt, iconData: FontAwesomeIcons.shirt,),
-    // '虫よけスプレー': FontAwesomeIcons.bug,
-    // '日焼け止め': FontAwesomeIcons.sun,
-    // '帽子': FontAwesomeIcons.redhat,
-    // 'ウェットティッシュ': FontAwesomeIcons.boxTissue,
-    // 'タオル': FontAwesomeIcons.rug,
-    // 'クーラーボックス': FontAwesomeIcons.box,
-    // '飲み物': FontAwesomeIcons.bottleWater,
-  };
+class _BelongingsScreenState extends State<BelongingsScreen> {
+  Map<String, Belonging> belongings(BuildContext context) => {
+        "長袖の服": Belonging(
+          name: S.of(context).Shirt,
+          iconData: FontAwesomeIcons.shirt,
+        ),
+        "虫よけスプレー": Belonging(
+          name: S.of(context).Spray,
+          iconData: FontAwesomeIcons.bug,
+        ),
+        "日焼け止め": Belonging(
+          name: S.of(context).Sunscreen,
+          iconData: FontAwesomeIcons.sun,
+        ),
+        "帽子": Belonging(
+          name: S.of(context).Cap,
+          iconData: FontAwesomeIcons.redhat,
+        ),
+        "ウェットティッシュ": Belonging(
+          name: S.of(context).WetWipes,
+          iconData: FontAwesomeIcons.boxTissue,
+        ),
+        "タオル": Belonging(
+          name: S.of(context).FaceTowel,
+          iconData: FontAwesomeIcons.rug,
+        ),
+        "クーラーボックス": Belonging(
+          name: S.of(context).Cooler,
+          iconData: FontAwesomeIcons.box,
+        ),
+        "飲み物": Belonging(
+          name: S.of(context).Drink,
+          iconData: FontAwesomeIcons.bottleWater,
+        ),
+        // '長袖の服':Belonging(name: S.of(context).Shirt, iconData: FontAwesomeIcons.shirt,),
+        // '虫よけスプレー': FontAwesomeIcons.bug,
+        // '日焼け止め': FontAwesomeIcons.sun,
+        // '帽子': FontAwesomeIcons.redhat,
+        // 'ウェットティッシュ': FontAwesomeIcons.boxTissue,
+        // 'タオル': FontAwesomeIcons.rug,
+        // 'クーラーボックス': FontAwesomeIcons.box,
+        // '飲み物': FontAwesomeIcons.bottleWater,
+      };
 
   //initは初期化
   @override
@@ -108,17 +108,19 @@ class _BelongingsPageState extends State<BelongingsPage> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           actions: <Widget>[
-            PopupMenuButton(
-              iconColor: Colors.indigo,
-              color: Colors.white,
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: Text("マナー", style: TextStyle(fontSize: 20.0),),
-                  onTap: () => _goMannersPage(context),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(60),
                 ),
-              ],
+                side: BorderSide(color: Colors.lightBlue),
+              ),
+              onPressed: () => _goMannersPage(context),
+              child: Text(
+                "マナー",
+                style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0, color: Colors.black87),
+              ),
             ),
-
           ],
           title: Text(
             S.of(context).BelongingList,
@@ -237,6 +239,6 @@ class _BelongingsPageState extends State<BelongingsPage> {
 
   _goMannersPage(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => MannersPage()));
+        context, MaterialPageRoute(builder: (context) => MannersScreen()));
   }
 }

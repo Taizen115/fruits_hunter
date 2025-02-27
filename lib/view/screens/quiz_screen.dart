@@ -9,22 +9,22 @@ import 'package:fruit_hunter/view/screens/all_correct_screen.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import '../../../style/style.dart';
-import '../grades_screen.dart';
+import '../../style/style.dart';
+import 'grades_screen.dart';
 import 'package:intl/intl.dart';
 
-class QuizPage extends StatefulWidget {
+class QuizScreen extends StatefulWidget {
   final numberOfQuestions;
 
-  QuizPage({
+  QuizScreen({
     required this.numberOfQuestions,
   });
 
   @override
-  State<QuizPage> createState() => _QuizPageState();
+  State<QuizScreen> createState() => _QuizScreenState();
 }
 
-class _QuizPageState extends State<QuizPage> {
+class _QuizScreenState extends State<QuizScreen> {
   //初期化
 
   int numberOfRemaining = 0;

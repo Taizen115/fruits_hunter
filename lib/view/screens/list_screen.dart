@@ -3,28 +3,28 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/main.dart';
-import 'package:fruit_hunter/view/screens/pages/detail_page.dart';
+import 'package:fruit_hunter/view/screens/detail_screen.page.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import '../../../db/database.dart';
-import '../../../generated/l10n.dart';
-import '../../../style/style.dart';
-import '../../components/list_category_chips.dart';
+import '../../db/database.dart';
+import '../../generated/l10n.dart';
+import '../../style/style.dart';
+import '../components/list_category_chips.dart';
 
 import 'package:intl/intl.dart';
 
-class ListPage extends StatefulWidget {
+class ListScreen extends StatefulWidget {
   final List<Fruit> allFruitsList;
 
-  ListPage({
+  ListScreen({
     required this.allFruitsList,
   });
 
   @override
-  State<ListPage> createState() => _ListPageState();
+  State<ListScreen> createState() => _ListScreenState();
 }
 
-class _ListPageState extends State<ListPage> {
+class _ListScreenState extends State<ListScreen> {
 
   //fruitsListの初期化
   List<Fruit> fruitsList = [];
@@ -240,7 +240,7 @@ class _ListPageState extends State<ListPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => DetailPage(
+        builder: (context) => DetailScreen(
           selectedFruit: selectedFruit,
         ),
       ),

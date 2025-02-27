@@ -6,25 +6,25 @@ import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../db/database.dart';
-import '../../../main.dart';
-import '../../../style/style.dart';
+import '../../db/database.dart';
+import '../../main.dart';
+import '../../style/style.dart';
 
 import 'package:intl/intl.dart';
 
-class DetailPage extends StatefulWidget {
+class DetailScreen extends StatefulWidget {
   final Fruit selectedFruit;
 
-  DetailPage({required this.selectedFruit});
+  DetailScreen({required this.selectedFruit});
 
   //多言語化
   final currentLanguage = Intl.getCurrentLocale();
 
   @override
-  State<DetailPage> createState() => _DetailPageState();
+  State<DetailScreen> createState() => _DetailScreenState();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
     super.initState();

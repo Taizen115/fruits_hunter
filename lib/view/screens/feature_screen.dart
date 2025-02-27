@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_hunter/style/style.dart';
 
-class FeaturePage extends StatefulWidget {
+class FeatureScreen extends StatefulWidget {
 
   @override
-  State<FeaturePage> createState() => _FeaturePageState();
+  State<FeatureScreen> createState() => _FeatureScreenState();
 }
 
-class _FeaturePageState extends State<FeaturePage> {
+class _FeatureScreenState extends State<FeatureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

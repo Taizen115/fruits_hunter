@@ -9,13 +9,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
 import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/style/style.dart';
-import 'package:fruit_hunter/view/screens/pages/feature_page.dart';
-import 'package:fruit_hunter/view/screens/pages/list_page.dart';
+import 'package:fruit_hunter/view/screens/feature_screen.dart';
+import 'package:fruit_hunter/view/screens/list_screen.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../main.dart';
-import 'pages/belongings_page.dart';
-import 'pages/credit_page.dart';
-import 'pages/quiz_page.dart';
+import 'belongings_screen.dart';
+import 'credit_screen.dart';
+import 'quiz_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -371,7 +371,7 @@ class _HomeScreenState extends State<HomeScreen> {
       //全ての果物リストを渡す
       context,
       MaterialPageRoute(
-        builder: (context) => ListPage(
+        builder: (context) => ListScreen(
           allFruitsList: allFruitsList,
         ),
       ),
@@ -386,7 +386,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => QuizPage(
+            builder: (context) => QuizScreen(
                   numberOfQuestions: numberOfQuestion,
                 )));
     //initAd();
@@ -396,7 +396,7 @@ class _HomeScreenState extends State<HomeScreen> {
   _goFeaturePage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => FeaturePage()));
+        context, MaterialPageRoute(builder: (context) => FeatureScreen()));
     //initAd();
   }
 
@@ -404,7 +404,7 @@ class _HomeScreenState extends State<HomeScreen> {
   _goBelongingsPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => BelongingsPage()));
+        context, MaterialPageRoute(builder: (context) => BelongingsScreen()));
     //initAd();
   }
 
@@ -412,7 +412,7 @@ class _HomeScreenState extends State<HomeScreen> {
   _goCreditPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => CreditPage()));
+        context, MaterialPageRoute(builder: (context) => CreditScreen()));
     initAd();
   }
 
