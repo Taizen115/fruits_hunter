@@ -100,6 +100,46 @@ class S {
     );
   }
 
+  /// `Strawberry Picking`
+  String get Strawberry {
+    return Intl.message(
+      'Strawberry Picking',
+      name: 'Strawberry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Shall we go strawberry picking?`
+  String get StrawberryWord {
+    return Intl.message(
+      'Shall we go strawberry picking?',
+      name: 'StrawberryWord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go！`
+  String get Go {
+    return Intl.message(
+      'Go！',
+      name: 'Go',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Guide book`
+  String get Guide {
+    return Intl.message(
+      'Guide book',
+      name: 'Guide',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `[Home]Please close the screen and try again`
   String get GetData {
     return Intl.message(
@@ -210,31 +250,31 @@ class S {
     );
   }
 
-  /// `10`
+  /// `10Q`
   String get TenQuestions {
     return Intl.message(
-      '10',
+      '10Q',
       name: 'TenQuestions',
       desc: '',
       args: [],
     );
   }
 
-  /// `20`
-  String get TwentyQuestions {
+  /// `100Q`
+  String get OneHundredQuestions {
     return Intl.message(
-      '20',
-      name: 'TwentyQuestions',
+      '100Q',
+      name: 'OneHundredQuestions',
       desc: '',
       args: [],
     );
   }
 
-  /// `30`
-  String get ThirtyQuestions {
+  /// `1000Q`
+  String get OneThousandQuestions {
     return Intl.message(
-      '30',
-      name: 'ThirtyQuestions',
+      '1000Q',
+      name: 'OneThousandQuestions',
       desc: '',
       args: [],
     );

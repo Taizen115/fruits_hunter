@@ -118,7 +118,7 @@ class _BelongingsScreenState extends State<BelongingsScreen> {
               onPressed: () => _goMannersPage(context),
               child: Text(
                 "マナー",
-                style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0, color: Colors.black87),
+                style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0, color: Colors.teal),
               ),
             ),
           ],

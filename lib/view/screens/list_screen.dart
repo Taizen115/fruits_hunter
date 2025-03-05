@@ -76,12 +76,12 @@ class _ListScreenState extends State<ListScreen> {
             // extendBodyBehindAppBar: true,
             appBar: AppBar(
               backgroundColor: Colors.transparent,
-              foregroundColor: Colors.white,
+              foregroundColor: Colors.white70,
               centerTitle: true,
               leading: TextButton(
                 child: Icon(
                   FontAwesomeIcons.arrowLeft,
-                  color: Colors.white,
+                  color: Colors.lightGreen,
                 ),
                 onPressed: () async {
                   await adManager.disposeBannerAd();
@@ -99,7 +99,7 @@ class _ListScreenState extends State<ListScreen> {
                   Text(
                     S.of(context).FruitList,
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.lightGreen[100],
                         fontFamily: MainFont,
                         fontSize: 25.0),
                   ),

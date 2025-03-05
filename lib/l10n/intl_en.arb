@@ -5,6 +5,11 @@
   "Feature": "Feature",
   "Quiz": "Quiz",
 
+  "Strawberry": "Strawberry Picking",
+  "StrawberryWord": "Shall we go strawberry picking?",
+  "Go": "Go！",
+  "Guide": "Guide book",
+
   "GetData": "[Home]Please close the screen and try again",
 
   "Credits": "Copyright Notice",
@@ -19,9 +24,9 @@
 
   "QuestionCount": "Number of questions",
   "HowManyQuestions": "How many questions will you answer?",
-  "TenQuestions": "10",
-  "TwentyQuestions": "20",
-  "ThirtyQuestions": "30",
+  "TenQuestions": "10Q",
+  "OneHundredQuestions": "100Q",
+  "OneThousandQuestions": "1000Q",
 
   "FruitList": "Seasonal Fruits",
   "Attention":"We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later.",

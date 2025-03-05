@@ -26,10 +26,7 @@ class HomeScreen extends StatefulWidget {
 //"\n\n許可頂くことで興味関心の低い広告の表示を減らすことができます。"
 //"\n\nこれによってお客様の個人情報が取得されることはありませんのでご安心ください。"
 
-
-
 class _HomeScreenState extends State<HomeScreen> {
-
   List<Question> quizList = [];
 
   //追加
@@ -62,22 +59,20 @@ class _HomeScreenState extends State<HomeScreen> {
     await showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(
-            S.of(context).Ado
+        title: Text(S.of(context).Ado
             // '広告の表示について'
-          ),
-        content: Text(
-          S.of(context).AdoText
+            ),
+        content: Text(S.of(context).AdoText
             // "パーソナライズされた広告の表示を許可して頂けるかどうかを次のダイアログで選択してください。"
             //     "\n\n許可頂くことで興味関心の低い広告の表示を減らすことができます。"
             //     "\n\nこれによってお客様の個人情報が取得されることはありませんのでご安心ください。"
-           ),
+            ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
               S.of(context).Next,
-                // '次にすすむ'
+              // '次にすすむ'
             ),
           ),
         ],
@@ -205,7 +200,6 @@ class _HomeScreenState extends State<HomeScreen> {
         //選択肢部分
         _choicePart(),
 
-
         //広告
         Padding(
           padding: const EdgeInsets.all(10.0),
@@ -270,7 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goBelongingsPage(),
                 child: AutoSizeText(
-                 S.of(context).Belongings,
+                  S.of(context).Belongings,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -329,23 +323,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextButton(
                   child: Text(
                     S.of(context).TenQuestions,
-                    style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Color(0xFFb87333),
+                    ),
                   ),
                   onPressed: () => _goQuizPage(context, 10),
                 ),
                 TextButton(
                   child: Text(
-                    S.of(context).TwentyQuestions,
-                    style: TextStyle(fontSize: 20.0, color: Colors.green),
+                    S.of(context).OneHundredQuestions,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Color(0xFFc0c0c0),
+                    ),
                   ),
-                  onPressed: () => _goQuizPage(context, 20),
+                  onPressed: () => _goQuizPage(context, 100),
                 ),
                 TextButton(
                   child: Text(
-                    S.of(context).ThirtyQuestions,
-                    style: TextStyle(fontSize: 20.0, color: Colors.redAccent),
+                    S.of(context).OneThousandQuestions,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Color(0xFFe6b422),
+                    ),
                   ),
-                  onPressed: () => _goQuizPage(context, 30),
+                  onPressed: () => _goQuizPage(context, 1000),
                 ),
               ],
             ));
@@ -362,9 +365,8 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     if (allFruitsList.isEmpty) {
-      Fluttertoast.showToast(
-          msg: S.of(context).GetData);
-          //"[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください");
+      Fluttertoast.showToast(msg: S.of(context).GetData);
+      //"[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください");
     }
 
     Navigator.push(
@@ -421,6 +423,4 @@ class _HomeScreenState extends State<HomeScreen> {
     print("allFruitsList$allFruitsList");
     print("allFruitsList.length${allFruitsList.length}");
   }
-
-
 }

@@ -5,6 +5,11 @@
   "Feature": "特集",
   "Quiz": "クイズ",
 
+  "Strawberry": "イチゴ狩り特集",
+  "StrawberryWord": "イチゴ狩りに行きませんか?",
+  "Go": "Go！",
+  "Guide": "イチゴ狩りのすゝめ",
+
   "GetData": "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください",
 
   "Credits": "クレジット表記",
@@ -20,8 +25,8 @@
   "QuestionCount": "問題数",
   "HowManyQuestions": "何問解きますか？",
   "TenQuestions": "10問",
-  "TwentyQuestions": "20問",
-  "ThirtyQuestions": "30問",
+  "OneHundredQuestions": "100問",
+  "OneThousandQuestions": "1000問",
 
   "FruitList": "果物一覧",
   "Attention":"データが取得できませんでした。\n申し訳ありませんが画面を一旦閉じて\n再度実行してください",

@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "FruitList": MessageLookupByLibrary.simpleMessage("Seasonal Fruits"),
         "GetData": MessageLookupByLibrary.simpleMessage(
             "[Home]Please close the screen and try again"),
+        "Go": MessageLookupByLibrary.simpleMessage("Go！"),
         "GoMap0": MessageLookupByLibrary.simpleMessage("Orchard"),
         "GoMap1": MessageLookupByLibrary.simpleMessage(
             "Shall I look up some orchards in your area?"),
@@ -89,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "GoMap3": MessageLookupByLibrary.simpleMessage("OK"),
         "GoogleFontFontAwesomeIcon": MessageLookupByLibrary.simpleMessage(
             "・Google Font\n\n・FontAwesomeIcon"),
+        "Guide": MessageLookupByLibrary.simpleMessage("Guide book"),
         "HowManyQuestions": MessageLookupByLibrary.simpleMessage(
             "How many questions will you answer?"),
         "Hunt": MessageLookupByLibrary.simpleMessage("fruits"),
@@ -98,6 +100,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Proceed to the next page."),
         "NextFruit": MessageLookupByLibrary.simpleMessage("Next Fruit！"),
         "OK": MessageLookupByLibrary.simpleMessage("OK"),
+        "OneHundredQuestions": MessageLookupByLibrary.simpleMessage("100Q"),
+        "OneThousandQuestions": MessageLookupByLibrary.simpleMessage("1000Q"),
         "PhotoIllustration":
             MessageLookupByLibrary.simpleMessage("Photo・illustration\n\n"),
         "QuestionCount":
@@ -117,14 +121,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "Shirt": MessageLookupByLibrary.simpleMessage("long-sleeved top"),
         "Spray": MessageLookupByLibrary.simpleMessage("insect repellent"),
         "SpringFruit": MessageLookupByLibrary.simpleMessage("Spring"),
+        "Strawberry":
+            MessageLookupByLibrary.simpleMessage("Strawberry Picking"),
+        "StrawberryWord": MessageLookupByLibrary.simpleMessage(
+            "Shall we go strawberry picking?"),
         "SummerFruit": MessageLookupByLibrary.simpleMessage("Summer"),
         "Sunscreen": MessageLookupByLibrary.simpleMessage("sunscreen"),
-        "TenQuestions": MessageLookupByLibrary.simpleMessage("10"),
+        "TenQuestions": MessageLookupByLibrary.simpleMessage("10Q"),
         "TheRest": MessageLookupByLibrary.simpleMessage("the rest"),
-        "ThirtyQuestions": MessageLookupByLibrary.simpleMessage("30"),
         "TopPage": MessageLookupByLibrary.simpleMessage(
             "・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n"),
-        "TwentyQuestions": MessageLookupByLibrary.simpleMessage("20"),
         "WetWipes": MessageLookupByLibrary.simpleMessage("wet wipes"),
         "WinterFruit": MessageLookupByLibrary.simpleMessage("Winter"),
         "mannerAnswers0": MessageLookupByLibrary.simpleMessage(
