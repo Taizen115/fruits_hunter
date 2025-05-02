@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "全問正解, おめでとうございます🤩\n素晴らしいです\nお疲れさまでした.\n"),
         "AllCorrect2": MessageLookupByLibrary.simpleMessage(
             "果物の知識について, 少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください."),
+        "Apple": MessageLookupByLibrary.simpleMessage("りんご狩り特集"),
+        "AppleWord": MessageLookupByLibrary.simpleMessage("りんご狩りに行きませんか?"),
         "Attention": MessageLookupByLibrary.simpleMessage(
             "データが取得できませんでした。\n申し訳ありませんが画面を一旦閉じて\n再度実行してください"),
         "AutumnFruit": MessageLookupByLibrary.simpleMessage("秋の果物"),
@@ -89,7 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "GoMap3": MessageLookupByLibrary.simpleMessage("OK"),
         "GoogleFontFontAwesomeIcon": MessageLookupByLibrary.simpleMessage(
             "・Google Font\n\n・FontAwesomeIcon"),
-        "Guide": MessageLookupByLibrary.simpleMessage("イチゴ狩りのすゝめ"),
+        "Guide": MessageLookupByLibrary.simpleMessage("りんご狩りのすゝめ"),
         "HowManyQuestions": MessageLookupByLibrary.simpleMessage("何問解きますか？"),
         "Hunt": MessageLookupByLibrary.simpleMessage("個"),
         "List": MessageLookupByLibrary.simpleMessage("果物一覧"),
@@ -114,8 +116,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "Shirt": MessageLookupByLibrary.simpleMessage("長袖の服"),
         "Spray": MessageLookupByLibrary.simpleMessage("虫よけスプレー"),
         "SpringFruit": MessageLookupByLibrary.simpleMessage("春の果物"),
-        "Strawberry": MessageLookupByLibrary.simpleMessage("イチゴ狩り特集"),
-        "StrawberryWord": MessageLookupByLibrary.simpleMessage("イチゴ狩りに行きませんか?"),
         "SummerFruit": MessageLookupByLibrary.simpleMessage("夏の果物"),
         "Sunscreen": MessageLookupByLibrary.simpleMessage("日焼け止め"),
         "TenQuestions": MessageLookupByLibrary.simpleMessage("10問"),

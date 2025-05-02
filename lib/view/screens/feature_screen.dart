@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/view/screens/home_screen.dart';
-import 'package:fruit_hunter/view/screens/strawberry_screen.dart';
+import 'package:fruit_hunter/view/screens/apple_screen.dart';
 
 class FeatureScreen extends StatefulWidget {
   @override
@@ -35,7 +35,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
                 onPressed: () => _goHomeScreen(context),
               ),
               title: Text(
-                S.of(context).Strawberry,
+                S.of(context).Apple,
                 style: TextStyle(fontSize: 30.0),
               ),
             ),
@@ -51,7 +51,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
                         end: Alignment.bottomCenter,
                         colors: [Colors.black54, Colors.black12]),
                   ),
-                  child: Image.asset("assets/feature/strawberry_X.jpg",
+                  child: Image.asset("assets/feature/apple_x.jpg",
                       fit: BoxFit.cover),
                 ),
 
@@ -59,7 +59,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
 
                 Center(
                   child: Text(
-                    S.of(context).StrawberryWord,
+                    S.of(context).AppleWord,
                     style: TextStyle(fontSize: 50.0, color: Colors.white70),
                   ),
                 ),

@@ -31,6 +31,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "You\'ve achieved a perfect score🤩 \nThat\'s impressive. \nGreat job."),
         "AllCorrect2": MessageLookupByLibrary.simpleMessage(
             "It would be a great experience to pick your own fresh fruits. \nI encourage you to try it. "),
+        "Apple": MessageLookupByLibrary.simpleMessage("Apple Picking"),
+        "AppleWord":
+            MessageLookupByLibrary.simpleMessage("Shall we go apple picking?"),
         "Attention": MessageLookupByLibrary.simpleMessage(
             "We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later."),
         "AutumnFruit": MessageLookupByLibrary.simpleMessage("Autumn"),
@@ -90,7 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "GoMap3": MessageLookupByLibrary.simpleMessage("OK"),
         "GoogleFontFontAwesomeIcon": MessageLookupByLibrary.simpleMessage(
             "・Google Font\n\n・FontAwesomeIcon"),
-        "Guide": MessageLookupByLibrary.simpleMessage("Guide book"),
+        "Guide": MessageLookupByLibrary.simpleMessage("Apple Pick"),
         "HowManyQuestions": MessageLookupByLibrary.simpleMessage(
             "How many questions will you answer?"),
         "Hunt": MessageLookupByLibrary.simpleMessage("fruits"),
@@ -121,10 +124,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "Shirt": MessageLookupByLibrary.simpleMessage("long-sleeved top"),
         "Spray": MessageLookupByLibrary.simpleMessage("insect repellent"),
         "SpringFruit": MessageLookupByLibrary.simpleMessage("Spring"),
-        "Strawberry":
-            MessageLookupByLibrary.simpleMessage("Strawberry Picking"),
-        "StrawberryWord": MessageLookupByLibrary.simpleMessage(
-            "Shall we go strawberry picking?"),
         "SummerFruit": MessageLookupByLibrary.simpleMessage("Summer"),
         "Sunscreen": MessageLookupByLibrary.simpleMessage("sunscreen"),
         "TenQuestions": MessageLookupByLibrary.simpleMessage("10Q"),

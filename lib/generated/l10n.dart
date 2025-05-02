@@ -100,21 +100,21 @@ class S {
     );
   }
 
-  /// `Strawberry Picking`
-  String get Strawberry {
+  /// `Apple Picking`
+  String get Apple {
     return Intl.message(
-      'Strawberry Picking',
-      name: 'Strawberry',
+      'Apple Picking',
+      name: 'Apple',
       desc: '',
       args: [],
     );
   }
 
-  /// `Shall we go strawberry picking?`
-  String get StrawberryWord {
+  /// `Shall we go apple picking?`
+  String get AppleWord {
     return Intl.message(
-      'Shall we go strawberry picking?',
-      name: 'StrawberryWord',
+      'Shall we go apple picking?',
+      name: 'AppleWord',
       desc: '',
       args: [],
     );
@@ -130,10 +130,10 @@ class S {
     );
   }
 
-  /// `Guide book`
+  /// `Apple Pick`
   String get Guide {
     return Intl.message(
-      'Guide book',
+      'Apple Pick',
       name: 'Guide',
       desc: '',
       args: [],
