@@ -31,9 +31,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "You\'ve achieved a perfect score🤩 \nThat\'s impressive. \nGreat job."),
         "AllCorrect2": MessageLookupByLibrary.simpleMessage(
             "It would be a great experience to pick your own fresh fruits. \nI encourage you to try it. "),
-        "Apple": MessageLookupByLibrary.simpleMessage("Apple Picking"),
-        "AppleWord":
-            MessageLookupByLibrary.simpleMessage("Shall we go apple picking?"),
         "Attention": MessageLookupByLibrary.simpleMessage(
             "We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later."),
         "AutumnFruit": MessageLookupByLibrary.simpleMessage("Autumn"),
@@ -74,7 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Drink": MessageLookupByLibrary.simpleMessage("drink"),
         "DropRate": MessageLookupByLibrary.simpleMessage("drop rate"),
         "FaceTowel": MessageLookupByLibrary.simpleMessage("face towel"),
-        "Feature": MessageLookupByLibrary.simpleMessage("Feature"),
+        "Feature": MessageLookupByLibrary.simpleMessage("Kansai"),
         "FinalComment": MessageLookupByLibrary.simpleMessage(
             "For your next visit, why don\'t you try picking your own fruit?"),
         "FinishQuestion": MessageLookupByLibrary.simpleMessage(
@@ -93,10 +90,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "GoMap3": MessageLookupByLibrary.simpleMessage("OK"),
         "GoogleFontFontAwesomeIcon": MessageLookupByLibrary.simpleMessage(
             "・Google Font\n\n・FontAwesomeIcon"),
-        "Guide": MessageLookupByLibrary.simpleMessage("Apple Pick"),
+        "Guide": MessageLookupByLibrary.simpleMessage("Kansai Pick"),
         "HowManyQuestions": MessageLookupByLibrary.simpleMessage(
             "How many questions will you answer?"),
         "Hunt": MessageLookupByLibrary.simpleMessage("fruits"),
+        "Kansai": MessageLookupByLibrary.simpleMessage("Kansai Picking"),
+        "KansaiWord": MessageLookupByLibrary.simpleMessage(
+            "Shall we go fruit picking in Kansai?"),
         "List": MessageLookupByLibrary.simpleMessage("List"),
         "Manners": MessageLookupByLibrary.simpleMessage("Manners"),
         "Next":

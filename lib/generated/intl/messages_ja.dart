@@ -31,8 +31,6 @@ class MessageLookup extends MessageLookupByLibrary {
             "全問正解, おめでとうございます🤩\n素晴らしいです\nお疲れさまでした.\n"),
         "AllCorrect2": MessageLookupByLibrary.simpleMessage(
             "果物の知識について, 少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください."),
-        "Apple": MessageLookupByLibrary.simpleMessage("りんご狩り特集"),
-        "AppleWord": MessageLookupByLibrary.simpleMessage("りんご狩りに行きませんか?"),
         "Attention": MessageLookupByLibrary.simpleMessage(
             "データが取得できませんでした。\n申し訳ありませんが画面を一旦閉じて\n再度実行してください"),
         "AutumnFruit": MessageLookupByLibrary.simpleMessage("秋の果物"),
@@ -73,7 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Drink": MessageLookupByLibrary.simpleMessage("飲み物"),
         "DropRate": MessageLookupByLibrary.simpleMessage("獲得率"),
         "FaceTowel": MessageLookupByLibrary.simpleMessage("タオル"),
-        "Feature": MessageLookupByLibrary.simpleMessage("特集"),
+        "Feature": MessageLookupByLibrary.simpleMessage("関西特集"),
         "FinalComment": MessageLookupByLibrary.simpleMessage(
             "果物の知識について\nお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください."),
         "FinishQuestion":
@@ -91,9 +89,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "GoMap3": MessageLookupByLibrary.simpleMessage("OK"),
         "GoogleFontFontAwesomeIcon": MessageLookupByLibrary.simpleMessage(
             "・Google Font\n\n・FontAwesomeIcon"),
-        "Guide": MessageLookupByLibrary.simpleMessage("りんご狩りのすゝめ"),
+        "Guide": MessageLookupByLibrary.simpleMessage("関西果物狩りのすゝめ"),
         "HowManyQuestions": MessageLookupByLibrary.simpleMessage("何問解きますか？"),
         "Hunt": MessageLookupByLibrary.simpleMessage("個"),
+        "Kansai": MessageLookupByLibrary.simpleMessage("関西特集"),
+        "KansaiWord": MessageLookupByLibrary.simpleMessage("関西で、果物狩りを\nしませんか?"),
         "List": MessageLookupByLibrary.simpleMessage("果物一覧"),
         "Manners": MessageLookupByLibrary.simpleMessage("マナー"),
         "Next": MessageLookupByLibrary.simpleMessage("次にすすむ"),

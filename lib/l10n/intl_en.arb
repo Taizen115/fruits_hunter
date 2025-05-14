@@ -2,13 +2,13 @@
   "Catchphrase":"What kind of help do you need with\nfruit picking?",
   "List": "List",
   "Belongings": "Belonging",
-  "Feature": "Feature",
+  "Feature": "Kansai",
   "Quiz": "Quiz",
 
-  "Apple": "Apple Picking",
-  "AppleWord": "Shall we go apple picking?",
+  "Kansai": "Kansai Picking",
+  "KansaiWord": "Shall we go fruit picking in Kansai?",
   "Go": "Go！",
-  "Guide": "Apple Pick",
+  "Guide": "Kansai Pick",
 
   "GetData": "[Home]Please close the screen and try again",
 

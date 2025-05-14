@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/view/screens/home_screen.dart';
-import 'package:fruit_hunter/view/screens/apple_screen.dart';
+import 'package:fruit_hunter/view/screens/kansai_screen.dart';
 
 class FeatureScreen extends StatefulWidget {
   @override
@@ -19,7 +19,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
             floatingActionButton: FloatingActionButton(
               backgroundColor: Colors.transparent,
               onPressed: () => _goStrawberry(context),
-              child: Text(S.of(context).Go,style: TextStyle(fontSize: 20.0, color: Colors.tealAccent),),
+              child: Text(S.of(context).Go,style: TextStyle(fontSize: 30.0, color: Colors.tealAccent),),
             ),
             backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: true,
@@ -35,7 +35,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
                 onPressed: () => _goHomeScreen(context),
               ),
               title: Text(
-                S.of(context).Apple,
+                S.of(context).Kansai,
                 style: TextStyle(fontSize: 30.0),
               ),
             ),
@@ -51,16 +51,19 @@ class _FeatureScreenState extends State<FeatureScreen> {
                         end: Alignment.bottomCenter,
                         colors: [Colors.black54, Colors.black12]),
                   ),
-                  child: Image.asset("assets/feature/apple_x.jpg",
-                      fit: BoxFit.cover),
+                  child: Image.asset("assets/feature/fig_x.png",
+                      fit: BoxFit.fitHeight),
                 ),
 
                 //2階　コンテンツ
 
-                Center(
-                  child: Text(
-                    S.of(context).AppleWord,
-                    style: TextStyle(fontSize: 50.0, color: Colors.white70),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Center(
+                    child: Text(
+                      S.of(context).KansaiWord,
+                      style: TextStyle(fontSize: 35.0, color: Colors.white70),
+                    ),
                   ),
                 ),
               ],
@@ -84,7 +87,7 @@ class _FeatureScreenState extends State<FeatureScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => StrawberryScreen(),
+        builder: (context) => KansaiScreen(),
       ),
     );
   }

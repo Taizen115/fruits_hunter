@@ -113,12 +113,12 @@ class _BelongingsScreenState extends State<BelongingsScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(60),
                 ),
-                side: BorderSide(color: Colors.lightBlue),
+                side: BorderSide(color: Colors.black87),
               ),
               onPressed: () => _goMannersPage(context),
               child: Text(
                 "マナー",
-                style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0, color: Colors.teal),
+                style: TextStyle(fontFamily: ThirdFont, fontSize: 20.0, color: Colors.black87),
               ),
             ),
           ],

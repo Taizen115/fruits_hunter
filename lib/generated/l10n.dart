@@ -80,10 +80,10 @@ class S {
     );
   }
 
-  /// `Feature`
+  /// `Kansai`
   String get Feature {
     return Intl.message(
-      'Feature',
+      'Kansai',
       name: 'Feature',
       desc: '',
       args: [],
@@ -100,21 +100,21 @@ class S {
     );
   }
 
-  /// `Apple Picking`
-  String get Apple {
+  /// `Kansai Picking`
+  String get Kansai {
     return Intl.message(
-      'Apple Picking',
-      name: 'Apple',
+      'Kansai Picking',
+      name: 'Kansai',
       desc: '',
       args: [],
     );
   }
 
-  /// `Shall we go apple picking?`
-  String get AppleWord {
+  /// `Shall we go fruit picking in Kansai?`
+  String get KansaiWord {
     return Intl.message(
-      'Shall we go apple picking?',
-      name: 'AppleWord',
+      'Shall we go fruit picking in Kansai?',
+      name: 'KansaiWord',
       desc: '',
       args: [],
     );
@@ -130,10 +130,10 @@ class S {
     );
   }
 
-  /// `Apple Pick`
+  /// `Kansai Pick`
   String get Guide {
     return Intl.message(
-      'Apple Pick',
+      'Kansai Pick',
       name: 'Guide',
       desc: '',
       args: [],
