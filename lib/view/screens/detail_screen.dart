@@ -5,7 +5,6 @@ import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../db/database.dart';
 import '../../main.dart';
 import '../../style/style.dart';

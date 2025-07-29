@@ -9,8 +9,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
 import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/style/style.dart';
-import 'package:fruit_hunter/view/screens/feature_screen.dart';
 import 'package:fruit_hunter/view/screens/list_screen.dart';
+import 'package:fruit_hunter/view/screens/fruit_record_form_edit_screen.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../main.dart';
 import 'belongings_screen.dart';
@@ -279,9 +279,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goFeaturePage(),
+                onPressed: () => _goFruitRecordPage(),
                 child: AutoSizeText(
-                  S.of(context).Feature,
+                  S.of(context).Log,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -332,7 +332,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 TextButton(
                   child: Text(
-                    S.of(context).OneHundredQuestions,
+                    S.of(context).TwentyQuestions,
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Color(0xFFc0c0c0),
@@ -342,7 +342,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 TextButton(
                   child: Text(
-                    S.of(context).OneThousandQuestions,
+                    S.of(context).ThirtyQuestions,
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Color(0xFFe6b422),
@@ -395,10 +395,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   //4択の1つ、特集ページに飛ぶ
-  _goFeaturePage() async {
+  _goFruitRecordPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => FeatureScreen()));
+        context, MaterialPageRoute(builder: (context) => FruitRecordFormEditScreen()));
     //initAd();
   }
 

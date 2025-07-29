@@ -153,6 +153,10 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
 
   _goHomeScreen(context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomeScreen(),
+      ),
+    );
   }
 }

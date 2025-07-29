@@ -80,11 +80,11 @@ class S {
     );
   }
 
-  /// `Kansai`
-  String get Feature {
+  /// `Log`
+  String get Log {
     return Intl.message(
-      'Kansai',
-      name: 'Feature',
+      'Log',
+      name: 'Log',
       desc: '',
       args: [],
     );
@@ -95,46 +95,6 @@ class S {
     return Intl.message(
       'Quiz',
       name: 'Quiz',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Kansai Picking`
-  String get Kansai {
-    return Intl.message(
-      'Kansai Picking',
-      name: 'Kansai',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Shall we go fruit picking in Kansai?`
-  String get KansaiWord {
-    return Intl.message(
-      'Shall we go fruit picking in Kansai?',
-      name: 'KansaiWord',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Go！`
-  String get Go {
-    return Intl.message(
-      'Go！',
-      name: 'Go',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Kansai Pick`
-  String get Guide {
-    return Intl.message(
-      'Kansai Pick',
-      name: 'Guide',
       desc: '',
       args: [],
     );
@@ -260,21 +220,21 @@ class S {
     );
   }
 
-  /// `100Q`
-  String get OneHundredQuestions {
+  /// `20Q`
+  String get TwentyQuestions {
     return Intl.message(
-      '100Q',
-      name: 'OneHundredQuestions',
+      '20Q',
+      name: 'TwentyQuestions',
       desc: '',
       args: [],
     );
   }
 
-  /// `1000Q`
-  String get OneThousandQuestions {
+  /// `30Q`
+  String get ThirtyQuestions {
     return Intl.message(
-      '1000Q',
-      name: 'OneThousandQuestions',
+      '30Q',
+      name: 'ThirtyQuestions',
       desc: '',
       args: [],
     );

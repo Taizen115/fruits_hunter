@@ -3,7 +3,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/main.dart';
-import 'package:fruit_hunter/view/screens/detail_screen.page.dart';
+import 'package:fruit_hunter/view/screens/detail_screen.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../db/database.dart';

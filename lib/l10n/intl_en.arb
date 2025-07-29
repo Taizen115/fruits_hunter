@@ -2,13 +2,8 @@
   "Catchphrase":"What kind of help do you need with\nfruit picking?",
   "List": "List",
   "Belongings": "Belonging",
-  "Feature": "Kansai",
+  "Log": "Log",
   "Quiz": "Quiz",
-
-  "Kansai": "Kansai Picking",
-  "KansaiWord": "Shall we go fruit picking in Kansai?",
-  "Go": "Go！",
-  "Guide": "Kansai Pick",
 
   "GetData": "[Home]Please close the screen and try again",
 
@@ -25,8 +20,8 @@
   "QuestionCount": "Number of questions",
   "HowManyQuestions": "How many questions will you answer?",
   "TenQuestions": "10Q",
-  "OneHundredQuestions": "100Q",
-  "OneThousandQuestions": "1000Q",
+  "TwentyQuestions": "20Q",
+  "ThirtyQuestions": "30Q",
 
   "FruitList": "Seasonal Fruits",
   "Attention":"We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later.",

@@ -71,7 +71,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "Drink": MessageLookupByLibrary.simpleMessage("飲み物"),
         "DropRate": MessageLookupByLibrary.simpleMessage("獲得率"),
         "FaceTowel": MessageLookupByLibrary.simpleMessage("タオル"),
-        "Feature": MessageLookupByLibrary.simpleMessage("関西特集"),
         "FinalComment": MessageLookupByLibrary.simpleMessage(
             "果物の知識について\nお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください."),
         "FinishQuestion":
@@ -81,7 +80,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "FruitList": MessageLookupByLibrary.simpleMessage("果物一覧"),
         "GetData": MessageLookupByLibrary.simpleMessage(
             "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください"),
-        "Go": MessageLookupByLibrary.simpleMessage("Go！"),
         "GoMap0": MessageLookupByLibrary.simpleMessage("果樹園"),
         "GoMap1":
             MessageLookupByLibrary.simpleMessage("周辺の果樹園を検索しても\nよろしいでしょうか？"),
@@ -89,18 +87,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "GoMap3": MessageLookupByLibrary.simpleMessage("OK"),
         "GoogleFontFontAwesomeIcon": MessageLookupByLibrary.simpleMessage(
             "・Google Font\n\n・FontAwesomeIcon"),
-        "Guide": MessageLookupByLibrary.simpleMessage("関西果物狩りのすゝめ"),
         "HowManyQuestions": MessageLookupByLibrary.simpleMessage("何問解きますか？"),
         "Hunt": MessageLookupByLibrary.simpleMessage("個"),
-        "Kansai": MessageLookupByLibrary.simpleMessage("関西特集"),
-        "KansaiWord": MessageLookupByLibrary.simpleMessage("関西で、果物狩りを\nしませんか?"),
         "List": MessageLookupByLibrary.simpleMessage("果物一覧"),
+        "Log": MessageLookupByLibrary.simpleMessage("ログ"),
         "Manners": MessageLookupByLibrary.simpleMessage("マナー"),
         "Next": MessageLookupByLibrary.simpleMessage("次にすすむ"),
         "NextFruit": MessageLookupByLibrary.simpleMessage("Next Fruit！"),
         "OK": MessageLookupByLibrary.simpleMessage("OK"),
-        "OneHundredQuestions": MessageLookupByLibrary.simpleMessage("100問"),
-        "OneThousandQuestions": MessageLookupByLibrary.simpleMessage("1000問"),
         "PhotoIllustration":
             MessageLookupByLibrary.simpleMessage("写真・イラスト\n\n"),
         "QuestionCount": MessageLookupByLibrary.simpleMessage("問題数"),
@@ -120,8 +114,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "Sunscreen": MessageLookupByLibrary.simpleMessage("日焼け止め"),
         "TenQuestions": MessageLookupByLibrary.simpleMessage("10問"),
         "TheRest": MessageLookupByLibrary.simpleMessage("残りの果物"),
+        "ThirtyQuestions": MessageLookupByLibrary.simpleMessage("30問"),
         "TopPage": MessageLookupByLibrary.simpleMessage(
             "・Topページ : Pexelsより引用\n\n・果物一覧ページ, クイズページ : 写真AC, イラストACより引用\n\n・持ち物ページ, マナーページ, クレジットページ : イラストACより引用\n\n"),
+        "TwentyQuestions": MessageLookupByLibrary.simpleMessage("20問"),
         "WetWipes": MessageLookupByLibrary.simpleMessage("ウェットティッシュ"),
         "WinterFruit": MessageLookupByLibrary.simpleMessage("冬の果物"),
         "mannerAnswers0": MessageLookupByLibrary.simpleMessage(
