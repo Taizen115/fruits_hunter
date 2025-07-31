@@ -24,16 +24,6 @@ class FruitRecordLogic {
     return list.map((json) => FruitRecord.fromJson(json)).toList();
   }
 
-  // /// 指定インデックスの記録を削除
-  // static Future<void> deleteRecord(int index) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   List<String> records = prefs.getStringList(_key) ?? [];
-  //   if (index >= 0 && index < records.length) {
-  //     records.removeAt(index);
-  //     await prefs.setStringList(_key, records);
-  //   }
-  // }
-
   /// 全削除（必要に応じて）
   static Future<void> clearAll() async {
     final prefs = await SharedPreferences.getInstance();
@@ -50,22 +40,8 @@ class FruitRecordLogic {
     }
   }
 
-  // static Future<void> deleteRecord(int index) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   final List<String> records = prefs.getStringList(_key) ?? [];
-  //
-  //   /// 画像ファイルも削除
-  //   final record = FruitRecord.fromJson(records[index]);
-  //   if (record.imagePath != null) {
-  //     final file = File(record.imagePath!);
-  //     if (await file.exists()) {
-  //       await file.delete();
-  //     }
-  //   }
-  //   records.removeAt(index);
-  //   await prefs.setStringList(_key, records);
-  // }
-  
+
+  ///編集
   static Future<void> updateRecord(int id, FruitRecord updatedRecord) async {
     final prefs = await SharedPreferences.getInstance();
     final List<String> rawList = prefs.getStringList('fruitRecords') ?? [];

@@ -2,7 +2,7 @@
   "Catchphrase":"What kind of help do you need with\nfruit picking?",
   "List": "List",
   "Belongings": "Belonging",
-  "Log": "Log",
+  "Record": "Record",
   "Quiz": "Quiz",
 
   "GetData": "[Home]Please close the screen and try again",
@@ -78,6 +78,8 @@
   "FaceTowel": "face towel",
   "Cooler": "cooler",
   "Drink": "drink",
+
+  "Manner": "Manner",
 
   "TheRest": "the rest",
   "FruitCount": "fruit count",

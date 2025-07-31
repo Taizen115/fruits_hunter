@@ -2,7 +2,7 @@
   "Catchphrase": "どのような果物狩りの手伝いが\n必要でしょうか？",
   "List": "果物一覧",
   "Belongings": "持ち物",
-  "Log": "ログ",
+  "Record": "記録",
   "Quiz": "クイズ",
 
   "GetData": "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください",
@@ -51,8 +51,6 @@
   "GoMap2": "キャンセル",
   "GoMap3": "OK",
 
-  "Manners": "マナー",
-
   "mannerQuestions0": "果樹園で果物狩りをするとき, 走り回ったりしてもいいでしょうか？",
   "mannerQuestions1": "果物を摘むときに, 配慮することはありますか？",
   "mannerQuestions2": "当日雨が降った場合, どうしたらいいですか？",
@@ -78,6 +76,8 @@
   "FaceTowel": "タオル",
   "Cooler": "クーラーボックス",
   "Drink": "飲み物",
+
+  "Manner": "マナー",
 
   "TheRest": "残りの果物",
   "FruitCount": "獲得果物数",

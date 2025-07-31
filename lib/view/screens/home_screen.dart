@@ -281,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goFruitRecordPage(),
                 child: AutoSizeText(
-                  S.of(context).Log,
+                  S.of(context).Record,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),

@@ -15,7 +15,7 @@ class _FruitRecordListScreenState extends State<FruitRecordListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ログ"),
+        title: Text("記録一覧", style: TextStyle(color: Colors.indigo),),
         centerTitle: true,
       ),
       body: FutureBuilder<List<FruitRecord>>(

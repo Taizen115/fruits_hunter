@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 class FruitRecord {
-  final int? id;
   final String fruitType;
   final String farmName;
   final String date;
   final String? memo;
   final String? imagePath; // ← 追加！
+  final int? id;
 
   FruitRecord({
     required this.fruitType,
@@ -23,6 +23,7 @@ class FruitRecord {
     'date': date,
     'memo': memo,
     'imagePath': imagePath,
+    'id': id,
   };
 
   factory FruitRecord.fromMap(Map<String, dynamic> map) => FruitRecord(
@@ -31,6 +32,7 @@ class FruitRecord {
     date: map['date'],
     memo: map['memo'],
     imagePath: map['imagePath'],
+    id: map['id'],
   );
 
   String toJson() => json.encode(toMap());

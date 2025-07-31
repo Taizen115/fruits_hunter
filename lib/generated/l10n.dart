@@ -80,11 +80,11 @@ class S {
     );
   }
 
-  /// `Log`
-  String get Log {
+  /// `Record`
+  String get Record {
     return Intl.message(
-      'Log',
-      name: 'Log',
+      'Record',
+      name: 'Record',
       desc: '',
       args: [],
     );
@@ -715,6 +715,16 @@ class S {
     return Intl.message(
       'drink',
       name: 'Drink',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manner`
+  String get Manner {
+    return Intl.message(
+      'Manner',
+      name: 'Manner',
       desc: '',
       args: [],
     );

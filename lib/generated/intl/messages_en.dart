@@ -92,7 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "How many questions will you answer?"),
         "Hunt": MessageLookupByLibrary.simpleMessage("fruits"),
         "List": MessageLookupByLibrary.simpleMessage("List"),
-        "Log": MessageLookupByLibrary.simpleMessage("Log"),
+        "Manner": MessageLookupByLibrary.simpleMessage("Manner"),
         "Manners": MessageLookupByLibrary.simpleMessage("Manners"),
         "Next":
             MessageLookupByLibrary.simpleMessage("Proceed to the next page."),
@@ -108,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "QuizFinish":
             MessageLookupByLibrary.simpleMessage("Concluding the quiz"),
         "QuizScore": MessageLookupByLibrary.simpleMessage("Quiz Score"),
+        "Record": MessageLookupByLibrary.simpleMessage("Record"),
         "Result": MessageLookupByLibrary.simpleMessage("Results announcement！"),
         "ScoreSay1": MessageLookupByLibrary.simpleMessage(
             "The number of fruits you got is... "),
