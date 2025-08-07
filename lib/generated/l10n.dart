@@ -110,11 +110,41 @@ class S {
     );
   }
 
+  /// `Options`
+  String get Options {
+    return Intl.message(
+      'Options',
+      name: 'Options',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Copyright Notice`
   String get Credits {
     return Intl.message(
       'Copyright Notice',
       name: 'Credits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Review Request`
+  String get Review {
+    return Intl.message(
+      'Review Request',
+      name: 'Review',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could Not Launch Store`
+  String get NotLaunchStore {
+    return Intl.message(
+      'Could Not Launch Store',
+      name: 'NotLaunchStore',
       desc: '',
       args: [],
     );
@@ -475,16 +505,6 @@ class S {
     return Intl.message(
       'OK',
       name: 'GoMap3',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Manners`
-  String get Manners {
-    return Intl.message(
-      'Manners',
-      name: 'Manners',
       desc: '',
       args: [],
     );
@@ -925,6 +945,146 @@ class S {
     return Intl.message(
       'It would be a great experience to pick your own fresh fruits. \nI encourage you to try it. ',
       name: 'AllCorrect2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record List`
+  String get RecordList {
+    return Intl.message(
+      'Record List',
+      name: 'RecordList',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fruit Picking Record`
+  String get FruitPickingRecord {
+    return Intl.message(
+      'Fruit Picking Record',
+      name: 'FruitPickingRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `pick a date`
+  String get PickADate {
+    return Intl.message(
+      'pick a date',
+      name: 'PickADate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `fruit type`
+  String get FruitType {
+    return Intl.message(
+      'fruit type',
+      name: 'FruitType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required`
+  String get Required {
+    return Intl.message(
+      'Required',
+      name: 'Required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `farm name`
+  String get FarmName {
+    return Intl.message(
+      'farm name',
+      name: 'FarmName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `memo (optional)`
+  String get Memo {
+    return Intl.message(
+      'memo (optional)',
+      name: 'Memo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `pick a photo`
+  String get PickAPhoto {
+    return Intl.message(
+      'pick a photo',
+      name: 'PickAPhoto',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `save`
+  String get Save {
+    return Intl.message(
+      'save',
+      name: 'Save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Record`
+  String get EditRecord {
+    return Intl.message(
+      'Edit Record',
+      name: 'EditRecord',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Record`
+  String get DeleteRecord0 {
+    return Intl.message(
+      'Delete Record',
+      name: 'DeleteRecord0',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete this record?`
+  String get DeleteRecord1 {
+    return Intl.message(
+      'Delete this record?',
+      name: 'DeleteRecord1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleted`
+  String get DeleteRecord2 {
+    return Intl.message(
+      'Deleted',
+      name: 'DeleteRecord2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full screen`
+  String get FullScreen {
+    return Intl.message(
+      'Full screen',
+      name: 'FullScreen',
       desc: '',
       args: [],
     );

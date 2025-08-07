@@ -42,6 +42,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "What kind of help do you need with\nfruit picking?"),
         "Cooler": MessageLookupByLibrary.simpleMessage("cooler"),
         "Credits": MessageLookupByLibrary.simpleMessage("Copyright Notice"),
+        "DeleteRecord0": MessageLookupByLibrary.simpleMessage("Delete Record"),
+        "DeleteRecord1":
+            MessageLookupByLibrary.simpleMessage("Delete this record?"),
+        "DeleteRecord2": MessageLookupByLibrary.simpleMessage("Deleted"),
         "DetailAnswer0": MessageLookupByLibrary.simpleMessage(
             "Fresh fruits have a great taste and aroma, and their nutrients remain intact. \n\nThey are also rich in dietary fiber and can help boost your immune system."),
         "DetailAnswer1": MessageLookupByLibrary.simpleMessage(
@@ -70,7 +74,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "6. What is the cost of a harvest experience?"),
         "Drink": MessageLookupByLibrary.simpleMessage("drink"),
         "DropRate": MessageLookupByLibrary.simpleMessage("drop rate"),
+        "EditRecord": MessageLookupByLibrary.simpleMessage("Edit Record"),
         "FaceTowel": MessageLookupByLibrary.simpleMessage("face towel"),
+        "FarmName": MessageLookupByLibrary.simpleMessage("farm name"),
         "FinalComment": MessageLookupByLibrary.simpleMessage(
             "For your next visit, why don\'t you try picking your own fruit?"),
         "FinishQuestion": MessageLookupByLibrary.simpleMessage(
@@ -79,6 +85,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Font and icon name\n\n"),
         "FruitCount": MessageLookupByLibrary.simpleMessage("fruit count"),
         "FruitList": MessageLookupByLibrary.simpleMessage("Seasonal Fruits"),
+        "FruitPickingRecord":
+            MessageLookupByLibrary.simpleMessage("Fruit Picking Record"),
+        "FruitType": MessageLookupByLibrary.simpleMessage("fruit type"),
+        "FullScreen": MessageLookupByLibrary.simpleMessage("Full screen"),
         "GetData": MessageLookupByLibrary.simpleMessage(
             "[Home]Please close the screen and try again"),
         "GoMap0": MessageLookupByLibrary.simpleMessage("Orchard"),
@@ -93,13 +103,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "Hunt": MessageLookupByLibrary.simpleMessage("fruits"),
         "List": MessageLookupByLibrary.simpleMessage("List"),
         "Manner": MessageLookupByLibrary.simpleMessage("Manner"),
-        "Manners": MessageLookupByLibrary.simpleMessage("Manners"),
+        "Memo": MessageLookupByLibrary.simpleMessage("memo (optional)"),
         "Next":
             MessageLookupByLibrary.simpleMessage("Proceed to the next page."),
         "NextFruit": MessageLookupByLibrary.simpleMessage("Next Fruit！"),
+        "NotLaunchStore":
+            MessageLookupByLibrary.simpleMessage("Could Not Launch Store"),
         "OK": MessageLookupByLibrary.simpleMessage("OK"),
+        "Options": MessageLookupByLibrary.simpleMessage("Options"),
         "PhotoIllustration":
             MessageLookupByLibrary.simpleMessage("Photo・illustration\n\n"),
+        "PickADate": MessageLookupByLibrary.simpleMessage("pick a date"),
+        "PickAPhoto": MessageLookupByLibrary.simpleMessage("pick a photo"),
         "QuestionCount":
             MessageLookupByLibrary.simpleMessage("Number of questions"),
         "Quiz": MessageLookupByLibrary.simpleMessage("Quiz"),
@@ -109,7 +124,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Concluding the quiz"),
         "QuizScore": MessageLookupByLibrary.simpleMessage("Quiz Score"),
         "Record": MessageLookupByLibrary.simpleMessage("Record"),
+        "RecordList": MessageLookupByLibrary.simpleMessage("Record List"),
+        "Required": MessageLookupByLibrary.simpleMessage("Required"),
         "Result": MessageLookupByLibrary.simpleMessage("Results announcement！"),
+        "Review": MessageLookupByLibrary.simpleMessage("Review Request"),
+        "Save": MessageLookupByLibrary.simpleMessage("save"),
         "ScoreSay1": MessageLookupByLibrary.simpleMessage(
             "The number of fruits you got is... "),
         "ScoreSay2":

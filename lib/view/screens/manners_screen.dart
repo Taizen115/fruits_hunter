@@ -77,7 +77,7 @@ class _MannersScreenState extends State<MannersScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          S.of(context).Manners,
+          S.of(context).Manner,
           style: TextStyle(
             fontFamily: ThirdFont,
             fontSize: 30.0,

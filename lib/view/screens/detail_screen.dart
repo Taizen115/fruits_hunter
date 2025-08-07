@@ -318,7 +318,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 child: Text(
                   S.of(context).GoMap3,
                   // "OK",
-                  style: TextStyle(fontSize: 20.0, color: Colors.orangeAccent),
+                  style: TextStyle(fontSize: 20.0, color: Colors.lightBlue),
                 ),
                 onPressed: () {
                   Navigator.pop(context);

@@ -7,7 +7,11 @@
 
   "GetData": "[Home]Please close the screen and try again",
 
+  "Options": "Options",
   "Credits": "Copyright Notice",
+  "Review": "Review Request",
+  "NotLaunchStore": "Could Not Launch Store",
+
   "PhotoIllustration": "Photo・illustration\n\n",
   "TopPage": "・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n",
   "FontIcon": "Font and icon name\n\n",
@@ -50,8 +54,6 @@
   "GoMap1": "Shall I look up some orchards in your area?",
   "GoMap2": "Cancel",
   "GoMap3": "OK",
-
-  "Manners": "Manners",
 
   "mannerQuestions0": "Is it okay to run around while picking fruits in the orchard?",
   "mannerQuestions1": "Are there any rules about how to pick the fruits?",
@@ -105,5 +107,24 @@
 
   "AllCorrect0": "All correct!",
   "AllCorrect1": "You've achieved a perfect score🤩 \nThat's impressive. \nGreat job.",
-  "AllCorrect2": "It would be a great experience to pick your own fresh fruits. \nI encourage you to try it. "
+  "AllCorrect2": "It would be a great experience to pick your own fresh fruits. \nI encourage you to try it. ",
+
+  "RecordList": "Record List",
+  "FruitPickingRecord": "Fruit Picking Record",
+  "PickADate": "pick a date",
+  "FruitType": "fruit type",
+
+  "Required": "Required",
+  "FarmName": "farm name",
+  "Memo": "memo (optional)",
+  "PickAPhoto": "pick a photo",
+  "Save": "save",
+
+  "EditRecord": "Edit Record",
+
+  "DeleteRecord0": "Delete Record",
+  "DeleteRecord1": "Delete this record?",
+  "DeleteRecord2": "Deleted",
+
+  "FullScreen": "Full screen"
 }

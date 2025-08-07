@@ -366,13 +366,13 @@ class _QuizScreenState extends State<QuizScreen> {
         return Center(
           child: Image.asset("assets/images/correct.png")
               .animate()
-              .fadeOut(duration: 500.ms),
+              .fadeOut(duration: 1000.ms),
         );
       }
       return Center(
         child: Image.asset("assets/images/incorrect.png")
             .animate()
-            .fadeOut(duration: 500.ms),
+            .fadeOut(duration: 1000.ms),
       );
     } else {
       return Container();

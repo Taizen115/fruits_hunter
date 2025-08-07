@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/model/ad_manager.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'db/database.dart';
@@ -12,6 +13,7 @@ import 'style/style.dart';
 import 'view/screens/home_screen.dart';
 import "package:intl/intl.dart";
 
+final InAppReview inAppReview = InAppReview.instance;
 
 late MyDatabase database;
 
@@ -74,7 +76,9 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
 
       //Deviceのテーマを変更できる。useMaterial3をtrueにすると最新の表示になる。
-      theme: ThemeData(brightness: Brightness.light, fontFamily: MainFont, useMaterial3: true),
+      theme: ThemeData(brightness: Brightness.light,
+          fontFamily: MainFont,
+          useMaterial3: true),
       home: HomeScreen(),
     );
   }

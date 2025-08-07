@@ -42,6 +42,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("どのような果物狩りの手伝いが\n必要でしょうか？"),
         "Cooler": MessageLookupByLibrary.simpleMessage("クーラーボックス"),
         "Credits": MessageLookupByLibrary.simpleMessage("クレジット表記"),
+        "DeleteRecord0": MessageLookupByLibrary.simpleMessage("記録の消去"),
+        "DeleteRecord1": MessageLookupByLibrary.simpleMessage("記録を消去しますか？"),
+        "DeleteRecord2": MessageLookupByLibrary.simpleMessage("消去しました"),
         "DetailAnswer0": MessageLookupByLibrary.simpleMessage(
             "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. \n\nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます."),
         "DetailAnswer1": MessageLookupByLibrary.simpleMessage(
@@ -70,7 +73,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("6.収穫体験の費用は, 大体どのぐらいかかりますか？"),
         "Drink": MessageLookupByLibrary.simpleMessage("飲み物"),
         "DropRate": MessageLookupByLibrary.simpleMessage("獲得率"),
+        "EditRecord": MessageLookupByLibrary.simpleMessage("記録の編集"),
         "FaceTowel": MessageLookupByLibrary.simpleMessage("タオル"),
+        "FarmName": MessageLookupByLibrary.simpleMessage("果樹園名"),
         "FinalComment": MessageLookupByLibrary.simpleMessage(
             "果物の知識について\nお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください."),
         "FinishQuestion":
@@ -78,6 +83,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "FontIcon": MessageLookupByLibrary.simpleMessage("フォント・アイコン名\n\n"),
         "FruitCount": MessageLookupByLibrary.simpleMessage("獲得果物数"),
         "FruitList": MessageLookupByLibrary.simpleMessage("果物一覧"),
+        "FruitPickingRecord": MessageLookupByLibrary.simpleMessage("果物狩りの記録"),
+        "FruitType": MessageLookupByLibrary.simpleMessage("果物の種類"),
+        "FullScreen": MessageLookupByLibrary.simpleMessage("画面表示"),
         "GetData": MessageLookupByLibrary.simpleMessage(
             "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください"),
         "GoMap0": MessageLookupByLibrary.simpleMessage("果樹園"),
@@ -91,11 +99,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "Hunt": MessageLookupByLibrary.simpleMessage("個"),
         "List": MessageLookupByLibrary.simpleMessage("果物一覧"),
         "Manner": MessageLookupByLibrary.simpleMessage("マナー"),
+        "Memo": MessageLookupByLibrary.simpleMessage("メモ(任意)"),
         "Next": MessageLookupByLibrary.simpleMessage("次にすすむ"),
         "NextFruit": MessageLookupByLibrary.simpleMessage("Next Fruit！"),
+        "NotLaunchStore": MessageLookupByLibrary.simpleMessage("ストアを開けませんでした"),
         "OK": MessageLookupByLibrary.simpleMessage("OK"),
+        "Options": MessageLookupByLibrary.simpleMessage("他の項目"),
         "PhotoIllustration":
             MessageLookupByLibrary.simpleMessage("写真・イラスト\n\n"),
+        "PickADate": MessageLookupByLibrary.simpleMessage("日付を選ぶ"),
+        "PickAPhoto": MessageLookupByLibrary.simpleMessage("写真を選ぶ"),
         "QuestionCount": MessageLookupByLibrary.simpleMessage("問題数"),
         "Quiz": MessageLookupByLibrary.simpleMessage("クイズ"),
         "QuizAnswer": MessageLookupByLibrary.simpleMessage("答え:"),
@@ -103,7 +116,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "QuizFinish": MessageLookupByLibrary.simpleMessage("クイズの終了"),
         "QuizScore": MessageLookupByLibrary.simpleMessage("クイズの成績"),
         "Record": MessageLookupByLibrary.simpleMessage("記録"),
+        "RecordList": MessageLookupByLibrary.simpleMessage("記録一覧"),
+        "Required": MessageLookupByLibrary.simpleMessage("必須"),
         "Result": MessageLookupByLibrary.simpleMessage("結果発表！"),
+        "Review": MessageLookupByLibrary.simpleMessage("レビュー依頼"),
+        "Save": MessageLookupByLibrary.simpleMessage("保存"),
         "ScoreSay1": MessageLookupByLibrary.simpleMessage("獲得した果物の数は, ..."),
         "ScoreSay2": MessageLookupByLibrary.simpleMessage("\n獲得率は, ... "),
         "ScoreSay3": MessageLookupByLibrary.simpleMessage("おつかれさまでした！"),

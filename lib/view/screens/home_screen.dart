@@ -9,12 +9,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fruit_hunter/db/database.dart';
 import 'package:fruit_hunter/generated/l10n.dart';
 import 'package:fruit_hunter/style/style.dart';
-import 'package:fruit_hunter/view/screens/list_screen.dart';
-import 'package:fruit_hunter/view/screens/fruit_record_form_edit_screen.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:in_app_review/in_app_review.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../main.dart';
 import 'belongings_screen.dart';
 import 'credit_screen.dart';
+import 'fruit_record_list_screen.dart';
+import 'list_screen.dart';
 import 'quiz_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -130,9 +132,60 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Container(
                           alignment: Alignment.topRight,
                           child: TextButton(
-                            onPressed: () => _goCreditPage(),
+                            onPressed: () => showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return SimpleDialog(
+                                    title: Text(
+                                      S.of(context).Options,
+                                      style: TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 25.0),
+                                    ),
+                                    children: <Widget>[
+                                      ///コンテンツ
+                                      Row(
+                                        children: [
+                                          SimpleDialogOption(
+                                            onPressed: () => _goCreditPage(),
+                                            child: Text(
+                                              S.of(context).Credits,
+                                              style: TextStyle(
+                                                  color: Colors.grey[700],
+                                                  fontSize: 20.0),
+                                            ),
+                                          ),
+                                          FaIcon(
+                                            FontAwesomeIcons.copyright,
+                                            color: Colors.grey,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          SimpleDialogOption(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              _goReviewScreen();
+                                            },
+                                            child: Text(
+                                              S.of(context).Review,
+                                              style: TextStyle(
+                                                  color: Colors.orange[300],
+                                                  fontSize: 20.0),
+                                            ),
+                                          ),
+                                          FaIcon(
+                                            FontAwesomeIcons.star,
+                                            color: Colors.orangeAccent,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  );
+                                }),
                             child: Icon(
-                              FontAwesomeIcons.copyright,
+                              FontAwesomeIcons.bars,
                               color: Colors.white,
                             ),
                           ),
@@ -394,12 +447,12 @@ class _HomeScreenState extends State<HomeScreen> {
     //initAd();
   }
 
-  //4択の1つ、特集ページに飛ぶ
+  //4択の1つ、記録ページに飛ぶ
   _goFruitRecordPage() async {
     await adManager.disposeBannerAd();
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => FruitRecordFormEditScreen()));
-    //initAd();
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => FruitRecordListScreen()));
+    initAd();
   }
 
   //4択の1つ、持ち物ページに飛ぶ
@@ -422,5 +475,31 @@ class _HomeScreenState extends State<HomeScreen> {
     allFruitsList = await database.fruitsList;
     print("allFruitsList$allFruitsList");
     print("allFruitsList.length${allFruitsList.length}");
+  }
+
+  // 機能	説明
+  // isAvailable()	インストアレビューが可能か確認
+  // requestReview()	アプリ内レビューを依頼
+  // ストアURL生成	Android/iOS に応じてURLを分岐
+  // canLaunchUrl() & launchUrl()	ストアに遷移
+  // Fluttertoast	エラー時にユーザーに通知
+
+  void _goReviewScreen() async {
+    final InAppReview inAppReview = InAppReview.instance;
+
+    if (await inAppReview.isAvailable()) {
+      inAppReview.requestReview();
+    } else {
+      // フォールバックとしてストアに飛ばす
+      final url = Platform.isAndroid
+          ? 'https://play.google.com/store/apps/details?id=com.example.fruit_hunter'
+          : 'https://apps.apple.com/app/idXXXXXXXXXX';
+
+      if (await canLaunchUrl(Uri.parse(url))) {
+        await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+      } else {
+        Fluttertoast.showToast(msg: S.of(context).NotLaunchStore);
+      }
+    }
   }
 }

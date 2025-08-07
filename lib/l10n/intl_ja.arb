@@ -7,7 +7,11 @@
 
   "GetData": "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください",
 
+  "Options": "他の項目",
   "Credits": "クレジット表記",
+  "Review": "レビュー依頼",
+  "NotLaunchStore": "ストアを開けませんでした",
+
   "PhotoIllustration": "写真・イラスト\n\n",
   "TopPage": "・Topページ : Pexelsより引用\n\n・果物一覧ページ, クイズページ : 写真AC, イラストACより引用\n\n・持ち物ページ, マナーページ, クレジットページ : イラストACより引用\n\n",
   "FontIcon": "フォント・アイコン名\n\n",
@@ -103,5 +107,24 @@
 
   "AllCorrect0": "全問正解！",
   "AllCorrect1": "全問正解, おめでとうございます🤩\n素晴らしいです\nお疲れさまでした.\n",
-  "AllCorrect2": "果物の知識について, 少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください."
+  "AllCorrect2": "果物の知識について, 少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください.",
+
+  "RecordList": "記録一覧",
+  "FruitPickingRecord": "果物狩りの記録",
+  "PickADate": "日付を選ぶ",
+  "FruitType": "果物の種類",
+
+  "Required": "必須",
+  "FarmName": "果樹園名",
+  "Memo": "メモ(任意)",
+  "PickAPhoto": "写真を選ぶ",
+  "Save": "保存",
+
+  "EditRecord": "記録の編集",
+
+  "DeleteRecord0": "記録の消去",
+  "DeleteRecord1": "記録を消去しますか？",
+  "DeleteRecord2": "消去しました",
+
+  "FullScreen": "画面表示"
 }
