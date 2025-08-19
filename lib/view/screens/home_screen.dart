@@ -15,7 +15,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../main.dart';
 import 'belongings_screen.dart';
 import 'credit_screen.dart';
-import 'fruit_record_list_screen.dart';
+import 'fruit_record_master_screen.dart';
 import 'list_screen.dart';
 import 'quiz_screen.dart';
 
@@ -334,7 +334,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goFruitRecordPage(),
                 child: AutoSizeText(
-                  S.of(context).Record,
+                  S.of(context).Memory,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -451,8 +451,8 @@ class _HomeScreenState extends State<HomeScreen> {
   _goFruitRecordPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => FruitRecordListScreen()));
-    initAd();
+        MaterialPageRoute(builder: (context) => FruitRecordMasterScreen()));
+    // initAd();
   }
 
   //4択の1つ、持ち物ページに飛ぶ

@@ -104,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "List": MessageLookupByLibrary.simpleMessage("List"),
         "Manner": MessageLookupByLibrary.simpleMessage("Manner"),
         "Memo": MessageLookupByLibrary.simpleMessage("memo (optional)"),
+        "Memory": MessageLookupByLibrary.simpleMessage("Memory"),
         "Next":
             MessageLookupByLibrary.simpleMessage("Proceed to the next page."),
         "NextFruit": MessageLookupByLibrary.simpleMessage("Next Fruit！"),
@@ -114,7 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "PhotoIllustration":
             MessageLookupByLibrary.simpleMessage("Photo・illustration\n\n"),
         "PickADate": MessageLookupByLibrary.simpleMessage("pick a date"),
-        "PickAPhoto": MessageLookupByLibrary.simpleMessage("pick a photo"),
+        "PickAPhoto":
+            MessageLookupByLibrary.simpleMessage("pick a photo ( up to 3 )"),
         "QuestionCount":
             MessageLookupByLibrary.simpleMessage("Number of questions"),
         "Quiz": MessageLookupByLibrary.simpleMessage("Quiz"),
@@ -123,7 +125,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "QuizFinish":
             MessageLookupByLibrary.simpleMessage("Concluding the quiz"),
         "QuizScore": MessageLookupByLibrary.simpleMessage("Quiz Score"),
-        "Record": MessageLookupByLibrary.simpleMessage("Record"),
         "RecordList": MessageLookupByLibrary.simpleMessage("Record List"),
         "Required": MessageLookupByLibrary.simpleMessage("Required"),
         "Result": MessageLookupByLibrary.simpleMessage("Results announcement！"),

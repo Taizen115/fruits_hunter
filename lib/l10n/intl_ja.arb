@@ -2,7 +2,7 @@
   "Catchphrase": "どのような果物狩りの手伝いが\n必要でしょうか？",
   "List": "果物一覧",
   "Belongings": "持ち物",
-  "Record": "記録",
+  "Memory": "思い出",
   "Quiz": "クイズ",
 
   "GetData": "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください",
@@ -117,7 +117,7 @@
   "Required": "必須",
   "FarmName": "果樹園名",
   "Memo": "メモ(任意)",
-  "PickAPhoto": "写真を選ぶ",
+  "PickAPhoto": "写真を選ぶ (～ 3枚)",
   "Save": "保存",
 
   "EditRecord": "記録の編集",

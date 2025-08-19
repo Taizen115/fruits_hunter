@@ -80,11 +80,11 @@ class S {
     );
   }
 
-  /// `Record`
-  String get Record {
+  /// `Memory`
+  String get Memory {
     return Intl.message(
-      'Record',
-      name: 'Record',
+      'Memory',
+      name: 'Memory',
       desc: '',
       args: [],
     );
@@ -1020,10 +1020,10 @@ class S {
     );
   }
 
-  /// `pick a photo`
+  /// `pick a photo ( up to 3 )`
   String get PickAPhoto {
     return Intl.message(
-      'pick a photo',
+      'pick a photo ( up to 3 )',
       name: 'PickAPhoto',
       desc: '',
       args: [],

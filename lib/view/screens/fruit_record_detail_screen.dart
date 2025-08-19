@@ -1,38 +1,46 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../generated/l10n.dart';
 import '../../main.dart';
+import '../../model/fruit_record_logic.dart';
 import '../components/fruit_record.dart';
-import '../components/fruit_record_logic.dart';
-import 'fruit_record_list_screen.dart';
+import 'fruit_record_master_screen.dart';
 import 'full_screen.dart';
 
-class FruitRecordFormEditScreen extends StatefulWidget {
-  final FruitRecord? recordToEdit;
+enum FruitRecordOpenMode { NEW, EDIT }
+enum RecordToEdit { NULL, RECORD}
 
-  const FruitRecordFormEditScreen({this.recordToEdit});
+class FruitRecordDetailScreen extends StatefulWidget {
+  final FruitRecord? recordToEdit;
+  final FruitRecordOpenMode openMode;
+
+  const FruitRecordDetailScreen({required this.recordToEdit, required this.openMode});
 
   @override
-  State<FruitRecordFormEditScreen> createState() =>
-      _FruitRecordFormEditScreenState();
+  State<FruitRecordDetailScreen> createState() =>
+      _FruitRecordDetailScreenState();
 }
 
-class _FruitRecordFormEditScreenState extends State<FruitRecordFormEditScreen> {
+class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   final _formKey = GlobalKey<FormState>();
 
   late TextEditingController _fruitTypeController;
   late TextEditingController _farmNameController;
   late TextEditingController _memoController;
 
-  File? _imageFile;
+  List<File> _imageFiles = [];
+
+  // File? _imageFile;
   DateTime _selectedDate = DateTime.now();
 
   //このコードは、**「前に書いた記録を、もう一度開いて、すぐに編集できるように準備するコード」**です。
@@ -63,8 +71,11 @@ class _FruitRecordFormEditScreenState extends State<FruitRecordFormEditScreen> {
     _selectedDate =
         r != null ? DateFormat('yyyy-MM-dd').parse(r.date) : DateTime.now();
 
-    if (r?.imagePath != null) {
-      _imageFile = File(r!.imagePath!);
+    if (r?.imagePaths != null) {
+      // _imageFile = File(r!.imagePath!);
+      for (final path in r!.imagePaths) {
+        _imageFiles.add(File(path));
+      }
     }
   }
 
@@ -92,16 +103,20 @@ class _FruitRecordFormEditScreenState extends State<FruitRecordFormEditScreen> {
   // File.copy()	画像をコピー	アプリの中で使えるようにする
   // setState()	画面を更新	選んだ画像を表示
 
-  Future<void> _pickImage() async {
+  Future<void> _pickImages() async {
     final picker = ImagePicker();
-    final picked = await picker.pickImage(source: ImageSource.gallery);
-    if (picked != null) {
+    final pickedList = await picker.pickMultiImage();
+    if (pickedList.isNotEmpty) {
       final directory = await getApplicationDocumentsDirectory();
-      final fileName = p.basename(picked.path);
-      final savedImage =
-          await File(picked.path).copy('${directory.path}/$fileName');
+      List<File> savedImages = [];
+      for (var picked in pickedList) {
+        final fileName = p.basename(picked.path);
+        final savedImage =
+            await File(picked.path).copy('${directory.path}/$fileName');
+        savedImages.add(savedImage);
+      }
       setState(() {
-        _imageFile = savedImage;
+        _imageFiles.addAll(savedImages);
       });
     }
   }
@@ -161,34 +176,17 @@ class _FruitRecordFormEditScreenState extends State<FruitRecordFormEditScreen> {
   // 編集 → 前の記録を上書き（直す）
   // 新規 → 新しく追加する
 
-  Future<void> _save() async {
-    if (_formKey.currentState!.validate()) {
-      final isEdit = widget.recordToEdit != null;
-      final id = isEdit
-          ? widget.recordToEdit!.id!
-          : DateTime.now().millisecondsSinceEpoch;
-
-      final newRecord = FruitRecord(
-        id: id,
-        fruitType: _fruitTypeController.text.trim(),
-        farmName: _farmNameController.text.trim(),
-        date: DateFormat('yyyy-MM-dd').format(_selectedDate),
-        memo: _memoController.text.trim(),
-        imagePath: _imageFile?.path,
-      );
-
-      if (isEdit) {
-        await FruitRecordLogic.updateRecord(id, newRecord);
-      } else {
-        await FruitRecordLogic.saveRecord(newRecord);
+  void _deleteImage(int index) async {
+    if (_imageFiles[index].existsSync()) {
+      try {
+        await _imageFiles[index].delete();
+      } catch (e) {
+        print("画像削除に失敗: $e");
       }
-
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => FruitRecordListScreen()),
-      );
-      initAd();
     }
+    setState(() {
+      _imageFiles.removeAt(index);
+    });
   }
 
   @override
@@ -214,6 +212,16 @@ class _FruitRecordFormEditScreenState extends State<FruitRecordFormEditScreen> {
                   : S.of(context).EditRecord,
               style: TextStyle(color: Colors.teal)),
           centerTitle: true,
+          actions: [
+            InkWell(
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: FaIcon(FontAwesomeIcons.shareNodes,
+                    color: Colors.green[400]),
+              ),
+              onTap: () => _shareRecord(),
+            ),
+          ],
         ),
         body: Padding(
           padding: const EdgeInsets.all(16),
@@ -234,8 +242,7 @@ class _FruitRecordFormEditScreenState extends State<FruitRecordFormEditScreen> {
                   decoration: InputDecoration(
                       labelText: S.of(context).FruitType,
                       labelStyle: TextStyle(color: Colors.teal)),
-                  //必須
-                  // validator: (val) => val!.trim().isEmpty ? 'Required' : null,
+                  //必須= required
                   validator: (val) =>
                       val!.trim().isEmpty ? S.of(context).Required : null,
                 ),
@@ -254,38 +261,78 @@ class _FruitRecordFormEditScreenState extends State<FruitRecordFormEditScreen> {
                       labelStyle: TextStyle(color: Colors.teal)),
                 ),
                 Gap(15.0),
-                _imageFile != null
-                    ? GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) =>
-                                  FullScreen(imageFile: _imageFile!),
-                            ),
+                _imageFiles.isNotEmpty
+                    ? Wrap(
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: List.generate(_imageFiles.length, (index) {
+                          final file = _imageFiles[index];
+                          return Stack(
+                            children: [
+                              GestureDetector(
+                                onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) =>
+                                          FullScreen(imageFile: file)),
+                                ),
+                                child: Image.file(file,
+                                    width: 100, height: 100, fit: BoxFit.cover),
+                              ),
+                              Positioned(
+                                right: 0,
+                                top: 0,
+                                child: GestureDetector(
+                                  onTap: () => _deleteImage(index),
+                                  child: Container(
+                                    color: Colors.black54,
+                                    child: Icon(Icons.close,
+                                        color: Colors.white, size: 20),
+                                  ),
+                                ),
+                              )
+                            ],
                           );
-                        },
-                        child: Image.file(_imageFile!,
-                            height: 350, fit: BoxFit.cover),
+                        }),
                       )
-                    : Container(height: 350, color: Colors.grey[300]),
+                    : Container(height: 100, color: Colors.grey[300]),
                 Gap(15.0),
                 ElevatedButton.icon(
-                  onPressed: _pickImage,
-                  icon: Icon(Icons.photo),
+                  onPressed: _pickImages,
+                  icon: Icon(
+                    Icons.photo,
+                    color: Colors.teal,
+                  ),
                   label: Text(
                     S.of(context).PickAPhoto,
                     style: TextStyle(color: Colors.teal),
                   ),
                 ),
-               Gap(20.0),
+                Gap(20.0),
                 ElevatedButton(
-                  onPressed: _save,
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      final record = FruitRecord(
+                        fruitType: _fruitTypeController.text.trim(),
+                        farmName: _farmNameController.text.trim(),
+                        date: DateFormat('yyyy-MM-dd').format(_selectedDate),
+                        memo: _memoController.text.trim(),
+                        imagePaths: _imageFiles.isNotEmpty
+                            ? _imageFiles.map((file) => file.path).toList()
+                            : [],
+                      );
+
+                      await FruitRecordLogic.saveRecord(record);
+
+                      Fluttertoast.showToast(msg: "保存しました");
+                      Navigator.pop(context, true);
+                    }
+                  },
                   child: Text(
                     S.of(context).Save,
                     style: TextStyle(color: Colors.teal),
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -294,13 +341,69 @@ class _FruitRecordFormEditScreenState extends State<FruitRecordFormEditScreen> {
     );
   }
 
+  // Future<void> _save() async {
+  //   if (_formKey.currentState!.validate()) {
+  //     final isEdit = widget.recordToEdit != null;
+  //     final id = isEdit
+  //         ? widget.recordToEdit!.id!
+  //         : DateTime.now().millisecondsSinceEpoch;
+  //
+  //     final newRecord = FruitRecord(
+  //       // id: id,
+  //       fruitType: _fruitTypeController.text.trim(),
+  //       farmName: _farmNameController.text.trim(),
+  //       date: DateFormat('yyyy-MM-dd').format(_selectedDate),
+  //       memo: _memoController.text.trim(),
+  //       imagePaths: _imageFiles.isNotEmpty
+  //           ? _imageFiles.map((file) => file.path).toList()
+  //           : [],
+  //       // imagePaths: _imageFiles.isNotEmpty ? _imageFiles.first.path : null,
+  //     );
+  //     await FruitRecordLogic.saveRecord(newRecord);
+  //
+  //     Fluttertoast.showToast(msg: "保存しました");
+  //     Navigator.pop(context);
+  //   }
+  // }
+
   _goFruitRecordListScreen() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => FruitRecordListScreen(),
+        builder: (context) => FruitRecordMasterScreen(),
       ),
     );
     initAd();
+  }
+
+// 修正後の _shareRecord メソッド
+  Future<void> _shareRecord() async {
+    // フォームの内容をテキストにまとめる
+    final recordText = '''
+🍓✨ #果物狩りに行ってきました　✨🍇
+📅${S.of(context).PickADate}: ${DateFormat('yyyy-MM-dd').format(_selectedDate)}
+🍎${S.of(context).FruitType}: ${_fruitTypeController.text}
+🌳${S.of(context).FarmName}: ${_farmNameController.text}
+
+📝${S.of(context).Memo}: ${_memoController.text}
+
+#果物狩り #フルーツ #いちご狩り #ぶどう狩り #果物狩りナビ
+''';
+    if (_imageFiles.isNotEmpty) {
+      try {
+        final xfiles = _imageFiles.map((f) => XFile(f.path)).toList();
+        await Share.shareXFiles(xfiles, text: recordText);
+        Fluttertoast.showToast(msg: "記録をシェアしました");
+      } catch (e) {
+        print("画像シェア失敗: $e");
+      }
+    } else {
+      try {
+        await Share.share(recordText);
+        Fluttertoast.showToast(msg: "記録をシェアしました！");
+      } catch (e) {
+        print("テキストシェア失敗: $e");
+      }
+    }
   }
 }

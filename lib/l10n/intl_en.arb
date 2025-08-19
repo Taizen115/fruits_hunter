@@ -2,7 +2,7 @@
   "Catchphrase":"What kind of help do you need with\nfruit picking?",
   "List": "List",
   "Belongings": "Belonging",
-  "Record": "Record",
+  "Memory": "Memory",
   "Quiz": "Quiz",
 
   "GetData": "[Home]Please close the screen and try again",
@@ -117,7 +117,7 @@
   "Required": "Required",
   "FarmName": "farm name",
   "Memo": "memo (optional)",
-  "PickAPhoto": "pick a photo",
+  "PickAPhoto": "pick a photo ( up to 3 )",
   "Save": "save",
 
   "EditRecord": "Edit Record",
