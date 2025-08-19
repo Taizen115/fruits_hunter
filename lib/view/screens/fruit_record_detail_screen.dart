@@ -143,38 +143,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     }
   }
 
-  //if (_formKey.currentState!.validate()) {
-  // 💡これは、「ちゃんと全部書いた？」を確認する部分。
 
-  //final isEdit = widget.recordToEdit != null;
-  // 💡「編集」か「新しい記録」かを判断します。
-  // 編集なら、recordToEdit に元のデータが入ってます。
-  // 新規なら、空っぽなので新しく作ります。
-
-  //final id = isEdit
-  //     ? widget.recordToEdit!.id!
-  //     : DateTime.now().millisecondsSinceEpoch;
-  // 💡記録を見分けるための番号を決めます。
-  //
-  // 編集 → 前のIDをそのまま使う
-  // 新規 → 今の時間（ミリ秒）を使って自動でユニークなIDを作る
-
-  //書いた内容をひとつにまとめたもの。**「記録ノート1ページ分」**と思ってください。
-  // 果物の名前
-  // 農園の名前
-  // 行った日
-  // メモ
-  // 写真（選んでいれば）
-
-  //if (isEdit) {
-  //   await FruitRecordLogic.updateRecord(id, newRecord);
-  // } else {
-  //   await FruitRecordLogic.saveRecord(newRecord);
-  // }
-  // 💡保存のやり方が2つあります。
-  //
-  // 編集 → 前の記録を上書き（直す）
-  // 新規 → 新しく追加する
+  ///画像の削除
 
   void _deleteImage(int index) async {
     if (_imageFiles[index].existsSync()) {

@@ -19,7 +19,6 @@ class FruitRecordMasterScreen extends StatefulWidget {
 }
 
 class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
-
   //広告
   @override
   void initState() {
@@ -38,12 +37,12 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.teal,
-            child: FaIcon(FontAwesomeIcons.plus),
-            onPressed: () => _goFruitRecordDetailScreen(
-                recordToEdit:null,
-                openMode: FruitRecordOpenMode.NEW),),
+          foregroundColor: Colors.white,
+          backgroundColor: Colors.teal,
+          child: FaIcon(FontAwesomeIcons.plus),
+          onPressed: () => _goFruitRecordDetailScreen(
+              recordToEdit: null, openMode: FruitRecordOpenMode.NEW),
+        ),
         appBar: AppBar(
           leading: InkWell(
             child: Padding(
@@ -98,113 +97,186 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                   if (!snapshot.hasData)
                     return Center(child: CircularProgressIndicator());
                   final records = snapshot.data!;
+
                   return ListView.builder(
                     itemCount: records.length,
                     itemBuilder: (context, index) {
                       final r = records[index];
-                      return Card(
-                        margin: EdgeInsets.all(1.0),
-                        child: ListTile(
-                          onTap: () => _goFruitRecordDetailScreen(
-                              recordToEdit: r,
-                              openMode: FruitRecordOpenMode.EDIT),
-                    title: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _buildImageList(r.imagePaths),
-                                Gap(10.0),
-                                Column(
-                                  children: [
-                                    Text(
-                                      '${r.fruitType}',
-                                      style: TextStyle(
-                                          color: Colors.teal, fontFamily: SubFont, fontSize: 10.0),
-                                    ),
-                                    Gap(3.0),
-                                    Text(
-                                      'in ${r.farmName}',
-                                      style: TextStyle(
-                                          color: Colors.teal, fontFamily: SubFont, fontSize: 10.0),
-                                    ),
-                                    Gap(3.0),
-                                    Text(
-                                      '${r.date}',
-                                      style: TextStyle(
-                                          color: Colors.grey[700],
-                                          fontFamily: SubFont, fontSize: 10.0),
-                                    ),
-                                    Gap(3.0),
-                                    Text(
-                                      '${r.memo ?? ''}',
-                                      style: TextStyle(
-                                          color: Colors.grey[700],
-                                          fontFamily: SubFont, fontSize: 10.0),
-                                    ),
-                                  ],
-                                ),
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: IconButton(
-                                    icon: Icon(
-                                      Icons.delete,
-                                      color: Colors.black87,
-                                    ),
-                                    onPressed: () async {
-                                      showDialog(
-                                        context: context,
-                                        barrierDismissible: true,
-                                        builder: (_) => AlertDialog(
-                                          title: Text(
-                                            //記録の消去
-                                            S.of(context).DeleteRecord0,
-                                            style: TextStyle(fontSize: 20.0),
-                                          ),
-                                          content: Text(
-                                            //記録を消去しますか？
-                                            S.of(context).DeleteRecord1,
-                                            style: TextStyle(
-                                                color: Colors.black54,
-                                                fontSize: 15.0),
-                                          ),
-                                          actions: [
-                                            TextButton(
-                                              style: TextButton.styleFrom(
-                                                foregroundColor: Colors.teal,
-                                              ),
-                                              child: Text(S.of(context).OK),
-                                              onPressed: () async {
-                                                await FruitRecordLogic
-                                                    .deleteRecord(records[index].id!);
-                                                Fluttertoast.showToast(
-                                                  //消去しました
-                                                  msg: S
-                                                      .of(context)
-                                                      .DeleteRecord2,
-                                                  toastLength:
-                                                      Toast.LENGTH_LONG,
-                                                );
-                                                Navigator.pop(context);
-                                                setState(() {});
-                                              },
-                                            ),
-                                            TextButton(
-                                              style: TextButton.styleFrom(
-                                                backgroundColor: Colors.teal,
-                                                foregroundColor: Colors.white,
-                                              ),
-                                              child: Text(S.of(context).Cancel),
-                                              onPressed: () =>
-                                                  Navigator.pop(context),
-                                            )
-                                          ],
-                                        ),
-                                      ); // 🔁←正しい再描画の方法
-                                    },
+
+                      return Dismissible(
+                        key: ValueKey(r.id),
+                        direction: DismissDirection.endToStart,
+                        background: Container(
+                          color: Colors.teal,
+                          alignment: Alignment.centerRight,
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Icon(Icons.delete, color: Colors.white),
+                        ),
+                        confirmDismiss: (direction) async {
+                          ///スワイプによる削除確認のためのダイアログ
+                          return await showDialog(
+                            context: context,
+                            builder: (_) => AlertDialog(
+                              title: Text(
+                                //記録の消去
+                                S.of(context).DeleteRecord0,
+                                style: TextStyle(fontSize: 20.0),
+                              ),
+                              content: Text(
+                                //記録を消去しますか？
+                                S.of(context).DeleteRecord1,
+                                style: TextStyle(
+                                    color: Colors.black54, fontSize: 15.0),
+                              ),
+                              actions: [
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: Colors.teal,
                                   ),
+                                  child: Text(S.of(context).OK),
+                                  onPressed: () async {
+                                    await FruitRecordLogic.deleteRecord(
+                                        records[index].id!);
+                                    Fluttertoast.showToast(
+                                      //消去しました
+                                      msg: S.of(context).DeleteRecord2,
+                                      toastLength: Toast.LENGTH_LONG,
+                                    );
+                                    Navigator.pop(context);
+                                    setState(() {});
+                                  },
+                                ),
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: Colors.teal,
+                                    foregroundColor: Colors.white,
+                                  ),
+                                  child: Text(S.of(context).Cancel),
+                                  onPressed: () => Navigator.pop(context),
                                 )
                               ],
+                            ),
+                          );
+                        },
+                        onDismissed: (direction) async {
+                          await FruitRecordLogic.deleteRecord(r.id!);
+                          setState(() {
+                          });
+                        },
+                        child: Card(
+                          color: Colors.white70,
+                          elevation: 10.0,
+                          margin: EdgeInsets.all(5.0),
+                          child: ListTile(
+                            onTap: () => _goFruitRecordDetailScreen(
+                                recordToEdit: r,
+                                openMode: FruitRecordOpenMode.EDIT),
+                            title: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  _buildImageList(r.imagePaths),
+                                  Gap(10.0),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        '${r.fruitType}',
+                                        style: TextStyle(
+                                            color: Colors.teal,
+                                            fontFamily: SubFont,
+                                            fontSize: 12.0),
+                                      ),
+                                      Gap(3.0),
+                                      Text(
+                                        'in ${r.farmName}',
+                                        style: TextStyle(
+                                            color: Colors.teal,
+                                            fontFamily: SubFont,
+                                            fontSize: 10.0),
+                                      ),
+                                      Gap(3.0),
+                                      Text(
+                                        '${r.date}',
+                                        style: TextStyle(
+                                            color: Colors.black87,
+                                            fontFamily: SubFont,
+                                            fontSize: 10.0),
+                                      ),
+                                      Gap(3.0),
+                                      Text(
+                                        '${r.memo ?? ''}',
+                                        style: TextStyle(
+                                            color: Colors.black87,
+                                            fontFamily: SubFont,
+                                            fontSize: 12.0),
+                                      ),
+                                    ],
+                                  ),
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: IconButton(
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.black87,
+                                      ),
+                                      onPressed: () async {
+                                        showDialog(
+                                          context: context,
+                                          barrierDismissible: true,
+                                          builder: (_) => AlertDialog(
+                                            title: Text(
+                                              //記録の消去
+                                              S.of(context).DeleteRecord0,
+                                              style: TextStyle(fontSize: 20.0),
+                                            ),
+                                            content: Text(
+                                              //記録を消去しますか？
+                                              S.of(context).DeleteRecord1,
+                                              style: TextStyle(
+                                                  color: Colors.black54,
+                                                  fontSize: 15.0),
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                style: TextButton.styleFrom(
+                                                  foregroundColor: Colors.teal,
+                                                ),
+                                                child: Text(S.of(context).OK),
+                                                onPressed: () async {
+                                                  await FruitRecordLogic
+                                                      .deleteRecord(
+                                                          records[index].id!);
+                                                  Fluttertoast.showToast(
+                                                    //消去しました
+                                                    msg: S
+                                                        .of(context)
+                                                        .DeleteRecord2,
+                                                    toastLength:
+                                                        Toast.LENGTH_LONG,
+                                                  );
+                                                  Navigator.pop(context);
+                                                  setState(() {});
+                                                },
+                                              ),
+                                              TextButton(
+                                                style: TextButton.styleFrom(
+                                                  backgroundColor: Colors.teal,
+                                                  foregroundColor: Colors.white,
+                                                ),
+                                                child:
+                                                    Text(S.of(context).Cancel),
+                                                onPressed: () =>
+                                                    Navigator.pop(context),
+                                              )
+                                            ],
+                                          ),
+                                        ); // 🔁←正しい再描画の方法
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -220,19 +292,20 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
     );
   }
 
-  _goFruitRecordDetailScreen({required FruitRecordOpenMode openMode, required recordToEdit}) async {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => FruitRecordDetailScreen(
-            openMode: openMode,
-            recordToEdit: recordToEdit,
-          ),
+  _goFruitRecordDetailScreen(
+      {required FruitRecordOpenMode openMode, required recordToEdit}) async {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FruitRecordDetailScreen(
+          openMode: openMode,
+          recordToEdit: recordToEdit,
         ),
-      ).then((_) {
-        setState(() {}); // 編集後の再描画
-      });
-    }
+      ),
+    ).then((_) {
+      setState(() {}); // 編集後の再描画
+    });
+  }
 
   _goHomeScreen() {
     Navigator.push(

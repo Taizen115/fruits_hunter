@@ -15,14 +15,14 @@ class FruitRecord {
     this.imagePaths = const [],
   });
 
-  // FruitRecord copy({int? id}) => FruitRecord(
-  //   id: id ?? this.id,
-  //   fruitType: fruitType,
-  //   farmName: farmName,
-  //   date: date,
-  //   memo: memo,
-  //   imagePaths: imagePaths,
-  // );
+  FruitRecord copy({int? id}) => FruitRecord(
+    id: id ?? this.id,
+    fruitType: fruitType,
+    farmName: farmName,
+    date: date,
+    memo: memo,
+    imagePaths: imagePaths,
+  );
 
   Map<String, dynamic> toMap() {
     return {

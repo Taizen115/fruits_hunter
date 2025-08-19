@@ -19,7 +19,7 @@ class FruitRecordLogic {
     await FruitRecordDB.instance.delete(id);
   }
 
-  // static Future<void> updateRecord(int id, FruitRecord newRecord) async {
-  //   await FruitRecordDB.instance.update(newRecord.copy(id: id));
-  // }
+  static Future<void> updateRecord(int id, FruitRecord newRecord) async {
+    await FruitRecordDB.instance.update(newRecord.copy(id: id));
+  }
 }
