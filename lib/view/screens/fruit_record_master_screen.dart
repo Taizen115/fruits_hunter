@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -113,6 +114,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                           child: Icon(Icons.delete, color: Colors.white),
                         ),
                         confirmDismiss: (direction) async {
+
                           ///スワイプによる削除確認のためのダイアログ
                           return await showDialog(
                             context: context,
@@ -160,8 +162,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                         },
                         onDismissed: (direction) async {
                           await FruitRecordLogic.deleteRecord(r.id!);
-                          setState(() {
-                          });
+                          setState(() {});
                         },
                         child: Card(
                           color: Colors.white70,
@@ -180,13 +181,29 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                   Gap(10.0),
                                   Column(
                                     children: [
-                                      Text(
-                                        '${r.fruitType}',
+                                      AutoSizeText(
+                                        (r.fruitType != null &&
+                                                r.fruitType.length > 5)
+                                            ? r.fruitType!.substring(0, 5) + "…"
+                                            : (r.fruitType ?? ''),
                                         style: TextStyle(
                                             color: Colors.teal,
                                             fontFamily: SubFont,
-                                            fontSize: 12.0),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 10.0),
+                                        maxLines: 1,
+                                        minFontSize: 8.0,
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.right,
                                       ),
+                                      // Text(
+                                      //   '${r.fruitType}',
+                                      //   style: TextStyle(
+                                      //       color: Colors.teal,
+                                      //       fontFamily: SubFont,
+                                      //       fontWeight: FontWeight.bold,
+                                      //       fontSize: 15.0),
+                                      // ),
                                       Gap(3.0),
                                       Text(
                                         'in ${r.farmName}',
@@ -204,12 +221,19 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                             fontSize: 10.0),
                                       ),
                                       Gap(3.0),
-                                      Text(
-                                        '${r.memo ?? ''}',
+                                      AutoSizeText(
+                                        (r.memo != null && r.memo!.length > 5)
+                                            ? r.memo!.substring(0, 5) + "…"
+                                            : (r.memo ?? ''),
+                                        // '${r.memo ?? ''}',
                                         style: TextStyle(
                                             color: Colors.black87,
                                             fontFamily: SubFont,
-                                            fontSize: 12.0),
+                                            fontSize: 10.0),
+                                        maxLines: 1,
+                                        minFontSize: 8.0,
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.right,
                                       ),
                                     ],
                                   ),
@@ -340,3 +364,28 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
     );
   }
 }
+
+///説明
+//
+/// 上のバー
+/// 左の「←」 → 一つ前の画面に戻る
+///記録をシェア
+
+/// 日付
+/// カレンダーで日付を選択
+//
+///テキスト入力欄
+///果物の種類、農園名、メモ
+///必須項目には入力チェック
+//
+/// 写真表示
+/// 複数の写真を小さな正方形で並べる
+/// 右上の「×」で削除
+//
+/// タップでフルスクリーン表示
+/// 写真追加ボタン
+/// ギャラリーから写真を選んで追加
+//
+/// 保存ボタン
+/// 入力内容を保存
+/// 編集か新規作成かに応じて処理

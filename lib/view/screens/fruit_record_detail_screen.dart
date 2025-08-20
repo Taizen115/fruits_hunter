@@ -133,7 +133,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     final picked = await showDatePicker(
       context: context,
       initialDate: _selectedDate,
-      firstDate: DateTime(2000),
+      firstDate: DateTime(1950),
       lastDate: DateTime(2100),
     );
     if (picked != null) {
@@ -282,7 +282,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                 ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      final record = FruitRecord(
+                      final updated = FruitRecord(
                         fruitType: _fruitTypeController.text.trim(),
                         farmName: _farmNameController.text.trim(),
                         date: DateFormat('yyyy-MM-dd').format(_selectedDate),
@@ -292,7 +292,11 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                             : [],
                       );
 
-                      await FruitRecordLogic.saveRecord(record);
+                      if (widget.recordToEdit != null) {
+                        await FruitRecordLogic.updateRecord(widget.recordToEdit!.id!, updated);
+                      } else {
+                        await FruitRecordLogic.saveRecord(updated); // 新規の場合
+                      }
 
                       Fluttertoast.showToast(msg: "保存しました");
                       Navigator.pop(context, true);

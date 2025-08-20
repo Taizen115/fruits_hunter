@@ -15,6 +15,9 @@ class FruitRecord {
     this.imagePaths = const [],
   });
 
+  ///すでにある記録を「少しだけ変更してコピー」を作りたいときに使う
+  /// 例：元の記録はそのままにして、idだけ変えて保存したい場合など
+
   FruitRecord copy({int? id}) => FruitRecord(
     id: id ?? this.id,
     fruitType: fruitType,
@@ -24,6 +27,10 @@ class FruitRecord {
     imagePaths: imagePaths,
   );
 
+  ///データベースやファイルに保存するときに Map型（キーと値のセット）に変換
+  /// imagePaths.join(',') → 画像のリストをカンマでつなげた文字列に変換
+  /// 例：["a.jpg","b.jpg"] → "a.jpg,b.jpg"
+
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -31,9 +38,13 @@ class FruitRecord {
       'farmName': farmName,
       'date': date,
       'memo': memo,
-      'imagePaths': imagePaths?.join(',')??"", // リストはカンマ区切りで保存
+      'imagePaths': imagePaths.join(',')??"", // リストはカンマ区切りで保存
     };
   }
+
+  ///データベースやファイルから読み込んだ Map を FruitRecord に戻す
+  ///split(',') → 文字列をリストに戻す
+  /// 例： "a.jpg,b.jpg" → ["a.jpg","b.jpg"]
 
   factory FruitRecord.fromMap(Map<String, dynamic> map) {
     return FruitRecord(
