@@ -9,22 +9,26 @@ import 'package:intl/intl.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:uuid/uuid.dart';
 
+import '../../db/database.dart';
 import '../../generated/l10n.dart';
 import '../../main.dart';
-import '../../model/fruit_record_logic.dart';
-import '../components/fruit_record.dart';
+
+
 import 'fruit_record_master_screen.dart';
 import 'full_screen.dart';
 
 enum FruitRecordOpenMode { NEW, EDIT }
-enum RecordToEdit { NULL, RECORD}
+
+enum RecordToEdit { NULL, RECORD }
 
 class FruitRecordDetailScreen extends StatefulWidget {
   final FruitRecord? recordToEdit;
   final FruitRecordOpenMode openMode;
 
-  const FruitRecordDetailScreen({required this.recordToEdit, required this.openMode});
+  const FruitRecordDetailScreen(
+      {required this.recordToEdit, required this.openMode});
 
   @override
   State<FruitRecordDetailScreen> createState() =>
@@ -63,17 +67,23 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   void initState() {
     super.initState();
 
-    final r = widget.recordToEdit;
+    final recordToEdit = widget.recordToEdit;
 
-    _fruitTypeController = TextEditingController(text: r?.fruitType ?? '');
-    _farmNameController = TextEditingController(text: r?.farmName ?? '');
-    _memoController = TextEditingController(text: r?.memo ?? '');
-    _selectedDate =
-        r != null ? DateFormat('yyyy-MM-dd').parse(r.date) : DateTime.now();
+    _fruitTypeController =
+        TextEditingController(text: recordToEdit?.fruitType ?? '');
+    _farmNameController =
+        TextEditingController(text: recordToEdit?.farmName ?? '');
+    _memoController = TextEditingController(text: recordToEdit?.memo ?? '');
+    _selectedDate = (recordToEdit != null)
+        ? DateFormat('yyyy-MM-dd').parse(recordToEdit.date)
+        : DateTime.now();
 
-    if (r?.imagePaths != null) {
+    if ((recordToEdit != null) && (recordToEdit.imageFileNames != null)) {
       // _imageFile = File(r!.imagePath!);
-      for (final path in r!.imagePaths) {
+      final fileNames = recordToEdit.imageFileNames!.split(",");
+      for (final imageFileName in fileNames) {
+        //TODO ファイル名からパスへの変換
+        final path = p.join(appDirectoryPath, imageFileName);
         _imageFiles.add(File(path));
       }
     }
@@ -142,7 +152,6 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
       });
     }
   }
-
 
   ///画像の削除
 
@@ -283,19 +292,26 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       final updated = FruitRecord(
+                        id: Uuid().v1(),
                         fruitType: _fruitTypeController.text.trim(),
                         farmName: _farmNameController.text.trim(),
                         date: DateFormat('yyyy-MM-dd').format(_selectedDate),
                         memo: _memoController.text.trim(),
-                        imagePaths: _imageFiles.isNotEmpty
-                            ? _imageFiles.map((file) => file.path).toList()
-                            : [],
+                        imageFileNames: _imageFiles.isNotEmpty
+                            ? _imageFiles
+                                .map((file) {
+                                  return p.basename(file.path);
+                                  //return file.path;
+                                })
+                                .toList()
+                                .join(",")
+                            : "",
                       );
 
-                      if (widget.recordToEdit != null) {
-                        await FruitRecordLogic.updateRecord(widget.recordToEdit!.id!, updated);
+                      if (widget.openMode == FruitRecordOpenMode.EDIT) {
+                        await database.updateFruitRecord(updated);
                       } else {
-                        await FruitRecordLogic.saveRecord(updated); // 新規の場合
+                        await database.insertFruitRecord(updated);
                       }
 
                       Fluttertoast.showToast(msg: "保存しました");
@@ -349,7 +365,6 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     );
     initAd();
   }
-
 
 // 修正後の _shareRecord メソッド
   Future<void> _shareRecord() async {

@@ -95,6 +95,17 @@ class Questions extends Table {
 
 }
 
+//TODO
+class FruitRecords extends Table{
+  TextColumn get id => text()();
+  TextColumn get fruitType => text()();
+  TextColumn get farmName => text()();
+  TextColumn get date => text()();
+  TextColumn get memo => text().nullable()();
+  TextColumn get imagePaths => text().nullable()();
+
+}
+
 LazyDatabase _openConnection(String dbPath) {
   return LazyDatabase(() async {
     // put the database file, called db.sqlite here, into the documents folder
@@ -104,24 +115,25 @@ LazyDatabase _openConnection(String dbPath) {
   });
 }
 
-@DriftDatabase(tables: [Fruits, Questions])
+@DriftDatabase(tables: [Fruits, Questions, FruitRecords])
 class MyDatabase extends _$MyDatabase {
   final String dbPath;
-
 
   MyDatabase({required this.dbPath}) : super(_openConnection(dbPath));
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration {
     return MigrationStrategy(
       onCreate: (Migrator m) async {
+        print("onCreate");
         await m.createAll();
       },
       onUpgrade: (Migrator m, int from, int to) async {
         if (from < 2) {
+          print("onUpgrade: from < 2");
           // we added the dueDate property in the change from version 1 to
           // version 2
           await m.addColumn(questions, questions.questionEn);
@@ -142,6 +154,10 @@ class MyDatabase extends _$MyDatabase {
           await m.addColumn(fruits, fruits.nutrientEfficacyEn);
           await m.addColumn(fruits, fruits.distinguishEn);
         }
+        if (from < 3) {
+          print("onUpgrade: from < 3");
+          await m.createTable(fruitRecords);
+        };
       },
     );
   }
@@ -149,7 +165,7 @@ class MyDatabase extends _$MyDatabase {
 
   Future<List<Fruit>> get fruitsList => select(fruits).get();
 
-  //TODO 春夏秋冬で分類して呼び出す
+  //春夏秋冬で分類して呼び出す
   Future<List<Fruit>> get  fruitsSpring =>
       (select(fruits)
         ..where((table) => table.typeSpring.equals(true))).get();
@@ -168,4 +184,16 @@ class MyDatabase extends _$MyDatabase {
 
 
   Future<List<Question>> get quizList => select(questions).get();
+
+  //TODO FruitsRecord
+  Future<List<FruitRecord>> get allFruitRecords => select(fruitRecords).get();
+
+  Future insertFruitRecord(FruitRecord record) =>
+      into(fruitRecords).insert(record);
+
+  Future updateFruitRecord(FruitRecord record) => update(fruitRecords).replace(record);
+
+  Future deleteFruitRecord(String id){
+    return (delete(fruitRecords)..where((tbl) => tbl.id.equals(id))).go();
+  }
 }
