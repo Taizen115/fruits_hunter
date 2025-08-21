@@ -350,13 +350,14 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     initAd();
   }
 
+
 // 修正後の _shareRecord メソッド
   Future<void> _shareRecord() async {
     // フォームの内容をテキストにまとめる
     final recordText = '''
 🍓✨ #果物狩りに行ってきました　✨🍇
 📅${S.of(context).PickADate}: ${DateFormat('yyyy-MM-dd').format(_selectedDate)}
-🍎${S.of(context).FruitType}: ${_fruitTypeController.text}
+🤩${S.of(context).FruitType}: ${_fruitTypeController.text}
 🌳${S.of(context).FarmName}: ${_farmNameController.text}
 
 📝${S.of(context).Memo}: ${_memoController.text}

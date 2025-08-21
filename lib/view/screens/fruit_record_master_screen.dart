@@ -111,7 +111,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                           color: Colors.teal,
                           alignment: Alignment.centerRight,
                           padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: Icon(Icons.delete, color: Colors.white),
+                          child: Icon(Icons.delete, color: Colors.white70),
                         ),
                         confirmDismiss: (direction) async {
 
