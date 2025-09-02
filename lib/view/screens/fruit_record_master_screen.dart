@@ -7,11 +7,11 @@ import 'package:fruit_hunter/style/style.dart';
 import 'package:fruit_hunter/view/screens/home_screen.dart';
 import 'package:gap/gap.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import '../../db/database.dart';
 import '../../generated/l10n.dart';
 import '../../main.dart';
-import '../components/fruit_record.dart';
-import '../../model/fruit_record_logic.dart';
 import 'fruit_record_detail_screen.dart';
+import 'package:path/path.dart' as p;
 
 class FruitRecordMasterScreen extends StatefulWidget {
   @override
@@ -93,7 +93,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
 
             Expanded(
               child: FutureBuilder<List<FruitRecord>>(
-                future: FruitRecordLogic.loadAllRecords(),
+                future: database.allFruitRecords,
                 builder: (context, snapshot) {
                   if (!snapshot.hasData)
                     return Center(child: CircularProgressIndicator());
@@ -137,8 +137,8 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                   ),
                                   child: Text(S.of(context).OK),
                                   onPressed: () async {
-                                    await FruitRecordLogic.deleteRecord(
-                                        records[index].id!);
+                                    await database
+                                        .deleteFruitRecord(records[index].id);
                                     Fluttertoast.showToast(
                                       //消去しました
                                       msg: S.of(context).DeleteRecord2,
@@ -161,7 +161,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                           );
                         },
                         onDismissed: (direction) async {
-                          await FruitRecordLogic.deleteRecord(r.id!);
+                          await database.deleteFruitRecord(r.id);
                           setState(() {});
                         },
                         child: Card(
@@ -177,7 +177,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  _buildImageList(r.imagePaths),
+                                  _buildImageList(r.imageFileNames),
                                   Gap(10.0),
                                   Column(
                                     children: [
@@ -268,9 +268,9 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                                 ),
                                                 child: Text(S.of(context).OK),
                                                 onPressed: () async {
-                                                  await FruitRecordLogic
-                                                      .deleteRecord(
-                                                          records[index].id!);
+                                                  await database
+                                                      .deleteFruitRecord(
+                                                      records[index].id);
                                                   Fluttertoast.showToast(
                                                     //消去しました
                                                     msg: S
@@ -317,7 +317,8 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
   }
 
   _goFruitRecordDetailScreen(
-      {required FruitRecordOpenMode openMode, required recordToEdit}) async {
+      {required FruitRecordOpenMode openMode,
+        required FruitRecord? recordToEdit}) async {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -340,22 +341,28 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
     );
   }
 
-  Widget _buildImageList(List<String>? imagePaths) {
-    if (imagePaths!.isEmpty) {
+  Widget _buildImageList(String? imageFileNames) {
+    if (imageFileNames == null) {
+      return const Text("写真なし");
+    }
+
+    final fileNames = imageFileNames.split(',');
+
+    if (fileNames.isEmpty) {
       return const Text("写真なし");
     }
 
     return Wrap(
       spacing: 3,
       runSpacing: 3,
-      children: imagePaths
-          .map((path) => ClipRRect(
+      children: fileNames
+          .map((fileName) => ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: SizedBox(
                   width: 60,
                   height: 60,
                   child: Image.file(
-                    File(path),
+                    File(p.join(appDirectoryPath, fileName)),
                     fit: BoxFit.cover,
                   ),
                 ),

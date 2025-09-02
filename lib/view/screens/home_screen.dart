@@ -488,12 +488,14 @@ class _HomeScreenState extends State<HomeScreen> {
     final InAppReview inAppReview = InAppReview.instance;
 
     if (await inAppReview.isAvailable()) {
-      inAppReview.requestReview();
+      //inAppReview.requestReview();
+      inAppReview.openStoreListing(appStoreId: "6473355614");
     } else {
       // フォールバックとしてストアに飛ばす
       final url = Platform.isAndroid
-          ? 'https://play.google.com/store/apps/details?id=com.example.fruit_hunter'
-          : 'https://apps.apple.com/app/idXXXXXXXXXX';
+          ? 'https://play.google.com/store/apps/details?id=com.taylorsguild.fruit_hunter'
+          : 'https://apps.apple.com/jp/app/%E6%9E%9C%E7%89%A9%E7%8B%A9%E3%82%8A%E3%83%8A%E3%83%93/id6473355614';
+
 
       if (await canLaunchUrl(Uri.parse(url))) {
         await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);

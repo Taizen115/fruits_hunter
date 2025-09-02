@@ -9,13 +9,12 @@ import 'package:intl/intl.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-
 import '../../generated/l10n.dart';
 import '../../main.dart';
-import '../../model/fruit_record_logic.dart';
-import '../components/fruit_record.dart';
 import 'fruit_record_master_screen.dart';
 import 'full_screen.dart';
+import 'package:uuid/uuid.dart';
+import '../../db/database.dart';
 
 enum FruitRecordOpenMode { NEW, EDIT }
 enum RecordToEdit { NULL, RECORD}
@@ -63,17 +62,20 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   void initState() {
     super.initState();
 
-    final r = widget.recordToEdit;
+    final recordToEdit = widget.recordToEdit;
 
-    _fruitTypeController = TextEditingController(text: r?.fruitType ?? '');
-    _farmNameController = TextEditingController(text: r?.farmName ?? '');
-    _memoController = TextEditingController(text: r?.memo ?? '');
+    _fruitTypeController = TextEditingController(text: recordToEdit?.fruitType ?? '');
+    _farmNameController = TextEditingController(text: recordToEdit?.farmName ?? '');
+    _memoController = TextEditingController(text: recordToEdit?.memo ?? '');
     _selectedDate =
-        r != null ? DateFormat('yyyy-MM-dd').parse(r.date) : DateTime.now();
+        recordToEdit != null ? DateFormat('yyyy-MM-dd').parse(recordToEdit.date) : DateTime.now();
 
-    if (r?.imagePaths != null) {
+    if ((recordToEdit != null) && (recordToEdit.imageFileNames != null)) {
       // _imageFile = File(r!.imagePath!);
-      for (final path in r!.imagePaths) {
+      final fileNames = recordToEdit.imageFileNames!.split(",");
+      for (final imageFileName in fileNames) {
+        //TODO ファイル名からパスへの変換
+        final path = p.join(appDirectoryPath, imageFileName);
         _imageFiles.add(File(path));
       }
     }
@@ -287,15 +289,22 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                         farmName: _farmNameController.text.trim(),
                         date: DateFormat('yyyy-MM-dd').format(_selectedDate),
                         memo: _memoController.text.trim(),
-                        imagePaths: _imageFiles.isNotEmpty
-                            ? _imageFiles.map((file) => file.path).toList()
-                            : [],
+                        imageFileNames: _imageFiles.isNotEmpty
+                            ? _imageFiles
+                            .map((file) {
+                          return p.basename(file.path);
+                          //return file.path;
+                        })
+                            .toList()
+                            .join(",")
+                            : "",
                       );
 
-                      if (widget.recordToEdit != null) {
-                        await FruitRecordLogic.updateRecord(widget.recordToEdit!.id!, updated);
+
+                      if (widget.openMode == FruitRecordOpenMode.EDIT) {
+                        await database.updateFruitRecord(updated);
                       } else {
-                        await FruitRecordLogic.saveRecord(updated); // 新規の場合
+                        await database.insertFruitRecord(updated);
                       }
 
                       Fluttertoast.showToast(msg: "保存しました");

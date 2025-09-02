@@ -23,6 +23,8 @@ AdManager adManager = AdManager();
 //多言語化
 String currentLanguage = "en";
 
+String appDirectoryPath = "";
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   var dbPath = await getDbPath();
@@ -46,14 +48,15 @@ void main() async {
 
 Future<String> getDbPath() async {
   var dbDir = await getApplicationDocumentsDirectory();
+  appDirectoryPath = dbDir.path;
   var dbPath = join(dbDir.path, "fruits.db");
 
-  // if (FileSystemEntity.typeSync(dbPath) == FileSystemEntityType.notFound) {
+  if (FileSystemEntity.typeSync(dbPath) == FileSystemEntityType.notFound) {
     ByteData byteData = await rootBundle.load("assets/fruits.db");
     List<int> bytes = byteData.buffer
         .asUint8List(byteData.offsetInBytes, byteData.lengthInBytes);
     await File(dbPath).writeAsBytes(bytes);
-  // }
+  }
   return dbPath;
 }
 
