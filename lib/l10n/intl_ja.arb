@@ -9,7 +9,7 @@
 
   "Options": "他の項目",
   "Credits": "クレジット表記",
-  "Review": "レビュー依頼",
+  "Review": "このアプリをレビューする",
   "NotLaunchStore": "ストアを開けませんでした",
 
   "PhotoIllustration": "写真・イラスト\n\n",
@@ -117,8 +117,9 @@
   "Required": "必須",
   "FarmName": "果樹園名",
   "Memo": "メモ(任意)",
-  "PickAPhoto": "写真を選ぶ (～ 3枚)",
+  "PickAPhoto": "写真を選ぶ",
   "Save": "保存",
+  "NoPhoto": "写真なし",
 
   "EditRecord": "記録の編集",
 

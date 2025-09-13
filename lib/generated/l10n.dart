@@ -130,10 +130,10 @@ class S {
     );
   }
 
-  /// `Review Request`
+  /// `Review this app`
   String get Review {
     return Intl.message(
-      'Review Request',
+      'Review this app',
       name: 'Review',
       desc: '',
       args: [],
@@ -1020,10 +1020,10 @@ class S {
     );
   }
 
-  /// `pick a photo ( up to 3 )`
+  /// `pick photos`
   String get PickAPhoto {
     return Intl.message(
-      'pick a photo ( up to 3 )',
+      'pick photos',
       name: 'PickAPhoto',
       desc: '',
       args: [],
@@ -1035,6 +1035,16 @@ class S {
     return Intl.message(
       'save',
       name: 'Save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `no photo`
+  String get NoPhoto {
+    return Intl.message(
+      'no photo',
+      name: 'NoPhoto',
       desc: '',
       args: [],
     );

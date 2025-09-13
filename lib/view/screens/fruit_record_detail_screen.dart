@@ -17,13 +17,15 @@ import 'package:uuid/uuid.dart';
 import '../../db/database.dart';
 
 enum FruitRecordOpenMode { NEW, EDIT }
-enum RecordToEdit { NULL, RECORD}
+
+enum RecordToEdit { NULL, RECORD }
 
 class FruitRecordDetailScreen extends StatefulWidget {
   final FruitRecord? recordToEdit;
   final FruitRecordOpenMode openMode;
 
-  const FruitRecordDetailScreen({required this.recordToEdit, required this.openMode});
+  const FruitRecordDetailScreen(
+      {required this.recordToEdit, required this.openMode});
 
   @override
   State<FruitRecordDetailScreen> createState() =>
@@ -64,16 +66,23 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
 
     final recordToEdit = widget.recordToEdit;
 
-    _fruitTypeController = TextEditingController(text: recordToEdit?.fruitType ?? '');
-    _farmNameController = TextEditingController(text: recordToEdit?.farmName ?? '');
+    _fruitTypeController =
+        TextEditingController(text: recordToEdit?.fruitType ?? '');
+    _farmNameController =
+        TextEditingController(text: recordToEdit?.farmName ?? '');
     _memoController = TextEditingController(text: recordToEdit?.memo ?? '');
-    _selectedDate =
-        recordToEdit != null ? DateFormat('yyyy-MM-dd').parse(recordToEdit.date) : DateTime.now();
+    _selectedDate = (recordToEdit != null)
+        ? DateFormat('yyyy-MM-dd').parse(recordToEdit.date)
+        : DateTime.now();
 
-    if ((recordToEdit != null) && (recordToEdit.imageFileNames != null)) {
+    if ((recordToEdit != null) && (recordToEdit.imagePaths != null)) {
       // _imageFile = File(r!.imagePath!);
-      final fileNames = recordToEdit.imageFileNames!.split(",");
+      final fileNames = recordToEdit.imagePaths!.split(",");
+
       for (final imageFileName in fileNames) {
+        if (imageFileName.isEmpty || imageFileName == "no_photo.png") {
+          continue;
+        }
         //TODO ファイル名からパスへの変換
         final path = p.join(appDirectoryPath, imageFileName);
         _imageFiles.add(File(path));
@@ -127,7 +136,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   // showDatePicker()	📅 カレンダー画面を出すFlutterの関数
   // context	アプリの画面情報（必須）
   // initialDate	カレンダーを開いたときに最初に表示する日付（今回は選ばれている日）
-  // firstDate	選べる最も古い日（2000年）
+  // firstDate	選べる最も古い日（1950年）
   // lastDate	選べる最も新しい日（2100年）
   // await	ユーザーが選び終わるまで待つ
 
@@ -144,7 +153,6 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
       });
     }
   }
-
 
   ///画像の削除
 
@@ -174,7 +182,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                 color: Colors.teal,
               ),
             ),
-            onTap: () => _goFruitRecordListScreen(),
+            onTap: () => _goFruitRecordMasterScreen(),
           ),
 
           // '果物狩りの記録' : '記録の編集'
@@ -237,37 +245,43 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     ? Wrap(
                         spacing: 10,
                         runSpacing: 10,
-                        children: List.generate(_imageFiles.length, (index) {
-                          final file = _imageFiles[index];
-                          return Stack(
-                            children: [
-                              GestureDetector(
-                                onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) =>
-                                          FullScreen(imageFile: file)),
-                                ),
-                                child: Image.file(file,
-                                    width: 100, height: 100, fit: BoxFit.cover),
-                              ),
-                              Positioned(
-                                right: 0,
-                                top: 0,
-                                child: GestureDetector(
-                                  onTap: () => _deleteImage(index),
-                                  child: Container(
-                                    color: Colors.black54,
-                                    child: Icon(Icons.close,
-                                        color: Colors.white, size: 20),
+                        children: List.generate(
+                          _imageFiles.length,
+                          (index) {
+                            final file = _imageFiles[index];
+                            return Stack(
+                              children: [
+                                GestureDetector(
+                                  onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) =>
+                                            FullScreen(imageFile: file)),
                                   ),
+                                  child: Image.file(file,
+                                      width: 100,
+                                      height: 100,
+                                      fit: BoxFit.cover),
                                 ),
-                              )
-                            ],
-                          );
-                        }),
+                                Positioned(
+                                  right: 0,
+                                  top: 0,
+                                  child: GestureDetector(
+                                    onTap: () => _deleteImage(index),
+                                    child: Container(
+                                      color: Colors.black54,
+                                      child: Icon(Icons.close,
+                                          color: Colors.white, size: 20),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            );
+                          },
+                        ),
                       )
-                    : Container(height: 100, color: Colors.grey[300]),
+                    : Image.asset("assets/record/no_photo.png",
+                        width: 100, height: 300, fit: BoxFit.cover),
                 Gap(15.0),
                 ElevatedButton.icon(
                   onPressed: _pickImages,
@@ -285,21 +299,22 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       final updated = FruitRecord(
+                        id: Uuid().v1(),
+                        //id: widget.recordToEdit?.id ?? Uuid().v1(),
                         fruitType: _fruitTypeController.text.trim(),
                         farmName: _farmNameController.text.trim(),
                         date: DateFormat('yyyy-MM-dd').format(_selectedDate),
                         memo: _memoController.text.trim(),
-                        imageFileNames: _imageFiles.isNotEmpty
+                        imagePaths: _imageFiles.isNotEmpty
                             ? _imageFiles
-                            .map((file) {
-                          return p.basename(file.path);
-                          //return file.path;
-                        })
-                            .toList()
-                            .join(",")
-                            : "",
+                                .map((file) {
+                                  return p.basename(file.path);
+                                  //return file.path;
+                                })
+                                .toList()
+                                .join(",")
+                            : "no_photo.png",
                       );
-
 
                       if (widget.openMode == FruitRecordOpenMode.EDIT) {
                         await database.updateFruitRecord(updated);
@@ -349,7 +364,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   //   }
   // }
 
-  _goFruitRecordListScreen() {
+  _goFruitRecordMasterScreen() {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -358,7 +373,6 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     );
     initAd();
   }
-
 
 // 修正後の _shareRecord メソッド
   Future<void> _shareRecord() async {

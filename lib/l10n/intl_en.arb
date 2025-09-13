@@ -9,7 +9,7 @@
 
   "Options": "Options",
   "Credits": "Copyright Notice",
-  "Review": "Review Request",
+  "Review": "Review this app",
   "NotLaunchStore": "Could Not Launch Store",
 
   "PhotoIllustration": "Photo・illustration\n\n",
@@ -117,8 +117,9 @@
   "Required": "Required",
   "FarmName": "farm name",
   "Memo": "memo (optional)",
-  "PickAPhoto": "pick a photo ( up to 3 )",
+  "PickAPhoto": "pick photos",
   "Save": "save",
+  "NoPhoto": "no photo",
 
   "EditRecord": "Edit Record",
 

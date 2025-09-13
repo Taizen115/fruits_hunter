@@ -108,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "Next":
             MessageLookupByLibrary.simpleMessage("Proceed to the next page."),
         "NextFruit": MessageLookupByLibrary.simpleMessage("Next Fruit！"),
+        "NoPhoto": MessageLookupByLibrary.simpleMessage("no photo"),
         "NotLaunchStore":
             MessageLookupByLibrary.simpleMessage("Could Not Launch Store"),
         "OK": MessageLookupByLibrary.simpleMessage("OK"),
@@ -115,8 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "PhotoIllustration":
             MessageLookupByLibrary.simpleMessage("Photo・illustration\n\n"),
         "PickADate": MessageLookupByLibrary.simpleMessage("pick a date"),
-        "PickAPhoto":
-            MessageLookupByLibrary.simpleMessage("pick a photo ( up to 3 )"),
+        "PickAPhoto": MessageLookupByLibrary.simpleMessage("pick photos"),
         "QuestionCount":
             MessageLookupByLibrary.simpleMessage("Number of questions"),
         "Quiz": MessageLookupByLibrary.simpleMessage("Quiz"),
@@ -128,7 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "RecordList": MessageLookupByLibrary.simpleMessage("Record List"),
         "Required": MessageLookupByLibrary.simpleMessage("Required"),
         "Result": MessageLookupByLibrary.simpleMessage("Results announcement！"),
-        "Review": MessageLookupByLibrary.simpleMessage("Review Request"),
+        "Review": MessageLookupByLibrary.simpleMessage("Review this app"),
         "Save": MessageLookupByLibrary.simpleMessage("save"),
         "ScoreSay1": MessageLookupByLibrary.simpleMessage(
             "The number of fruits you got is... "),

@@ -102,7 +102,6 @@ class FruitRecords extends Table{
   TextColumn get date => text()();
   TextColumn get memo => text().nullable()();
   TextColumn get imagePaths => text().nullable()();
-
 }
 
 LazyDatabase _openConnection(String dbPath) {
