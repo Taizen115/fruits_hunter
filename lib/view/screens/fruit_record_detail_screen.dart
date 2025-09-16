@@ -297,10 +297,11 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                 Gap(20.0),
                 ElevatedButton(
                   onPressed: () async {
+                    print("保存ボタン押した!");
                     if (_formKey.currentState!.validate()) {
                       final updated = FruitRecord(
-                        id: Uuid().v1(),
-                        //id: widget.recordToEdit?.id ?? Uuid().v1(),
+                        // id: Uuid().v1(),
+                        id: widget.recordToEdit?.id ?? Uuid().v1(),
                         fruitType: _fruitTypeController.text.trim(),
                         farmName: _farmNameController.text.trim(),
                         date: DateFormat('yyyy-MM-dd').format(_selectedDate),
@@ -316,12 +317,13 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                             : "no_photo.png",
                       );
 
+                      // await database.updateFruitRecord(updated);
+
                       if (widget.openMode == FruitRecordOpenMode.EDIT) {
                         await database.updateFruitRecord(updated);
                       } else {
                         await database.insertFruitRecord(updated);
                       }
-
                       Fluttertoast.showToast(msg: "保存しました");
                       Navigator.pop(context, true);
                     }

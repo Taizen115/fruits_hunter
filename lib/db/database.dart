@@ -102,6 +102,10 @@ class FruitRecords extends Table{
   TextColumn get date => text()();
   TextColumn get memo => text().nullable()();
   TextColumn get imagePaths => text().nullable()();
+
+  ///追加
+  @override
+  Set<Column> get primaryKey => {id};
 }
 
 LazyDatabase _openConnection(String dbPath) {
@@ -191,7 +195,10 @@ class MyDatabase extends _$MyDatabase {
   Future insertFruitRecord(FruitRecord record) =>
       into(fruitRecords).insert(record);
 
-  Future updateFruitRecord(FruitRecord record) => update(fruitRecords).replace(record);
+  // Future updateFruitRecord(FruitRecord record) => update(fruitRecords).replace(record);
+  Future<void> updateFruitRecord(FruitRecord record) async {
+    await update(fruitRecords).replace(record);
+  }
 
   Future deleteFruitRecord(String id){
     return (delete(fruitRecords)..where((tbl) => tbl.id.equals(id))).go();
