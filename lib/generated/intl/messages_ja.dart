@@ -120,7 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "RecordList": MessageLookupByLibrary.simpleMessage("記録一覧"),
         "Required": MessageLookupByLibrary.simpleMessage("必須"),
         "Result": MessageLookupByLibrary.simpleMessage("結果発表！"),
-        "Review": MessageLookupByLibrary.simpleMessage("このアプリをレビューする"),
+        "Review": MessageLookupByLibrary.simpleMessage("このアプリをレビュー"),
         "Save": MessageLookupByLibrary.simpleMessage("保存"),
         "ScoreSay1": MessageLookupByLibrary.simpleMessage("獲得した果物の数は, ..."),
         "ScoreSay2": MessageLookupByLibrary.simpleMessage("\n獲得率は, ... "),

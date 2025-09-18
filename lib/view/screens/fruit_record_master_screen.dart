@@ -42,9 +42,8 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
           foregroundColor: Colors.white,
           backgroundColor: Colors.teal,
           child: FaIcon(FontAwesomeIcons.plus),
-          onPressed: () =>
-              _goFruitRecordDetailScreen(
-                  recordToEdit: null, openMode: FruitRecordOpenMode.NEW),
+          onPressed: () => _goFruitRecordDetailScreen(
+              recordToEdit: null, openMode: FruitRecordOpenMode.NEW),
         ),
         appBar: AppBar(
           leading: InkWell(
@@ -59,9 +58,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
           ),
           title: Text(
             //記録一覧
-            S
-                .of(context)
-                .RecordList,
+            S.of(context).RecordList,
             style: TextStyle(color: Colors.teal),
           ),
           centerTitle: true,
@@ -73,18 +70,18 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
             Center(
               child: (adManager.bannerAd == null)
                   ? Container(
-                width: 0.0,
-                height: 0.0,
-              )
+                      width: 0.0,
+                      height: 0.0,
+                    )
                   : Container(
-                width: adManager.bannerAd!.size.width.toDouble(),
-                height: adManager.bannerAd!.size.height.toDouble(),
-                child: Center(
-                  child: AdWidget(
-                    ad: adManager.bannerAd!,
-                  ),
-                ),
-              ),
+                      width: adManager.bannerAd!.size.width.toDouble(),
+                      height: adManager.bannerAd!.size.height.toDouble(),
+                      child: Center(
+                        child: AdWidget(
+                          ad: adManager.bannerAd!,
+                        ),
+                      ),
+                    ),
             ),
 
             Gap(10.0),
@@ -121,58 +118,46 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                           ///スワイプによる削除確認のためのダイアログ
                           return await showDialog(
                             context: context,
-                            builder: (_) =>
-                                AlertDialog(
-                                  title: Text(
-                                    //記録の消去
-                                    S
-                                        .of(context)
-                                        .DeleteRecord0,
-                                    style: TextStyle(fontSize: 20.0),
+                            builder: (_) => AlertDialog(
+                              title: Text(
+                                //記録の消去
+                                S.of(context).DeleteRecord0,
+                                style: TextStyle(fontSize: 20.0),
+                              ),
+                              content: Text(
+                                //記録を消去しますか？
+                                S.of(context).DeleteRecord1,
+                                style: TextStyle(
+                                    color: Colors.black54, fontSize: 15.0),
+                              ),
+                              actions: [
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: Colors.teal,
                                   ),
-                                  content: Text(
-                                    //記録を消去しますか？
-                                    S
-                                        .of(context)
-                                        .DeleteRecord1,
-                                    style: TextStyle(
-                                        color: Colors.black54, fontSize: 15.0),
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      style: TextButton.styleFrom(
-                                        foregroundColor: Colors.teal,
-                                      ),
-                                      child: Text(S
-                                          .of(context)
-                                          .OK),
-                                      onPressed: () async {
-                                        await database
-                                            .deleteFruitRecord(
-                                            records[index].id);
-                                        Fluttertoast.showToast(
-                                          //消去しました
-                                          msg: S
-                                              .of(context)
-                                              .DeleteRecord2,
-                                          toastLength: Toast.LENGTH_LONG,
-                                        );
-                                        Navigator.pop(context);
-                                        setState(() {});
-                                      },
-                                    ),
-                                    TextButton(
-                                      style: TextButton.styleFrom(
-                                        backgroundColor: Colors.teal,
-                                        foregroundColor: Colors.white,
-                                      ),
-                                      child: Text(S
-                                          .of(context)
-                                          .Cancel),
-                                      onPressed: () => Navigator.pop(context),
-                                    )
-                                  ],
+                                  child: Text(S.of(context).OK),
+                                  onPressed: () async {
+                                    await database
+                                        .deleteFruitRecord(records[index].id);
+                                    Fluttertoast.showToast(
+                                      //消去しました
+                                      msg: S.of(context).DeleteRecord2,
+                                      toastLength: Toast.LENGTH_LONG,
+                                    );
+                                    Navigator.pop(context);
+                                    setState(() {});
+                                  },
                                 ),
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: Colors.teal,
+                                    foregroundColor: Colors.white,
+                                  ),
+                                  child: Text(S.of(context).Cancel),
+                                  onPressed: () => Navigator.pop(context),
+                                )
+                              ],
+                            ),
                           );
                         },
                         onDismissed: (direction) async {
@@ -180,22 +165,22 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                           setState(() {});
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(5.0),
                           child: Card(
                             color: Colors.white70,
                             elevation: 10.0,
-                            margin: EdgeInsets.all(2.0),
+                            margin: EdgeInsets.all(5.0),
                             child: ListTile(
-                              contentPadding: EdgeInsets.only(left: 16.0, right: 0.0),
+                              contentPadding:
+                                  EdgeInsets.only(left: 16.0, right: 0.0),
                               onTap: () async {
                                 final updated = await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) =>
-                                        FruitRecordDetailScreen(
-                                          recordToEdit: r,
-                                          openMode: FruitRecordOpenMode.EDIT,
-                                        ),
+                                    builder: (_) => FruitRecordDetailScreen(
+                                      recordToEdit: r,
+                                      openMode: FruitRecordOpenMode.EDIT,
+                                    ),
                                   ),
                                 );
                                 if (updated == true) {
@@ -219,7 +204,8 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                       children: [
                                         AutoSizeText(
                                           (r.fruitType.length > 5)
-                                              ? r.fruitType.substring(0, 5) + "…"
+                                              ? r.fruitType.substring(0, 5) +
+                                                  "‥"
                                               : (r.fruitType),
                                           style: TextStyle(
                                               color: Colors.teal,
@@ -242,8 +228,8 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                         Gap(3.0),
                                         AutoSizeText(
                                           (r.farmName != null &&
-                                              r.farmName.length > 5)
-                                              ? r.farmName.substring(0, 5) + "…"
+                                                  r.farmName.length > 5)
+                                              ? r.farmName.substring(0, 5) + "‥"
                                               : (r.farmName ?? ''),
                                           style: TextStyle(
                                               color: Colors.teal,
@@ -261,7 +247,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                         Gap(3.0),
                                         AutoSizeText(
                                           (r.memo != null && r.memo!.length > 5)
-                                              ? r.memo!.substring(0, 5) + "…"
+                                              ? r.memo!.substring(0, 5) + "‥"
                                               : (r.memo ?? ''),
                                           // '${r.memo ?? ''}',
                                           style: TextStyle(
@@ -286,66 +272,57 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                           showDialog(
                                             context: context,
                                             barrierDismissible: true,
-                                            builder: (_) =>
-                                                AlertDialog(
-                                                  title: Text(
-                                                    //記録の消去
-                                                    S
-                                                        .of(context)
-                                                        .DeleteRecord0,
-                                                    style: TextStyle(
-                                                        fontSize: 20.0),
+                                            builder: (_) => AlertDialog(
+                                              title: Text(
+                                                //記録の消去
+                                                S.of(context).DeleteRecord0,
+                                                style:
+                                                    TextStyle(fontSize: 20.0),
+                                              ),
+                                              content: Text(
+                                                //記録を消去しますか？
+                                                S.of(context).DeleteRecord1,
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 15.0),
+                                              ),
+                                              actions: [
+                                                TextButton(
+                                                  style: TextButton.styleFrom(
+                                                    foregroundColor:
+                                                        Colors.teal,
                                                   ),
-                                                  content: Text(
-                                                    //記録を消去しますか？
-                                                    S
-                                                        .of(context)
-                                                        .DeleteRecord1,
-                                                    style: TextStyle(
-                                                        color: Colors.black54,
-                                                        fontSize: 15.0),
-                                                  ),
-                                                  actions: [
-                                                    TextButton(
-                                                      style: TextButton.styleFrom(
-                                                        foregroundColor: Colors
-                                                            .teal,
-                                                      ),
-                                                      child: Text(S
-                                                          .of(context)
-                                                          .OK),
-                                                      onPressed: () async {
-                                                        await database
-                                                            .deleteFruitRecord(
+                                                  child: Text(S.of(context).OK),
+                                                  onPressed: () async {
+                                                    await database
+                                                        .deleteFruitRecord(
                                                             records[index].id);
-                                                        Fluttertoast.showToast(
-                                                          //消去しました
-                                                          msg: S
-                                                              .of(context)
-                                                              .DeleteRecord2,
-                                                          toastLength:
-                                                          Toast.LENGTH_LONG,
-                                                        );
-                                                        Navigator.pop(context);
-                                                        setState(() {});
-                                                      },
-                                                    ),
-                                                    TextButton(
-                                                      style: TextButton.styleFrom(
-                                                        backgroundColor: Colors
-                                                            .teal,
-                                                        foregroundColor: Colors
-                                                            .white,
-                                                      ),
-                                                      child:
-                                                      Text(S
+                                                    Fluttertoast.showToast(
+                                                      //消去しました
+                                                      msg: S
                                                           .of(context)
-                                                          .Cancel),
-                                                      onPressed: () =>
-                                                          Navigator.pop(context),
-                                                    )
-                                                  ],
+                                                          .DeleteRecord2,
+                                                      toastLength:
+                                                          Toast.LENGTH_LONG,
+                                                    );
+                                                    Navigator.pop(context);
+                                                    setState(() {});
+                                                  },
                                                 ),
+                                                TextButton(
+                                                  style: TextButton.styleFrom(
+                                                    backgroundColor:
+                                                        Colors.teal,
+                                                    foregroundColor:
+                                                        Colors.white,
+                                                  ),
+                                                  child: Text(
+                                                      S.of(context).Cancel),
+                                                  onPressed: () =>
+                                                      Navigator.pop(context),
+                                                )
+                                              ],
+                                            ),
                                           ); // 🔁←正しい再描画の方法
                                         },
                                       ),
@@ -368,16 +345,16 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
     );
   }
 
-  _goFruitRecordDetailScreen({required FruitRecordOpenMode openMode,
-    required FruitRecord? recordToEdit}) async {
+  _goFruitRecordDetailScreen(
+      {required FruitRecordOpenMode openMode,
+      required FruitRecord? recordToEdit}) async {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) =>
-            FruitRecordDetailScreen(
-              openMode: openMode,
-              recordToEdit: recordToEdit,
-            ),
+        builder: (context) => FruitRecordDetailScreen(
+          openMode: openMode,
+          recordToEdit: recordToEdit,
+        ),
       ),
     ).then((_) {
       setState(() {}); // 編集後の再描画
@@ -394,14 +371,18 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
   }
 
   Widget _buildImageList(String? imageFileNames) {
-    if (imageFileNames == null || imageFileNames.isEmpty ||
+    if (imageFileNames == null ||
+        imageFileNames.isEmpty ||
         imageFileNames == "no_photo.png") {
       return ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: SizedBox(
             width: 60,
             height: 60,
-            child: Image.asset("assets/record/no_photo.png", fit: BoxFit.cover,)),
+            child: Image.asset(
+              "assets/record/no_photo.png",
+              fit: BoxFit.cover,
+            )),
       );
     }
 
@@ -414,25 +395,24 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
     // }
 
     return Wrap(
-    spacing: 3,
-    runSpacing: 3,
-    children: limitedFileNames
-        .map((fileName) => ClipRRect(
-    borderRadius: BorderRadius.circular(20),
-    child: SizedBox(
-    width: 60,
-    height: 60,
-    child: Image.file(
-    File(p.join(appDirectoryPath, fileName)),
-    fit: BoxFit.cover,
-    errorBuilder: (context, error, stackTrace) {
-    return const FaIcon(FontAwesomeIcons.circleXmark);
-    },
-    ),
-    ),
-    ))
-        .toList()
-    ,
+      spacing: 3,
+      runSpacing: 3,
+      children: limitedFileNames
+          .map((fileName) => ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: Image.file(
+                    File(p.join(appDirectoryPath, fileName)),
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const FaIcon(FontAwesomeIcons.circleXmark);
+                    },
+                  ),
+                ),
+              ))
+          .toList(),
     );
   }
 

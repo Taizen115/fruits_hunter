@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               S.of(context).Credits,
                                               style: TextStyle(
                                                   color: Colors.grey[700],
-                                                  fontSize: 20.0),
+                                                  fontSize: 15.0),
                                             ),
                                           ),
                                           FaIcon(
@@ -172,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               S.of(context).Review,
                                               style: TextStyle(
                                                   color: Colors.orange[300],
-                                                  fontSize: 20.0),
+                                                  fontSize: 150),
                                             ),
                                           ),
                                           FaIcon(
