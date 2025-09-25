@@ -127,5 +127,19 @@
   "DeleteRecord1": "Delete this record?",
   "DeleteRecord2": "Deleted",
 
-  "FullScreen": "Full screen"
+  "FullScreen": "Full screen",
+
+  "PhotoMessage1": "Image deletion failed",
+  "PhotoMessage2": "Saved.",
+  "PhotoMessage3": "Record shared successfully",
+  "PhotoMessage4": "Failed to share image",
+  "PhotoMessage5": "Failed to share text",
+
+  "ShareTitle": "🍓✨ I went fruit picking ✨🍇",
+  "ShareDate": "📅{dateLabel}: {date}",
+  "ShareFruitType": "🤩{fruitTypeLabel}: {fruitType}",
+  "ShareFarmName": "🌳{farmNameLabel}: {farmName}",
+  "ShareMemo": "📝{memoLabel}: {memo}",
+  "ShareHashtags": "#FruitPicking #Fruits #StrawberryPicking #GrapePicking #FruitTrip"
+
 }

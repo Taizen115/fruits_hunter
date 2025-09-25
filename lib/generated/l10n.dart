@@ -1099,6 +1099,116 @@ class S {
       args: [],
     );
   }
+
+  /// `Image deletion failed`
+  String get PhotoMessage1 {
+    return Intl.message(
+      'Image deletion failed',
+      name: 'PhotoMessage1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Saved.`
+  String get PhotoMessage2 {
+    return Intl.message(
+      'Saved.',
+      name: 'PhotoMessage2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Record shared successfully`
+  String get PhotoMessage3 {
+    return Intl.message(
+      'Record shared successfully',
+      name: 'PhotoMessage3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to share image`
+  String get PhotoMessage4 {
+    return Intl.message(
+      'Failed to share image',
+      name: 'PhotoMessage4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to share text`
+  String get PhotoMessage5 {
+    return Intl.message(
+      'Failed to share text',
+      name: 'PhotoMessage5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `🍓✨ I went fruit picking ✨🍇`
+  String get ShareTitle {
+    return Intl.message(
+      '🍓✨ I went fruit picking ✨🍇',
+      name: 'ShareTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `📅{dateLabel}: {date}`
+  String ShareDate(Object dateLabel, Object date) {
+    return Intl.message(
+      '📅$dateLabel: $date',
+      name: 'ShareDate',
+      desc: '',
+      args: [dateLabel, date],
+    );
+  }
+
+  /// `🤩{fruitTypeLabel}: {fruitType}`
+  String ShareFruitType(Object fruitTypeLabel, Object fruitType) {
+    return Intl.message(
+      '🤩$fruitTypeLabel: $fruitType',
+      name: 'ShareFruitType',
+      desc: '',
+      args: [fruitTypeLabel, fruitType],
+    );
+  }
+
+  /// `🌳{farmNameLabel}: {farmName}`
+  String ShareFarmName(Object farmNameLabel, Object farmName) {
+    return Intl.message(
+      '🌳$farmNameLabel: $farmName',
+      name: 'ShareFarmName',
+      desc: '',
+      args: [farmNameLabel, farmName],
+    );
+  }
+
+  /// `📝{memoLabel}: {memo}`
+  String ShareMemo(Object memoLabel, Object memo) {
+    return Intl.message(
+      '📝$memoLabel: $memo',
+      name: 'ShareMemo',
+      desc: '',
+      args: [memoLabel, memo],
+    );
+  }
+
+  /// `#FruitPicking #Fruits #StrawberryPicking #GrapePicking #FruitTrip`
+  String get ShareHashtags {
+    return Intl.message(
+      '#FruitPicking #Fruits #StrawberryPicking #GrapePicking #FruitTrip',
+      name: 'ShareHashtags',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

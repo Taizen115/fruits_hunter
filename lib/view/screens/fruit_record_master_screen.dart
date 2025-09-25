@@ -190,9 +190,6 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                   });
                                 }
                               },
-                              // onTap: () => _goFruitRecordDetailScreen(
-                              //     recordToEdit: r,
-                              //     openMode: FruitRecordOpenMode.EDIT),
                               title: Padding(
                                 padding: const EdgeInsets.all(2.0),
                                 child: Row(
@@ -217,20 +214,11 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                           overflow: TextOverflow.ellipsis,
                                           textAlign: TextAlign.right,
                                         ),
-                                        // Text(
-                                        //   '${r.fruitType}',
-                                        //   style: TextStyle(
-                                        //       color: Colors.teal,
-                                        //       fontFamily: SubFont,
-                                        //       fontWeight: FontWeight.bold,
-                                        //       fontSize: 15.0),
-                                        // ),
                                         Gap(3.0),
                                         AutoSizeText(
-                                          (r.farmName != null &&
-                                                  r.farmName.length > 5)
+                                          (r.farmName.length > 5)
                                               ? r.farmName.substring(0, 5) + "‥"
-                                              : (r.farmName ?? ''),
+                                              : (r.farmName),
                                           style: TextStyle(
                                               color: Colors.teal,
                                               fontFamily: SubFont,
@@ -249,7 +237,6 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                           (r.memo != null && r.memo!.length > 5)
                                               ? r.memo!.substring(0, 5) + "‥"
                                               : (r.memo ?? ''),
-                                          // '${r.memo ?? ''}',
                                           style: TextStyle(
                                               color: Colors.black87,
                                               fontFamily: SubFont,
@@ -390,10 +377,6 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
     //表示は3枚までに制限
     final limitedFileNames = fileNames.take(3).toList();
 
-    // if (fileNames.isEmpty) {
-    //   return const Text("写真なし");
-    // }
-
     return Wrap(
       spacing: 3,
       runSpacing: 3,
@@ -417,31 +400,6 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
   }
 
   Future<void> _loadRecords() async {
-    final records = await database.fruitRecords;
+    await database.fruitRecords;
   }
 }
-
-///説明
-//
-/// 上のバー
-/// 左の「←」 → 一つ前の画面に戻る
-///記録をシェア
-
-/// 日付
-/// カレンダーで日付を選択
-//
-///テキスト入力欄
-///果物の種類、農園名、メモ
-///必須項目には入力チェック
-//
-/// 写真表示
-/// 複数の写真を小さな正方形で並べる
-/// 右上の「×」で削除
-//
-/// タップでフルスクリーン表示
-/// 写真追加ボタン
-/// ギャラリーから写真を選んで追加
-//
-/// 保存ボタン
-/// 入力内容を保存
-/// 編集か新規作成かに応じて処理

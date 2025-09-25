@@ -161,7 +161,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
       try {
         await _imageFiles[index].delete();
       } catch (e) {
-        print("画像削除に失敗: $e");
+        //画像削除に失敗
+        print(S.of(context).PhotoMessage1);
       }
     }
     setState(() {
@@ -297,7 +298,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                 Gap(20.0),
                 ElevatedButton(
                   onPressed: () async {
-                    print("保存ボタン押した!");
+                    //保存ボタンを押した！
                     if (_formKey.currentState!.validate()) {
                       final updated = FruitRecord(
                         // id: Uuid().v1(),
@@ -324,7 +325,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                       } else {
                         await database.insertFruitRecord(updated);
                       }
-                      Fluttertoast.showToast(msg: "保存しました");
+                      Fluttertoast.showToast(msg: S.of(context).PhotoMessage2);
                       Navigator.pop(context, true);
                     }
                   },
@@ -341,31 +342,6 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     );
   }
 
-  // Future<void> _save() async {
-  //   if (_formKey.currentState!.validate()) {
-  //     final isEdit = widget.recordToEdit != null;
-  //     final id = isEdit
-  //         ? widget.recordToEdit!.id!
-  //         : DateTime.now().millisecondsSinceEpoch;
-  //
-  //     final newRecord = FruitRecord(
-  //       // id: id,
-  //       fruitType: _fruitTypeController.text.trim(),
-  //       farmName: _farmNameController.text.trim(),
-  //       date: DateFormat('yyyy-MM-dd').format(_selectedDate),
-  //       memo: _memoController.text.trim(),
-  //       imagePaths: _imageFiles.isNotEmpty
-  //           ? _imageFiles.map((file) => file.path).toList()
-  //           : [],
-  //       // imagePaths: _imageFiles.isNotEmpty ? _imageFiles.first.path : null,
-  //     );
-  //     await FruitRecordLogic.saveRecord(newRecord);
-  //
-  //     Fluttertoast.showToast(msg: "保存しました");
-  //     Navigator.pop(context);
-  //   }
-  // }
-
   _goFruitRecordMasterScreen() {
     Navigator.push(
       context,
@@ -378,31 +354,58 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
 
 // 修正後の _shareRecord メソッド
   Future<void> _shareRecord() async {
-    // フォームの内容をテキストにまとめる
     final recordText = '''
-🍓✨ #果物狩りに行ってきました　✨🍇
-📅${S.of(context).PickADate}: ${DateFormat('yyyy-MM-dd').format(_selectedDate)}
-🤩${S.of(context).FruitType}: ${_fruitTypeController.text}
-🌳${S.of(context).FarmName}: ${_farmNameController.text}
+${S.of(context).ShareTitle}
+${S.of(context).ShareDate(
+      S.of(context).PickADate,
+      DateFormat('yyyy-MM-dd').format(_selectedDate),
+    )}
+${S.of(context).ShareFruitType(
+      S.of(context).FruitType,
+      _fruitTypeController.text,
+    )}
+${S.of(context).ShareFarmName(
+      S.of(context).FarmName,
+      _farmNameController.text,
+    )}
+${S.of(context).ShareMemo(
+      S.of(context).Memo,
+      _memoController.text,
+    )}
 
-📝${S.of(context).Memo}: ${_memoController.text}
-
-#果物狩り #フルーツ #いちご狩り #ぶどう狩り #果物狩りナビ
+${S.of(context).ShareHashtags}
 ''';
+
+    // フォームの内容をテキストにまとめる
+    // final recordText = '''
+// 🍓✨ #果物狩りに行ってきました　✨🍇
+// 📅${S.of(context).PickADate}: ${DateFormat('yyyy-MM-dd').format(_selectedDate)}
+// 🤩${S.of(context).FruitType}: ${_fruitTypeController.text}
+// 🌳${S.of(context).FarmName}: ${_farmNameController.text}
+//
+// 📝${S.of(context).Memo}: ${_memoController.text}
+//
+// #果物狩り #フルーツ #いちご狩り #ぶどう狩り #果物狩りナビ
+// ''';
+
     if (_imageFiles.isNotEmpty) {
       try {
         final xfiles = _imageFiles.map((f) => XFile(f.path)).toList();
         await Share.shareXFiles(xfiles, text: recordText);
-        Fluttertoast.showToast(msg: "記録をシェアしました");
+        //記録をシェアしました
+        Fluttertoast.showToast(msg: S.of(context).PhotoMessage3);
       } catch (e) {
-        print("画像シェア失敗: $e");
+        //画像シェア失敗
+        print(S.of(context).PhotoMessage4);
       }
     } else {
       try {
         await Share.share(recordText);
-        Fluttertoast.showToast(msg: "記録をシェアしました！");
+        //記録をシェアしました
+        Fluttertoast.showToast(msg: S.of(context).PhotoMessage3);
       } catch (e) {
-        print("テキストシェア失敗: $e");
+        //テキストシェア失敗
+        print(S.of(context).PhotoMessage5);
       }
     }
   }

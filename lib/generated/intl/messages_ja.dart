@@ -20,6 +20,16 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ja';
 
+  static String m0(dateLabel, date) => "📅${dateLabel}: ${date}";
+
+  static String m1(farmNameLabel, farmName) =>
+      "🌳${farmNameLabel}: ${farmName}";
+
+  static String m2(fruitTypeLabel, fruitType) =>
+      "🤩${fruitTypeLabel}: ${fruitType}";
+
+  static String m3(memoLabel, memo) => "📝${memoLabel}: ${memo}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Ado": MessageLookupByLibrary.simpleMessage("広告の表示について"),
@@ -109,6 +119,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "Options": MessageLookupByLibrary.simpleMessage("他の項目"),
         "PhotoIllustration":
             MessageLookupByLibrary.simpleMessage("写真・イラスト\n\n"),
+        "PhotoMessage1": MessageLookupByLibrary.simpleMessage("画像削除に失敗"),
+        "PhotoMessage2": MessageLookupByLibrary.simpleMessage("保存しました"),
+        "PhotoMessage3": MessageLookupByLibrary.simpleMessage("記録をシェアしました"),
+        "PhotoMessage4": MessageLookupByLibrary.simpleMessage("画像シェア失敗"),
+        "PhotoMessage5": MessageLookupByLibrary.simpleMessage("テキストのシェア失敗"),
         "PickADate": MessageLookupByLibrary.simpleMessage("日付を選ぶ"),
         "PickAPhoto": MessageLookupByLibrary.simpleMessage("写真を選ぶ"),
         "QuestionCount": MessageLookupByLibrary.simpleMessage("問題数"),
@@ -125,6 +140,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "ScoreSay1": MessageLookupByLibrary.simpleMessage("獲得した果物の数は, ..."),
         "ScoreSay2": MessageLookupByLibrary.simpleMessage("\n獲得率は, ... "),
         "ScoreSay3": MessageLookupByLibrary.simpleMessage("おつかれさまでした！"),
+        "ShareDate": m0,
+        "ShareFarmName": m1,
+        "ShareFruitType": m2,
+        "ShareHashtags": MessageLookupByLibrary.simpleMessage(
+            "#果物狩り #フルーツ #いちご狩り #ぶどう狩り #果物狩りナビ"),
+        "ShareMemo": m3,
+        "ShareTitle":
+            MessageLookupByLibrary.simpleMessage("🍓✨ #果物狩りに行ってきました　✨🍇"),
         "Shirt": MessageLookupByLibrary.simpleMessage("長袖の服"),
         "Spray": MessageLookupByLibrary.simpleMessage("虫よけスプレー"),
         "SpringFruit": MessageLookupByLibrary.simpleMessage("春の果物"),

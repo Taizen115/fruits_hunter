@@ -127,5 +127,19 @@
   "DeleteRecord1": "記録を消去しますか？",
   "DeleteRecord2": "消去しました",
 
-  "FullScreen": "画面表示"
+  "FullScreen": "画面表示",
+
+  "PhotoMessage1": "画像削除に失敗",
+  "PhotoMessage2": "保存しました",
+  "PhotoMessage3": "記録をシェアしました",
+  "PhotoMessage4": "画像シェア失敗",
+  "PhotoMessage5": "テキストのシェア失敗",
+
+  "ShareTitle": "🍓✨ #果物狩りに行ってきました　✨🍇",
+  "ShareDate": "📅{dateLabel}: {date}",
+  "ShareFruitType": "🤩{fruitTypeLabel}: {fruitType}",
+  "ShareFarmName": "🌳{farmNameLabel}: {farmName}",
+  "ShareMemo": "📝{memoLabel}: {memo}",
+  "ShareHashtags": "#果物狩り #フルーツ #いちご狩り #ぶどう狩り #果物狩りナビ"
+
 }

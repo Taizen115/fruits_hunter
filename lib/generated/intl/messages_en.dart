@@ -20,6 +20,16 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(dateLabel, date) => "📅${dateLabel}: ${date}";
+
+  static String m1(farmNameLabel, farmName) =>
+      "🌳${farmNameLabel}: ${farmName}";
+
+  static String m2(fruitTypeLabel, fruitType) =>
+      "🤩${fruitTypeLabel}: ${fruitType}";
+
+  static String m3(memoLabel, memo) => "📝${memoLabel}: ${memo}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Ado": MessageLookupByLibrary.simpleMessage("Banner ad display"),
@@ -115,6 +125,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "Options": MessageLookupByLibrary.simpleMessage("Options"),
         "PhotoIllustration":
             MessageLookupByLibrary.simpleMessage("Photo・illustration\n\n"),
+        "PhotoMessage1":
+            MessageLookupByLibrary.simpleMessage("Image deletion failed"),
+        "PhotoMessage2": MessageLookupByLibrary.simpleMessage("Saved."),
+        "PhotoMessage3":
+            MessageLookupByLibrary.simpleMessage("Record shared successfully"),
+        "PhotoMessage4":
+            MessageLookupByLibrary.simpleMessage("Failed to share image"),
+        "PhotoMessage5":
+            MessageLookupByLibrary.simpleMessage("Failed to share text"),
         "PickADate": MessageLookupByLibrary.simpleMessage("pick a date"),
         "PickAPhoto": MessageLookupByLibrary.simpleMessage("pick photos"),
         "QuestionCount":
@@ -135,6 +154,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "ScoreSay2":
             MessageLookupByLibrary.simpleMessage("\nYour success rate is... "),
         "ScoreSay3": MessageLookupByLibrary.simpleMessage("Good Job！"),
+        "ShareDate": m0,
+        "ShareFarmName": m1,
+        "ShareFruitType": m2,
+        "ShareHashtags": MessageLookupByLibrary.simpleMessage(
+            "#FruitPicking #Fruits #StrawberryPicking #GrapePicking #FruitTrip"),
+        "ShareMemo": m3,
+        "ShareTitle": MessageLookupByLibrary.simpleMessage(
+            "🍓✨ I went fruit picking ✨🍇"),
         "Shirt": MessageLookupByLibrary.simpleMessage("long-sleeved top"),
         "Spray": MessageLookupByLibrary.simpleMessage("insect repellent"),
         "SpringFruit": MessageLookupByLibrary.simpleMessage("Spring"),
