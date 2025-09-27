@@ -133,6 +133,14 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                               actions: [
                                 TextButton(
                                   style: TextButton.styleFrom(
+                                    backgroundColor: Colors.teal,
+                                    foregroundColor: Colors.white,
+                                  ),
+                                  child: Text(S.of(context).Cancel),
+                                  onPressed: () => Navigator.pop(context),
+                                ),
+                                TextButton(
+                                  style: TextButton.styleFrom(
                                     foregroundColor: Colors.teal,
                                   ),
                                   child: Text(S.of(context).OK),
@@ -148,14 +156,6 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                     setState(() {});
                                   },
                                 ),
-                                TextButton(
-                                  style: TextButton.styleFrom(
-                                    backgroundColor: Colors.teal,
-                                    foregroundColor: Colors.white,
-                                  ),
-                                  child: Text(S.of(context).Cancel),
-                                  onPressed: () => Navigator.pop(context),
-                                )
                               ],
                             ),
                           );
@@ -248,71 +248,69 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                         ),
                                       ],
                                     ),
-                                    Align(
-                                      alignment: Alignment.centerRight,
-                                      child: IconButton(
-                                        icon: Icon(
-                                          Icons.delete,
-                                          color: Colors.black87,
-                                        ),
-                                        onPressed: () async {
-                                          showDialog(
-                                            context: context,
-                                            barrierDismissible: true,
-                                            builder: (_) => AlertDialog(
-                                              title: Text(
-                                                //記録の消去
-                                                S.of(context).DeleteRecord0,
-                                                style:
-                                                    TextStyle(fontSize: 20.0),
-                                              ),
-                                              content: Text(
-                                                //記録を消去しますか？
-                                                S.of(context).DeleteRecord1,
-                                                style: TextStyle(
-                                                    color: Colors.black54,
-                                                    fontSize: 15.0),
-                                              ),
-                                              actions: [
-                                                TextButton(
-                                                  style: TextButton.styleFrom(
-                                                    foregroundColor:
-                                                        Colors.teal,
-                                                  ),
-                                                  child: Text(S.of(context).OK),
-                                                  onPressed: () async {
-                                                    await database
-                                                        .deleteFruitRecord(
-                                                            records[index].id);
-                                                    Fluttertoast.showToast(
-                                                      //消去しました
-                                                      msg: S
-                                                          .of(context)
-                                                          .DeleteRecord2,
-                                                      toastLength:
-                                                          Toast.LENGTH_LONG,
-                                                    );
-                                                    Navigator.pop(context);
-                                                    setState(() {});
-                                                  },
-                                                ),
-                                                TextButton(
-                                                  style: TextButton.styleFrom(
-                                                    backgroundColor:
-                                                        Colors.teal,
-                                                    foregroundColor:
-                                                        Colors.white,
-                                                  ),
-                                                  child: Text(
-                                                      S.of(context).Cancel),
-                                                  onPressed: () =>
-                                                      Navigator.pop(context),
-                                                )
-                                              ],
-                                            ),
-                                          ); // 🔁←正しい再描画の方法
-                                        },
+                                    Spacer(),
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.delete,
+                                        color: Colors.black87,
                                       ),
+                                      onPressed: () async {
+                                        showDialog(
+                                          context: context,
+                                          barrierDismissible: true,
+                                          builder: (_) => AlertDialog(
+                                            title: Text(
+                                              //記録の消去
+                                              S.of(context).DeleteRecord0,
+                                              style:
+                                                  TextStyle(fontSize: 20.0),
+                                            ),
+                                            content: Text(
+                                              //記録を消去しますか？
+                                              S.of(context).DeleteRecord1,
+                                              style: TextStyle(
+                                                  color: Colors.black54,
+                                                  fontSize: 15.0),
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                style: TextButton.styleFrom(
+                                                  backgroundColor:
+                                                  Colors.teal,
+                                                  foregroundColor:
+                                                  Colors.white,
+                                                ),
+                                                child: Text(
+                                                    S.of(context).Cancel),
+                                                onPressed: () =>
+                                                    Navigator.pop(context),
+                                              ),
+                                              TextButton(
+                                                style: TextButton.styleFrom(
+                                                  foregroundColor:
+                                                      Colors.teal,
+                                                ),
+                                                child: Text(S.of(context).OK),
+                                                onPressed: () async {
+                                                  await database
+                                                      .deleteFruitRecord(
+                                                          records[index].id);
+                                                  Fluttertoast.showToast(
+                                                    //消去しました
+                                                    msg: S
+                                                        .of(context)
+                                                        .DeleteRecord2,
+                                                    toastLength:
+                                                        Toast.LENGTH_LONG,
+                                                  );
+                                                  Navigator.pop(context);
+                                                  setState(() {});
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        ); // 🔁←正しい再描画の方法
+                                      },
                                     )
                                   ],
                                 ),
