@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "Ado": MessageLookupByLibrary.simpleMessage("Banner ad display"),
+        "Ado": MessageLookupByLibrary.simpleMessage("Banner Ad Display"),
         "AdoText": MessageLookupByLibrary.simpleMessage(
             "Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n"),
         "All": MessageLookupByLibrary.simpleMessage("All Season"),
@@ -44,13 +44,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "Attention": MessageLookupByLibrary.simpleMessage(
             "We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later."),
         "AutumnFruit": MessageLookupByLibrary.simpleMessage("Autumn"),
-        "BelongingList": MessageLookupByLibrary.simpleMessage("checklist"),
+        "BelongingList": MessageLookupByLibrary.simpleMessage("Checklist"),
         "Belongings": MessageLookupByLibrary.simpleMessage("Belonging"),
         "Cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "Cap": MessageLookupByLibrary.simpleMessage("cap"),
+        "Cap": MessageLookupByLibrary.simpleMessage("Cap"),
         "Catchphrase": MessageLookupByLibrary.simpleMessage(
             "What kind of help do you need with\nfruit picking?"),
-        "Cooler": MessageLookupByLibrary.simpleMessage("cooler"),
+        "Cooler": MessageLookupByLibrary.simpleMessage("Cooler"),
         "Credits": MessageLookupByLibrary.simpleMessage("Copyright Notice"),
         "DeleteRecord0": MessageLookupByLibrary.simpleMessage("Delete Record"),
         "DeleteRecord1":
@@ -82,22 +82,22 @@ class MessageLookup extends MessageLookupByLibrary {
             "5-2. What are the benefits of nutrients?"),
         "DetailQuestion9": MessageLookupByLibrary.simpleMessage(
             "6. What is the cost of a harvest experience?"),
-        "Drink": MessageLookupByLibrary.simpleMessage("drink"),
-        "DropRate": MessageLookupByLibrary.simpleMessage("drop rate"),
+        "Drink": MessageLookupByLibrary.simpleMessage("Drink"),
+        "DropRate": MessageLookupByLibrary.simpleMessage("Drop Rate"),
         "EditRecord": MessageLookupByLibrary.simpleMessage("Edit Record"),
-        "FaceTowel": MessageLookupByLibrary.simpleMessage("face towel"),
-        "FarmName": MessageLookupByLibrary.simpleMessage("farm name"),
+        "FaceTowel": MessageLookupByLibrary.simpleMessage("Face Towel"),
+        "FarmName": MessageLookupByLibrary.simpleMessage("Farm Name"),
         "FinalComment": MessageLookupByLibrary.simpleMessage(
             "For your next visit, why don\'t you try picking your own fruit?"),
         "FinishQuestion": MessageLookupByLibrary.simpleMessage(
             "Would you like to conclude the quiz now?"),
         "FontIcon":
-            MessageLookupByLibrary.simpleMessage("Font and icon name\n\n"),
-        "FruitCount": MessageLookupByLibrary.simpleMessage("fruit count"),
+            MessageLookupByLibrary.simpleMessage("Font and Icon Name\n\n"),
+        "FruitCount": MessageLookupByLibrary.simpleMessage("Fruit Count"),
         "FruitList": MessageLookupByLibrary.simpleMessage("Seasonal Fruits"),
         "FruitPickingRecord":
             MessageLookupByLibrary.simpleMessage("Fruit Picking Record"),
-        "FruitType": MessageLookupByLibrary.simpleMessage("fruit type"),
+        "FruitType": MessageLookupByLibrary.simpleMessage("Fruit Type"),
         "FullScreen": MessageLookupByLibrary.simpleMessage("Full screen"),
         "GetData": MessageLookupByLibrary.simpleMessage(
             "[Home]Please close the screen and try again"),
@@ -110,15 +110,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "・Google Font\n\n・FontAwesomeIcon"),
         "HowManyQuestions": MessageLookupByLibrary.simpleMessage(
             "How many questions will you answer?"),
-        "Hunt": MessageLookupByLibrary.simpleMessage("fruits"),
+        "Hunt": MessageLookupByLibrary.simpleMessage("Fruits"),
         "List": MessageLookupByLibrary.simpleMessage("List"),
         "Manner": MessageLookupByLibrary.simpleMessage("Manner"),
-        "Memo": MessageLookupByLibrary.simpleMessage("memo (optional)"),
+        "Memo": MessageLookupByLibrary.simpleMessage("Memo (Optional)"),
         "Memory": MessageLookupByLibrary.simpleMessage("Memory"),
         "Next":
             MessageLookupByLibrary.simpleMessage("Proceed to the next page."),
         "NextFruit": MessageLookupByLibrary.simpleMessage("Next Fruit！"),
-        "NoPhoto": MessageLookupByLibrary.simpleMessage("no photo"),
+        "NoPhoto": MessageLookupByLibrary.simpleMessage("No Photo"),
         "NotLaunchStore":
             MessageLookupByLibrary.simpleMessage("Could Not Launch Store"),
         "OK": MessageLookupByLibrary.simpleMessage("OK"),
@@ -126,7 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "PhotoIllustration":
             MessageLookupByLibrary.simpleMessage("Photo・illustration\n\n"),
         "PhotoMessage1":
-            MessageLookupByLibrary.simpleMessage("Image deletion failed"),
+            MessageLookupByLibrary.simpleMessage("Image Deletion Failed"),
         "PhotoMessage2": MessageLookupByLibrary.simpleMessage("Saved."),
         "PhotoMessage3":
             MessageLookupByLibrary.simpleMessage("Record shared successfully"),
@@ -134,10 +134,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Failed to share image"),
         "PhotoMessage5":
             MessageLookupByLibrary.simpleMessage("Failed to share text"),
-        "PickADate": MessageLookupByLibrary.simpleMessage("pick a date"),
-        "PickAPhoto": MessageLookupByLibrary.simpleMessage("pick photos"),
+        "PickADate": MessageLookupByLibrary.simpleMessage("Pick A Date"),
+        "PickAPhoto": MessageLookupByLibrary.simpleMessage("Pick Photo"),
         "QuestionCount":
-            MessageLookupByLibrary.simpleMessage("Number of questions"),
+            MessageLookupByLibrary.simpleMessage("Number of Questions"),
         "Quiz": MessageLookupByLibrary.simpleMessage("Quiz"),
         "QuizAnswer": MessageLookupByLibrary.simpleMessage("Answer:"),
         "QuizExplanation": MessageLookupByLibrary.simpleMessage("Explanation:"),
@@ -147,8 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "RecordList": MessageLookupByLibrary.simpleMessage("Record List"),
         "Required": MessageLookupByLibrary.simpleMessage("Required"),
         "Result": MessageLookupByLibrary.simpleMessage("Results announcement！"),
-        "Review": MessageLookupByLibrary.simpleMessage("Review this app"),
-        "Save": MessageLookupByLibrary.simpleMessage("save"),
+        "Review": MessageLookupByLibrary.simpleMessage("Review This App"),
+        "Save": MessageLookupByLibrary.simpleMessage("Save"),
         "ScoreSay1": MessageLookupByLibrary.simpleMessage(
             "The number of fruits you got is... "),
         "ScoreSay2":
@@ -162,18 +162,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "ShareMemo": m3,
         "ShareTitle": MessageLookupByLibrary.simpleMessage(
             "🍓✨ I went fruit picking ✨🍇"),
-        "Shirt": MessageLookupByLibrary.simpleMessage("long-sleeved top"),
-        "Spray": MessageLookupByLibrary.simpleMessage("insect repellent"),
+        "Shirt": MessageLookupByLibrary.simpleMessage("Long-sleeved Top"),
+        "Spray": MessageLookupByLibrary.simpleMessage("Insect Repellent"),
         "SpringFruit": MessageLookupByLibrary.simpleMessage("Spring"),
         "SummerFruit": MessageLookupByLibrary.simpleMessage("Summer"),
-        "Sunscreen": MessageLookupByLibrary.simpleMessage("sunscreen"),
+        "Sunscreen": MessageLookupByLibrary.simpleMessage("Sunscreen"),
         "TenQuestions": MessageLookupByLibrary.simpleMessage("10Q"),
-        "TheRest": MessageLookupByLibrary.simpleMessage("the rest"),
+        "TheRest": MessageLookupByLibrary.simpleMessage("The Rest"),
         "ThirtyQuestions": MessageLookupByLibrary.simpleMessage("30Q"),
         "TopPage": MessageLookupByLibrary.simpleMessage(
             "・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n"),
         "TwentyQuestions": MessageLookupByLibrary.simpleMessage("20Q"),
-        "WetWipes": MessageLookupByLibrary.simpleMessage("wet wipes"),
+        "WetWipes": MessageLookupByLibrary.simpleMessage("Wet Wipes"),
         "WinterFruit": MessageLookupByLibrary.simpleMessage("Winter"),
         "mannerAnswers0": MessageLookupByLibrary.simpleMessage(
             "It would be wonderful if you could enjoy picking fruits while being considerate of others. "),

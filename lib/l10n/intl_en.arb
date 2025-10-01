@@ -9,19 +9,19 @@
 
   "Options": "Options",
   "Credits": "Copyright Notice",
-  "Review": "Review this app",
+  "Review": "Review This App",
   "NotLaunchStore": "Could Not Launch Store",
 
   "PhotoIllustration": "Photo・illustration\n\n",
   "TopPage": "・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n",
-  "FontIcon": "Font and icon name\n\n",
+  "FontIcon": "Font and Icon Name\n\n",
   "GoogleFontFontAwesomeIcon": "・Google Font\n\n・FontAwesomeIcon",
 
-  "Ado": "Banner ad display",
+  "Ado": "Banner Ad Display",
   "AdoText": "Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n",
   "Next": "Proceed to the next page.",
 
-  "QuestionCount": "Number of questions",
+  "QuestionCount": "Number of Questions",
   "HowManyQuestions": "How many questions will you answer?",
   "TenQuestions": "10Q",
   "TwentyQuestions": "20Q",
@@ -71,23 +71,23 @@
   "mannerAnswers5": "As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. \n\nAdditionally, wet wipes would be convenient for mealtimes.",
   "mannerAnswers6": "It would be best to ask the orchard staff directly. \n\nBy following their rules, you can enjoy a satisfying fruit-picking experience.",
 
-  "BelongingList": "checklist",
-  "Shirt": "long-sleeved top",
-  "Spray": "insect repellent",
-  "Sunscreen": "sunscreen",
-  "Cap": "cap",
-  "WetWipes": "wet wipes",
-  "FaceTowel": "face towel",
-  "Cooler": "cooler",
-  "Drink": "drink",
+  "BelongingList": "Checklist",
+  "Shirt": "Long-sleeved Top",
+  "Spray": "Insect Repellent",
+  "Sunscreen": "Sunscreen",
+  "Cap": "Cap",
+  "WetWipes": "Wet Wipes",
+  "FaceTowel": "Face Towel",
+  "Cooler": "Cooler",
+  "Drink": "Drink",
 
   "Manner": "Manner",
 
-  "TheRest": "the rest",
-  "FruitCount": "fruit count",
-  "DropRate": "drop rate",
+  "TheRest": "The Rest",
+  "FruitCount": "Fruit Count",
+  "DropRate": "Drop Rate",
 
-  "Hunt" : "fruits",
+  "Hunt" : "Fruits",
 
   "QuizAnswer": "Answer:",
   "QuizExplanation": "Explanation:",
@@ -111,15 +111,15 @@
 
   "RecordList": "Record List",
   "FruitPickingRecord": "Fruit Picking Record",
-  "PickADate": "pick a date",
-  "FruitType": "fruit type",
+  "PickADate": "Pick A Date",
+  "FruitType": "Fruit Type",
 
   "Required": "Required",
-  "FarmName": "farm name",
-  "Memo": "memo (optional)",
-  "PickAPhoto": "pick photos",
-  "Save": "save",
-  "NoPhoto": "no photo",
+  "FarmName": "Farm Name",
+  "Memo": "Memo (Optional)",
+  "PickAPhoto": "Pick Photo",
+  "Save": "Save",
+  "NoPhoto": "No Photo",
 
   "EditRecord": "Edit Record",
 
@@ -129,7 +129,7 @@
 
   "FullScreen": "Full screen",
 
-  "PhotoMessage1": "Image deletion failed",
+  "PhotoMessage1": "Image Deletion Failed",
   "PhotoMessage2": "Saved.",
   "PhotoMessage3": "Record shared successfully",
   "PhotoMessage4": "Failed to share image",

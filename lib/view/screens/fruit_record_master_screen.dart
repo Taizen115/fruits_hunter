@@ -172,7 +172,8 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                             margin: EdgeInsets.all(5.0),
                             child: ListTile(
                               contentPadding:
-                                  EdgeInsets.only(left: 16.0, right: 0.0),
+                                  EdgeInsets.only(left: 15.0, right: 0.0),
+                              leading: _buildImageList(r.imagePaths),
                               onTap: () async {
                                 final updated = await Navigator.push(
                                   context,
@@ -190,130 +191,128 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                   });
                                 }
                               },
-                              title: Padding(
-                                padding: const EdgeInsets.all(2.0),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    _buildImageList(r.imagePaths),
-                                    Gap(10.0),
-                                    Column(
-                                      children: [
-                                        AutoSizeText(
-                                          (r.fruitType.length > 5)
-                                              ? r.fruitType.substring(0, 5) +
-                                                  "‥"
-                                              : (r.fruitType),
-                                          style: TextStyle(
-                                              color: Colors.teal,
-                                              fontFamily: SubFont,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 10.0),
-                                          maxLines: 1,
-                                          minFontSize: 8.0,
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.right,
-                                        ),
-                                        Gap(3.0),
-                                        AutoSizeText(
-                                          (r.farmName.length > 5)
-                                              ? r.farmName.substring(0, 5) + "‥"
-                                              : (r.farmName),
-                                          style: TextStyle(
-                                              color: Colors.teal,
-                                              fontFamily: SubFont,
-                                              fontSize: 8.0),
-                                        ),
-                                        Gap(3.0),
-                                        Text(
-                                          '${r.date}',
-                                          style: TextStyle(
-                                              color: Colors.black87,
-                                              fontFamily: SubFont,
-                                              fontSize: 10.0),
-                                        ),
-                                        Gap(3.0),
-                                        AutoSizeText(
-                                          (r.memo != null && r.memo!.length > 5)
-                                              ? r.memo!.substring(0, 5) + "‥"
-                                              : (r.memo ?? ''),
-                                          style: TextStyle(
-                                              color: Colors.black87,
-                                              fontFamily: SubFont,
-                                              fontSize: 10.0),
-                                          maxLines: 1,
-                                          minFontSize: 8.0,
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.right,
-                                        ),
-                                      ],
-                                    ),
-                                    Spacer(),
-                                    IconButton(
-                                      icon: Icon(
-                                        Icons.delete,
-                                        color: Colors.black87,
+                              title: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  // _buildImageList(r.imagePaths),
+                                  Gap(10.0),
+                                  Column(
+                                    children: [
+                                      Text(
+                                        '${r.date}',
+                                        style: TextStyle(
+                                            color: Colors.black87,
+                                            fontFamily: SubFont,
+                                            fontSize: 10.0),
                                       ),
-                                      onPressed: () async {
-                                        showDialog(
-                                          context: context,
-                                          barrierDismissible: true,
-                                          builder: (_) => AlertDialog(
-                                            title: Text(
-                                              //記録の消去
-                                              S.of(context).DeleteRecord0,
-                                              style:
-                                                  TextStyle(fontSize: 20.0),
-                                            ),
-                                            content: Text(
-                                              //記録を消去しますか？
-                                              S.of(context).DeleteRecord1,
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 15.0),
-                                            ),
-                                            actions: [
-                                              TextButton(
-                                                style: TextButton.styleFrom(
-                                                  backgroundColor:
-                                                  Colors.teal,
-                                                  foregroundColor:
-                                                  Colors.white,
-                                                ),
-                                                child: Text(
-                                                    S.of(context).Cancel),
-                                                onPressed: () =>
-                                                    Navigator.pop(context),
-                                              ),
-                                              TextButton(
-                                                style: TextButton.styleFrom(
-                                                  foregroundColor:
-                                                      Colors.teal,
-                                                ),
-                                                child: Text(S.of(context).OK),
-                                                onPressed: () async {
-                                                  await database
-                                                      .deleteFruitRecord(
-                                                          records[index].id);
-                                                  Fluttertoast.showToast(
-                                                    //消去しました
-                                                    msg: S
-                                                        .of(context)
-                                                        .DeleteRecord2,
-                                                    toastLength:
-                                                        Toast.LENGTH_LONG,
-                                                  );
-                                                  Navigator.pop(context);
-                                                  setState(() {});
-                                                },
-                                              ),
-                                            ],
+                                      Gap(3.0),
+                                      AutoSizeText(
+                                        (r.fruitType.length > 5)
+                                            ? r.fruitType.substring(0, 5) +
+                                                "‥"
+                                            : (r.fruitType),
+                                        style: TextStyle(
+                                            color: Colors.teal,
+                                            fontFamily: SubFont,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 10.0),
+                                        maxLines: 1,
+                                        minFontSize: 8.0,
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.right,
+                                      ),
+                                      Gap(3.0),
+                                      AutoSizeText(
+                                        (r.farmName.length > 5)
+                                            ? r.farmName.substring(0, 5) + "‥"
+                                            : (r.farmName),
+                                        style: TextStyle(
+                                            color: Colors.teal,
+                                            fontFamily: SubFont,
+                                            fontSize: 10.0),
+                                      ),
+                                      Gap(3.0),
+                                      AutoSizeText(
+                                        (r.memo != null && r.memo!.length > 5)
+                                            ? r.memo!.substring(0, 5) + "‥"
+                                            : (r.memo ?? ''),
+                                        style: TextStyle(
+                                            color: Colors.black87,
+                                            fontFamily: SubFont,
+                                            fontSize: 10.0),
+                                        maxLines: 1,
+                                        minFontSize: 8.0,
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.right,
+                                      ),
+                                    ],
+                                  ),
+                                  Spacer(),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.delete,
+                                      color: Colors.black87,
+                                    ),
+                                    onPressed: () async {
+                                      showDialog(
+                                        context: context,
+                                        barrierDismissible: true,
+                                        builder: (_) => AlertDialog(
+                                          title: Text(
+                                            //記録の消去
+                                            S.of(context).DeleteRecord0,
+                                            style:
+                                                TextStyle(fontSize: 20.0),
                                           ),
-                                        ); // 🔁←正しい再描画の方法
-                                      },
-                                    )
-                                  ],
-                                ),
+                                          content: Text(
+                                            //記録を消去しますか？
+                                            S.of(context).DeleteRecord1,
+                                            style: TextStyle(
+                                                color: Colors.black54,
+                                                fontSize: 15.0),
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                              style: TextButton.styleFrom(
+                                                backgroundColor:
+                                                Colors.teal,
+                                                foregroundColor:
+                                                Colors.white,
+                                              ),
+                                              child: Text(
+                                                  S.of(context).Cancel),
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                            ),
+                                            TextButton(
+                                              style: TextButton.styleFrom(
+                                                foregroundColor:
+                                                    Colors.teal,
+                                              ),
+                                              child: Text(S.of(context).OK),
+                                              onPressed: () async {
+                                                await database
+                                                    .deleteFruitRecord(
+                                                        records[index].id);
+                                                Fluttertoast.showToast(
+                                                  //消去しました
+                                                  msg: S
+                                                      .of(context)
+                                                      .DeleteRecord2,
+                                                  toastLength:
+                                                      Toast.LENGTH_LONG,
+                                                );
+                                                Navigator.pop(context);
+                                                setState(() {});
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ); // 🔁←正しい再描画の方法
+                                    },
+                                  )
+                                ],
                               ),
                             ),
                           ),

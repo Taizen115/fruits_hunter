@@ -130,10 +130,10 @@ class S {
     );
   }
 
-  /// `Review this app`
+  /// `Review This App`
   String get Review {
     return Intl.message(
-      'Review this app',
+      'Review This App',
       name: 'Review',
       desc: '',
       args: [],
@@ -170,10 +170,10 @@ class S {
     );
   }
 
-  /// `Font and icon name\n\n`
+  /// `Font and Icon Name\n\n`
   String get FontIcon {
     return Intl.message(
-      'Font and icon name\n\n',
+      'Font and Icon Name\n\n',
       name: 'FontIcon',
       desc: '',
       args: [],
@@ -190,10 +190,10 @@ class S {
     );
   }
 
-  /// `Banner ad display`
+  /// `Banner Ad Display`
   String get Ado {
     return Intl.message(
-      'Banner ad display',
+      'Banner Ad Display',
       name: 'Ado',
       desc: '',
       args: [],
@@ -220,10 +220,10 @@ class S {
     );
   }
 
-  /// `Number of questions`
+  /// `Number of Questions`
   String get QuestionCount {
     return Intl.message(
-      'Number of questions',
+      'Number of Questions',
       name: 'QuestionCount',
       desc: '',
       args: [],
@@ -650,90 +650,90 @@ class S {
     );
   }
 
-  /// `checklist`
+  /// `Checklist`
   String get BelongingList {
     return Intl.message(
-      'checklist',
+      'Checklist',
       name: 'BelongingList',
       desc: '',
       args: [],
     );
   }
 
-  /// `long-sleeved top`
+  /// `Long-sleeved Top`
   String get Shirt {
     return Intl.message(
-      'long-sleeved top',
+      'Long-sleeved Top',
       name: 'Shirt',
       desc: '',
       args: [],
     );
   }
 
-  /// `insect repellent`
+  /// `Insect Repellent`
   String get Spray {
     return Intl.message(
-      'insect repellent',
+      'Insect Repellent',
       name: 'Spray',
       desc: '',
       args: [],
     );
   }
 
-  /// `sunscreen`
+  /// `Sunscreen`
   String get Sunscreen {
     return Intl.message(
-      'sunscreen',
+      'Sunscreen',
       name: 'Sunscreen',
       desc: '',
       args: [],
     );
   }
 
-  /// `cap`
+  /// `Cap`
   String get Cap {
     return Intl.message(
-      'cap',
+      'Cap',
       name: 'Cap',
       desc: '',
       args: [],
     );
   }
 
-  /// `wet wipes`
+  /// `Wet Wipes`
   String get WetWipes {
     return Intl.message(
-      'wet wipes',
+      'Wet Wipes',
       name: 'WetWipes',
       desc: '',
       args: [],
     );
   }
 
-  /// `face towel`
+  /// `Face Towel`
   String get FaceTowel {
     return Intl.message(
-      'face towel',
+      'Face Towel',
       name: 'FaceTowel',
       desc: '',
       args: [],
     );
   }
 
-  /// `cooler`
+  /// `Cooler`
   String get Cooler {
     return Intl.message(
-      'cooler',
+      'Cooler',
       name: 'Cooler',
       desc: '',
       args: [],
     );
   }
 
-  /// `drink`
+  /// `Drink`
   String get Drink {
     return Intl.message(
-      'drink',
+      'Drink',
       name: 'Drink',
       desc: '',
       args: [],
@@ -750,40 +750,40 @@ class S {
     );
   }
 
-  /// `the rest`
+  /// `The Rest`
   String get TheRest {
     return Intl.message(
-      'the rest',
+      'The Rest',
       name: 'TheRest',
       desc: '',
       args: [],
     );
   }
 
-  /// `fruit count`
+  /// `Fruit Count`
   String get FruitCount {
     return Intl.message(
-      'fruit count',
+      'Fruit Count',
       name: 'FruitCount',
       desc: '',
       args: [],
     );
   }
 
-  /// `drop rate`
+  /// `Drop Rate`
   String get DropRate {
     return Intl.message(
-      'drop rate',
+      'Drop Rate',
       name: 'DropRate',
       desc: '',
       args: [],
     );
   }
 
-  /// `fruits`
+  /// `Fruits`
   String get Hunt {
     return Intl.message(
-      'fruits',
+      'Fruits',
       name: 'Hunt',
       desc: '',
       args: [],
@@ -970,20 +970,20 @@ class S {
     );
   }
 
-  /// `pick a date`
+  /// `Pick A Date`
   String get PickADate {
     return Intl.message(
-      'pick a date',
+      'Pick A Date',
       name: 'PickADate',
       desc: '',
       args: [],
     );
   }
 
-  /// `fruit type`
+  /// `Fruit Type`
   String get FruitType {
     return Intl.message(
-      'fruit type',
+      'Fruit Type',
       name: 'FruitType',
       desc: '',
       args: [],
@@ -1000,50 +1000,50 @@ class S {
     );
   }
 
-  /// `farm name`
+  /// `Farm Name`
   String get FarmName {
     return Intl.message(
-      'farm name',
+      'Farm Name',
       name: 'FarmName',
       desc: '',
       args: [],
     );
   }
 
-  /// `memo (optional)`
+  /// `Memo (Optional)`
   String get Memo {
     return Intl.message(
-      'memo (optional)',
+      'Memo (Optional)',
       name: 'Memo',
       desc: '',
       args: [],
     );
   }
 
-  /// `pick photos`
+  /// `Pick Photo`
   String get PickAPhoto {
     return Intl.message(
-      'pick photos',
+      'Pick Photo',
       name: 'PickAPhoto',
       desc: '',
       args: [],
     );
   }
 
-  /// `save`
+  /// `Save`
   String get Save {
     return Intl.message(
-      'save',
+      'Save',
       name: 'Save',
       desc: '',
       args: [],
     );
   }
 
-  /// `no photo`
+  /// `No Photo`
   String get NoPhoto {
     return Intl.message(
-      'no photo',
+      'No Photo',
       name: 'NoPhoto',
       desc: '',
       args: [],
@@ -1100,10 +1100,10 @@ class S {
     );
   }
 
-  /// `Image deletion failed`
+  /// `Image Deletion Failed`
   String get PhotoMessage1 {
     return Intl.message(
-      'Image deletion failed',
+      'Image Deletion Failed',
       name: 'PhotoMessage1',
       desc: '',
       args: [],

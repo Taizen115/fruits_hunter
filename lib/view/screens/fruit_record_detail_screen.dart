@@ -282,7 +282,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                         ),
                       )
                     : Image.asset("assets/record/no_photo.png",
-                        width: 100, height: 300, fit: BoxFit.cover),
+                        width: 200, height: 200),
                 Gap(15.0),
                 ElevatedButton.icon(
                   onPressed: _pickImages,

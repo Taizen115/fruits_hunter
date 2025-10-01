@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       S.of(context).Options,
                                       style: TextStyle(
                                           color: Colors.black87,
-                                          fontSize: 25.0),
+                                          fontSize: 15.0),
                                     ),
                                     children: <Widget>[
                                       ///コンテンツ
@@ -172,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               S.of(context).Review,
                                               style: TextStyle(
                                                   color: Colors.orange[300],
-                                                  fontSize: 150),
+                                                  fontSize: 15.0),
                                             ),
                                           ),
                                           FaIcon(
