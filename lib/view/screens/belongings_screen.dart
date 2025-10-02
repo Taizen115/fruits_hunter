@@ -18,47 +18,47 @@ class BelongingsScreen extends StatefulWidget {
 
 class _BelongingsScreenState extends State<BelongingsScreen> {
   Map<String, Belonging> belongings(BuildContext context) => {
-        "長袖の服": Belonging(
-          name: S.of(context).Shirt,
-          iconData: FontAwesomeIcons.shirt,
-        ),
-        "虫よけスプレー": Belonging(
-          name: S.of(context).Spray,
-          iconData: FontAwesomeIcons.bug,
-        ),
-        "日焼け止め": Belonging(
-          name: S.of(context).Sunscreen,
-          iconData: FontAwesomeIcons.sun,
-        ),
-        "帽子": Belonging(
-          name: S.of(context).Cap,
-          iconData: FontAwesomeIcons.redhat,
-        ),
-        "ウェットティッシュ": Belonging(
-          name: S.of(context).WetWipes,
-          iconData: FontAwesomeIcons.boxTissue,
-        ),
-        "タオル": Belonging(
-          name: S.of(context).FaceTowel,
-          iconData: FontAwesomeIcons.rug,
-        ),
-        "クーラーボックス": Belonging(
-          name: S.of(context).Cooler,
-          iconData: FontAwesomeIcons.box,
-        ),
-        "飲み物": Belonging(
-          name: S.of(context).Drink,
-          iconData: FontAwesomeIcons.bottleWater,
-        ),
-        // '長袖の服':Belonging(name: S.of(context).Shirt, iconData: FontAwesomeIcons.shirt,),
-        // '虫よけスプレー': FontAwesomeIcons.bug,
-        // '日焼け止め': FontAwesomeIcons.sun,
-        // '帽子': FontAwesomeIcons.redhat,
-        // 'ウェットティッシュ': FontAwesomeIcons.boxTissue,
-        // 'タオル': FontAwesomeIcons.rug,
-        // 'クーラーボックス': FontAwesomeIcons.box,
-        // '飲み物': FontAwesomeIcons.bottleWater,
-      };
+    "長袖の服": Belonging(
+      name: S.of(context).Shirt,
+      iconData: FontAwesomeIcons.shirt,
+    ),
+    "虫よけスプレー": Belonging(
+      name: S.of(context).Spray,
+      iconData: FontAwesomeIcons.bug,
+    ),
+    "日焼け止め": Belonging(
+      name: S.of(context).Sunscreen,
+      iconData: FontAwesomeIcons.sun,
+    ),
+    "帽子": Belonging(
+      name: S.of(context).Cap,
+      iconData: FontAwesomeIcons.redhat,
+    ),
+    "ウェットティッシュ": Belonging(
+      name: S.of(context).WetWipes,
+      iconData: FontAwesomeIcons.boxTissue,
+    ),
+    "タオル": Belonging(
+      name: S.of(context).FaceTowel,
+      iconData: FontAwesomeIcons.rug,
+    ),
+    "クーラーボックス": Belonging(
+      name: S.of(context).Cooler,
+      iconData: FontAwesomeIcons.box,
+    ),
+    "飲み物": Belonging(
+      name: S.of(context).Drink,
+      iconData: FontAwesomeIcons.bottleWater,
+    ),
+    // '長袖の服':Belonging(name: S.of(context).Shirt, iconData: FontAwesomeIcons.shirt,),
+    // '虫よけスプレー': FontAwesomeIcons.bug,
+    // '日焼け止め': FontAwesomeIcons.sun,
+    // '帽子': FontAwesomeIcons.redhat,
+    // 'ウェットティッシュ': FontAwesomeIcons.boxTissue,
+    // 'タオル': FontAwesomeIcons.rug,
+    // 'クーラーボックス': FontAwesomeIcons.box,
+    // '飲み物': FontAwesomeIcons.bottleWater,
+  };
 
   //initは初期化
   @override
@@ -153,18 +153,18 @@ class _BelongingsScreenState extends State<BelongingsScreen> {
                 Center(
                   child: (adManager.bannerAd == null)
                       ? Container(
-                          width: 0.0,
-                          height: 0.0,
-                        )
+                    width: 0.0,
+                    height: 0.0,
+                  )
                       : Container(
-                          width: adManager.bannerAd!.size.width.toDouble(),
-                          height: adManager.bannerAd!.size.height.toDouble(),
-                          child: Center(
-                            child: AdWidget(
-                              ad: adManager.bannerAd!,
-                            ),
-                          ),
-                        ),
+                    width: adManager.bannerAd!.size.width.toDouble(),
+                    height: adManager.bannerAd!.size.height.toDouble(),
+                    child: Center(
+                      child: AdWidget(
+                        ad: adManager.bannerAd!,
+                      ),
+                    ),
+                  ),
                 ),
 
                 Gap(20),
@@ -187,7 +187,7 @@ class _BelongingsScreenState extends State<BelongingsScreen> {
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       children:
-                          BelongingsControl.belongings.keys.map((String key) {
+                      BelongingsControl.belongings.keys.map((String key) {
                         return CheckboxListTile(
                           activeColor: Colors.lightBlue,
                           side: BorderSide(color: Colors.black54, width: 2.0),
@@ -203,9 +203,9 @@ class _BelongingsScreenState extends State<BelongingsScreen> {
                                   color: Colors.black54,
                                   fontWeight: FontWeight.bold,
                                   decoration:
-                                      BelongingsControl.belongings[key] ?? false
-                                          ? TextDecoration.lineThrough
-                                          : TextDecoration.none,
+                                  BelongingsControl.belongings[key] ?? false
+                                      ? TextDecoration.lineThrough
+                                      : TextDecoration.none,
                                 ),
                               ),
                               Padding(

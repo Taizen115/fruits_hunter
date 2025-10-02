@@ -210,19 +210,35 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
             key: _formKey,
             child: ListView(
               children: [
+                Gap(10.0),
                 Text(DateFormat('yyyy-MM-dd').format(_selectedDate)),
-                TextButton(
-                  onPressed: _pickDate,
-                  child: Text(
-                    S.of(context).PickADate,
-                    style: TextStyle(color: Colors.teal),
+                Gap(20.0),
+                Container(
+                  width: double.infinity,
+                  alignment: Alignment.centerLeft,
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      foregroundColor: Colors.teal,
+                      backgroundColor: Colors.white12,
+                      padding: EdgeInsets.zero,
+                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        alignment: Alignment.centerLeft,
+                    ),
+                        onPressed:_pickDate,
+                    child: Text(
+                      S.of(context).PickADate,
+                      style: TextStyle(color: Colors.teal, fontSize: 15.0),
+                    ),
                   ),
                 ),
                 TextFormField(
                   controller: _fruitTypeController,
                   decoration: InputDecoration(
                       labelText: S.of(context).FruitType,
-                      labelStyle: TextStyle(color: Colors.teal)),
+                      labelStyle: TextStyle(color: Colors.teal,fontSize: 15.0)),
                   //必須= required
                   validator: (val) =>
                       val!.trim().isEmpty ? S.of(context).Required : null,
@@ -231,7 +247,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                   controller: _farmNameController,
                   decoration: InputDecoration(
                       labelText: S.of(context).FarmName,
-                      labelStyle: TextStyle(color: Colors.teal)),
+                      labelStyle: TextStyle(color: Colors.teal,fontSize: 15.0)),
                   validator: (val) =>
                       val!.trim().isEmpty ? S.of(context).Required : null,
                 ),
@@ -239,7 +255,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                   controller: _memoController,
                   decoration: InputDecoration(
                       labelText: S.of(context).Memo,
-                      labelStyle: TextStyle(color: Colors.teal)),
+                      labelStyle: TextStyle(color: Colors.teal, fontSize: 15.0)),
                 ),
                 Gap(15.0),
                 _imageFiles.isNotEmpty
