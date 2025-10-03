@@ -170,13 +170,79 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            color: Colors.white70,
+                            color: Colors.white,
                             elevation: 10.0,
                             margin: EdgeInsets.all(5.0),
                             child: ListTile(
+                              isThreeLine: true,
                               contentPadding:
-                                  EdgeInsets.only(left: 15.0, right: 0.0),
-                              leading: _buildImageList(r.imagePaths),
+                                  EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                              title:  AutoSizeText(
+                                      (r.fruitType.length > 10)
+                                          ? r.fruitType.substring(0, 10) +
+                                          "‥"
+                                          : (r.fruitType),
+                                      style: TextStyle(
+                                          color: Colors.teal,
+                                          fontFamily: SubFont,
+                                          fontWeight: FontWeight.bold,),
+                                      maxLines: 1,
+                                      minFontSize: 15.0,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.left,
+                                    ),
+                              subtitle: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  AutoSizeText(
+                                          (r.farmName.length > 10)
+                                              ? r.farmName.substring(0, 10) + "‥"
+                                              : (r.farmName),
+                                          style: TextStyle(
+                                              color: Colors.black87,
+                                              fontFamily: SubFont,
+                                          fontSize: 15.0),
+                                          textAlign: TextAlign.left,
+                                        ),
+                            AutoSizeText(
+                                    (r.memo != null && r.memo!.length > 15)
+                                        ? r.memo!.substring(0, 15) + "‥"
+                                        : (r.memo ?? ''),
+                                    style: TextStyle(
+                                        color: Colors.black87,
+                                        fontFamily: SubFont,
+                                        fontSize: 15.0),
+                                    maxLines: 1,
+                                    minFontSize: 8.0,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.left,
+                                  ),
+                                ],
+                              ),
+                              leading:
+                                 SizedBox(
+                                   width: 56,
+                                   height: 56,
+                                   child: Column(
+                                     mainAxisAlignment: MainAxisAlignment.center,
+                                     children: [
+                                       SizedBox(
+                                           width:40,
+                                           height:40,
+                                           child: _buildImageThumb(r.imagePaths)),
+                                       Gap(2.0),
+                                       Text('${r.date}',
+                                         style: TextStyle(
+                                             color: Colors.black,
+                                             fontFamily: SubFont,
+                                             fontWeight: FontWeight.bold,
+                                             fontSize: 10),
+                                         textAlign: TextAlign.left,
+                                       ),
+                                     ],
+                                   ),
+                                 ),
                               trailing: IconButton(
                                 icon: const Icon(Icons.delete, color: Colors.black87,),
                                 onPressed: () async {
@@ -254,62 +320,6 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                   });
                                 }
                               },
-                              title: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  // _buildImageList(r.imagePaths),
-                                  Text(
-                                    '${r.date}',
-                                    style: TextStyle(
-                                        color: Colors.black87,
-                                        fontFamily: SubFont,
-                                        fontSize: 10.0),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                  Gap(3.0),
-                                  AutoSizeText(
-                                    (r.fruitType.length > 7)
-                                        ? r.fruitType.substring(0, 7) +
-                                        "‥"
-                                        : (r.fruitType),
-                                    style: TextStyle(
-                                        color: Colors.teal,
-                                        fontFamily: SubFont,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 12.0),
-                                    maxLines: 1,
-                                    minFontSize: 10.0,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                  ),
-                                  Gap(3.0),
-                                  AutoSizeText(
-                                    (r.farmName.length > 5)
-                                        ? r.farmName.substring(0, 5) + "‥"
-                                        : (r.farmName),
-                                    style: TextStyle(
-                                        color: Colors.black87,
-                                        fontFamily: SubFont,
-                                        fontSize: 10.0),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                  Gap(3.0),
-                                  AutoSizeText(
-                                    (r.memo != null && r.memo!.length > 7)
-                                        ? r.memo!.substring(0, 7) + "‥"
-                                        : (r.memo ?? ''),
-                                    style: TextStyle(
-                                        color: Colors.teal,
-                                        fontFamily: SubFont,
-                                        fontSize: 12.0),
-                                    maxLines: 1,
-                                    minFontSize: 8.0,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ],
-                              ),
                             ),
                           ),
                         ),
@@ -350,49 +360,74 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
     );
   }
 
-  Widget _buildImageList(String? imageFileNames) {
-    if (imageFileNames == null ||
-        imageFileNames.isEmpty ||
-        imageFileNames == "no_photo.png") {
-      return ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: SizedBox(
-            width: 60,
-            height: 60,
-            child: Image.asset(
-              "assets/record/no_photo.png",
-              fit: BoxFit.cover,
-            )),
-      );
-    }
-
-    final fileNames = imageFileNames.split(',');
-    //表示は3枚までに制限
-    final limitedFileNames = fileNames.take(3).toList();
-
-    return Wrap(
-      spacing: 3,
-      runSpacing: 3,
-      children: limitedFileNames
-          .map((fileName) => ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: SizedBox(
-                  width: 60,
-                  height: 60,
-                  child: Image.file(
-                    File(p.join(appDirectoryPath, fileName)),
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) {
-                      return const FaIcon(FontAwesomeIcons.circleXmark);
-                    },
-                  ),
-                ),
-              ))
-          .toList(),
-    );
-  }
+  // Widget _buildImageList(String? imageFileNames) {
+  //   if (imageFileNames == null ||
+  //       imageFileNames.isEmpty ||
+  //       imageFileNames == "no_photo.png") {
+  //     return ClipRRect(
+  //       borderRadius: BorderRadius.circular(20),
+  //       child: SizedBox(
+  //         width: 40,
+  //         height: 40,
+  //         child: Image.asset(
+  //           "assets/record/no_photo.png",
+  //           // fit: BoxFit.cover,
+  //         ),
+  //       ),
+  //     );
+  //   }
+  //
+  //   final fileNames = imageFileNames.split(',');
+  //   //表示は1枚までに制限
+  //   final limitedFileNames = fileNames.take(1).toList();
+  //
+  //   return Wrap(
+  //     spacing: 3,
+  //     runSpacing: 3,
+  //     children: limitedFileNames
+  //         .map((fileName) => ClipRRect(
+  //               borderRadius: BorderRadius.circular(20),
+  //               child: SizedBox(
+  //                 width: 60,
+  //                 height: 60,
+  //                 child: Image.file(
+  //                   File(p.join(appDirectoryPath, fileName)),
+  //                   fit: BoxFit.cover,
+  //                   errorBuilder: (context, error, stackTrace) {
+  //                     return const FaIcon(FontAwesomeIcons.circleXmark);
+  //                   },
+  //                 ),
+  //               ),
+  //             ))
+  //         .toList(),
+  //   );
+  // }
 
   Future<void> _loadRecords() async {
     await database.fruitRecords;
+  }
+
+
+  //追加
+  Widget _buildImageThumb(String? imageFileNames) {
+    // この関数は「呼び出し側の SizedBox の大きさ」にピッタリ広がる
+    final Widget img;
+    if (imageFileNames == null || imageFileNames.isEmpty || imageFileNames == "no_photo.png") {
+      img = Image.asset(
+        "assets/record/no_photo.png",
+        // 正方形にトリミング（歪まない）
+        fit: BoxFit.cover,
+      );
+    } else {
+      final first = imageFileNames.split(',').first;
+      img = Image.file(
+        File(p.join(appDirectoryPath, first)),
+        fit: BoxFit.cover,
+        // 正方形にトリミング（歪まない）
+        errorBuilder: (_, __, ___) => const FaIcon(FontAwesomeIcons.circleXmark, size: 16),
+      );
+    }
+    // ← 枠いっぱいにフィット
+    return SizedBox.expand(child: img);
   }
 }
