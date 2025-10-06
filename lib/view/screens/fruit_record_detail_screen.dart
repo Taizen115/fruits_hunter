@@ -34,7 +34,7 @@ class FruitRecordDetailScreen extends StatefulWidget {
 
 class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   final _formKey = GlobalKey<FormState>();
-  // bool _checked = false;
+  bool _checked = false;
 
   late TextEditingController _dateController;
   late TextEditingController _fruitTypeController;
@@ -80,7 +80,6 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     _dateController = TextEditingController(
         text: DateFormat('yyyy-MM-dd').format(_selectedDate));
 
-
     if ((recordToEdit != null) && (recordToEdit.imagePaths != null)) {
       // _imageFile = File(r!.imagePath!);
       final fileNames = recordToEdit.imagePaths!.split(",");
@@ -94,7 +93,6 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
         _imageFiles.add(File(path));
       }
     }
-    //追加
   }
 
   ///広告
@@ -184,9 +182,9 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
     return MediaQuery(
-        data: mq.copyWith(textScaler: const TextScaler.linear(1.2)),
-        child: SafeArea(
-          child: Scaffold(
+      data: mq.copyWith(textScaler: const TextScaler.linear(1.2)),
+      child: SafeArea(
+        child: Scaffold(
           appBar: AppBar(
             leading: InkWell(
               child: Padding(
@@ -219,6 +217,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                 IconButton(
                   tooltip: S.of(context).DeleteRecord0, // 「記録の消去」
                   icon: const Icon(Icons.delete, color: Colors.grey),
+
                   ///以下に記載の関数
                   onPressed: _deleteThisRecord,
                 ),
@@ -230,21 +229,47 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
               key: _formKey,
               child: ListView(
                 children: [
-                  Gap(10.0),
-                  Text(DateFormat('yyyy-MM-dd').format(_selectedDate)),
+                  // Gap(10.0),
+                  // Text(DateFormat('yyyy-MM-dd').format(_selectedDate)),
                   Gap(20.0),
 
-                  TextFormField(
-                    controller: _dateController,
-                  readOnly: true,
-                  onTap: _pickDate,
-                 decoration: InputDecoration(
-                   labelText: S.of(context).PickADate,
-                   labelStyle: TextStyle(color: Colors.teal),
-                   prefixIcon: const Icon(Icons.calendar_today, color: Colors.teal),
-                 ),
-                  validator: (val) =>
-                      val == null || val.trim().isEmpty ? S.of(context).Required : null,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          controller: _dateController,
+                          readOnly: true,
+                          enabled: !_checked,
+                          onTap: _pickDate,
+                          decoration: InputDecoration(
+                            labelText: S.of(context).PickADate,
+                            labelStyle: const TextStyle(color: Colors.teal),
+                          ),
+                          validator: (val) => val == null || val.trim().isEmpty
+                              ? S.of(context).Required
+                              : null,
+                        ),
+                      ),
+                      Gap(10.0),
+
+                      ///追加
+                      Checkbox(
+                          value: _checked,
+                          onChanged: (v) async {
+                            if (v == true) {
+                              if (_dateController.text.isNotEmpty) {
+                                setState(() => _checked = true);
+                                return;
+                              }
+                              await _pickDate();
+                              setState(() =>
+                                  _checked = _dateController.text.isNotEmpty);
+                            } else {
+                              setState(() => _checked = false);
+                            }
+                          }),
+                    ],
                   ),
 
                   // Gap(20.0),
@@ -273,7 +298,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     controller: _fruitTypeController,
                     decoration: InputDecoration(
                         labelText: S.of(context).FruitType,
-                        labelStyle: TextStyle(color: Colors.teal,fontSize: 15.0)),
+                        labelStyle:
+                            TextStyle(color: Colors.teal, fontSize: 15.0)),
                     //必須= required
                     validator: (val) =>
                         val!.trim().isEmpty ? S.of(context).Required : null,
@@ -282,7 +308,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     controller: _farmNameController,
                     decoration: InputDecoration(
                         labelText: S.of(context).FarmName,
-                        labelStyle: TextStyle(color: Colors.teal,fontSize: 15.0)),
+                        labelStyle:
+                            TextStyle(color: Colors.teal, fontSize: 15.0)),
                     validator: (val) =>
                         val!.trim().isEmpty ? S.of(context).Required : null,
                   ),
@@ -290,7 +317,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     controller: _memoController,
                     decoration: InputDecoration(
                         labelText: S.of(context).Memo,
-                        labelStyle: TextStyle(color: Colors.teal, fontSize: 15.0)),
+                        labelStyle:
+                            TextStyle(color: Colors.teal, fontSize: 15.0)),
                   ),
                   Gap(15.0),
                   _imageFiles.isNotEmpty
@@ -376,7 +404,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                         } else {
                           await database.insertFruitRecord(updated);
                         }
-                        Fluttertoast.showToast(msg: S.of(context).PhotoMessage2);
+                        Fluttertoast.showToast(
+                            msg: S.of(context).PhotoMessage2);
                         Navigator.pop(context, true);
                       }
                     },
@@ -389,8 +418,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
               ),
             ),
           ),
-                ),
         ),
+      ),
     );
   }
 
@@ -409,21 +438,21 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     final recordText = '''
 ${S.of(context).ShareTitle}
 ${S.of(context).ShareDate(
-      S.of(context).PickADate,
-      DateFormat('yyyy-MM-dd').format(_selectedDate),
-    )}
+              S.of(context).PickADate,
+              DateFormat('yyyy-MM-dd').format(_selectedDate),
+            )}
 ${S.of(context).ShareFruitType(
-      S.of(context).FruitType,
-      _fruitTypeController.text,
-    )}
+              S.of(context).FruitType,
+              _fruitTypeController.text,
+            )}
 ${S.of(context).ShareFarmName(
-      S.of(context).FarmName,
-      _farmNameController.text,
-    )}
+              S.of(context).FarmName,
+              _farmNameController.text,
+            )}
 ${S.of(context).ShareMemo(
-      S.of(context).Memo,
-      _memoController.text,
-    )}
+              S.of(context).Memo,
+              _memoController.text,
+            )}
 
 ${S.of(context).ShareHashtags}
 ''';
@@ -468,36 +497,47 @@ ${S.of(context).ShareHashtags}
     if (widget.recordToEdit == null) return;
 
     final ok = await showDialog<bool>(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: Text(S.of(context).DeleteRecord0,style: TextStyle(fontSize: 20.0),),   // 「記録の消去」
-        content: Text(S.of(context).DeleteRecord1, style: TextStyle(color: Colors.black54, fontSize: 15.0)), // 「記録を消去しますか？」
-        actions: [
-          TextButton(
-            style: TextButton.styleFrom(
-              backgroundColor: Colors.teal,
-              foregroundColor: Colors.white,
+          context: context,
+          builder: (_) => AlertDialog(
+            title: Text(
+              S.of(context).DeleteRecord0,
+              style: TextStyle(fontSize: 20.0),
             ),
-            onPressed: () => Navigator.pop(context, false),
-            child: Text(S.of(context).Cancel),
+            // 「記録の消去」
+            content: Text(S.of(context).DeleteRecord1,
+                style: TextStyle(color: Colors.black54, fontSize: 15.0)),
+            // 「記録を消去しますか？」
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () => Navigator.pop(context, false),
+                child: Text(S.of(context).Cancel),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.teal,
+                ),
+                onPressed: () => Navigator.pop(context, true),
+                child: Text(S.of(context).OK),
+              ),
+            ],
           ),
-          TextButton(
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.teal,
-            ),
-            onPressed: () => Navigator.pop(context, true),
-            child: Text(S.of(context).OK),
-          ),
-        ],
-      ),
-    ) ?? false;
+        ) ??
+        false;
 
     if (!ok) return;
 
     // 画像も消したい場合（同じファイルを他記録で共有していない前提）
     for (final f in List<File>.from(_imageFiles)) {
       if (await f.exists()) {
-        try { await f.delete(); } catch (_) {/* 失敗は無視でも可 */}
+        try {
+          await f.delete();
+        } catch (_) {
+          /* 失敗は無視でも可 */
+        }
       }
     }
 
@@ -509,5 +549,4 @@ ${S.of(context).ShareHashtags}
     if (!mounted) return;
     Navigator.pop(context, true); // ← 一覧へ戻って再描画トリガー
   }
-
 }
