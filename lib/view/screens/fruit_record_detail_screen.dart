@@ -34,7 +34,9 @@ class FruitRecordDetailScreen extends StatefulWidget {
 
 class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   final _formKey = GlobalKey<FormState>();
+  // bool _checked = false;
 
+  late TextEditingController _dateController;
   late TextEditingController _fruitTypeController;
   late TextEditingController _farmNameController;
   late TextEditingController _memoController;
@@ -75,6 +77,10 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
         ? DateFormat('yyyy-MM-dd').parse(recordToEdit.date)
         : DateTime.now();
 
+    _dateController = TextEditingController(
+        text: DateFormat('yyyy-MM-dd').format(_selectedDate));
+
+
     if ((recordToEdit != null) && (recordToEdit.imagePaths != null)) {
       // _imageFile = File(r!.imagePath!);
       final fileNames = recordToEdit.imagePaths!.split(",");
@@ -88,6 +94,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
         _imageFiles.add(File(path));
       }
     }
+    //追加
   }
 
   ///広告
@@ -101,6 +108,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     _fruitTypeController.dispose();
     _farmNameController.dispose();
     _memoController.dispose();
+    _dateController.dispose();
+
     super.dispose();
 
     ///広告
@@ -150,6 +159,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     if (picked != null) {
       setState(() {
         _selectedDate = picked;
+        _dateController.text = DateFormat('yyyy-MM-dd').format(picked);
       });
     }
   }
@@ -172,189 +182,215 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          leading: InkWell(
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: FaIcon(
-                FontAwesomeIcons.arrowLeft,
-                color: Colors.teal,
-              ),
-            ),
-            onTap: () => _goFruitRecordMasterScreen(),
-          ),
-
-          // '果物狩りの記録' : '記録の編集'
-          title: Text(
-              widget.recordToEdit == null
-                  ? S.of(context).FruitPickingRecord
-                  : S.of(context).EditRecord,
-              style: TextStyle(color: Colors.teal)),
-          centerTitle: true,
-          actions: [
-            InkWell(
+    final mq = MediaQuery.of(context);
+    return MediaQuery(
+        data: mq.copyWith(textScaler: const TextScaler.linear(1.2)),
+        child: SafeArea(
+          child: Scaffold(
+          appBar: AppBar(
+            leading: InkWell(
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: FaIcon(FontAwesomeIcons.shareNodes,
-                    color: Colors.green[400]),
+                child: FaIcon(
+                  FontAwesomeIcons.arrowLeft,
+                  color: Colors.teal,
+                ),
               ),
-              onTap: () => _shareRecord(),
+              onTap: () => _goFruitRecordMasterScreen(),
             ),
-          ],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Form(
-            key: _formKey,
-            child: ListView(
-              children: [
-                Gap(10.0),
-                Text(DateFormat('yyyy-MM-dd').format(_selectedDate)),
-                Gap(20.0),
-                Container(
-                  width: double.infinity,
-                  alignment: Alignment.centerLeft,
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      foregroundColor: Colors.teal,
-                      backgroundColor: Colors.white12,
-                      padding: EdgeInsets.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        alignment: Alignment.centerLeft,
-                    ),
-                        onPressed:_pickDate,
-                    child: Text(
-                      S.of(context).PickADate,
-                      style: TextStyle(color: Colors.teal, fontSize: 15.0),
-                    ),
+
+            // '果物狩りの記録' : '記録の編集'
+            title: Text(
+                widget.recordToEdit == null
+                    ? S.of(context).FruitPickingRecord
+                    : S.of(context).EditRecord,
+                style: TextStyle(color: Colors.teal)),
+            centerTitle: true,
+            actions: [
+              InkWell(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: FaIcon(FontAwesomeIcons.shareNodes,
+                      color: Colors.green[400]),
+                ),
+                onTap: () => _shareRecord(),
+              ),
+              if (widget.openMode == FruitRecordOpenMode.EDIT)
+                IconButton(
+                  tooltip: S.of(context).DeleteRecord0, // 「記録の消去」
+                  icon: const Icon(Icons.delete, color: Colors.grey),
+                  ///以下に記載の関数
+                  onPressed: _deleteThisRecord,
+                ),
+            ],
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Form(
+              key: _formKey,
+              child: ListView(
+                children: [
+                  Gap(10.0),
+                  Text(DateFormat('yyyy-MM-dd').format(_selectedDate)),
+                  Gap(20.0),
+
+                  TextFormField(
+                    controller: _dateController,
+                  readOnly: true,
+                  onTap: _pickDate,
+                 decoration: InputDecoration(
+                   labelText: S.of(context).PickADate,
+                   labelStyle: TextStyle(color: Colors.teal),
+                   prefixIcon: const Icon(Icons.calendar_today, color: Colors.teal),
+                 ),
+                  validator: (val) =>
+                      val == null || val.trim().isEmpty ? S.of(context).Required : null,
                   ),
-                ),
-                TextFormField(
-                  controller: _fruitTypeController,
-                  decoration: InputDecoration(
-                      labelText: S.of(context).FruitType,
-                      labelStyle: TextStyle(color: Colors.teal,fontSize: 15.0)),
-                  //必須= required
-                  validator: (val) =>
-                      val!.trim().isEmpty ? S.of(context).Required : null,
-                ),
-                TextFormField(
-                  controller: _farmNameController,
-                  decoration: InputDecoration(
-                      labelText: S.of(context).FarmName,
-                      labelStyle: TextStyle(color: Colors.teal,fontSize: 15.0)),
-                  validator: (val) =>
-                      val!.trim().isEmpty ? S.of(context).Required : null,
-                ),
-                TextFormField(
-                  controller: _memoController,
-                  decoration: InputDecoration(
-                      labelText: S.of(context).Memo,
-                      labelStyle: TextStyle(color: Colors.teal, fontSize: 15.0)),
-                ),
-                Gap(15.0),
-                _imageFiles.isNotEmpty
-                    ? Wrap(
-                        spacing: 10,
-                        runSpacing: 10,
-                        children: List.generate(
-                          _imageFiles.length,
-                          (index) {
-                            final file = _imageFiles[index];
-                            return Stack(
-                              children: [
-                                GestureDetector(
-                                  onTap: () => Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) =>
-                                            FullScreen(imageFile: file)),
-                                  ),
-                                  child: Image.file(file,
-                                      width: 100,
-                                      height: 100,
-                                      fit: BoxFit.cover),
-                                ),
-                                Positioned(
-                                  right: 0,
-                                  top: 0,
-                                  child: GestureDetector(
-                                    onTap: () => _deleteImage(index),
-                                    child: Container(
-                                      color: Colors.black54,
-                                      child: Icon(Icons.close,
-                                          color: Colors.white, size: 20),
+
+                  // Gap(20.0),
+                  // Container(
+                  //   width: double.infinity,
+                  //   alignment: Alignment.centerLeft,
+                  //   child: TextButton(
+                  //     style: TextButton.styleFrom(
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(20.0),
+                  //       ),
+                  //       foregroundColor: Colors.teal,
+                  //       backgroundColor: Colors.white12,
+                  //       padding: EdgeInsets.zero,
+                  //         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  //         alignment: Alignment.centerLeft,
+                  //     ),
+                  //         onPressed:_pickDate,
+                  //     child: Text(
+                  //       S.of(context).PickADate,
+                  //       style: TextStyle(color: Colors.teal, fontSize: 15.0),
+                  //     ),
+                  //   ),
+                  // ),
+                  TextFormField(
+                    controller: _fruitTypeController,
+                    decoration: InputDecoration(
+                        labelText: S.of(context).FruitType,
+                        labelStyle: TextStyle(color: Colors.teal,fontSize: 15.0)),
+                    //必須= required
+                    validator: (val) =>
+                        val!.trim().isEmpty ? S.of(context).Required : null,
+                  ),
+                  TextFormField(
+                    controller: _farmNameController,
+                    decoration: InputDecoration(
+                        labelText: S.of(context).FarmName,
+                        labelStyle: TextStyle(color: Colors.teal,fontSize: 15.0)),
+                    validator: (val) =>
+                        val!.trim().isEmpty ? S.of(context).Required : null,
+                  ),
+                  TextFormField(
+                    controller: _memoController,
+                    decoration: InputDecoration(
+                        labelText: S.of(context).Memo,
+                        labelStyle: TextStyle(color: Colors.teal, fontSize: 15.0)),
+                  ),
+                  Gap(15.0),
+                  _imageFiles.isNotEmpty
+                      ? Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          children: List.generate(
+                            _imageFiles.length,
+                            (index) {
+                              final file = _imageFiles[index];
+                              return Stack(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) =>
+                                              FullScreen(imageFile: file)),
                                     ),
+                                    child: Image.file(file,
+                                        width: 100,
+                                        height: 100,
+                                        fit: BoxFit.cover),
                                   ),
-                                )
-                              ],
-                            );
-                          },
-                        ),
-                      )
-                    : Image.asset("assets/record/no_photo.png",
-                        width: 200, height: 200),
-                Gap(15.0),
-                ElevatedButton.icon(
-                  onPressed: _pickImages,
-                  icon: Icon(
-                    Icons.photo,
-                    color: Colors.teal,
+                                  Positioned(
+                                    right: 0,
+                                    top: 0,
+                                    child: GestureDetector(
+                                      onTap: () => _deleteImage(index),
+                                      child: Container(
+                                        color: Colors.black54,
+                                        child: Icon(Icons.close,
+                                            color: Colors.white, size: 20),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              );
+                            },
+                          ),
+                        )
+                      : Image.asset("assets/record/no_photo.png",
+                          width: 200, height: 200),
+                  Gap(15.0),
+                  ElevatedButton.icon(
+                    onPressed: _pickImages,
+                    icon: Icon(
+                      Icons.photo,
+                      color: Colors.teal,
+                    ),
+                    label: Text(
+                      S.of(context).PickAPhoto,
+                      style: TextStyle(color: Colors.teal),
+                    ),
                   ),
-                  label: Text(
-                    S.of(context).PickAPhoto,
-                    style: TextStyle(color: Colors.teal),
-                  ),
-                ),
-                Gap(20.0),
-                ElevatedButton(
-                  onPressed: () async {
-                    //保存ボタンを押した！
-                    if (_formKey.currentState!.validate()) {
-                      final updated = FruitRecord(
-                        // id: Uuid().v1(),
-                        id: widget.recordToEdit?.id ?? Uuid().v1(),
-                        fruitType: _fruitTypeController.text.trim(),
-                        farmName: _farmNameController.text.trim(),
-                        date: DateFormat('yyyy-MM-dd').format(_selectedDate),
-                        memo: _memoController.text.trim(),
-                        imagePaths: _imageFiles.isNotEmpty
-                            ? _imageFiles
-                                .map((file) {
-                                  return p.basename(file.path);
-                                  //return file.path;
-                                })
-                                .toList()
-                                .join(",")
-                            : "no_photo.png",
-                      );
+                  Gap(20.0),
+                  ElevatedButton(
+                    onPressed: () async {
+                      //保存ボタンを押した！
+                      if (_formKey.currentState!.validate()) {
+                        final updated = FruitRecord(
+                          // id: Uuid().v1(),
+                          id: widget.recordToEdit?.id ?? Uuid().v1(),
+                          fruitType: _fruitTypeController.text.trim(),
+                          farmName: _farmNameController.text.trim(),
+                          date: DateFormat('yyyy-MM-dd').format(_selectedDate),
+                          memo: _memoController.text.trim(),
+                          imagePaths: _imageFiles.isNotEmpty
+                              ? _imageFiles
+                                  .map((file) {
+                                    return p.basename(file.path);
+                                    //return file.path;
+                                  })
+                                  .toList()
+                                  .join(",")
+                              : "no_photo.png",
+                        );
 
-                      // await database.updateFruitRecord(updated);
+                        // await database.updateFruitRecord(updated);
 
-                      if (widget.openMode == FruitRecordOpenMode.EDIT) {
-                        await database.updateFruitRecord(updated);
-                      } else {
-                        await database.insertFruitRecord(updated);
+                        if (widget.openMode == FruitRecordOpenMode.EDIT) {
+                          await database.updateFruitRecord(updated);
+                        } else {
+                          await database.insertFruitRecord(updated);
+                        }
+                        Fluttertoast.showToast(msg: S.of(context).PhotoMessage2);
+                        Navigator.pop(context, true);
                       }
-                      Fluttertoast.showToast(msg: S.of(context).PhotoMessage2);
-                      Navigator.pop(context, true);
-                    }
-                  },
-                  child: Text(
-                    S.of(context).Save,
-                    style: TextStyle(color: Colors.teal),
-                  ),
-                )
-              ],
+                    },
+                    child: Text(
+                      S.of(context).Save,
+                      style: TextStyle(color: Colors.teal),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
+                ),
         ),
-      ),
     );
   }
 
@@ -425,4 +461,53 @@ ${S.of(context).ShareHashtags}
       }
     }
   }
+
+  ///追加
+  Future<void> _deleteThisRecord() async {
+    // 新規作成モードでは削除できない
+    if (widget.recordToEdit == null) return;
+
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text(S.of(context).DeleteRecord0,style: TextStyle(fontSize: 20.0),),   // 「記録の消去」
+        content: Text(S.of(context).DeleteRecord1, style: TextStyle(color: Colors.black54, fontSize: 15.0)), // 「記録を消去しますか？」
+        actions: [
+          TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.teal,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(S.of(context).Cancel),
+          ),
+          TextButton(
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.teal,
+            ),
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(S.of(context).OK),
+          ),
+        ],
+      ),
+    ) ?? false;
+
+    if (!ok) return;
+
+    // 画像も消したい場合（同じファイルを他記録で共有していない前提）
+    for (final f in List<File>.from(_imageFiles)) {
+      if (await f.exists()) {
+        try { await f.delete(); } catch (_) {/* 失敗は無視でも可 */}
+      }
+    }
+
+    // DB のレコードを削除
+    await database.deleteFruitRecord(widget.recordToEdit!.id);
+
+    Fluttertoast.showToast(msg: S.of(context).DeleteRecord2); // 「消去しました」
+
+    if (!mounted) return;
+    Navigator.pop(context, true); // ← 一覧へ戻って再描画トリガー
+  }
+
 }

@@ -12,11 +12,12 @@ import 'package:fruit_hunter/style/style.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import '../../main.dart';
-import 'belongings_screen.dart';
 import 'credit_screen.dart';
 import 'fruit_record_master_screen.dart';
 import 'list_screen.dart';
+import 'manners_screen.dart';
 import 'quiz_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -315,9 +316,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     )),
-                onPressed: () => _goBelongingsPage(),
+                onPressed: () => _goMannerPage(),
                 child: AutoSizeText(
-                  S.of(context).Belongings,
+                  S.of(context).Manner,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -455,11 +456,11 @@ class _HomeScreenState extends State<HomeScreen> {
     // initAd();
   }
 
-  //4択の1つ、持ち物ページに飛ぶ
-  _goBelongingsPage() async {
+  //4択の1つ、マナーページに飛ぶ
+  _goMannerPage() async {
     await adManager.disposeBannerAd();
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => BelongingsScreen()));
+        context, MaterialPageRoute(builder: (context) => MannersScreen()));
     //initAd();
   }
 
