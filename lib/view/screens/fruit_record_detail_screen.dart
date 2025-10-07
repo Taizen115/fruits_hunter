@@ -170,7 +170,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
         await _imageFiles[index].delete();
       } catch (e) {
         //画像削除に失敗
-        print(S.of(context).PhotoMessage1);
+        print(S.of(context).photoMessage1);
       }
     }
     setState(() {
@@ -200,8 +200,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
             // '果物狩りの記録' : '記録の編集'
             title: Text(
                 widget.recordToEdit == null
-                    ? S.of(context).FruitPickingRecord
-                    : S.of(context).EditRecord,
+                    ? S.of(context).fruitPickingRecord
+                    : S.of(context).editRecord,
                 style: TextStyle(color: Colors.teal)),
             centerTitle: true,
             actions: [
@@ -215,7 +215,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
               ),
               if (widget.openMode == FruitRecordOpenMode.EDIT)
                 IconButton(
-                  tooltip: S.of(context).DeleteRecord0, // 「記録の消去」
+                  tooltip: S.of(context).deleteRecord0, // 「記録の消去」
                   icon: const Icon(Icons.delete, color: Colors.grey),
 
                   ///以下に記載の関数
@@ -243,12 +243,14 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                           enabled: !_checked,
                           onTap: _pickDate,
                           decoration: InputDecoration(
-                            labelText: S.of(context).PickADate,
+                            labelText: S.of(context).pickADate,
                             labelStyle: const TextStyle(color: Colors.teal),
                           ),
-                          validator: (val) => val == null || val.trim().isEmpty
-                              ? S.of(context).Required
-                              : null,
+                          validator: (val) {
+                            return (val == null || val.trim().isEmpty)
+                              ? S.of(context).required
+                              : null;
+                          },
                         ),
                       ),
                       Gap(10.0),
@@ -266,7 +268,10 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                               setState(() =>
                                   _checked = _dateController.text.isNotEmpty);
                             } else {
-                              setState(() => _checked = false);
+                              setState(() {
+                                _checked = false;
+                                _dateController.clear();
+                              });
                             }
                           }),
                     ],
@@ -297,26 +302,26 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                   TextFormField(
                     controller: _fruitTypeController,
                     decoration: InputDecoration(
-                        labelText: S.of(context).FruitType,
+                        labelText: S.of(context).fruitType,
                         labelStyle:
                             TextStyle(color: Colors.teal, fontSize: 15.0)),
                     //必須= required
                     validator: (val) =>
-                        val!.trim().isEmpty ? S.of(context).Required : null,
+                        val!.trim().isEmpty ? S.of(context).required : null,
                   ),
                   TextFormField(
                     controller: _farmNameController,
                     decoration: InputDecoration(
-                        labelText: S.of(context).FarmName,
+                        labelText: S.of(context).farmName,
                         labelStyle:
                             TextStyle(color: Colors.teal, fontSize: 15.0)),
                     validator: (val) =>
-                        val!.trim().isEmpty ? S.of(context).Required : null,
+                        val!.trim().isEmpty ? S.of(context).required : null,
                   ),
                   TextFormField(
                     controller: _memoController,
                     decoration: InputDecoration(
-                        labelText: S.of(context).Memo,
+                        labelText: S.of(context).memo,
                         labelStyle:
                             TextStyle(color: Colors.teal, fontSize: 15.0)),
                   ),
@@ -370,7 +375,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                       color: Colors.teal,
                     ),
                     label: Text(
-                      S.of(context).PickAPhoto,
+                      S.of(context).pickAPhoto,
                       style: TextStyle(color: Colors.teal),
                     ),
                   ),
@@ -378,13 +383,23 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                   ElevatedButton(
                     onPressed: () async {
                       //保存ボタンを押した！
+                      if (!_checked) {
+                        Fluttertoast.showToast(
+                            msg: S.of(context).check1);
+                        return;
+                      }
+
                       if (_formKey.currentState!.validate()) {
+                        ///追加
+                        final dateStr = DateFormat('yyyy-MM-dd').format(_selectedDate);
+
                         final updated = FruitRecord(
                           // id: Uuid().v1(),
                           id: widget.recordToEdit?.id ?? Uuid().v1(),
                           fruitType: _fruitTypeController.text.trim(),
                           farmName: _farmNameController.text.trim(),
-                          date: DateFormat('yyyy-MM-dd').format(_selectedDate),
+                          date: dateStr,
+                          // date: DateFormat('yyyy-MM-dd').format(_selectedDate),
                           memo: _memoController.text.trim(),
                           imagePaths: _imageFiles.isNotEmpty
                               ? _imageFiles
@@ -405,12 +420,12 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                           await database.insertFruitRecord(updated);
                         }
                         Fluttertoast.showToast(
-                            msg: S.of(context).PhotoMessage2);
+                            msg: S.of(context).photoMessage2);
                         Navigator.pop(context, true);
                       }
                     },
                     child: Text(
-                      S.of(context).Save,
+                      S.of(context).save,
                       style: TextStyle(color: Colors.teal),
                     ),
                   )
@@ -436,25 +451,25 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
 // 修正後の _shareRecord メソッド
   Future<void> _shareRecord() async {
     final recordText = '''
-${S.of(context).ShareTitle}
-${S.of(context).ShareDate(
-              S.of(context).PickADate,
+${S.of(context).shareTitle}
+${S.of(context).shareDate(
+              S.of(context).pickADate,
               DateFormat('yyyy-MM-dd').format(_selectedDate),
             )}
-${S.of(context).ShareFruitType(
-              S.of(context).FruitType,
+${S.of(context).shareFruitType(
+              S.of(context).fruitType,
               _fruitTypeController.text,
             )}
-${S.of(context).ShareFarmName(
-              S.of(context).FarmName,
+${S.of(context).shareFarmName(
+              S.of(context).farmName,
               _farmNameController.text,
             )}
-${S.of(context).ShareMemo(
-              S.of(context).Memo,
+${S.of(context).shareMemo(
+              S.of(context).memo,
               _memoController.text,
             )}
 
-${S.of(context).ShareHashtags}
+${S.of(context).shareHashtags}
 ''';
 
     // フォームの内容をテキストにまとめる
@@ -474,19 +489,19 @@ ${S.of(context).ShareHashtags}
         final xfiles = _imageFiles.map((f) => XFile(f.path)).toList();
         await Share.shareXFiles(xfiles, text: recordText);
         //記録をシェアしました
-        Fluttertoast.showToast(msg: S.of(context).PhotoMessage3);
+        Fluttertoast.showToast(msg: S.of(context).photoMessage3);
       } catch (e) {
         //画像シェア失敗
-        print(S.of(context).PhotoMessage4);
+        print(S.of(context).photoMessage4);
       }
     } else {
       try {
         await Share.share(recordText);
         //記録をシェアしました
-        Fluttertoast.showToast(msg: S.of(context).PhotoMessage3);
+        Fluttertoast.showToast(msg: S.of(context).photoMessage3);
       } catch (e) {
         //テキストシェア失敗
-        print(S.of(context).PhotoMessage5);
+        print(S.of(context).photoMessage5);
       }
     }
   }
@@ -500,11 +515,11 @@ ${S.of(context).ShareHashtags}
           context: context,
           builder: (_) => AlertDialog(
             title: Text(
-              S.of(context).DeleteRecord0,
+              S.of(context).deleteRecord0,
               style: TextStyle(fontSize: 20.0),
             ),
             // 「記録の消去」
-            content: Text(S.of(context).DeleteRecord1,
+            content: Text(S.of(context).deleteRecord1,
                 style: TextStyle(color: Colors.black54, fontSize: 15.0)),
             // 「記録を消去しますか？」
             actions: [
@@ -514,14 +529,14 @@ ${S.of(context).ShareHashtags}
                   foregroundColor: Colors.white,
                 ),
                 onPressed: () => Navigator.pop(context, false),
-                child: Text(S.of(context).Cancel),
+                child: Text(S.of(context).cancel),
               ),
               TextButton(
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.teal,
                 ),
                 onPressed: () => Navigator.pop(context, true),
-                child: Text(S.of(context).OK),
+                child: Text(S.of(context).ok),
               ),
             ],
           ),
@@ -544,7 +559,7 @@ ${S.of(context).ShareHashtags}
     // DB のレコードを削除
     await database.deleteFruitRecord(widget.recordToEdit!.id);
 
-    Fluttertoast.showToast(msg: S.of(context).DeleteRecord2); // 「消去しました」
+    Fluttertoast.showToast(msg: S.of(context).deleteRecord2); // 「消去しました」
 
     if (!mounted) return;
     Navigator.pop(context, true); // ← 一覧へ戻って再描画トリガー

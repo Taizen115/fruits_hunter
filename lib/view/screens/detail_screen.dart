@@ -43,17 +43,17 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     final List detailQuestions = [
-      S.of(context).DetailQuestion0,
-      S.of(context).DetailQuestion1,
-      S.of(context).DetailQuestion2,
-      S.of(context).DetailQuestion3,
-      S.of(context).DetailQuestion4,
-      S.of(context).DetailQuestion5,
-      S.of(context).DetailQuestion6,
-      S.of(context).DetailQuestion7,
-      S.of(context).DetailQuestion8,
-      S.of(context).DetailQuestion9,
-      S.of(context).DetailQuestion10,
+      S.of(context).detailQuestion0,
+      S.of(context).detailQuestion1,
+      S.of(context).detailQuestion2,
+      S.of(context).detailQuestion3,
+      S.of(context).detailQuestion4,
+      S.of(context).detailQuestion5,
+      S.of(context).detailQuestion6,
+      S.of(context).detailQuestion7,
+      S.of(context).detailQuestion8,
+      S.of(context).detailQuestion9,
+      S.of(context).detailQuestion10,
 
       // "1.美味しい果物を食べるとき, 鮮度が重要なのはなぜですか？",
       // "2.主要な産地はどこですか？",
@@ -69,7 +69,7 @@ class _DetailScreenState extends State<DetailScreen> {
     ];
 
     final List detailAnswers = [
-      S.of(context).DetailAnswer0,
+      S.of(context).detailAnswer0,
       //1.
       // "鮮度のよい果物は, 良い味や香りがしており, 栄養素も分解されず残っております. "
       //     "\nまた, 食物繊維も豊富で, 病気に対する免疫力をつけてくれます.",
@@ -78,7 +78,7 @@ class _DetailScreenState extends State<DetailScreen> {
           ? "${widget.selectedFruit.famousArea}"
           : "${widget.selectedFruit.famousAreaEn}",
       //2-2.
-      S.of(context).DetailAnswer1,
+      S.of(context).detailAnswer1,
       // "温暖な地域で栽培された果物は, 糖度が高く, 甘みが強い傾向があります. 寒冷な地域で栽培された果物は, 酸味が強い傾向があります. \n\n"
       //     "土の粒子が粗い砂質土壌で栽培された果物は, 糖度が高く, 甘味が強い傾向があります."
       //     "火山の噴火によって出来た土壌で栽培された果物は, ミネラル分を多く含み, 酸味が強い傾向があります.\n\n "
@@ -293,18 +293,18 @@ class _DetailScreenState extends State<DetailScreen> {
           return AlertDialog(
             title: Text(
               //果樹園
-              S.of(context).GoMap0,
+              S.of(context).goMap0,
               style: TextStyle(fontSize: 25.0),
             ),
             content: Text(
               //"周辺の果樹園を検索しても\nよろしいでしょうか？",
-              S.of(context).GoMap1,
+              S.of(context).goMap1,
               style: TextStyle(fontSize: 20.0),
             ),
             actions: [
               TextButton(
                 child: Text(
-                  S.of(context).GoMap2,
+                  S.of(context).goMap2,
                   // "キャンセル",
                   style: TextStyle(fontSize: 20.0, color: Colors.black54),
                 ),
@@ -316,7 +316,7 @@ class _DetailScreenState extends State<DetailScreen> {
               //_launchURLで最寄りの果樹園に飛ぶ
               TextButton(
                 child: Text(
-                  S.of(context).GoMap3,
+                  S.of(context).goMap3,
                   // "OK",
                   style: TextStyle(fontSize: 20.0, color: Colors.lightBlue),
                 ),

@@ -100,7 +100,7 @@ class _QuizScreenState extends State<QuizScreen> {
               ),
               Gap(30),
               Text(
-                S.of(context).Quiz,
+                S.of(context).quiz,
                 style: TextStyle(
                     fontFamily: MainFont, fontSize: 30.0, color: Colors.teal),
               ),
@@ -193,18 +193,18 @@ class _QuizScreenState extends State<QuizScreen> {
         children: [
           TableRow(children: [
             Text(
-              S.of(context).TheRest,
+              S.of(context).theRest,
               style: TextStyle(fontSize: 20.0, color: Colors.black),
             ),
             Center(
               child: Text(
-                S.of(context).FruitCount,
+                S.of(context).fruitCount,
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
             Center(
               child: Text(
-                S.of(context).DropRate,
+                S.of(context).dropRate,
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
@@ -212,13 +212,13 @@ class _QuizScreenState extends State<QuizScreen> {
           TableRow(children: [
             Center(
               child: Text(
-                "${numberOfRemaining.toString()}" + S.of(context).Hunt,
+                "${numberOfRemaining.toString()}" + S.of(context).hunt,
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
             Center(
               child: Text(
-                "${numberOfHunt.toString()}" + S.of(context).Hunt,
+                "${numberOfHunt.toString()}" + S.of(context).hunt,
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
               ),
             ),
@@ -419,7 +419,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: AutoSizeText(
-                      S.of(context).QuizAnswer + " ${answer}",
+                      S.of(context).quizAnswer + " ${answer}",
                       maxLines: 2,
                       style: TextStyle(fontSize: 20.0, color: Colors.teal),
                       minFontSize: 15.0,
@@ -440,7 +440,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: AutoSizeText(
-                        S.of(context).QuizExplanation + "\n${explanation}",
+                        S.of(context).quizExplanation + "\n${explanation}",
                         maxLines: 6,
                         style: TextStyle(fontSize: 30.0, color: Colors.teal),
                       ),
@@ -457,8 +457,8 @@ class _QuizScreenState extends State<QuizScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: AutoSizeText(
                       numberOfRemaining == 0
-                          ? S.of(context).Result
-                          : S.of(context).NextFruit,
+                          ? S.of(context).result
+                          : S.of(context).nextFruit,
                       maxLines: 1,
                       style: TextStyle(fontFamily: SubFont, fontSize: 30.0),
                     ),
@@ -547,24 +547,24 @@ class _QuizScreenState extends State<QuizScreen> {
       context: context,
       builder: (_) => AlertDialog(
         title: Text(
-          S.of(context).QuizFinish,
+          S.of(context).quizFinish,
           style: TextStyle(fontSize: 25.0),
         ),
         content: Text(
-          S.of(context).FinishQuestion,
+          S.of(context).finishQuestion,
           style: TextStyle(fontSize: 20.0),
         ),
         actions: [
           TextButton(
             child: Text(
-              S.of(context).Cancel,
+              S.of(context).cancel,
               style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
             ),
             onPressed: () => Navigator.pop(context),
           ),
           TextButton(
             child: Text(
-              S.of(context).OK,
+              S.of(context).ok,
               style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
             ),
             onPressed: () {

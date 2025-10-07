@@ -51,460 +51,450 @@ class S {
   }
 
   /// `What kind of help do you need with\nfruit picking?`
-  String get Catchphrase {
+  String get catchphrase {
     return Intl.message(
       'What kind of help do you need with\nfruit picking?',
-      name: 'Catchphrase',
+      name: 'catchphrase',
       desc: '',
       args: [],
     );
   }
 
   /// `List`
-  String get List {
+  String get list {
     return Intl.message(
       'List',
-      name: 'List',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Belonging`
-  String get Belongings {
-    return Intl.message(
-      'Belonging',
-      name: 'Belongings',
+      name: 'list',
       desc: '',
       args: [],
     );
   }
 
   /// `Memory`
-  String get Memory {
+  String get memory {
     return Intl.message(
       'Memory',
-      name: 'Memory',
+      name: 'memory',
       desc: '',
       args: [],
     );
   }
 
   /// `Quiz`
-  String get Quiz {
+  String get quiz {
     return Intl.message(
       'Quiz',
-      name: 'Quiz',
+      name: 'quiz',
       desc: '',
       args: [],
     );
   }
 
   /// `[Home]Please close the screen and try again`
-  String get GetData {
+  String get getData {
     return Intl.message(
       '[Home]Please close the screen and try again',
-      name: 'GetData',
+      name: 'getData',
       desc: '',
       args: [],
     );
   }
 
   /// `Options`
-  String get Options {
+  String get options {
     return Intl.message(
       'Options',
-      name: 'Options',
+      name: 'options',
       desc: '',
       args: [],
     );
   }
 
   /// `Copyright Notice`
-  String get Credits {
+  String get credits {
     return Intl.message(
       'Copyright Notice',
-      name: 'Credits',
+      name: 'credits',
       desc: '',
       args: [],
     );
   }
 
   /// `Review This App`
-  String get Review {
+  String get review {
     return Intl.message(
       'Review This App',
-      name: 'Review',
+      name: 'review',
       desc: '',
       args: [],
     );
   }
 
   /// `Could Not Launch Store`
-  String get NotLaunchStore {
+  String get notLaunchStore {
     return Intl.message(
       'Could Not Launch Store',
-      name: 'NotLaunchStore',
+      name: 'notLaunchStore',
       desc: '',
       args: [],
     );
   }
 
   /// `Photo・illustration\n\n`
-  String get PhotoIllustration {
+  String get photoIllustration {
     return Intl.message(
       'Photo・illustration\n\n',
-      name: 'PhotoIllustration',
+      name: 'photoIllustration',
       desc: '',
       args: [],
     );
   }
 
   /// `・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n`
-  String get TopPage {
+  String get topPage {
     return Intl.message(
       '・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n',
-      name: 'TopPage',
+      name: 'topPage',
       desc: '',
       args: [],
     );
   }
 
   /// `Font and Icon Name\n\n`
-  String get FontIcon {
+  String get fontIcon {
     return Intl.message(
       'Font and Icon Name\n\n',
-      name: 'FontIcon',
+      name: 'fontIcon',
       desc: '',
       args: [],
     );
   }
 
   /// `・Google Font\n\n・FontAwesomeIcon`
-  String get GoogleFontFontAwesomeIcon {
+  String get googleFontFontAwesomeIcon {
     return Intl.message(
       '・Google Font\n\n・FontAwesomeIcon',
-      name: 'GoogleFontFontAwesomeIcon',
+      name: 'googleFontFontAwesomeIcon',
       desc: '',
       args: [],
     );
   }
 
   /// `Banner Ad Display`
-  String get Ado {
+  String get ado {
     return Intl.message(
       'Banner Ad Display',
-      name: 'Ado',
+      name: 'ado',
       desc: '',
       args: [],
     );
   }
 
   /// `Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n`
-  String get AdoText {
+  String get adoText {
     return Intl.message(
       'Please select if you would like to allow personalized ads. \n\nBy allowing personalized ads, you can reduce the display of ads that are less relevant to your interests.\n\nPlease note that we do not collect your personal information through this process.\n\n',
-      name: 'AdoText',
+      name: 'adoText',
       desc: '',
       args: [],
     );
   }
 
   /// `Proceed to the next page.`
-  String get Next {
+  String get next {
     return Intl.message(
       'Proceed to the next page.',
-      name: 'Next',
+      name: 'next',
       desc: '',
       args: [],
     );
   }
 
   /// `Number of Questions`
-  String get QuestionCount {
+  String get questionCount {
     return Intl.message(
       'Number of Questions',
-      name: 'QuestionCount',
+      name: 'questionCount',
       desc: '',
       args: [],
     );
   }
 
   /// `How many questions will you answer?`
-  String get HowManyQuestions {
+  String get howManyQuestions {
     return Intl.message(
       'How many questions will you answer?',
-      name: 'HowManyQuestions',
+      name: 'howManyQuestions',
       desc: '',
       args: [],
     );
   }
 
   /// `10Q`
-  String get TenQuestions {
+  String get tenQuestions {
     return Intl.message(
       '10Q',
-      name: 'TenQuestions',
+      name: 'tenQuestions',
       desc: '',
       args: [],
     );
   }
 
   /// `20Q`
-  String get TwentyQuestions {
+  String get twentyQuestions {
     return Intl.message(
       '20Q',
-      name: 'TwentyQuestions',
+      name: 'twentyQuestions',
       desc: '',
       args: [],
     );
   }
 
   /// `30Q`
-  String get ThirtyQuestions {
+  String get thirtyQuestions {
     return Intl.message(
       '30Q',
-      name: 'ThirtyQuestions',
+      name: 'thirtyQuestions',
       desc: '',
       args: [],
     );
   }
 
   /// `Seasonal Fruits`
-  String get FruitList {
+  String get fruitList {
     return Intl.message(
       'Seasonal Fruits',
-      name: 'FruitList',
+      name: 'fruitList',
       desc: '',
       args: [],
     );
   }
 
   /// `We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later.`
-  String get Attention {
+  String get attention {
     return Intl.message(
       'We apologize, but we were unable to retrieve the requested data.\n Please close this window and try again later.',
-      name: 'Attention',
+      name: 'attention',
       desc: '',
       args: [],
     );
   }
 
   /// `All Season`
-  String get All {
+  String get all {
     return Intl.message(
       'All Season',
-      name: 'All',
+      name: 'all',
       desc: '',
       args: [],
     );
   }
 
   /// `Spring`
-  String get SpringFruit {
+  String get springFruit {
     return Intl.message(
       'Spring',
-      name: 'SpringFruit',
+      name: 'springFruit',
       desc: '',
       args: [],
     );
   }
 
   /// `Summer`
-  String get SummerFruit {
+  String get summerFruit {
     return Intl.message(
       'Summer',
-      name: 'SummerFruit',
+      name: 'summerFruit',
       desc: '',
       args: [],
     );
   }
 
   /// `Autumn`
-  String get AutumnFruit {
+  String get autumnFruit {
     return Intl.message(
       'Autumn',
-      name: 'AutumnFruit',
+      name: 'autumnFruit',
       desc: '',
       args: [],
     );
   }
 
   /// `Winter`
-  String get WinterFruit {
+  String get winterFruit {
     return Intl.message(
       'Winter',
-      name: 'WinterFruit',
+      name: 'winterFruit',
       desc: '',
       args: [],
     );
   }
 
   /// `1. What makes freshness so important for enjoying delicious fruits?`
-  String get DetailQuestion0 {
+  String get detailQuestion0 {
     return Intl.message(
       '1. What makes freshness so important for enjoying delicious fruits?',
-      name: 'DetailQuestion0',
+      name: 'detailQuestion0',
       desc: '',
       args: [],
     );
   }
 
   /// `2. What are the major production areas?`
-  String get DetailQuestion1 {
+  String get detailQuestion1 {
     return Intl.message(
       '2. What are the major production areas?',
-      name: 'DetailQuestion1',
+      name: 'detailQuestion1',
       desc: '',
       args: [],
     );
   }
 
   /// `2-2. What factors should I consider when choosing a production area?`
-  String get DetailQuestion2 {
+  String get detailQuestion2 {
     return Intl.message(
       '2-2. What factors should I consider when choosing a production area?',
-      name: 'DetailQuestion2',
+      name: 'detailQuestion2',
       desc: '',
       args: [],
     );
   }
 
   /// `3. What are the well-known cultivars? `
-  String get DetailQuestion3 {
+  String get detailQuestion3 {
     return Intl.message(
       '3. What are the well-known cultivars? ',
-      name: 'DetailQuestion3',
+      name: 'detailQuestion3',
       desc: '',
       args: [],
     );
   }
 
   /// `3-2. Which varieties have the highest sugar content?`
-  String get DetailQuestion4 {
+  String get detailQuestion4 {
     return Intl.message(
       '3-2. Which varieties have the highest sugar content?',
-      name: 'DetailQuestion4',
+      name: 'detailQuestion4',
       desc: '',
       args: [],
     );
   }
 
   /// `3-3. Which varieties are seedless?`
-  String get DetailQuestion5 {
+  String get detailQuestion5 {
     return Intl.message(
       '3-3. Which varieties are seedless?',
-      name: 'DetailQuestion5',
+      name: 'detailQuestion5',
       desc: '',
       args: [],
     );
   }
 
   /// `4. When is the best season to eat fruits? `
-  String get DetailQuestion6 {
+  String get detailQuestion6 {
     return Intl.message(
       '4. When is the best season to eat fruits? ',
-      name: 'DetailQuestion6',
+      name: 'detailQuestion6',
       desc: '',
       args: [],
     );
   }
 
   /// `5. What are the nutritional values?`
-  String get DetailQuestion7 {
+  String get detailQuestion7 {
     return Intl.message(
       '5. What are the nutritional values?',
-      name: 'DetailQuestion7',
+      name: 'detailQuestion7',
       desc: '',
       args: [],
     );
   }
 
   /// `5-2. What are the benefits of nutrients?`
-  String get DetailQuestion8 {
+  String get detailQuestion8 {
     return Intl.message(
       '5-2. What are the benefits of nutrients?',
-      name: 'DetailQuestion8',
+      name: 'detailQuestion8',
       desc: '',
       args: [],
     );
   }
 
   /// `6. What is the cost of a harvest experience?`
-  String get DetailQuestion9 {
+  String get detailQuestion9 {
     return Intl.message(
       '6. What is the cost of a harvest experience?',
-      name: 'DetailQuestion9',
+      name: 'detailQuestion9',
       desc: '',
       args: [],
     );
   }
 
   /// `7. How can I tell if it's ripe?`
-  String get DetailQuestion10 {
+  String get detailQuestion10 {
     return Intl.message(
       '7. How can I tell if it\'s ripe?',
-      name: 'DetailQuestion10',
+      name: 'detailQuestion10',
       desc: '',
       args: [],
     );
   }
 
   /// `Fresh fruits have a great taste and aroma, and their nutrients remain intact. \n\nThey are also rich in dietary fiber and can help boost your immune system.`
-  String get DetailAnswer0 {
+  String get detailAnswer0 {
     return Intl.message(
       'Fresh fruits have a great taste and aroma, and their nutrients remain intact. \n\nThey are also rich in dietary fiber and can help boost your immune system.',
-      name: 'DetailAnswer0',
+      name: 'detailAnswer0',
       desc: '',
       args: [],
     );
   }
 
   /// `① Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \n\n② Fruits cultivated in cold regions often have a higher acidity.\n\n③ Fruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\n\n④ Fruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\n\n⑤ Fruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers.`
-  String get DetailAnswer1 {
+  String get detailAnswer1 {
     return Intl.message(
       '① Fruits grown in warm climates tend to have higher sugar content and a sweeter taste. \n\n② Fruits cultivated in cold regions often have a higher acidity.\n\n③ Fruits grown in sandy soil tend to have higher sugar content and a sweeter taste.\n\n④ Fruits cultivated in volcanic soil are often rich in minerals and have a higher acidity.\n\n⑤ Fruits grown with organic fertilizers tend to be sweeter than those grown with chemical fertilizers.',
-      name: 'DetailAnswer1',
+      name: 'detailAnswer1',
       desc: '',
       args: [],
     );
   }
 
   /// `Orchard`
-  String get GoMap0 {
+  String get goMap0 {
     return Intl.message(
       'Orchard',
-      name: 'GoMap0',
+      name: 'goMap0',
       desc: '',
       args: [],
     );
   }
 
   /// `Shall I look up some orchards in your area?`
-  String get GoMap1 {
+  String get goMap1 {
     return Intl.message(
       'Shall I look up some orchards in your area?',
-      name: 'GoMap1',
+      name: 'goMap1',
       desc: '',
       args: [],
     );
   }
 
   /// `Cancel`
-  String get GoMap2 {
+  String get goMap2 {
     return Intl.message(
       'Cancel',
-      name: 'GoMap2',
+      name: 'goMap2',
       desc: '',
       args: [],
     );
   }
 
   /// `OK`
-  String get GoMap3 {
+  String get goMap3 {
     return Intl.message(
       'OK',
-      name: 'GoMap3',
+      name: 'goMap3',
       desc: '',
       args: [],
     );
@@ -650,561 +640,481 @@ class S {
     );
   }
 
-  /// `Checklist`
-  String get BelongingList {
-    return Intl.message(
-      'Checklist',
-      name: 'BelongingList',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Long-sleeved Top`
-  String get Shirt {
-    return Intl.message(
-      'Long-sleeved Top',
-      name: 'Shirt',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Insect Repellent`
-  String get Spray {
-    return Intl.message(
-      'Insect Repellent',
-      name: 'Spray',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Sunscreen`
-  String get Sunscreen {
-    return Intl.message(
-      'Sunscreen',
-      name: 'Sunscreen',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Cap`
-  String get Cap {
-    return Intl.message(
-      'Cap',
-      name: 'Cap',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Wet Wipes`
-  String get WetWipes {
-    return Intl.message(
-      'Wet Wipes',
-      name: 'WetWipes',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Face Towel`
-  String get FaceTowel {
-    return Intl.message(
-      'Face Towel',
-      name: 'FaceTowel',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Cooler`
-  String get Cooler {
-    return Intl.message(
-      'Cooler',
-      name: 'Cooler',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Drink`
-  String get Drink {
-    return Intl.message(
-      'Drink',
-      name: 'Drink',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Manner`
-  String get Manner {
+  String get manner {
     return Intl.message(
       'Manner',
-      name: 'Manner',
+      name: 'manner',
       desc: '',
       args: [],
     );
   }
 
   /// `The Rest`
-  String get TheRest {
+  String get theRest {
     return Intl.message(
       'The Rest',
-      name: 'TheRest',
+      name: 'theRest',
       desc: '',
       args: [],
     );
   }
 
   /// `Fruit Count`
-  String get FruitCount {
+  String get fruitCount {
     return Intl.message(
       'Fruit Count',
-      name: 'FruitCount',
+      name: 'fruitCount',
       desc: '',
       args: [],
     );
   }
 
   /// `Drop Rate`
-  String get DropRate {
+  String get dropRate {
     return Intl.message(
       'Drop Rate',
-      name: 'DropRate',
+      name: 'dropRate',
       desc: '',
       args: [],
     );
   }
 
   /// `Fruits`
-  String get Hunt {
+  String get hunt {
     return Intl.message(
       'Fruits',
-      name: 'Hunt',
+      name: 'hunt',
       desc: '',
       args: [],
     );
   }
 
   /// `Answer:`
-  String get QuizAnswer {
+  String get quizAnswer {
     return Intl.message(
       'Answer:',
-      name: 'QuizAnswer',
+      name: 'quizAnswer',
       desc: '',
       args: [],
     );
   }
 
   /// `Explanation:`
-  String get QuizExplanation {
+  String get quizExplanation {
     return Intl.message(
       'Explanation:',
-      name: 'QuizExplanation',
+      name: 'quizExplanation',
       desc: '',
       args: [],
     );
   }
 
   /// `Results announcement！`
-  String get Result {
+  String get result {
     return Intl.message(
       'Results announcement！',
-      name: 'Result',
+      name: 'result',
       desc: '',
       args: [],
     );
   }
 
   /// `Next Fruit！`
-  String get NextFruit {
+  String get nextFruit {
     return Intl.message(
       'Next Fruit！',
-      name: 'NextFruit',
+      name: 'nextFruit',
       desc: '',
       args: [],
     );
   }
 
   /// `Concluding the quiz`
-  String get QuizFinish {
+  String get quizFinish {
     return Intl.message(
       'Concluding the quiz',
-      name: 'QuizFinish',
+      name: 'quizFinish',
       desc: '',
       args: [],
     );
   }
 
   /// `Would you like to conclude the quiz now?`
-  String get FinishQuestion {
+  String get finishQuestion {
     return Intl.message(
       'Would you like to conclude the quiz now?',
-      name: 'FinishQuestion',
+      name: 'finishQuestion',
       desc: '',
       args: [],
     );
   }
 
   /// `Cancel`
-  String get Cancel {
+  String get cancel {
     return Intl.message(
       'Cancel',
-      name: 'Cancel',
+      name: 'cancel',
       desc: '',
       args: [],
     );
   }
 
   /// `OK`
-  String get OK {
+  String get ok {
     return Intl.message(
       'OK',
-      name: 'OK',
+      name: 'ok',
       desc: '',
       args: [],
     );
   }
 
   /// `Quiz Score`
-  String get QuizScore {
+  String get quizScore {
     return Intl.message(
       'Quiz Score',
-      name: 'QuizScore',
+      name: 'quizScore',
       desc: '',
       args: [],
     );
   }
 
   /// `The number of fruits you got is... `
-  String get ScoreSay1 {
+  String get scoreSay1 {
     return Intl.message(
       'The number of fruits you got is... ',
-      name: 'ScoreSay1',
+      name: 'scoreSay1',
       desc: '',
       args: [],
     );
   }
 
   /// `\nYour success rate is... `
-  String get ScoreSay2 {
+  String get scoreSay2 {
     return Intl.message(
       '\nYour success rate is... ',
-      name: 'ScoreSay2',
+      name: 'scoreSay2',
       desc: '',
       args: [],
     );
   }
 
   /// `Good Job！`
-  String get ScoreSay3 {
+  String get scoreSay3 {
     return Intl.message(
       'Good Job！',
-      name: 'ScoreSay3',
+      name: 'scoreSay3',
       desc: '',
       args: [],
     );
   }
 
   /// `For your next visit, why don't you try picking your own fruit?`
-  String get FinalComment {
+  String get finalComment {
     return Intl.message(
       'For your next visit, why don\'t you try picking your own fruit?',
-      name: 'FinalComment',
+      name: 'finalComment',
       desc: '',
       args: [],
     );
   }
 
   /// `All correct!`
-  String get AllCorrect0 {
+  String get allCorrect0 {
     return Intl.message(
       'All correct!',
-      name: 'AllCorrect0',
+      name: 'allCorrect0',
       desc: '',
       args: [],
     );
   }
 
   /// `You've achieved a perfect score🤩 \nThat's impressive. \nGreat job.`
-  String get AllCorrect1 {
+  String get allCorrect1 {
     return Intl.message(
       'You\'ve achieved a perfect score🤩 \nThat\'s impressive. \nGreat job.',
-      name: 'AllCorrect1',
+      name: 'allCorrect1',
       desc: '',
       args: [],
     );
   }
 
   /// `It would be a great experience to pick your own fresh fruits. \nI encourage you to try it. `
-  String get AllCorrect2 {
+  String get allCorrect2 {
     return Intl.message(
       'It would be a great experience to pick your own fresh fruits. \nI encourage you to try it. ',
-      name: 'AllCorrect2',
+      name: 'allCorrect2',
       desc: '',
       args: [],
     );
   }
 
   /// `Record List`
-  String get RecordList {
+  String get recordList {
     return Intl.message(
       'Record List',
-      name: 'RecordList',
+      name: 'recordList',
       desc: '',
       args: [],
     );
   }
 
   /// `Fruit Picking Record`
-  String get FruitPickingRecord {
+  String get fruitPickingRecord {
     return Intl.message(
       'Fruit Picking Record',
-      name: 'FruitPickingRecord',
+      name: 'fruitPickingRecord',
       desc: '',
       args: [],
     );
   }
 
   /// `Pick A Date`
-  String get PickADate {
+  String get pickADate {
     return Intl.message(
       'Pick A Date',
-      name: 'PickADate',
+      name: 'pickADate',
       desc: '',
       args: [],
     );
   }
 
   /// `Fruit Type`
-  String get FruitType {
+  String get fruitType {
     return Intl.message(
       'Fruit Type',
-      name: 'FruitType',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Required`
-  String get Required {
-    return Intl.message(
-      'Required',
-      name: 'Required',
+      name: 'fruitType',
       desc: '',
       args: [],
     );
   }
 
   /// `Farm Name`
-  String get FarmName {
+  String get farmName {
     return Intl.message(
       'Farm Name',
-      name: 'FarmName',
+      name: 'farmName',
       desc: '',
       args: [],
     );
   }
 
   /// `Memo (Optional)`
-  String get Memo {
+  String get memo {
     return Intl.message(
       'Memo (Optional)',
-      name: 'Memo',
+      name: 'memo',
       desc: '',
       args: [],
     );
   }
 
   /// `Pick Photo`
-  String get PickAPhoto {
+  String get pickAPhoto {
     return Intl.message(
       'Pick Photo',
-      name: 'PickAPhoto',
+      name: 'pickAPhoto',
       desc: '',
       args: [],
     );
   }
 
   /// `Save`
-  String get Save {
+  String get save {
     return Intl.message(
       'Save',
-      name: 'Save',
+      name: 'save',
       desc: '',
       args: [],
     );
   }
 
   /// `No Photo`
-  String get NoPhoto {
+  String get noPhoto {
     return Intl.message(
       'No Photo',
-      name: 'NoPhoto',
+      name: 'noPhoto',
       desc: '',
       args: [],
     );
   }
 
   /// `Edit Record`
-  String get EditRecord {
+  String get editRecord {
     return Intl.message(
       'Edit Record',
-      name: 'EditRecord',
+      name: 'editRecord',
       desc: '',
       args: [],
     );
   }
 
   /// `Delete Record`
-  String get DeleteRecord0 {
+  String get deleteRecord0 {
     return Intl.message(
       'Delete Record',
-      name: 'DeleteRecord0',
+      name: 'deleteRecord0',
       desc: '',
       args: [],
     );
   }
 
   /// `Delete this record?`
-  String get DeleteRecord1 {
+  String get deleteRecord1 {
     return Intl.message(
       'Delete this record?',
-      name: 'DeleteRecord1',
+      name: 'deleteRecord1',
       desc: '',
       args: [],
     );
   }
 
   /// `Deleted`
-  String get DeleteRecord2 {
+  String get deleteRecord2 {
     return Intl.message(
       'Deleted',
-      name: 'DeleteRecord2',
+      name: 'deleteRecord2',
       desc: '',
       args: [],
     );
   }
 
   /// `Full screen`
-  String get FullScreen {
+  String get fullScreen {
     return Intl.message(
       'Full screen',
-      name: 'FullScreen',
+      name: 'fullScreen',
       desc: '',
       args: [],
     );
   }
 
   /// `Image Deletion Failed`
-  String get PhotoMessage1 {
+  String get photoMessage1 {
     return Intl.message(
       'Image Deletion Failed',
-      name: 'PhotoMessage1',
+      name: 'photoMessage1',
       desc: '',
       args: [],
     );
   }
 
   /// `Saved.`
-  String get PhotoMessage2 {
+  String get photoMessage2 {
     return Intl.message(
       'Saved.',
-      name: 'PhotoMessage2',
+      name: 'photoMessage2',
       desc: '',
       args: [],
     );
   }
 
   /// `Record shared successfully`
-  String get PhotoMessage3 {
+  String get photoMessage3 {
     return Intl.message(
       'Record shared successfully',
-      name: 'PhotoMessage3',
+      name: 'photoMessage3',
       desc: '',
       args: [],
     );
   }
 
   /// `Failed to share image`
-  String get PhotoMessage4 {
+  String get photoMessage4 {
     return Intl.message(
       'Failed to share image',
-      name: 'PhotoMessage4',
+      name: 'photoMessage4',
       desc: '',
       args: [],
     );
   }
 
   /// `Failed to share text`
-  String get PhotoMessage5 {
+  String get photoMessage5 {
     return Intl.message(
       'Failed to share text',
-      name: 'PhotoMessage5',
+      name: 'photoMessage5',
       desc: '',
       args: [],
     );
   }
 
   /// `🍓✨ I went fruit picking ✨🍇`
-  String get ShareTitle {
+  String get shareTitle {
     return Intl.message(
       '🍓✨ I went fruit picking ✨🍇',
-      name: 'ShareTitle',
+      name: 'shareTitle',
       desc: '',
       args: [],
     );
   }
 
   /// `📅{dateLabel}: {date}`
-  String ShareDate(Object dateLabel, Object date) {
+  String shareDate(Object dateLabel, Object date) {
     return Intl.message(
       '📅$dateLabel: $date',
-      name: 'ShareDate',
+      name: 'shareDate',
       desc: '',
       args: [dateLabel, date],
     );
   }
 
   /// `🤩{fruitTypeLabel}: {fruitType}`
-  String ShareFruitType(Object fruitTypeLabel, Object fruitType) {
+  String shareFruitType(Object fruitTypeLabel, Object fruitType) {
     return Intl.message(
       '🤩$fruitTypeLabel: $fruitType',
-      name: 'ShareFruitType',
+      name: 'shareFruitType',
       desc: '',
       args: [fruitTypeLabel, fruitType],
     );
   }
 
   /// `🌳{farmNameLabel}: {farmName}`
-  String ShareFarmName(Object farmNameLabel, Object farmName) {
+  String shareFarmName(Object farmNameLabel, Object farmName) {
     return Intl.message(
       '🌳$farmNameLabel: $farmName',
-      name: 'ShareFarmName',
+      name: 'shareFarmName',
       desc: '',
       args: [farmNameLabel, farmName],
     );
   }
 
   /// `📝{memoLabel}: {memo}`
-  String ShareMemo(Object memoLabel, Object memo) {
+  String shareMemo(Object memoLabel, Object memo) {
     return Intl.message(
       '📝$memoLabel: $memo',
-      name: 'ShareMemo',
+      name: 'shareMemo',
       desc: '',
       args: [memoLabel, memo],
     );
   }
 
   /// `#FruitPicking #Fruits #StrawberryPicking #GrapePicking #FruitTrip`
-  String get ShareHashtags {
+  String get shareHashtags {
     return Intl.message(
       '#FruitPicking #Fruits #StrawberryPicking #GrapePicking #FruitTrip',
-      name: 'ShareHashtags',
+      name: 'shareHashtags',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are some blank fields.`
+  String get check1 {
+    return Intl.message(
+      'There are some blank fields.',
+      name: 'check1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Required`
+  String get required {
+    return Intl.message(
+      'Required',
+      name: 'required',
       desc: '',
       args: [],
     );

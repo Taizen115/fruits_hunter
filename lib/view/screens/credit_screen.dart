@@ -41,7 +41,7 @@ class CreditScreen extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
             ),
             title: Text(
-              S.of(context).Credits,
+              S.of(context).credits,
               style: TextStyle(
                 fontFamily: ThirdFont,
                 fontSize: 30.0,
@@ -76,19 +76,19 @@ class CreditScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: RichText(
                     text: TextSpan(
-                      text: S.of(context).PhotoIllustration,
+                      text: S.of(context).photoIllustration,
                       style: TextStyle(fontSize: 30.0, color: Colors.blue),
                       children: <TextSpan>[
                         TextSpan(
-                          text: S.of(context).TopPage,
+                          text: S.of(context).topPage,
                           style: TextStyle(fontSize: 20.0, color: Colors.black54),
                         ),
                         TextSpan(
-                          text: S.of(context).FontIcon,
+                          text: S.of(context).fontIcon,
                           style: TextStyle(fontSize: 30.0, color: Colors.orange),
                         ),
                         TextSpan(
-                          text: S.of(context).GoogleFontFontAwesomeIcon,
+                          text: S.of(context).googleFontFontAwesomeIcon,
                           style: TextStyle(fontSize: 20.0, color: Colors.black54),
                         ),
                       ],
