@@ -1,6 +1,7 @@
 {
   "catchphrase": "どのような果物狩りの手伝いが\n必要でしょうか？",
   "list": "果物一覧",
+  "manner": "マナー"
   "memory": "思い出",
   "quiz": "クイズ",
 
@@ -12,7 +13,7 @@
   "notLaunchStore": "ストアを開けませんでした",
 
   "photoIllustration": "写真・イラスト\n\n",
-  "topPage": "・Topページ : Pexelsより引用\n\n・果物一覧ページ, クイズページ : 写真AC, イラストACより引用\n\n・持ち物ページ, マナーページ, クレジットページ : イラストACより引用\n\n",
+  "topPage": "・Topページ : Pexelsより引用\n\n・果物一覧ページ, クイズページ : 写真AC, イラストACより引用\n\n・クレジットページ : イラストACより引用\n\n",
   "fontIcon": "フォント・アイコン名\n\n",
   "googleFontFontAwesomeIcon": "・Google Font\n\n・FontAwesomeIcon",
 
@@ -69,8 +70,6 @@
   "mannerAnswers4": "オシャレな格好をして出かけるのも素晴らしいですが, それに加えて汚れても大丈夫で, 動きやすい服装がおすすめです. ",
   "mannerAnswers5": "お供のアイテムとして, 夏場は虫除けスプレー, 日焼け止め, タオル, クーラーボックスがあると良いと思われます. あと, 食べる時にウェットティッシュがあると, 尚良いです. ",
   "mannerAnswers6": "果樹園の方に直接尋ねるのが良いと思われます. それぞれのルールを守って, 満足できる果物狩りを楽しんでください.",
-
-  "manner": "マナー",
 
   "theRest": "残りの果物",
   "fruitCount": "獲得果物数",

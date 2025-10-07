@@ -1,6 +1,7 @@
 {
   "catchphrase":"What kind of help do you need with\nfruit picking?",
   "list": "List",
+  "manner": "Manner"
   "memory": "Memory",
   "quiz": "Quiz",
 
@@ -12,7 +13,7 @@
   "notLaunchStore": "Could Not Launch Store",
 
   "photoIllustration": "Photo・illustration\n\n",
-  "topPage": "・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Belongings Page, Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n",
+  "topPage": "・Top Page : Image courtesy of Pexels\n\n・List Page, and Quiz Page : Images courtesy of PhotoAC and IllustrationAC\n\n・Manners Page, and Copyright Page: Image courtesy of IllustrationAC\n\n",
   "fontIcon": "Font and Icon Name\n\n",
   "googleFontFontAwesomeIcon": "・Google Font\n\n・FontAwesomeIcon",
 
@@ -69,8 +70,6 @@
   "mannerAnswers4": "While it's great to dress up, it's also advisable to wear comfortable clothing that you don't mind getting dirty. ",
   "mannerAnswers5": "As for essential items, insect repellent, sunscreen, towels, and a cooler would be advisable for the summer. \n\nAdditionally, wet wipes would be convenient for mealtimes.",
   "mannerAnswers6": "It would be best to ask the orchard staff directly. \n\nBy following their rules, you can enjoy a satisfying fruit-picking experience.",
-
-  "manner": "Manner",
 
   "theRest": "The Rest",
   "fruitCount": "Fruit Count",

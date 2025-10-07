@@ -242,23 +242,27 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
-                                        width: 40,
-                                        height: 40,
+                                        width: 36,
+                                        height: 36,
                                         child: ClipOval(
                                             child: _buildImageThumb(
                                                 r.imagePaths))),
                                     Gap(2.0),
-                                    Text(
-                                      _displayDate(r.date),
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontFamily: SubFont,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 10),
-                                      textAlign: TextAlign.left,
+                                    SizedBox(
+                                      height: 14,
+                                      child: AutoSizeText(
+                                        _displayDate(r.date),
+                                            maxLines:1,
+                                          minFontSize: 8,
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                        fontSize: 10, height: 1.0
+                                            ),
+                                      ),
                                     ),
                                     // Text(
-                                    //   '${r.date}',
+                                    //   '${r.date}',ÏÏ
                                     //   style: TextStyle(
                                     //       color: Colors.black,
                                     //       fontFamily: SubFont,
