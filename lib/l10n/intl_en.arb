@@ -1,7 +1,7 @@
 {
   "catchphrase":"What kind of help do you need with\nfruit picking?",
   "list": "List",
-  "manner": "Manner"
+  "manner": "Manner",
   "memory": "Memory",
   "quiz": "Quiz",
 
@@ -127,7 +127,7 @@
   "shareFruitType": "🤩{fruitTypeLabel}: {fruitType}",
   "shareFarmName": "🌳{farmNameLabel}: {farmName}",
   "shareMemo": "📝{memoLabel}: {memo}",
-  "shareHashtags": "#FruitPicking #Fruits #StrawberryPicking #GrapePicking #FruitTrip",
+  "shareHashtags": "#FruitPicking #Fruits #StrawberryPicking #GrapePicking #FruitPicker",
 
   "check1": "There are some blank fields.",
   "required": "Required"

@@ -81,7 +81,7 @@ class _ListScreenState extends State<ListScreen> {
               leading: TextButton(
                 child: Icon(
                   FontAwesomeIcons.arrowLeft,
-                  color: Colors.lightGreen,
+                  color: Colors.white70,
                 ),
                 onPressed: () async {
                   await adManager.disposeBannerAd();
@@ -186,9 +186,10 @@ class _ListScreenState extends State<ListScreen> {
                                           child: InkWell(
                                             onTap: () => _goDetailPage(fruit),
                                             child: Card(
+                                              margin: EdgeInsets.all(10.0),
                                               color: Colors.white,
-                                              shadowColor: Colors.white70,
-                                              surfaceTintColor: Colors.white,
+                                              shadowColor: Colors.white,
+                                              surfaceTintColor: Colors.transparent,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.all(
                                                   Radius.circular(20),
@@ -208,8 +209,9 @@ class _ListScreenState extends State<ListScreen> {
                                                   child: Text(
                                                     (currentLanguage == "ja") ? fruit.name : fruit.nameEn ?? "",
                                                     style: TextStyle(
+                                                      color: Colors.black87,
                                                         fontSize: 25.0,
-                                                        fontFamily: ThirdFont),
+                                                        fontFamily: MainFont),
                                                   ),
                                                 ),
                                               ),

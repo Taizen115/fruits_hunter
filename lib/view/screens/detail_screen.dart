@@ -204,39 +204,37 @@ class _DetailScreenState extends State<DetailScreen> {
                                 shrinkWrap: true,
                                 itemCount: detailQuestions.length,
                                 itemBuilder: (context, index) {
-                                  return ClipRRect(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    child: ExpansionTile(
-                                      backgroundColor: Colors.lightBlue,
-                                      title: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: Text(
-                                          detailQuestions[index].toString(),
-                                          style: TextStyle(
-                                            fontFamily: SubFont,
-                                            fontSize: 20.0,
-                                            color: Colors.black87,
+                                  return ExpansionTile(
+                                    backgroundColor: Colors.teal,
+                                    title: Padding(
+                                      padding: const EdgeInsets.all(5.0),
+                                      child: Text(
+                                        detailQuestions[index].toString(),
+                                        style: TextStyle(
+                                          fontFamily: SubFont,
+                                          fontSize: 20.0,
+                                          color: Colors.black87,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ),
+                                    // trailing: FaIcon(FontAwesomeIcons.leaf
+                                    children: [
+                                      ListTile(
+                                        title: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: Text(
+                                            detailAnswers[index].toString(),
+                                            style: TextStyle(
+                                              fontSize: 20.0,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                            textAlign: TextAlign.left,
                                           ),
-                                          textAlign: TextAlign.left,
                                         ),
                                       ),
-                                      // trailing: FaIcon(FontAwesomeIcons.leaf
-                                      children: [
-                                        ListTile(
-                                          title: Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: Text(
-                                              detailAnswers[index].toString(),
-                                              style: TextStyle(
-                                                fontSize: 20.0,
-                                                color: Colors.white,
-                                              ),
-                                              textAlign: TextAlign.left,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    ],
                                   );
                                 },
                               ).animate(delay: 200.ms).fadeIn(delay: 200.ms),
@@ -315,16 +313,18 @@ class _DetailScreenState extends State<DetailScreen> {
 
               //_launchURLで最寄りの果樹園に飛ぶ
               TextButton(
-                child: Text(
-                  S.of(context).goMap3,
-                  // "OK",
-                  style: TextStyle(fontSize: 20.0, color: Colors.lightBlue),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.teal,
+                  foregroundColor: Colors.white,
                 ),
+                child: Text(
+                  S.of(context).goMap3),
+                  // "OK",
                 onPressed: () {
                   Navigator.pop(context);
                   _launchURL();
                 },
-              ),
+              )
             ],
           );
         });

@@ -556,16 +556,20 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
         actions: [
           TextButton(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.teal,
+              foregroundColor: Colors.white,
+            ),
             child: Text(
               S.of(context).cancel,
-              style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+              style: TextStyle(fontSize: 20.0),
             ),
             onPressed: () => Navigator.pop(context),
           ),
           TextButton(
             child: Text(
               S.of(context).ok,
-              style: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+              style: TextStyle(fontSize: 20.0, color: Colors.black87),
             ),
             onPressed: () {
               Navigator.pop(context);

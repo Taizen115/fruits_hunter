@@ -81,7 +81,6 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
         text: DateFormat('yyyy-MM-dd').format(_selectedDate));
 
     if ((recordToEdit != null) && (recordToEdit.imagePaths != null)) {
-      // _imageFile = File(r!.imagePath!);
       final fileNames = recordToEdit.imagePaths!.split(",");
 
       for (final imageFileName in fileNames) {
@@ -209,7 +208,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: FaIcon(FontAwesomeIcons.shareNodes,
-                      color: Colors.green[400]),
+                      color: Colors.teal),
                 ),
                 onTap: () => _shareRecord(),
               ),
@@ -244,12 +243,13 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                           onTap: _pickDate,
                           decoration: InputDecoration(
                             labelText: S.of(context).pickADate,
-                            labelStyle: const TextStyle(color: Colors.teal),
+                            labelStyle:
+                                const TextStyle(color: Colors.teal),
                           ),
                           validator: (val) {
                             return (val == null || val.trim().isEmpty)
-                              ? S.of(context).required
-                              : null;
+                                ? S.of(context).required
+                                : null;
                           },
                         ),
                       ),
@@ -276,35 +276,12 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                           }),
                     ],
                   ),
-
-                  // Gap(20.0),
-                  // Container(
-                  //   width: double.infinity,
-                  //   alignment: Alignment.centerLeft,
-                  //   child: TextButton(
-                  //     style: TextButton.styleFrom(
-                  //       shape: RoundedRectangleBorder(
-                  //         borderRadius: BorderRadius.circular(20.0),
-                  //       ),
-                  //       foregroundColor: Colors.teal,
-                  //       backgroundColor: Colors.white12,
-                  //       padding: EdgeInsets.zero,
-                  //         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  //         alignment: Alignment.centerLeft,
-                  //     ),
-                  //         onPressed:_pickDate,
-                  //     child: Text(
-                  //       S.of(context).PickADate,
-                  //       style: TextStyle(color: Colors.teal, fontSize: 15.0),
-                  //     ),
-                  //   ),
-                  // ),
                   TextFormField(
                     controller: _fruitTypeController,
                     decoration: InputDecoration(
                         labelText: S.of(context).fruitType,
-                        labelStyle:
-                            TextStyle(color: Colors.teal, fontSize: 15.0)),
+                        labelStyle: TextStyle(
+                            color: Colors.teal, fontSize: 15.0)),
                     //必須= required
                     validator: (val) =>
                         val!.trim().isEmpty ? S.of(context).required : null,
@@ -313,8 +290,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     controller: _farmNameController,
                     decoration: InputDecoration(
                         labelText: S.of(context).farmName,
-                        labelStyle:
-                            TextStyle(color: Colors.teal, fontSize: 15.0)),
+                        labelStyle: TextStyle(
+                            color: Colors.teal, fontSize: 15.0)),
                     validator: (val) =>
                         val!.trim().isEmpty ? S.of(context).required : null,
                   ),
@@ -322,8 +299,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     controller: _memoController,
                     decoration: InputDecoration(
                         labelText: S.of(context).memo,
-                        labelStyle:
-                            TextStyle(color: Colors.teal, fontSize: 15.0)),
+                        labelStyle: TextStyle(
+                            color: Colors.teal, fontSize: 15.0)),
                   ),
                   Gap(15.0),
                   _imageFiles.isNotEmpty
@@ -374,24 +351,22 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                       Icons.photo,
                       color: Colors.teal,
                     ),
-                    label: Text(
-                      S.of(context).pickAPhoto,
-                      style: TextStyle(color: Colors.teal),
-                    ),
+                    label: Text(S.of(context).pickAPhoto,
+                        style: TextStyle(color: Colors.teal)),
                   ),
                   Gap(20.0),
                   ElevatedButton(
                     onPressed: () async {
                       //保存ボタンを押した！
                       if (!_checked) {
-                        Fluttertoast.showToast(
-                            msg: S.of(context).check1);
+                        Fluttertoast.showToast(msg: S.of(context).check1);
                         return;
                       }
 
                       if (_formKey.currentState!.validate()) {
                         ///追加
-                        final dateStr = DateFormat('yyyy-MM-dd').format(_selectedDate);
+                        final dateStr =
+                            DateFormat('yyyy-MM-dd').format(_selectedDate);
 
                         final updated = FruitRecord(
                           // id: Uuid().v1(),
@@ -426,9 +401,11 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     },
                     child: Text(
                       S.of(context).save,
-                      style: TextStyle(color: Colors.teal),
+                      style: TextStyle(
+                        color: Colors.teal,
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

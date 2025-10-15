@@ -63,11 +63,10 @@ class _MannersScreenState extends State<MannersScreen> {
       // "お供のアイテムとして, 夏場は虫除けスプレー, 日焼け止め, タオル, クーラーボックスがあると良いと思われます. あと, 食べる時にウェットティッシュがあると, 尚良いです. ",
       // "果樹園の方に直接尋ねるのが良いと思われます. それぞれのルールを守って, 満足できる果物狩りを楽しんでください.",
     ];
-
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: Colors.teal,
       appBar: AppBar(
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.teal,
         centerTitle: true,
         leading: TextButton(
           child: Icon(
@@ -124,7 +123,7 @@ class _MannersScreenState extends State<MannersScreen> {
                                     borderRadius: BorderRadius.circular(30.0),
                                     child: ExpansionTile(
                                       // trailing: FaIcon(FontAwesomeIcons.user),
-                                      backgroundColor: Colors.blue[400],
+                                      backgroundColor: Colors.teal,
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: AutoSizeText(
@@ -146,6 +145,7 @@ class _MannersScreenState extends State<MannersScreen> {
                                               style: TextStyle(
                                                 fontSize: 20.0,
                                                 color: Colors.white,
+                                                fontWeight: FontWeight.bold,
                                               ),
                                               textAlign: TextAlign.left,
                                             ),

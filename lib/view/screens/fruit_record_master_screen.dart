@@ -198,8 +198,8 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                     : (r.fruitType),
                                 style: TextStyle(
                                   color: Colors.teal,
-                                  fontFamily: SubFont,
                                   fontWeight: FontWeight.bold,
+                                  fontFamily: SubFont,
                                 ),
                                 maxLines: 1,
                                 minFontSize: 15.0,
@@ -257,19 +257,10 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
-                                        fontSize: 10, height: 1.0
+                                        fontSize: 15, height: 2.0
                                             ),
                                       ),
                                     ),
-                                    // Text(
-                                    //   '${r.date}',ÏÏ
-                                    //   style: TextStyle(
-                                    //       color: Colors.black,
-                                    //       fontFamily: SubFont,
-                                    //       fontWeight: FontWeight.bold,
-                                    //       fontSize: 10),
-                                    //   textAlign: TextAlign.left,
-                                    // ),
                                   ],
                                 ),
                               ),
@@ -301,7 +292,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                           actions: [
                                             TextButton(
                                               style: TextButton.styleFrom(
-                                                backgroundColor: Colors.teal,
+                                                backgroundColor:Colors.teal,
                                                 foregroundColor: Colors.white,
                                               ),
                                               child: Text(S
@@ -451,49 +442,6 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
       ),
     );
   }
-
-  // Widget _buildImageList(String? imageFileNames) {
-  //   if (imageFileNames == null ||
-  //       imageFileNames.isEmpty ||
-  //       imageFileNames == "no_photo.png") {
-  //     return ClipRRect(
-  //       borderRadius: BorderRadius.circular(20),
-  //       child: SizedBox(
-  //         width: 40,
-  //         height: 40,
-  //         child: Image.asset(
-  //           "assets/record/no_photo.png",
-  //           // fit: BoxFit.cover,
-  //         ),
-  //       ),
-  //     );
-  //   }
-  //
-  //   final fileNames = imageFileNames.split(',');
-  //   //表示は1枚までに制限
-  //   final limitedFileNames = fileNames.take(1).toList();
-  //
-  //   return Wrap(
-  //     spacing: 3,
-  //     runSpacing: 3,
-  //     children: limitedFileNames
-  //         .map((fileName) => ClipRRect(
-  //               borderRadius: BorderRadius.circular(20),
-  //               child: SizedBox(
-  //                 width: 60,
-  //                 height: 60,
-  //                 child: Image.file(
-  //                   File(p.join(appDirectoryPath, fileName)),
-  //                   fit: BoxFit.cover,
-  //                   errorBuilder: (context, error, stackTrace) {
-  //                     return const FaIcon(FontAwesomeIcons.circleXmark);
-  //                   },
-  //                 ),
-  //               ),
-  //             ))
-  //         .toList(),
-  //   );
-  // }
 
   Future<void> _loadRecords() async {
     await database.fruitRecords;
