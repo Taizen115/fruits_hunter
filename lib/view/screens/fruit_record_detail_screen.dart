@@ -233,49 +233,21 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                   // Text(DateFormat('yyyy-MM-dd').format(_selectedDate)),
                   Gap(20.0),
 
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          controller: _dateController,
-                          readOnly: true,
-                          enabled: !_checked,
-                          onTap: _pickDate,
-                          decoration: InputDecoration(
-                            labelText: S.of(context).pickADate,
-                            labelStyle:
-                                const TextStyle(color: Colors.teal),
-                          ),
-                          validator: (val) {
-                            return (val == null || val.trim().isEmpty)
-                                ? S.of(context).required
-                                : null;
-                          },
-                        ),
-                      ),
-                      Gap(10.0),
-
-                      ///追加
-                      Checkbox(
-                          value: _checked,
-                          onChanged: (v) async {
-                            if (v == true) {
-                              if (_dateController.text.isNotEmpty) {
-                                setState(() => _checked = true);
-                                return;
-                              }
-                              await _pickDate();
-                              setState(() =>
-                                  _checked = _dateController.text.isNotEmpty);
-                            } else {
-                              setState(() {
-                                _checked = false;
-                                _dateController.clear();
-                              });
-                            }
-                          }),
-                    ],
+                  TextFormField(
+                    controller: _dateController,
+                    readOnly: true,
+                    enabled: !_checked,
+                    onTap: _pickDate,
+                    decoration: InputDecoration(
+                      labelText: S.of(context).pickADate,
+                      labelStyle:
+                          const TextStyle(color: Colors.teal),
+                    ),
+                    validator: (val) {
+                      return (val == null || val.trim().isEmpty)
+                          ? S.of(context).required
+                          : null;
+                    },
                   ),
                   TextFormField(
                     controller: _fruitTypeController,
