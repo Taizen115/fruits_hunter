@@ -34,7 +34,6 @@ class FruitRecordDetailScreen extends StatefulWidget {
 
 class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   final _formKey = GlobalKey<FormState>();
-  bool _checked = false;
 
   late TextEditingController _dateController;
   late TextEditingController _fruitTypeController;
@@ -208,8 +207,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
               InkWell(
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
-                  child: FaIcon(FontAwesomeIcons.shareNodes,
-                      color: Colors.teal),
+                  child:
+                      FaIcon(FontAwesomeIcons.shareNodes, color: Colors.teal),
                 ),
                 onTap: () => _shareRecord(),
               ),
@@ -236,12 +235,11 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                   TextFormField(
                     controller: _dateController,
                     readOnly: true,
-                    enabled: !_checked,
+                    enabled: true,
                     onTap: _pickDate,
                     decoration: InputDecoration(
                       labelText: S.of(context).pickADate,
-                      labelStyle:
-                          const TextStyle(color: Colors.teal),
+                      labelStyle: const TextStyle(color: Colors.teal),
                     ),
                     validator: (val) {
                       return (val == null || val.trim().isEmpty)
@@ -253,8 +251,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     controller: _fruitTypeController,
                     decoration: InputDecoration(
                         labelText: S.of(context).fruitType,
-                        labelStyle: TextStyle(
-                            color: Colors.teal, fontSize: 15.0)),
+                        labelStyle:
+                            TextStyle(color: Colors.teal, fontSize: 15.0)),
                     //必須= required
                     validator: (val) =>
                         val!.trim().isEmpty ? S.of(context).required : null,
@@ -263,8 +261,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     controller: _farmNameController,
                     decoration: InputDecoration(
                         labelText: S.of(context).farmName,
-                        labelStyle: TextStyle(
-                            color: Colors.teal, fontSize: 15.0)),
+                        labelStyle:
+                            TextStyle(color: Colors.teal, fontSize: 15.0)),
                     validator: (val) =>
                         val!.trim().isEmpty ? S.of(context).required : null,
                   ),
@@ -272,8 +270,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                     controller: _memoController,
                     decoration: InputDecoration(
                         labelText: S.of(context).memo,
-                        labelStyle: TextStyle(
-                            color: Colors.teal, fontSize: 15.0)),
+                        labelStyle:
+                            TextStyle(color: Colors.teal, fontSize: 15.0)),
                   ),
                   Gap(15.0),
                   _imageFiles.isNotEmpty
@@ -331,10 +329,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                   ElevatedButton(
                     onPressed: () async {
                       //保存ボタンを押した！
-                      if (!_checked) {
-                        Fluttertoast.showToast(msg: S.of(context).check1);
-                        return;
-                      }
+
 
                       if (_formKey.currentState!.validate()) {
                         ///追加

@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Text(
                                               S.of(context).credits,
                                               style: TextStyle(
-                                                  color: Colors.grey[700],
+                                                  //color: Colors.grey[700],
                                                   fontSize: 15.0),
                                             ),
                                           ),
@@ -172,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             child: Text(
                                               S.of(context).review,
                                               style: TextStyle(
-                                                  color: Colors.orange[300],
+                                                  //color: Colors.orange[300],
                                                   fontSize: 15.0),
                                             ),
                                           ),
