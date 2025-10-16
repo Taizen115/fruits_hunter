@@ -257,7 +257,8 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
-                                        fontSize: 15, height: 2.0
+                                          color: Colors.teal,
+                                        fontSize: 10, height: 2.0
                                             ),
                                       ),
                                     ),

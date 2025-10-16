@@ -73,6 +73,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
     _farmNameController =
         TextEditingController(text: recordToEdit?.farmName ?? '');
     _memoController = TextEditingController(text: recordToEdit?.memo ?? '');
+
     _selectedDate = (recordToEdit != null)
         ? DateFormat('yyyy-MM-dd').parse(recordToEdit.date)
         : DateTime.now();

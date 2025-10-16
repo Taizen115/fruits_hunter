@@ -123,7 +123,7 @@ class _MannersScreenState extends State<MannersScreen> {
                                     borderRadius: BorderRadius.circular(30.0),
                                     child: ExpansionTile(
                                       // trailing: FaIcon(FontAwesomeIcons.user),
-                                      backgroundColor: Colors.teal,
+                                      backgroundColor: Colors.transparent,
                                       title: Padding(
                                         padding: const EdgeInsets.all(5.0),
                                         child: AutoSizeText(
@@ -131,7 +131,8 @@ class _MannersScreenState extends State<MannersScreen> {
                                           style: TextStyle(
                                             fontFamily: SubFont,
                                             fontSize: 20.0,
-                                            color: Colors.black87,
+                                            color: Colors.teal,
+                                            fontWeight: FontWeight.bold,
                                           ),
                                           textAlign: TextAlign.left,
                                         ),
@@ -144,8 +145,7 @@ class _MannersScreenState extends State<MannersScreen> {
                                               mannersAnswers[index].toString(),
                                               style: TextStyle(
                                                 fontSize: 20.0,
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
                                               ),
                                               textAlign: TextAlign.left,
                                             ),

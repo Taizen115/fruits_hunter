@@ -205,7 +205,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 itemCount: detailQuestions.length,
                                 itemBuilder: (context, index) {
                                   return ExpansionTile(
-                                    backgroundColor: Colors.teal,
+                                    backgroundColor: Colors.white,
                                     title: Padding(
                                       padding: const EdgeInsets.all(5.0),
                                       child: Text(
@@ -213,7 +213,8 @@ class _DetailScreenState extends State<DetailScreen> {
                                         style: TextStyle(
                                           fontFamily: SubFont,
                                           fontSize: 20.0,
-                                          color: Colors.black87,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.teal,
                                         ),
                                         textAlign: TextAlign.left,
                                       ),
@@ -227,8 +228,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                             detailAnswers[index].toString(),
                                             style: TextStyle(
                                               fontSize: 20.0,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
                                             ),
                                             textAlign: TextAlign.left,
                                           ),
