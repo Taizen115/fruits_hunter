@@ -114,47 +114,50 @@ class _MannersScreenState extends State<MannersScreen> {
                             color: Colors.white70,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: ListView.builder(
-                                //physics: NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: mannersQuestions.length,
-                                itemBuilder: (context, index) {
-                                  return ClipRRect(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                    child: ExpansionTile(
-                                      // trailing: FaIcon(FontAwesomeIcons.user),
-                                      backgroundColor: Colors.transparent,
-                                      title: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: AutoSizeText(
-                                          mannersQuestions[index].toString(),
-                                          style: TextStyle(
-                                            fontFamily: SubFont,
-                                            fontSize: 20.0,
-                                            color: Colors.teal,
-                                            fontWeight: FontWeight.bold,
+                              child: Theme(
+                                data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                                child: ListView.builder(
+                                  //physics: NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: mannersQuestions.length,
+                                  itemBuilder: (context, index) {
+                                    return ClipRRect(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                      child: ExpansionTile(
+                                        // trailing: FaIcon(FontAwesomeIcons.user),
+                                        backgroundColor: Colors.transparent,
+                                        title: Padding(
+                                          padding: const EdgeInsets.all(5.0),
+                                          child: AutoSizeText(
+                                            mannersQuestions[index].toString(),
+                                            style: TextStyle(
+                                              fontFamily: SubFont,
+                                              fontSize: 20.0,
+                                              color: Colors.teal,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                            textAlign: TextAlign.left,
                                           ),
-                                          textAlign: TextAlign.left,
                                         ),
-                                      ),
-                                      children: [
-                                        ListTile(
-                                          title: Padding(
-                                            padding: const EdgeInsets.all(5.0),
-                                            child: AutoSizeText(
-                                              mannersAnswers[index].toString(),
-                                              style: TextStyle(
-                                                fontSize: 20.0,
-                                                color: Colors.black,
+                                        children: [
+                                          ListTile(
+                                            title: Padding(
+                                              padding: const EdgeInsets.all(5.0),
+                                              child: AutoSizeText(
+                                                mannersAnswers[index].toString(),
+                                                style: TextStyle(
+                                                  fontSize: 20.0,
+                                                  color: Colors.black,
+                                                ),
+                                                textAlign: TextAlign.left,
                                               ),
-                                              textAlign: TextAlign.left,
                                             ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                },
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ),
