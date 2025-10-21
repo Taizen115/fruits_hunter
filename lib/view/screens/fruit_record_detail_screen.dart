@@ -313,18 +313,22 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                             },
                           ),
                         )
-                      : Image.asset("assets/record/no_photo.png",
-                          width: 200, height: 200),
-                  Gap(15.0),
-                  ElevatedButton.icon(
-                    onPressed: _pickImages,
-                    icon: Icon(
-                      Icons.photo,
-                      color: Colors.teal,
-                    ),
-                    label: Text(S.of(context).pickAPhoto,
-                        style: TextStyle(color: Colors.teal)),
-                  ),
+                      : InkWell(
+                    onTap: _pickImages,
+                        child: Image.asset("assets/record/no_photo.png",
+                            width: 200, height: 200),
+                      ),
+                  // Gap(15.0),
+                  // ElevatedButton.icon(
+                  //   onPressed: _pickImages,
+                  //   icon: Icon(
+                  //     Icons.photo,
+                  //     color: Colors.teal,
+                  //   ),
+                  //   label: Text(S.of(context).pickAPhoto,
+                  //       style: TextStyle(color: Colors.teal)),
+                  // ),
+                  // Gap(20.0),
                   Gap(20.0),
                   ElevatedButton(
                     onPressed: () async {
