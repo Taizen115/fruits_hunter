@@ -115,7 +115,13 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                           color: Colors.teal,
                           alignment: Alignment.centerRight,
                           padding: EdgeInsets.zero,
-                          child: Icon(Icons.delete, color: Colors.white70),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Icon(Icons.delete, color: Colors.white70),
+                            ),
+                          ),
                         ),
                         confirmDismiss: (direction) async {
                           ///スワイプによる削除確認のためのダイアログ
@@ -188,103 +194,162 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                             color: Colors.white,
                             elevation: 10.0,
                             margin: EdgeInsets.all(5.0),
-                            child: ListTile(
-                              isThreeLine: true,
-                              contentPadding: EdgeInsets.symmetric(
-                                  vertical: 12, horizontal: 12),
-                              title: AutoSizeText(
-                                (r.fruitType.length > 10)
-                                    ? r.fruitType.substring(0, 10) + "‥"
-                                    : (r.fruitType),
-                                style: TextStyle(
-                                  color: Colors.teal,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: SubFont,
+                            child: SizedBox(
+                              height: 100,
+                              child: ListTile(
+                                isThreeLine: true,
+                                minLeadingWidth: 70,
+                                contentPadding: EdgeInsets.symmetric(
+                                    vertical: 12, horizontal: 12),
+                                title: AutoSizeText(
+                                  (r.fruitType.length > 10)
+                                      ? r.fruitType.substring(0, 10) + "‥"
+                                      : (r.fruitType),
+                                  style: TextStyle(
+                                    color: Colors.teal,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: SubFont,
+                                  ),
+                                  maxLines: 1,
+                                  minFontSize: 15.0,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.left,
                                 ),
-                                maxLines: 1,
-                                minFontSize: 15.0,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.left,
-                              ),
-                              subtitle: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  AutoSizeText(
-                                    (r.farmName.length > 10)
-                                        ? r.farmName.substring(0, 10) + "‥"
-                                        : (r.farmName),
-                                    style: TextStyle(
-                                        color: Colors.black87,
-                                        fontFamily: SubFont,
-                                        fontSize: 15.0),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                  AutoSizeText(
-                                    (r.memo != null && r.memo!.length > 15)
-                                        ? r.memo!.substring(0, 15) + "‥"
-                                        : (r.memo ?? ''),
-                                    style: TextStyle(
-                                        color: Colors.black87,
-                                        fontFamily: SubFont,
-                                        fontSize: 15.0),
-                                    maxLines: 1,
-                                    minFontSize: 8.0,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ],
-                              ),
-                              leading: SizedBox(
-                                width: 56,
-                                height: 56,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                subtitle: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(
-                                        width: 36,
-                                        height: 36,
-                                        child: ClipOval(
-                                            child: _buildImageThumb(
-                                                r.imagePaths))),
-                                    Gap(2.0),
-                                    SizedBox(
-                                      height: 14,
-                                      child: AutoSizeText(
-                                        _displayDate(r.date),
-                                            maxLines:1,
-                                          minFontSize: 8,
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.center,
-                                        style: const TextStyle(
-                                          color: Colors.teal,
-                                        fontSize: 10, height: 2.0
-                                            ),
-                                      ),
+                                    AutoSizeText(
+                                      (r.farmName.length > 10)
+                                          ? r.farmName.substring(0, 10) + "‥"
+                                          : (r.farmName),
+                                      style: TextStyle(
+                                          color: Colors.black87,
+                                          fontFamily: SubFont,
+                                          fontSize: 15.0),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                    AutoSizeText(
+                                      (r.memo != null && r.memo!.length > 15)
+                                          ? r.memo!.substring(0, 15) + "‥"
+                                          : (r.memo ?? ''),
+                                      style: TextStyle(
+                                          color: Colors.black87,
+                                          fontFamily: SubFont,
+                                          fontSize: 15.0),
+                                      maxLines: 1,
+                                      minFontSize: 8.0,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.left,
                                     ),
                                   ],
                                 ),
-                              ),
-                              trailing: IconButton(
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.black87,
+                                leading: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SizedBox.square(
+                                      ///正方形の一辺
+                                      dimension:40,
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(20.0),
+                                        child:_buildImageThumb(
+                                            r.imagePaths),
+                                      ),
+                                    ),
+                                    Gap(5.0),
+                                    AutoSizeText(
+                                      _displayDate(r.date),
+                                          maxLines:1,
+                                        minFontSize: 10,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        color: Colors.teal,
+                                      fontSize: 10, height: 1.0
+                                          ),
+                                    ),
+                                  ],
                                 ),
-                                onPressed: () async {
-                                  showDialog(
+                                trailing: IconButton(
+                                  icon: const Icon(
+                                    Icons.delete,
+                                    color: Colors.black87,
+                                  ),
+                                  onPressed: () async {
+                                    showDialog(
+                                      context: context,
+                                      barrierDismissible: true,
+                                      builder: (_) =>
+                                          AlertDialog(
+                                            title: Text(
+                                              //記録の消去
+                                              S.of(context)
+                                                  .deleteRecord0,
+                                              style: TextStyle(fontSize: 20.0),
+                                            ),
+                                            content: Text(
+                                              //記録を消去しますか？
+                                              S.of(context)
+                                                  .deleteRecord1,
+                                              style: TextStyle(
+                                                  color: Colors.black54,
+                                                  fontSize: 15.0),
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                style: TextButton.styleFrom(
+                                                  backgroundColor:Colors.teal,
+                                                  foregroundColor: Colors.white,
+                                                ),
+                                                child: Text(S
+                                                    .of(context)
+                                                    .cancel),
+                                                onPressed: () =>
+                                                    Navigator.pop(context),
+                                              ),
+                                              TextButton(
+                                                style: TextButton.styleFrom(
+                                                  foregroundColor: Colors.teal,
+                                                ),
+                                                child: Text(S
+                                                    .of(context)
+                                                    .ok),
+                                                onPressed: () async {
+                                                  await database
+                                                      .deleteFruitRecord(
+                                                      records[index].id);
+                                                  Fluttertoast.showToast(
+                                                    //消去しました
+                                                    msg: S
+                                                        .of(context)
+                                                        .deleteRecord2,
+                                                    toastLength: Toast
+                                                        .LENGTH_LONG,
+                                                  );
+                                                  Navigator.pop(context);
+                                                  setState(() {});
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                    ); // 🔁←正しい再描画の方法
+                                  },
+                                ),
+                                onLongPress: () async {
+                                  final ok = await showDialog<bool>(
                                     context: context,
-                                    barrierDismissible: true,
                                     builder: (_) =>
                                         AlertDialog(
                                           title: Text(
                                             //記録の消去
-                                            S.of(context)
+                                            S
+                                                .of(context)
                                                 .deleteRecord0,
                                             style: TextStyle(fontSize: 20.0),
                                           ),
                                           content: Text(
-                                            //記録を消去しますか？
-                                            S.of(context)
+                                            S
+                                                .of(context)
                                                 .deleteRecord1,
                                             style: TextStyle(
                                                 color: Colors.black54,
@@ -293,117 +358,58 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                           actions: [
                                             TextButton(
                                               style: TextButton.styleFrom(
-                                                backgroundColor:Colors.teal,
+                                                backgroundColor: Colors.teal,
                                                 foregroundColor: Colors.white,
                                               ),
                                               child: Text(S
                                                   .of(context)
                                                   .cancel),
                                               onPressed: () =>
-                                                  Navigator.pop(context),
+                                                  Navigator.pop(context, false),
                                             ),
                                             TextButton(
                                               style: TextButton.styleFrom(
                                                 foregroundColor: Colors.teal,
                                               ),
+                                              onPressed: () =>
+                                                  Navigator.pop(context, true),
                                               child: Text(S
                                                   .of(context)
                                                   .ok),
-                                              onPressed: () async {
-                                                await database
-                                                    .deleteFruitRecord(
-                                                    records[index].id);
-                                                Fluttertoast.showToast(
-                                                  //消去しました
-                                                  msg: S
-                                                      .of(context)
-                                                      .deleteRecord2,
-                                                  toastLength: Toast
-                                                      .LENGTH_LONG,
-                                                );
-                                                Navigator.pop(context);
-                                                setState(() {});
-                                              },
                                             ),
                                           ],
                                         ),
-                                  ); // 🔁←正しい再描画の方法
+                                  ) ??
+                                      false;
+                                  if (ok) {
+                                    await database.deleteFruitRecord(r.id);
+                                    Fluttertoast.showToast(
+                                        msg: S
+                                            .of(context)
+                                            .deleteRecord2);
+                                    //再描画
+                                    setState(() {});
+                                  }
+                                },
+                                onTap: () async {
+                                  final updated = await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) =>
+                                          FruitRecordDetailScreen(
+                                            recordToEdit: r,
+                                            openMode: FruitRecordOpenMode.EDIT,
+                                          ),
+                                    ),
+                                  );
+                                  if (updated == true) {
+                                    setState(() {
+                                      //DBから再読み込みするメソッド
+                                      _loadRecords();
+                                    });
+                                  }
                                 },
                               ),
-                              onLongPress: () async {
-                                final ok = await showDialog<bool>(
-                                  context: context,
-                                  builder: (_) =>
-                                      AlertDialog(
-                                        title: Text(
-                                          //記録の消去
-                                          S
-                                              .of(context)
-                                              .deleteRecord0,
-                                          style: TextStyle(fontSize: 20.0),
-                                        ),
-                                        content: Text(
-                                          S
-                                              .of(context)
-                                              .deleteRecord1,
-                                          style: TextStyle(
-                                              color: Colors.black54,
-                                              fontSize: 15.0),
-                                        ),
-                                        actions: [
-                                          TextButton(
-                                            style: TextButton.styleFrom(
-                                              backgroundColor: Colors.teal,
-                                              foregroundColor: Colors.white,
-                                            ),
-                                            child: Text(S
-                                                .of(context)
-                                                .cancel),
-                                            onPressed: () =>
-                                                Navigator.pop(context, false),
-                                          ),
-                                          TextButton(
-                                            style: TextButton.styleFrom(
-                                              foregroundColor: Colors.teal,
-                                            ),
-                                            onPressed: () =>
-                                                Navigator.pop(context, true),
-                                            child: Text(S
-                                                .of(context)
-                                                .ok),
-                                          ),
-                                        ],
-                                      ),
-                                ) ??
-                                    false;
-                                if (ok) {
-                                  await database.deleteFruitRecord(r.id);
-                                  Fluttertoast.showToast(
-                                      msg: S
-                                          .of(context)
-                                          .deleteRecord2);
-                                  //再描画
-                                  setState(() {});
-                                }
-                              },
-                              onTap: () async {
-                                final updated = await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) =>
-                                        FruitRecordDetailScreen(
-                                          recordToEdit: r,
-                                          openMode: FruitRecordOpenMode.EDIT,
-                                        ),
-                                  ),
-                                );
-                                if (updated == true) {
-                                  setState(() {
-                                    //DBから再読み込みするメソッド
-                                    _loadRecords();
-                                  });
-                                }
-                              },
                             ),
                           ),
                         ),

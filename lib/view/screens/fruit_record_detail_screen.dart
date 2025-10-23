@@ -73,12 +73,22 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
         TextEditingController(text: recordToEdit?.farmName ?? '');
     _memoController = TextEditingController(text: recordToEdit?.memo ?? '');
 
-    _selectedDate = (recordToEdit != null)
-        ? DateFormat('yyyy-MM-dd').parse(recordToEdit.date)
-        : DateTime.now();
+    if (recordToEdit != null) {
+      _selectedDate = DateFormat('yyyy-MM-dd').parse(recordToEdit.date);
+      _dateController = TextEditingController(
+          text: DateFormat('yyyy-MM-dd').format(_selectedDate),);
 
-    _dateController = TextEditingController(
-        text: DateFormat('yyyy-MM-dd').format(_selectedDate));
+    } else {
+      _selectedDate = DateTime.now();
+      _dateController = TextEditingController(text: '');
+    }
+
+    // _selectedDate = (recordToEdit != null)
+    //     ? DateFormat('yyyy-MM-dd').parse(recordToEdit.date)
+    //     : DateTime.now();
+
+    // _dateController = TextEditingController(
+    //     text: DateFormat('yyyy-MM-dd').format(_selectedDate));
 
     if ((recordToEdit != null) && (recordToEdit.imagePaths != null)) {
       final fileNames = recordToEdit.imagePaths!.split(",");
@@ -121,22 +131,53 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
   // setState()	画面を更新	選んだ画像を表示
 
   Future<void> _pickImages() async {
+
     final picker = ImagePicker();
-    final pickedList = await picker.pickMultiImage();
-    if (pickedList.isNotEmpty) {
-      final directory = await getApplicationDocumentsDirectory();
-      List<File> savedImages = [];
-      for (var picked in pickedList) {
-        final fileName = p.basename(picked.path);
-        final savedImage =
-            await File(picked.path).copy('${directory.path}/$fileName');
-        savedImages.add(savedImage);
-      }
-      setState(() {
-        _imageFiles.addAll(savedImages);
-      });
+    ///追加
+    final pickedList = await picker.pickMultiImage(
+      maxWidth: 2048,
+      maxHeight: 2048,
+      imageQuality: 85,
+    );
+
+    if (pickedList.isEmpty) return;
+
+    final directory = await getApplicationDocumentsDirectory();
+    final savedImages = <File>[];
+
+    for (final picked in pickedList) {
+
+      ///ファイル名衝突をさける
+      final ext = p.extension(picked.path);
+      final fileName = '${const Uuid().v1()}$ext';
+      final dstPath = p.join(directory.path, fileName);
+
+      ///単純コピー
+      final savedImage = await File(picked.path).copy(dstPath);
+      savedImages.add(savedImage);
     }
+
+    if (!mounted) return;
+    setState(() {
+      _imageFiles.addAll(savedImages);
+    });
   }
+
+  //   final pickedList = await picker.pickMultiImage();
+  //   if (pickedList.isNotEmpty) {
+  //     final directory = await getApplicationDocumentsDirectory();
+  //     List<File> savedImages = [];
+  //     for (var picked in pickedList) {
+  //       final fileName = p.basename(picked.path);
+  //       final savedImage =
+  //           await File(picked.path).copy('${directory.path}/$fileName');
+  //       savedImages.add(savedImage);
+  //     }
+  //     setState(() {
+  //       _imageFiles.addAll(savedImages);
+  //     });
+  //   }
+  // }
 
   // パーツ	意味
   // showDatePicker()	📅 カレンダー画面を出すFlutterの関数
@@ -226,6 +267,8 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
             padding: const EdgeInsets.all(16),
             child: Form(
               key: _formKey,
+              ///追加
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: ListView(
                 children: [
                   // Gap(10.0),
@@ -313,9 +356,12 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                             },
                           ),
                         )
-                      : Image.asset("assets/record/no_photo.png",
-                          width: 200, height: 200),
-                  Gap(15.0),
+                      : InkWell(
+                    onTap: _pickImages,
+                        child: Image.asset("assets/record/no_photo.png",
+                            width: 200, height: 200),
+                      ),
+                  Gap(20.0),
                   ElevatedButton.icon(
                     onPressed: _pickImages,
                     icon: Icon(
@@ -331,7 +377,7 @@ class _FruitRecordDetailScreenState extends State<FruitRecordDetailScreen> {
                       //保存ボタンを押した！
 
 
-                      if (_formKey.currentState!.validate()) {
+                      if (!_formKey.currentState!.validate()) return; {
                         ///追加
                         final dateStr =
                             DateFormat('yyyy-MM-dd').format(_selectedDate);
