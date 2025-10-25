@@ -97,7 +97,7 @@ class _ListScreenState extends State<ListScreen> {
                   ),
                   Gap(30),
                   Text(
-                    S.of(context).fruitList,
+                    S.of(context)!.fruitList,
                     style: TextStyle(
                         color: Colors.lightGreen[100],
                         fontFamily: MainFont,
@@ -109,7 +109,7 @@ class _ListScreenState extends State<ListScreen> {
             body: (fruitsList.isEmpty)
                 ? Center(
                     child: Text(
-                      S.of(context).attention,
+                      S.of(context)!.attention,
                       style: TextStyle(
                         color: Colors.white,
                       ),

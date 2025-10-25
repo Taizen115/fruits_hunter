@@ -5,7 +5,7 @@
   "memory": "思い出",
   "quiz": "クイズ",
 
-  "getData": "[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください",
+  "getData": "[Home]データが取得できませんでした. 申し訳ありませんが画面を一旦閉じて再度実行してください",
 
   "options": "他の項目",
   "credits": "クレジット表記",
@@ -72,13 +72,13 @@
   "mannerAnswers6": "かじゅ園の方に直接尋ねるのが良いと思われます. それぞれのルールを守って, 満足できる果物狩りを楽しんでください.",
 
   "theRest": "残りの果物",
-  "fruitCount": "獲とく果物数",
-  "dropRate": "獲とく率",
+  "fruitCount": "獲得果物数",
+  "dropRate": "獲得率",
 
   "hunt" :"個",
 
   "quizAnswer": "答え:",
-  "quizExplanation": "かい説:",
+  "quizExplanation": "解説:",
   "result": "結果発表！",
   "nextFruit": "Next Fruit！",
 
@@ -88,8 +88,8 @@
   "ok": "OK",
 
   "quizScore": "クイズの成績",
-  "scoreSay1": "獲とくした果物の数は, ...",
-  "scoreSay2": "\n獲とく率は, ... ",
+  "scoreSay1": "獲得した果物の数は, ...",
+  "scoreSay2": "\n獲得率は, ... ",
   "scoreSay3": "おつかれさまでした！",
   "finalComment": "果物の知識について\nお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください.",
 

@@ -62,10 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
     await showDialog<void>(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(S.of(context).ado
+        title: Text(S.of(context)!.ado
             // '広告の表示について'
             ),
-        content: Text(S.of(context).adoText
+        content: Text(S.of(context)!.adoText
             // "パーソナライズされた広告の表示を許可して頂けるかどうかを次のダイアログで選択してください。"
             //     "\n\n許可頂くことで興味関心の低い広告の表示を減らすことができます。"
             //     "\n\nこれによってお客様の個人情報が取得されることはありませんのでご安心ください。"
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(
-              S.of(context).next,
+              S.of(context)!.next,
               // '次にすすむ'
             ),
           ),
@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 builder: (context) {
                                   return SimpleDialog(
                                     title: Text(
-                                      S.of(context).options,
+                                      S.of(context)!.options,
                                       style: TextStyle(
                                           color: Colors.black87,
                                           fontSize: 15.0),
@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           SimpleDialogOption(
                                             onPressed: () => _goCreditPage(),
                                             child: Text(
-                                              S.of(context).credits,
+                                              S.of(context)!.credits,
                                               style: TextStyle(
                                                   //color: Colors.grey[700],
                                                   fontSize: 15.0),
@@ -170,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               _goReviewScreen();
                                             },
                                             child: Text(
-                                              S.of(context).review,
+                                              S.of(context)!.review,
                                               style: TextStyle(
                                                   //color: Colors.orange[300],
                                                   fontSize: 15.0),
@@ -239,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Center(
             child: AutoSizeText(
-              S.of(context).catchphrase,
+              S.of(context)!.catchphrase,
               // "どのような果物狩りの手伝いが\n必要でしょうか？ ",
               maxLines: 2,
               textAlign: TextAlign.center,
@@ -303,7 +303,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goListPage(),
                 child: AutoSizeText(
-                  S.of(context).list,
+                  S.of(context)!.list,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -318,7 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goMannerPage(),
                 child: AutoSizeText(
-                  S.of(context).manner,
+                  S.of(context)!.manner,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -335,7 +335,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _goFruitRecordPage(),
                 child: AutoSizeText(
-                  S.of(context).memory,
+                  S.of(context)!.memory,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -350,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     )),
                 onPressed: () => _selectNumberOfQuiz(),
                 child: AutoSizeText(
-                  S.of(context).quiz,
+                  S.of(context)!.quiz,
                   style: TextStyle(fontSize: 25.0),
                 )),
           ),
@@ -366,17 +366,17 @@ class _HomeScreenState extends State<HomeScreen> {
         context: context,
         builder: (_) => AlertDialog(
               title: Text(
-                S.of(context).questionCount,
+                S.of(context)!.questionCount,
                 style: TextStyle(fontSize: 25.0),
               ),
               content: Text(
-                S.of(context).howManyQuestions,
+                S.of(context)!.howManyQuestions,
                 style: TextStyle(fontSize: 20.0),
               ),
               actions: [
                 TextButton(
                   child: Text(
-                    S.of(context).tenQuestions,
+                    S.of(context)!.tenQuestions,
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Color(0xFFb87333),
@@ -386,7 +386,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 TextButton(
                   child: Text(
-                    S.of(context).twentyQuestions,
+                    S.of(context)!.twentyQuestions,
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Color(0xFFc0c0c0),
@@ -396,7 +396,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 TextButton(
                   child: Text(
-                    S.of(context).thirtyQuestions,
+                    S.of(context)!.thirtyQuestions,
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Color(0xFFe6b422),
@@ -419,7 +419,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     if (allFruitsList.isEmpty) {
-      Fluttertoast.showToast(msg: S.of(context).getData);
+      Fluttertoast.showToast(msg: S.of(context)!.getData);
       //"[Home]データが取得できませんでした。申し訳ありませんが画面を一旦閉じて再度実行してください");
     }
 
@@ -501,7 +501,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (await canLaunchUrl(Uri.parse(url))) {
         await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
       } else {
-        Fluttertoast.showToast(msg: S.of(context).notLaunchStore);
+        Fluttertoast.showToast(msg: S.of(context)!.notLaunchStore);
       }
     }
   }

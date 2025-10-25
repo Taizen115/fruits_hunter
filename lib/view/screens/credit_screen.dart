@@ -41,7 +41,7 @@ class CreditScreen extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
             ),
             title: Text(
-              S.of(context).credits,
+              S.of(context)!.credits,
               style: TextStyle(
                 fontFamily: ThirdFont,
                 fontSize: 30.0,
@@ -76,19 +76,19 @@ class CreditScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: RichText(
                     text: TextSpan(
-                      text: S.of(context).photoIllustration,
+                      text: S.of(context)!.photoIllustration,
                       style: TextStyle(fontSize: 30.0, color: Colors.blue),
                       children: <TextSpan>[
                         TextSpan(
-                          text: S.of(context).topPage,
+                          text: S.of(context)!.topPage,
                           style: TextStyle(fontSize: 20.0, color: Colors.black54),
                         ),
                         TextSpan(
-                          text: S.of(context).fontIcon,
+                          text: S.of(context)!.fontIcon,
                           style: TextStyle(fontSize: 30.0, color: Colors.orange),
                         ),
                         TextSpan(
-                          text: S.of(context).googleFontFontAwesomeIcon,
+                          text: S.of(context)!.googleFontFontAwesomeIcon,
                           style: TextStyle(fontSize: 20.0, color: Colors.black54),
                         ),
                       ],
@@ -103,13 +103,3 @@ class CreditScreen extends StatelessWidget {
     );
   }
 }
-
-//クレジット表記
-//写真・イラスト
-//Topページ：Pexelsより引用
-//果物一覧ページ, クイズページ: 写真AC, イラストACより引用
-//持ち物ページ・マナーページ、クレジットページ : イラストACより引用
-//
-//フォント・アイコン名
-//Google Font
-//FontAwesomeIcon

@@ -51,7 +51,7 @@ class _GradesScreenState extends State<GradesScreen> {
                 onPressed: () => _goHomeScreen(context),
               ),
               title: Text(
-                S.of(context).quizScore,
+                S.of(context)!.quizScore,
                 style: TextStyle(fontSize: 30.0),
               ),
             ),
@@ -84,11 +84,11 @@ class _GradesScreenState extends State<GradesScreen> {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: AutoSizeText(
-                              S.of(context).scoreSay1 +
+                              S.of(context)!.scoreSay1 +
                                   "\n${widget.numberOfHunt}\n" +
-                                  S.of(context).scoreSay2 +
+                                  S.of(context)!.scoreSay2 +
                                   "\n${widget.getRate}%\n" +
-                              S.of(context).scoreSay3,
+                              S.of(context)!.scoreSay3,
                               style: TextStyle(
                                   fontSize: 25.0, color: Colors.white),
                               minFontSize: 12.0,
@@ -106,7 +106,7 @@ class _GradesScreenState extends State<GradesScreen> {
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: AutoSizeText(
-                                S.of(context).finalComment,
+                                S.of(context)!.finalComment,
                                 maxLines: 4,
                                 style: TextStyle(
                                     fontSize: 30.0, color: Colors.white70),
