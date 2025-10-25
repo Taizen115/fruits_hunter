@@ -56,7 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "detailQuestion6" : MessageLookupByLibrary.simpleMessage("4.しゅんの時期はいつですか？"),
     "detailQuestion7" : MessageLookupByLibrary.simpleMessage("5.どんなえいよう素が含まれますか？"),
     "detailQuestion8" : MessageLookupByLibrary.simpleMessage("5-2.えいよう素には, どんな効のうがありますか？"),
-    "detailQuestion9" : MessageLookupByLibrary.simpleMessage("6.しゅうかく体験の費用は, 大体どのぐらいかかりますか？"),
+    "detailQuestion9" : MessageLookupByLibrary.simpleMessage("6.しゅうかく体験のひ用は, 大体どのぐらいかかりますか？"),
     "dropRate" : MessageLookupByLibrary.simpleMessage("獲得率"),
     "editRecord" : MessageLookupByLibrary.simpleMessage("記録の編集"),
     "farmName" : MessageLookupByLibrary.simpleMessage("かじゅ園名"),
