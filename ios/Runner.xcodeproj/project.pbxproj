@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -279,6 +279,7 @@
 				"\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"",
 				"",
 				"",
+				"",
 			);
 			showEnvVarsInLog = 0;
 		};
@@ -292,6 +293,7 @@
 			shellPath = /bin/sh;
 			shellScript = (
 				"/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin",
+				"",
 				"",
 			);
 		};
@@ -317,6 +319,7 @@
 				"echo \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"",
 				"",
 				"",
+				"",
 			);
 			showEnvVarsInLog = 0;
 		};
@@ -327,6 +330,7 @@
 			shellPath = /bin/sh;
 			shellScript = (
 				"/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build",
+				"",
 				"",
 			);
 		};
@@ -352,21 +356,17 @@
 				"echo \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"",
 				"",
 				"",
+				"",
 			);
 			showEnvVarsInLog = 0;
 		};
 		BA8BDE20636CDFC32938EF5E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
 			shellPath = /bin/sh;
 			shellScript = (
 				"\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"",
+				"",
 				"",
 				"",
 			);
