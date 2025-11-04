@@ -260,18 +260,18 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Center(
             child: (adManager.bannerAd == null)
                 ? Container(
-                    width: 0.0,
-                    height: 0.0,
-                  )
+              width: 0.0,
+              height: 0.0,
+            )
                 : Container(
-                    width: adManager.bannerAd!.size.width.toDouble(),
-                    height: adManager.bannerAd!.size.height.toDouble(),
-                    child: Center(
-                      child: AdWidget(
-                        ad: adManager.bannerAd!,
-                      ),
-                    ),
-                  ),
+              width: adManager.bannerAd!.size.width.toDouble(),
+              height: adManager.bannerAd!.size.height.toDouble(),
+              child: Center(
+                child: AdWidget(
+                  ad: adManager.bannerAd!,
+                ),
+              ),
+            ),
           ),
         ),
 
@@ -279,7 +279,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "'FruitPicker' ver 1.2.0 ©Taylors Guild, N.P.O",
+            "'FruitPicker' ver 1.3.0 ©Taylors Guild, N.P.O",
             style: TextStyle(fontSize: 12.0),
           ),
         ),
@@ -392,7 +392,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Color(0xFFc0c0c0),
                     ),
                   ),
-                  onPressed: () => _goQuizPage(context, 100),
+                  onPressed: () => _goQuizPage(context, 20),
                 ),
                 TextButton(
                   child: Text(
@@ -402,7 +402,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Color(0xFFe6b422),
                     ),
                   ),
-                  onPressed: () => _goQuizPage(context, 1000),
+                  onPressed: () => _goQuizPage(context, 30),
                 ),
               ],
             ));

@@ -41,7 +41,7 @@ void main() async {
   runApp(
     DevicePreview(
       builder: (context) => MyApp(),
-      enabled: false,
+      enabled: true,
     ),
   );
 }
