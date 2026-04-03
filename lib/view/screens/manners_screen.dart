@@ -29,13 +29,13 @@ class _MannersScreenState extends State<MannersScreen> {
   @override
   Widget build(BuildContext context) {
     final List mannersQuestions = [
-      S.of(context)!.mannerQuestions0,
-      S.of(context)!.mannerQuestions1,
-      S.of(context)!.mannerQuestions2,
-      S.of(context)!.mannerQuestions3,
-      S.of(context)!.mannerQuestions4,
-      S.of(context)!.mannerQuestions5,
-      S.of(context)!.mannerQuestions6,
+      S.of(context).mannerQuestions0,
+      S.of(context).mannerQuestions1,
+      S.of(context).mannerQuestions2,
+      S.of(context).mannerQuestions3,
+      S.of(context).mannerQuestions4,
+      S.of(context).mannerQuestions5,
+      S.of(context).mannerQuestions6,
 
       // "果樹園で果物狩りをするとき, 走り回ったりしてもいいでしょうか？",
       // "果物を摘むときに, 配慮することはありますか？",
@@ -47,13 +47,13 @@ class _MannersScreenState extends State<MannersScreen> {
     ];
 
     final List mannersAnswers = [
-      S.of(context)!.mannerAnswers0,
-      S.of(context)!.mannerAnswers1,
-      S.of(context)!.mannerAnswers2,
-      S.of(context)!.mannerAnswers3,
-      S.of(context)!.mannerAnswers4,
-      S.of(context)!.mannerAnswers5,
-      S.of(context)!.mannerAnswers6,
+      S.of(context).mannerAnswers0,
+      S.of(context).mannerAnswers1,
+      S.of(context).mannerAnswers2,
+      S.of(context).mannerAnswers3,
+      S.of(context).mannerAnswers4,
+      S.of(context).mannerAnswers5,
+      S.of(context).mannerAnswers6,
 
       // "果樹園では, 走り回ったり騒いだりせず, 周囲に配慮して楽しく果物狩りを過ごして頂けると有難いです. ",
       // "果物を摘むときは, 果樹園の方のお話を聞いて, 木などを傷つけないように配慮して頂けると有難いです. ",
@@ -76,7 +76,7 @@ class _MannersScreenState extends State<MannersScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          S.of(context)!.manner,
+          S.of(context).manner,
           style: TextStyle(
             fontFamily: ThirdFont,
             fontSize: 30.0,
@@ -171,22 +171,22 @@ class _MannersScreenState extends State<MannersScreen> {
           ),
           Gap(20),
           //広告
-          Center(
-            child: (adManager.bannerAd == null)
-                ? Container(
-                    width: 0.0,
-                    height: 0.0,
-                  )
-                : Container(
-                    width: adManager.bannerAd!.size.width.toDouble(),
-                    height: adManager.bannerAd!.size.height.toDouble(),
-                    child: Center(
-                      child: AdWidget(
-                        ad: adManager.bannerAd!,
-                      ),
-                    ),
-                  ),
-          ),
+          // Center(
+          //   child: (adManager.bannerAd == null)
+          //       ? Container(
+          //           width: 0.0,
+          //           height: 0.0,
+          //         )
+          //       : Container(
+          //           width: adManager.bannerAd!.size.width.toDouble(),
+          //           height: adManager.bannerAd!.size.height.toDouble(),
+          //           child: Center(
+          //             child: AdWidget(
+          //               ad: adManager.bannerAd!,
+          //             ),
+          //           ),
+          //         ),
+          // ),
         ],
       ),
     );

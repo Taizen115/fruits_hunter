@@ -26,7 +26,7 @@ class FullScreen extends StatelessWidget {
               Navigator.pop(context);
             }
           ),
-          title: Text(S.of(context)!.fullScreen, style: TextStyle(color: Colors.teal),),
+          title: Text(S.of(context).fullScreen, style: TextStyle(color: Colors.teal),),
           centerTitle: true,
         ),
         body: Center(

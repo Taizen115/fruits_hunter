@@ -52,7 +52,7 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                 onPressed: () => _goHomeScreen(context),
               ),
               title: Text(
-                S.of(context)!.allCorrect0,
+                S.of(context).allCorrect0,
                 // "全問正解",
                 style: TextStyle(fontSize: 30.0),
               ),
@@ -94,7 +94,7 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                               child: AutoSizeText(
                                 // "全問正解\nおめでとうございます\n素晴らしいです🤩"
                                 // "\nお疲れさまでした",
-                                S.of(context)!.allCorrect1,
+                                S.of(context).allCorrect1,
                                 maxLines: 4,
                                 style: TextStyle(
                                     fontSize: 50.0, color: Colors.white),
@@ -114,31 +114,31 @@ class _AllCorrectScreenState extends State<AllCorrectScreen> {
                             ),
                             child: Text(
                               // "果物の知識について\n少しお助けできたでしょうか？\n今度は実際の果物狩りで\n楽しんでみてください",
-                              S.of(context)!.allCorrect2,
+                              S.of(context).allCorrect2,
                               style: TextStyle(
                                   fontSize: 25.0, color: Colors.white),
                             ),
                           ),
                         ),
                         Gap(10.0),
-                        Center(
-                          child: (adManager.bannerAd == null)
-                              ? Container(
-                                  width: 0.0,
-                                  height: 0.0,
-                                )
-                              : Container(
-                                  width:
-                                      adManager.bannerAd!.size.width.toDouble(),
-                                  height: adManager.bannerAd!.size.height
-                                      .toDouble(),
-                                  child: Center(
-                                    child: AdWidget(
-                                      ad: adManager.bannerAd!,
-                                    ),
-                                  ),
-                                ),
-                        ),
+                        // Center(
+                        //   child: (adManager.bannerAd == null)
+                        //       ? Container(
+                        //           width: 0.0,
+                        //           height: 0.0,
+                        //         )
+                        //       : Container(
+                        //           width:
+                        //               adManager.bannerAd!.size.width.toDouble(),
+                        //           height: adManager.bannerAd!.size.height
+                        //               .toDouble(),
+                        //           child: Center(
+                        //             child: AdWidget(
+                        //               ad: adManager.bannerAd!,
+                        //             ),
+                        //           ),
+                        //         ),
+                        // ),
                       ],
                     ),
                   ),

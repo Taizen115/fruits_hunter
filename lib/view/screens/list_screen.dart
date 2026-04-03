@@ -97,7 +97,7 @@ class _ListScreenState extends State<ListScreen> {
                   ),
                   Gap(30),
                   Text(
-                    S.of(context)!.fruitList,
+                    S.of(context).fruitList,
                     style: TextStyle(
                         color: Colors.lightGreen[100],
                         fontFamily: MainFont,
@@ -109,7 +109,7 @@ class _ListScreenState extends State<ListScreen> {
             body: (fruitsList.isEmpty)
                 ? Center(
                     child: Text(
-                      S.of(context)!.attention,
+                      S.of(context).attention,
                       style: TextStyle(
                         color: Colors.white,
                       ),
@@ -125,24 +125,24 @@ class _ListScreenState extends State<ListScreen> {
 
                       //TODO 広告を実装したいと考えているが、「This AdWidget is already in the Widget tree」のエラーメッセージが出て、広告が表示されない
 
-                      Center(
-                        child: (adManager.bannerAd == null)
-                            ? Container(
-                                width: 0.0,
-                                height: 0.0,
-                              )
-                            : Container(
-                                width:
-                                    adManager.bannerAd!.size.width.toDouble(),
-                                height:
-                                    adManager.bannerAd!.size.height.toDouble(),
-                                child: Center(
-                                  child: AdWidget(
-                                    ad: adManager.bannerAd!,
-                                  ),
-                                ),
-                              ),
-                      ),
+                      // Center(
+                      //   child: (adManager.bannerAd == null)
+                      //       ? Container(
+                      //           width: 0.0,
+                      //           height: 0.0,
+                      //         )
+                      //       : Container(
+                      //           width:
+                      //               adManager.bannerAd!.size.width.toDouble(),
+                      //           height:
+                      //               adManager.bannerAd!.size.height.toDouble(),
+                      //           child: Center(
+                      //             child: AdWidget(
+                      //               ad: adManager.bannerAd!,
+                      //             ),
+                      //           ),
+                      //         ),
+                      // ),
                       Gap(10),
 
                       //animationを使って、GridViewで並べる

@@ -60,7 +60,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
           title: Text(
             //記録一覧
             S
-                .of(context)!
+                .of(context)
                 .recordList,
             style: TextStyle(color: Colors.teal, fontSize: 25.0),
           ),
@@ -132,14 +132,14 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                   title: Text(
                                     //記録の消去
                                     S
-                                        .of(context)!
+                                        .of(context)
                                         .deleteRecord0,
                                     style: TextStyle(fontSize: 20.0),
                                   ),
                                   content: Text(
                                     //記録を消去しますか？
                                     S
-                                        .of(context)!
+                                        .of(context)
                                         .deleteRecord1,
                                     style: TextStyle(
                                         color: Colors.black54, fontSize: 15.0),
@@ -151,7 +151,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                         foregroundColor: Colors.white,
                                       ),
                                       child: Text(S
-                                          .of(context)!
+                                          .of(context)
                                           .cancel),
                                       onPressed: () => Navigator.pop(context),
                                     ),
@@ -160,7 +160,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                         foregroundColor: Colors.teal,
                                       ),
                                       child: Text(S
-                                          .of(context)!
+                                          .of(context)
                                           .ok),
                                       onPressed: () async {
                                         await database
@@ -169,7 +169,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                         Fluttertoast.showToast(
                                           //消去しました
                                           msg: S
-                                              .of(context)!
+                                              .of(context)
                                               .deleteRecord2,
                                           toastLength: Toast.LENGTH_LONG,
                                         );
@@ -283,13 +283,13 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                           AlertDialog(
                                             title: Text(
                                               //記録の消去
-                                              S.of(context)!
+                                              S.of(context)
                                                   .deleteRecord0,
                                               style: TextStyle(fontSize: 20.0),
                                             ),
                                             content: Text(
                                               //記録を消去しますか？
-                                              S.of(context)!
+                                              S.of(context)
                                                   .deleteRecord1,
                                               style: TextStyle(
                                                   color: Colors.black54,
@@ -302,7 +302,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                                   foregroundColor: Colors.white,
                                                 ),
                                                 child: Text(S
-                                                    .of(context)!
+                                                    .of(context)
                                                     .cancel),
                                                 onPressed: () =>
                                                     Navigator.pop(context),
@@ -312,7 +312,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                                   foregroundColor: Colors.teal,
                                                 ),
                                                 child: Text(S
-                                                    .of(context)!
+                                                    .of(context)
                                                     .ok),
                                                 onPressed: () async {
                                                   await database
@@ -321,7 +321,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                                   Fluttertoast.showToast(
                                                     //消去しました
                                                     msg: S
-                                                        .of(context)!
+                                                        .of(context)
                                                         .deleteRecord2,
                                                     toastLength: Toast
                                                         .LENGTH_LONG,
@@ -343,13 +343,13 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                           title: Text(
                                             //記録の消去
                                             S
-                                                .of(context)!
+                                                .of(context)
                                                 .deleteRecord0,
                                             style: TextStyle(fontSize: 20.0),
                                           ),
                                           content: Text(
                                             S
-                                                .of(context)!
+                                                .of(context)
                                                 .deleteRecord1,
                                             style: TextStyle(
                                                 color: Colors.black54,
@@ -362,7 +362,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                                 foregroundColor: Colors.white,
                                               ),
                                               child: Text(S
-                                                  .of(context)!
+                                                  .of(context)
                                                   .cancel),
                                               onPressed: () =>
                                                   Navigator.pop(context, false),
@@ -374,7 +374,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                               onPressed: () =>
                                                   Navigator.pop(context, true),
                                               child: Text(S
-                                                  .of(context)!
+                                                  .of(context)
                                                   .ok),
                                             ),
                                           ],
@@ -385,7 +385,7 @@ class _FruitRecordMasterScreenState extends State<FruitRecordMasterScreen> {
                                     await database.deleteFruitRecord(r.id);
                                     Fluttertoast.showToast(
                                         msg: S
-                                            .of(context)!
+                                            .of(context)
                                             .deleteRecord2);
                                     //再描画
                                     setState(() {});
