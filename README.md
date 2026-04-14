@@ -1,16 +1,83 @@
-# fruits_hunter
+# 果物狩りナビ
 
-A new Flutter project.
+## 概要
+果物狩りを愛する人たちに向けて、作ったアプリです。
 
-## Getting Started
+## 制作背景
+果物狩りに行きたいと思っても、
+- どこで体験できるのか
+- どんな果物が収穫できるのか
+- 果物狩りに向けて何を用意したたらいいか
 
-This project is a starting point for a Flutter application.
+が分かりにくいと感じることがありました。
 
-A few resources to get you started if this is your first Flutter project:
+そこで、果物狩りスポットを手軽に探せるアプリとして「果物狩りナビ」を制作しました。  
+シンプルで見やすい UI を目指し、初めて使う人でも迷わず操作できることを意識しました。
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 主な機能
+- 果物の種類ごとの確認
+- 情報を見やすく表示するための画面構成
+- ユーザーが目的のページを探しやすい導線設計
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 使用技術
+- Flutter
+- Dart
+- X-code
+- SQLite
+- Android Studio
+- Git / GitHub
+
+## 開発環境
+- macOS
+- Android Studio
+- Flutter SDK
+- Android Emulator / 実機確認
+
+## アプリ構成
+本アプリは、画面ごとの役割を意識して構成しています。
+
+- **果物狩りで収穫できる果物 一覧**  
+  果物狩りできる果物の詳細
+
+- **マナー画面**  
+  果物狩りに行く際に抑えておくべきマナー
+
+- **思い出画面**
+  果物狩りの思い出を書くページ
+
+- **クイズ画面**
+  果物狩りの品種に関する難問クイズを載せたページ
+
+必要な情報にたどり着きやすいよう、シンプルな画面遷移を意識して設計しました。
+
+## 工夫した点
+- **見やすさを重視した UI**
+    - 情報量が多くなりすぎないように整理し、直感的に使える画面を目指しました。
+
+- **迷いにくい画面遷移**
+    - 一覧から詳細へ自然に進める構成にし、ユーザーが操作に迷わないようにしました。
+
+- **テーマに合ったアプリ設計**
+    - 「果物狩り」という楽しい体験をイメージし、親しみやすいアプリになるよう意識しました。
+
+## 苦労した点
+- 画面に情報を載せすぎると見づらくなってしまうため、必要な情報を整理して配置する点に苦労しました。
+- ユーザーにとって使いやすい画面構成を考えながら、シンプルさと分かりやすさのバランスを取ることを意識しました。
+- Flutter での画面実装において、UI とロジックの整理をしながら進めることを学びました。
+
+## 今後の改善点
+- 検索機能の追加
+- お気に入り機能の追加
+- UI / UX のさらなる改善
+
+## 想定ユーザー
+- 果物狩りに行きたい人
+- 家族や友人とレジャーを楽しみたい人
+- 果物に興味がある人
+
+## こだわったポイント
+このアプリでは、単に情報を並べるだけでなく、  
+「使う人が迷わず果物狩りの情報を得られること」を大切にしました。
+
+アプリ開発では、機能の実装だけでなく、  
+「どうすれば使いやすいか」を考えながら作ることの大切さを学びました。
