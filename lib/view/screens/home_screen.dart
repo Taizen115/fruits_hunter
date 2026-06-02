@@ -276,13 +276,6 @@ class _HomeScreenState extends State<HomeScreen> {
         // ),
 
         //バージョン記載
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            "'FruitPicker' ver 1.3.0 ©Taylors Guild, N.P.O",
-            style: TextStyle(fontSize: 12.0),
-          ),
-        ),
       ]),
     ));
   }
